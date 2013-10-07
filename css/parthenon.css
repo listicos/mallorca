@@ -1,0 +1,55 @@
+.parthenon-caption{
+    display: block;
+    margin-bottom: 10px;
+}
+.parthenon-caption li{
+    display: block;
+    margin-bottom: 5px;
+}
+.tour-itinerary{
+
+}
+.tour-itinerary ul{
+
+}
+.tour-itinerary ul li{
+    margin-bottom: 10px;
+}
+.tour-itinerary ul li .itinerary-content{
+    padding: 15px 0;
+    border: 1px solid #d4d4d4;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    position: relative;
+    margin: 0;
+}
+.badge-day{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #FF9000;
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+    padding: 2px 8px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+.table-accomodation{
+    width: 100%;
+}
+.table-accomodation thead{
+    font-size: 1em;
+    background-color: #eee;
+    color: #555;
+}
+.table-accomodation th, .table-accomodation td{
+    padding: 0.5em 10px;
+}
+ul.list-in-table{
+    margin: 0;   
+}
+ul.list-in-table li{
+    line-height: 15px;
+}
