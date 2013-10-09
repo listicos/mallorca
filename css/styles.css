@@ -224,3 +224,69 @@ body{
         float: left !important;
     }
 }
+.container{
+    background-color: #fafafa;
+
+}
+.contenedor-evaluacion{
+
+}
+.servicios{
+border: 1px solid #c8c8c8;
+background-color: white;
+}
+.contenedor-calendario{
+   border: 1px solid #c8c8c8;
+height: 230px; 
+}
+.guardar-anuncio{
+   
+margin-left: 79px;
+margin-top: 19px;
+}
+.contenedor-anuncio{
+         border: 1px solid #c8c8c8;
+height: 139px;
+margin-top: 26px;
+}
+.boton-guardado p{
+width: 100%;
+margin-top: 90px;
+border: 1px solid #c8c8c8;
+
+}
+.contenedor-noche{
+    margin-top: 20px;
+}
+.precio h1{
+margin-top: 55px;
+border-bottom: 1px dotted #d1d1d1;
+margin-bottom: 5px;
+padding: 5px 0;}
+.contenedor-llegada{
+   padding-left: 19px; 
+}
+.contenido-calendario {
+margin-top: 8px;
+}
+.button-reservalo {
+margin-top: 50px;
+
+}
+
+
+.lista-evaluacion{
+    margin-top: 20px;
+}
+.espacio1{
+    margin-top: 15px;
+} 
+.tab-pane{
+padding-top: 10px;
+}   
+.unstyled li{
+padding-top: 20px;
+}
+.panel-titulo{
+    padding-top: 20px;
+}

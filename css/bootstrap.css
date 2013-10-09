@@ -6803,3 +6803,13 @@ td.visible-print {
     display: none !important;
   }
 }
+.container-fotos{
+padding-top: 7px;
+
+margin-bottom: 10px;
+    border: 1px solid #c8c8c8;
+height: 462px;
+padding: 9px;
+}
+
+
