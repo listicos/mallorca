@@ -1,0 +1,29 @@
+@media (orientation: portrait) {
+    .left {
+        float                       : left;
+        left                        : 0%;
+        width                       : 0%;
+
+    }
+    .right {
+        float                       : right;
+        left                        : 0%;
+        width                       : 100%;
+    }
+}
+
+@media (orientation: landscape) {
+    .left {
+        float                       : left;
+        left                        : 0%;
+        width                       : 30%;
+
+    }
+    .right {
+        float                       : right;
+        left                        : 30%;
+        width                       : 70%;
+        border-left                 : 1px solid black;
+    }
+}
+

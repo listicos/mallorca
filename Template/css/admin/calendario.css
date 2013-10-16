@@ -1,0 +1,33 @@
+.contenedor-calendario{
+    clear: both;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.contenedor-calendario table thead th{
+text-align: center;
+}
+form.searchListForm{
+	width: 98%;
+	float: left;
+	margin-right: 2%;
+}
+.table tbody tr td.disponible{
+	background: #008A00;
+	color:#FFF;
+}
+.table tbody tr td.no_disponible{
+	background: #C51313;
+	color:#FFF;
+}
+
+.table tbody tr td{
+	padding-top: 5px;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+.listado_boostrap{
+	width: 100%;
+	overflow: scroll;
+}

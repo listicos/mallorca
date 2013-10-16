@@ -1,0 +1,24 @@
+.container-mapa{
+    padding-top: 7px;
+    margin-bottom: 10px;
+    border: 1px solid #c8c8c8;
+    height: 462px;
+    padding: 9px;
+}
+.contacto h3{
+    border-bottom: solid 1px;
+}
+.contenedor-textarea input{
+    height: 140px;
+    margin-top: 36px;
+}
+.boletin-informativo h3{
+    border-bottom: solid 1px;  
+}
+.detalles h3{
+    border-bottom: solid 1px;  
+}
+.contenedor-boton{
+    margin-left: 17px;
+    margin-top: 14px;
+}

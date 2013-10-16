@@ -1,0 +1,41 @@
+#ver_reserva_overlay .ajax-container{
+    position: relative;
+}
+
+.detalles_reserva_overlay table caption i{
+    margin-right: 5px;
+    margin-top: 0;
+}
+.detalles_reserva_overlay table{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.detalles_reserva_overlay table td:hover{
+    background: transparent;
+}
+#ver_reserva_overlay{
+    width: 1000px;
+    margin: -250px 0 0 -500px;
+}
+#ver_reserva_overlay .modal-body{
+    max-height: 400px;
+}
+
+/* ------------------------------------------------------------------------- */
+
+#correo_reserva_overlay {
+    width: 1100px;
+    margin: -250px 0 0 -550px;
+}
+#correo_reserva_overlay .modal-body{
+    max-height: 400px;
+}
+#correo_reserva_overlay .ajax-container{
+    position: relative;
+}
+#correo_reserva_overlay input[name="asunto"]{
+    margin: 0;
+    width: calc(100% - 8px);
+}

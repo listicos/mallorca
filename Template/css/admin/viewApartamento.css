@@ -1,0 +1,24 @@
+#view_aparatmento_container{
+
+}
+
+#view_aparatmento_container small{
+    font-size: 12px;
+}
+#view_aparatmento_container .box-header-tabs-apartament{
+    padding: 0;
+    height: 35px;
+}
+#view_aparatmento_container .carousel .item > img{
+    max-width: 100%;
+    height: 500px;
+    margin: 0 auto;
+}
+#view_aparatmento_container .contenedorMapa{
+    width: 700px;
+    height: 400px;
+    margin: 0 auto;
+}
+#view_aparatmento_container .goToEditApartament{
+    margin-left: 10px;
+}

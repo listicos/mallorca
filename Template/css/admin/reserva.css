@@ -1,0 +1,66 @@
+
+legend.list-separator {
+    line-height: 10px;
+    
+}
+
+div.hidden-obj:last-child legend.list-separator {
+    display: none;
+}
+
+#cobro_todos .hidden-obj i.icon-trash, #cobro_todos_fianza .hidden-obj i.icon-trash {
+    cursor: pointer;
+    margin-left: -2px;
+    margin-top: 8px;
+    position: absolute;
+}
+
+#resumen-cuenta {
+    border: 0px solid #DEDEDE;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    box-shadow: -2px 4px 7px 6px rgba(189, 189, 189, 0.4);
+    -webkit-box-shadow: -2px 4px 7px 6px rgba(189, 189, 189, 0.4);
+    -moz-box-shadow: -2px 4px 7px 6px rgba(189, 189, 189, 0.4);
+    position: fixed;
+    right: 0;
+    top: 80px;
+    z-index: 999;
+    padding-top: 10px;
+    background-color: #ffffff;
+}
+
+#resumen-cuenta .show-resumen {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    float: left;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+#resumen-cuenta .resumen {
+    float: right;
+    width: 200px;
+    background-color: #ffffff;
+}
+
+#resumen-cuenta .red {
+    color: red;
+}
+
+#resumen-cuenta .blue {
+    color: blue;
+}
+
+#resumen-cuenta legend {
+    line-height: 0px;
+    width: 70%;
+}
+
+#resumen-cuenta .resumen {
+    
+}
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            </head>
+<table style="width: 800px; border-spacing: 0;font-family: Arial, Helvetica;">
+<thead>
+                <tr>
+                    <th colspan="4"><img width="480px" src="<?php echo $this->template_url ?>/imagen/logo.png"/></th>
+                </tr>
+</thead>
+</table>
+			<table style="width:700px; border-spacing: 0;font-family: Arial, Helvetica;">
+                <tbody>
+                <tr>
+                	 <td><h3>Estimado/a Sr. Pérez</h3></td>
+                </tr>	 
+            	
+			</tbody>
+			</table>
+
+<table style=" border-spacing: 0;font-family: Arial, Helvetica;" >
+			<thead>
+				<tr>
+					  <th><h3>Le confirmamos la cancelación de su reserva</h3></th>
+				</tr>
+			</thead>	
+</table>
+<table style=" border-spacing: 0;font-family: Arial, Helvetica;">
+<tbody>
+	<tr>
+		<td style="width:165px">No de reserva</td>
+		<td style="font-weight:bold">20023</td>
+	</tr> 
+	<tr>
+		<td>Nombre</td>
+		<td style="font-weight:bold">Jaime Perez Perez</td>
+	</tr>
+	<tr>
+		<td>Email</td>
+		<td>jaimepere@hotmail.com</td>
+	</tr>
+</tbody>
+</table>
+<br>
+<table style=" border-spacing: 0;font-family: Arial, Helvetica;">
+<tbody>	
+	<tr>
+		<td style="width:165px">Alojamiento</td>
+		<td style="font-weight:bold">CB052 APARTAMENTOS ARGENTA</td>
+	</tr>
+	<tr>
+		<td>Dirección</td>
+		<td>Dr.Pigem 4 Salou,43840 Tarragona,España
+	</tr>
+</tbody>
+</table>
+<br>
+<table style=" border-spacing: 0;font-family: Arial, Helvetica;">
+	<tbody>
+	
+	<tr>
+		<td>
+		<table>	
+		<tr><td style="width:160px">Fecha de entrada:</td>
+		<td style="font-weight:bold">12 diciembre 2012</td></tr>
+		<tr><td></td>
+		<td>Entradas de 16:00 20:00 hrs.</td></tr>
+		</table>
+		</td>
+		<td>
+		<table>	
+		<tr><td style="width:140px">Fecha de salida:</td>
+		<td style="font-weight:bold">14 diciembre 2012</td></tr>	
+		<tr><td></td>
+		<td >Salidas hasta las 12:00 hrs.</td><tr>
+		</table>
+		</td>
+	</tr>
+</tbody>
+</table>
+<br>
+<table style="border-spacing: 0;font-family: Arial, Helvetica;">
+<tbody>		
+	<tr>
+		<td>
+		<table>	
+		<tr><td style="width:160px" >Total de noches</td>
+		<td style="width:210px">2</td></tr>
+		<tr><td>Cantidad</td>
+		<td>1 apartamento/chalet</td></tr>
+		<tr>

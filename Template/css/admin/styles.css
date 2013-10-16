@@ -1,0 +1,22 @@
+.contenedor_custom_templete .main-menu{
+    /*background: #f5f5f5;*/
+}
+.contenedor_custom_templete .main-menu li.active a{
+    background: #f5f5f5;
+    border: 0;
+}
+#print_mantenimiento_overlay {
+    width: 1000px;
+    margin: -250px 0 0 -500px;
+}
+#print_mantenimiento_overlay .modal-body{
+    min-height: 50px;
+}
+.modal .ajax-container{
+    position: relative;
+}
+.detalles_mantenimiento_overlay table {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}

@@ -1,0 +1,381 @@
+.menu_top_content{
+    margin: 10px 0;
+}
+.menu_top_content select{
+    width: 145px;
+}
+.menu_top_content .breadcrumb{
+    width: 398px;
+    margin: 0 auto;
+    float: right;
+}
+.menu_top_content .selector_container{
+    float: right !important;
+    margin-right: 5px;
+}
+.planning_container select{
+    width: 160px;
+}
+.datosTimeContent{
+    /*text-align: left !important;
+    margin-left: 210px !important;*/
+}
+.formDatosBasicos label{
+    line-height: 30px !important;
+}
+.control-group .impuesto_container{
+    height: 90px;
+    padding: 10px;
+    background: #f2f2f2;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+a.delete_impuesto{
+    line-height: 70px;
+}
+
+.legend_custom {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 8px;
+    margin-top: 0px !important;
+    font-size: 17.5px;
+    line-height: 36px;
+    color: #333333;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.border_bot {
+    border-bottom: 1px solid #e5e5e5;    
+}
+
+.well_custom {
+    min-height: 20px;
+    padding: 10px;
+    margin-bottom: -8px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.control-label_custom {
+    width: 57px;
+    padding-top: 5px;
+    text-align: left;
+    padding-right: 17px;
+    margin-left: 10px;
+}
+
+.control-label_custom_h {
+    width: 57px;
+    padding-top: 7px !important;
+    text-align: left;
+    padding-right: 17px;
+    margin-left: 0px;
+}
+
+.mleft {
+    margin-left: 27px !important;
+}
+.label_tarjeta {
+        padding-left: 17px;
+}
+
+.no_list_dots {
+    list-style: none;
+    margin: 0;
+}
+
+.no_left_margin {
+    margin-left : 0 !important;
+    text-align: center;
+}
+.no_left_margin_empresa {
+    margin-left : -21px !important;
+    text-align: center;
+}
+
+.form-horizontal .control-group-empresa {
+    margin-bottom: 10px;
+}
+
+.no_right_margin {
+    /*margin-right : 0;*/
+    text-align: center;
+}
+
+.input_largex {
+    width: 225px;
+}
+
+.F_size_13 {
+    font-size: 15px;
+}
+
+.salas_zonas_list {
+    padding: 0 1%;
+}
+
+.no_padding_left {
+    padding-left: 0 !important;
+}
+
+.salas_zonas_list .span3{
+   text-align: left !important;
+}
+.salas_zonas_list .span3 .radio{ padding-left: 0 !important;}
+
+.control-group .custom_button_ubicar{
+    margin-left: 74px !important;
+}
+
+
+.hidden_obj {
+    display: none;
+}
+
+.sidebar-nav-content-custom{
+    width: 82% !important;  
+}
+.sidebar-nav-content-custom.span12{
+    width: 97%!important;
+    
+}
+.alineacion_izquierda{
+    text-align: left !important;
+}
+.label-hotel {
+    padding-top: 5px;
+    text-align: left;
+}
+
+.label-right {
+    padding-top: 5px;
+    text-align: right;
+}
+
+.label-left {
+    padding-top: 5px;
+    text-align: left;
+}
+
+.marginR_span {
+    margin-right: 6px;
+}
+
+.marginleft {
+    margin-left: 12px !important;
+}
+
+.marginleft_links {
+    /*margin-left: 22px !important;*/
+    margin-left: 10px !important;    
+}
+
+.tab-content {
+    overflow: hidden !important;
+}
+.tips_label{
+    
+    color: gray;
+    font-style: italic;
+    font-size: 12px;
+}
+
+.checkbox_aling{
+    padding-top: 15px !important;
+}
+
+.top-margin-Lmenu {
+    margin-top: 10px !important;
+}
+
+.margintop-selector {
+    margin-top: 4px !important;
+}
+
+.marginleft-horarios {
+    margin-left: -1px !important;
+}
+
+.margintop-contactos {
+    margin-top: 9px;
+}
+
+.custom-span3 {
+    margin-right: 0px;
+    width: 16.1% !important;
+}
+
+.custom-span3-buttons-comp {
+width: 12% !important;
+}
+
+.custom-span3-buttons-serv {
+width: 22% !important;
+}
+
+.custom-span3-buttons {
+width: 14% !important;
+}
+
+.custom-span1 {
+    width: 70px !important;
+}
+
+.NomLeft {
+    margin-left: -14px !important;
+}
+.custom-span8 {
+    width: 65.95744680851064% !important;
+    margin-left: -18px !important;
+}
+
+select.multiselect{
+    width: 807px !important;
+    float: none;
+    clear: both !important;
+    margin-left: 15% !important;
+    height: 500px !important;    
+
+
+}
+
+.custom-span10 {
+    width: 82.97872340425532% !important;
+}
+/* -------------------- Multi Select Custom view */
+.ui-multiselect .ui-widget-header {
+border: none;
+font-size: 11px;
+margin-bottom: 1px;
+height: 34px;
+    background-color: #f5f5f5;
+}
+.ui-widget-header {
+border: 1px solid #aaaaaa;
+/*background: #F5F5F5 url(../img/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x;*/
+background: #F5F5F5 url(../img/background-light.png) 50% 50% repeat-x;
+color: #222222;
+font-weight: bold;
+}
+
+.ui-multiselect .count {
+    padding-top: 8px !important;
+    padding-left: 28px !important;
+}
+/* -----------------------------------------------------------------------------------*/
+
+.ui-multiselect input.search {
+    height: 22px !important;
+    padding: 1px !important;
+    padding-left: 6px !important;
+    margin: 4px !important;
+    margin-left: 12px !important;
+    width: 170px !important;
+    margin-right: 0 !important;
+    opacity: 1 !important;
+}
+
+.sidebar-nav-content-custom1 {
+width: 82.9% !important;
+margin-top: -50px !important;
+}
+
+.label-descripcion {
+    padding-top: 5px;
+    text-align: right;
+}
+
+.row-fluid .index-tab-span10 {
+width: 82.97872340425532% !important;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+    .main-menu-span {
+        width: 5.2% !important;
+        margin-right: 1%;
+    }
+    .sidebar-nav-content-custom {
+        width: 107% !important;
+    }
+
+    .custom-span8 {
+        width: 65.95744680851064% !important;
+        margin-left: -4px !important;
+        margin-top: 16px !important;
+    }
+    .custom-span10 {
+        width: 82.978723% !important;
+        margin-left: 3px !important;
+    }
+    
+         .NomLeft {
+        margin-left: 0px !important;
+    } 
+
+select.multiselect{
+    width: 607px !important;
+    float: none;
+    clear: both !important;
+    height: 500px !important;
+    margin-left: 5% !important;
+
+}
+
+.map_canvas { 
+    width: 94%;
+    height: 400px;
+    margin: 8px auto;
+    border: 10px solid #FFF;
+    -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+    margin-top: 0;
+}
+
+.custom-span1 {
+    width: 140px !important;
+}
+
+.label-descripcion {
+    padding-top: 5px;
+    text-align: left;
+}
+.row-fluid .index-tab-span10 {
+width: 91.48936170212765% !important;
+}
+
+}
+
+@media (min-width: 768px) {
+    
+    .well {
+        min-height: 20px;
+        padding: 10px;
+        margin-right: -17px;
+        margin-bottom: 20px;
+        background-color: #f5f5f5;
+        border: 1px solid #e3e3e3;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+        -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    }
+
+    .marginR_span {
+        margin-right: 20px;
+    }   
+    
+      
+}
+

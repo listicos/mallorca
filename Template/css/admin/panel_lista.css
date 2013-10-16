@@ -1,0 +1,41 @@
+.contenedor_lista h2{
+    text-align: center;
+    font-size: 18px;
+}
+.contenedor_lista{}
+.contenedor_lista .hotel_container_data .column_custom{
+    
+}
+.contenedor_lista .hotel_container_data .column_custom h4{
+    cursor: pointer;
+}
+.contenedor_lista .hotel_container_data .column_custom ul{
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    margin: 0px;
+    padding: 7px;
+    z-index: 1;
+    -moz-border-radius: 5px;  
+    border-radius: 5px;
+}
+.contenedor_lista .hotel_container_data .column_custom ul li{
+    list-style: none;
+    display: block;
+    width: auto;
+    overflow: hidden;
+}
+.contenedor_lista .hotel_container_data .column_custom ul li .checker{
+    float: left;
+}
+.contenedor_lista .hotel_container_data .column_custom ul li label{
+    width: 100px;
+    float: left;
+}
+.contenedor_lista .hotel_container_data .datatable_wrapper{}
+.contenedor_lista .hotel_container_data .dataTables_length{
+    float: left;
+}
+.contenedor_lista .hotel_container_data .dataTables_filter{
+    float: right;
+}
