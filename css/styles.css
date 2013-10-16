@@ -224,6 +224,9 @@ body{
         float: left !important;
     }
 }
+
+
+
 .container{
     background-color: #fafafa;
 
@@ -237,11 +240,10 @@ background-color: white;
 }
 .contenedor-calendario{
    border: 1px solid #c8c8c8;
-height: 230px; 
+
 }
 .guardar-anuncio{
    
-margin-left: 79px;
 margin-top: 19px;
 }
 .contenedor-anuncio{
@@ -264,14 +266,14 @@ border-bottom: 1px dotted #d1d1d1;
 margin-bottom: 5px;
 padding: 5px 0;}
 .contenedor-llegada{
-   padding-left: 19px; 
+    
 }
 .contenido-calendario {
-margin-top: 8px;
+margin-top: 5px;
 }
 .button-reservalo {
-margin-top: 50px;
-
+margin-top: 10px;
+height: 65px;
 }
 
 
@@ -290,3 +292,45 @@ padding-top: 20px;
 .panel-titulo{
     padding-top: 20px;
 }
+.contenido-comentarios1{
+border-top: none;
+}
+.contenido-comentarios2{
+border-top: 1px solid #edeff4;
+padding-top: 22px;
+
+}
+
+
+.container-mapa{
+    padding-top: 7px;
+margin-bottom: 10px;
+border: 1px solid #c8c8c8;
+height: 462px;
+padding: 9px;
+}
+.contacto h3{
+    border-bottom: solid 1px;
+}
+.columna-derecha{
+ 
+ 
+}
+.contenedor-textarea input{
+height: 140px;
+margin-top: 36px;
+}
+.boletin-informativo h3{
+   border-bottom: solid 1px;  
+}
+.detalles h3{
+ border-bottom: solid 1px;  
+}
+.contenedor-boton{
+margin-left: 17px;
+margin-top: 14px;
+}
+.contenedor-enviar button{
+    margin-right: 16px;
+}
+

@@ -18,10 +18,14 @@
     </head>
     <body>
 
-        <div class="container">
-            <div class="row-fluid left">
+        <div class="container row-fluid">
+            <div class="titulo row-fluid">
             <div class="col-xs-12">
                 <h2>CANCUN APARTAMENTOS</h2>
+                </div>
+                </div>
+         <div class="sub-titulo row-fluid"> 
+         <div class="col-xs-12">      
                 <h5>
       <a href="" class="property-type">Casa</a>
     - Casa/apto. entero
@@ -31,7 +35,9 @@
     </span>
   </h5>
   </div>
- <div class="col-xs-8">
+</div>
+  <div class="contenedor-columnas row-fluid">
+ <div class="columna-izquierda col-md-8">
  <div class="container-fotos">
   <ul class="nav nav-tabs">
         <li class="active"><a href="#"><font><font class="">Casa</font></font></a></li>
@@ -80,7 +86,7 @@
       </div>
 
 
-      <div class="descripcion-servicios">
+      <div class="descripcion-servicios row">
       <div class="servicios">
     <div class="row-fluid">
     <div class="bs-example bs-example-tabs">
@@ -89,10 +95,10 @@
         <li class=""><a href="#servicios" data-toggle="tab">Servicios</a></li>
         <li class=""><a href="#normas" data-toggle="tab">Normas de la casa</a></li>
       </ul>
-      <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade active in" id="descripcion">
-          <p class="col-xs-6"> Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-         <div class="col-xs-6 tabla-descripcion">
+      <div id="myTabContent" class="tab-content col-md-12">
+        <div class="tab-pane fade active in row" id="descripcion">
+          <p class="col-md-6"> Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+         <div class="col-md-6 tabla-descripcion">
           <table class="table table-bordered table-striped">
             <tbody><tr>
               <td>Tipo de habitación:</td>
@@ -130,12 +136,8 @@
         </tbody></table>
       </div>
         </div>
-
-
-
-
         <div class="tab-pane fade" id="servicios">
-          <ul class="unstyled col-xs-4 pull-left">
+          <ul class="unstyled col-md-4 pull-left">
               <li> <span class="glyphicon glyphicon-adjust"> Apto para fumadores</span></li>
               <li> <span class="glyphicon glyphicon-adjust"> Admite mascotas</span></li>
               <li> <span class="glyphicon glyphicon-adjust"> TV</span></li>
@@ -145,7 +147,7 @@
               <li> <span class="glyphicon glyphicon-adjust"> Aire acondicionado</span></li>
               <li> <span class="glyphicon glyphicon-adjust"> Calefacción</span></li>
           </ul>
- <ul class="unstyled col-xs-4 pull-center">
+ <ul class="unstyled col-md-4 pull-center">
               <li> <span class="glyphicon glyphicon-adjust"> Edificio con ascenso</span></li>
               <li> <span class="glyphicon glyphicon-adjust"> Acceso para discapacitados</span></li>
               <li> <span class="glyphicon glyphicon-adjust"> Piscina</span></li>
@@ -155,7 +157,7 @@
               <li> <span class="glyphicon glyphicon-adjust"> Gimnasio</span></li>
               <li> <span class="glyphicon glyphicon-adjust"> Jacuzzi</span></li>
             </ul> 
-            <ul class="unstyled col-xs-4 pull-right">
+            <ul class="unstyled col-md-4 pull-right">
               <li> <span class="glyphicon glyphicon-ban-circle"> Chimenea interior</span></li>
               <li> <span class="glyphicon glyphicon-adjust"> Timbre/Interfono inalámbrico</span></li>
               <li> <span class="glyphicon glyphicon-adjust"> Desayuno</span></li>
@@ -188,23 +190,83 @@ We beg you to please a/c when you exit the room and to keep windows-doors closed
     
         <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Panel title</h3>
+    <h3 class="panel-title">Comentarios</h3>
   </div>
   <div class="panel-body">
-    Panel content
-  </div>
-</div>
+      <div class="contenido-comentarios1">
+       <div class="panel-comentarios col-xs-2">
+       <img data-src="holder.js/80x80" src="" class="img-thumbnail" alt="80x80" style="width: 80px; height: 80px;">
+      </div>
+      <div class="titulo-nombre col-xs-10">
+      <a href="" class="review-author-link" title="Julio">Julio</a>
+      <p>Muy acogedor, cerca del Coliseo, bien equipadas, limpias, cómodas camas, aire acondicionado, Valentina está disponible en el sitio. Toda la ciudad de Roma es un museo a cielo abierto, fuentes de agua potable en todo el tipo romano, cálido, una pizzería llamada PIZZAS FORO gay en una calle con restaurantes, es muy barato y es muy bueno! Plaza de España, en la esquina de un gran glaciar frente a la fuente. La ubicación es perfecta para todas las visitas panteón cerca de Trevi, el Coliseo 2 calles, metro hace 5 minutos 2 líneas, via del Corso compras para la moda, caminamos hacia y volver en taxi o metro. Mil gracias y hasta pronto inshallah
+      </p>
+      </div>
+      </div>
+      <div class="panel-dia">
+      <p class="text-right"><strong>Octubre 2013</strong></p>
+      </div>
+  <div class="contenido-comentarios2">
+       <div class="panel-comentarios col-xs-2">
+       <img data-src="holder.js/80x80" src="" class="img-thumbnail" alt="80x80" style="width: 80px; height: 80px;">
+      </div>
+      <div class="titulo-nombre col-xs-10">
+      <a href="" class="review-author-link" title="Rosy">Rosy</a>
+      <p>Un bonito y pequeño Wohnug cerca del Coliseo. Las camas eran muy cómodas y hasta se ha mencionado el moho en el baño también estaba limpio y moderno (casi todos IKEA ;-). Sin embargo, no hay ninguna convencional, sino una máquina de café Lavazza con Kaffetabs y un hervidor. Deficiencia de la vivienda es sólo luz escasa. No obstante, hemos de pasar 5 días maravillosos aquí.
+      </p>
+      </div>
+      </div>
+      <div class="panel-dia">
+      <p class="text-right"><strong>Octubre 2013</strong></p>
+      </div>
+  <div class="contenido-comentarios2">
+       <div class="panel-comentarios col-xs-2">
+       <img data-src="holder.js/80x80" src="" class="img-thumbnail" alt="80x80" style="width: 80px; height: 80px;">
+      </div>
+      <div class="titulo-nombre col-xs-10">
+      <a href="" class="review-author-link" title="Ruben">Ruben</a>
+      <p>Excelente ubicación, Valentina le dice a donde el día 10 Lo mejor pizzero, está a la vuelta de la esquina. Takeaways de 6 EUR. Necesariamente ir en la oscuridad al Coliseo - 5 min. A pie. Apartamento pequeño pero las camas son fantásticas y muy tranquilo. 3 supermercados a la vuelta. Un poco de moho en la ventana del baño en las casas antiguas en mi opinión lo normal. Todo estaba limpio y WiFi funcionaba bien.
+      </p>
+      </div>
+      </div>
+      <div class="panel-dia">
+      <p class="text-right"><strong>Octubre 2013</strong></p>
+      </div>
+ 
   
-</div>
-</div>
+
+  
+  
   </div>
-          </div>
-          <div class="columna-right">
-              <div class="row-fluid">
-                  <div class="col-xs-4">
+ <div class="row-fluid col-xs-12">
+    <ul class="pagination">
+  <li><a href="#">&laquo;</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>
+</div>
+</div>  
+</div>
+</div>
+</div>
+
+
+                  
+                  <div class="columna-derecha col-md-4">
                   <div class="contenedor-calendario">
+             <div class="panel panel-default">
+  <div class="panel-body">
+   <h4 class="text-center">Tu reserva</h4>
+  </div>
+</div>
                   <div class="contenedor-noche">
-                       <div class="col-xs-6">
+
+                 
+                       <div class="col-md-6">
                        <strong>Desde</strong>  
                        </div>
                        <div class=" pull-right col-xs-6">
@@ -221,53 +283,36 @@ We beg you to please a/c when you exit the room and to keep windows-doors closed
                           <h1>$ 295</h1>
                       </div>
                
-                 <div class="contenedor-llegada row show-grid">
-
-        <div class="col-xs-4">llegada</div>
-        <div class="col-xs-4">Salida</div>
-        <div class="col-xs-4">Huespedes</div>
-
+                 <div class="contenedor-llegada row-fluid clearfix">
+<form class="form-inline" role="form">
+  <div class="form-group col-md-4">
+    <label class="sr-only" for="exampleInputEmail2">llegada</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Llegada">
+  </div>
+  <div class="form-group col-md-4">
+    <label class="sr-only" for="exampleInputEmail2">Salida</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Salida">
+  </div>
+  <div class="form-group col-md-4">
+  <select class="form-control col-md-4">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+      </div>
+</form>       
       </div>
 <div class="contenido-calendario row-fluid">
-
-        <div class=" calendario-llegada col-xs-4"><input type="text" class="form-control" placeholder=""></div>
-        <div class="col-xs-4"><input type="text" class="form-control" placeholder=""></div>
-        <div class="col-xs-3"><select class="form-control">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select></div>
-    
-      </div>
-<div class="button-reservalo col-xs-12"><button type="button" class="btn btn-primary btn-lg btn-block">Resérvalo</button></div>
-
+<div class="button-reservalo col-md-12"><button type="button" class="btn btn-primary btn-lg btn-block">Resérvalo</button></div>
 </div>
-<div class="contenedor-anuncio">
-    <div class="col-xs-8 guardar-anuncio">
-        <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp Guardar en tus</button>
-
-    </div>
-     <div class="col-xs-12 boton-guardado">
-     <p class="text-center">Guardado 150 veces</p>
-     </div>
 </div>
-
+</div> 
+</body>               
 </div>
-
-
-
-
-                  </div>
-              </div>
           </div>
-           
-            
-
         </div>
-
-
 
         <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
         <script src="js/jquery-1.9.1.js"></script>
@@ -275,12 +320,10 @@ We beg you to please a/c when you exit the room and to keep windows-doors closed
         <script src="js/bootstrap-dropdown.js"></script>
         <script src="js/bootstrap-select.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
-
         <script src="js/jquery.ui.core.js"></script>
         <script src="js/jquery.ui.widget.js"></script>
         <script src="js/jquery.ui.mouse.js"></script>
         <script src="js/jquery.ui.slider.js"></script>
-
         <script src="js/home.js"></script>
     </body>
 </html>
