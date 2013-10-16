@@ -1,7 +1,7 @@
 <?php
 $site_title = 'Mallorca'; 
 
-$site_prefix = '/mallorcas';
+$site_prefix = '/mallorca';
 $imagen_default =(object) array('nombre'=>'Este apartamento no cuenta con foto','ruta' => '/imagen/apartamento.png');
 $base_url = "http://" . $_SERVER['SERVER_NAME'].$site_prefix;
 $base_url_ssl = "https://" . $_SERVER['SERVER_NAME'].$site_prefix;
