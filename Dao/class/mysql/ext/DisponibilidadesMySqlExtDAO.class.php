@@ -29,21 +29,18 @@ class DisponibilidadesMySqlExtDAO extends DisponibilidadesMySqlDAO{
     }
 
 	public function queryByIdApartamentoFechas($idApartamento,$fechaInicio,$fechaFinal){
-		$sql = 'SELECT DISTINCT * FROM disponibilidades WHERE id_apartamento = ? AND estatus = "disponible" AND precio >0';
+		$sql = 'SELECT DISTINCT * FROM disponibilidades WHERE id_apartamento = ? AND estatus = "disponible" AND precio > 0';
 		
 		if($fechaInicio && $fechaFinal){
-			$sql .= ' AND (fecha_inicio >= ? AND fecha_inicio < ?)';
+			$sql .= ' AND UNIX_TIMESTAMP(fecha_inicio) <= UNIX_TIMESTAMP("'.$fechaFinal.'") ';
+                        $sql .= ' AND UNIX_TIMESTAMP(fecha_final) >= UNIX_TIMESTAMP("'.$fechaInicio.'") ';
 		}
 		
 		$sql .= ' ORDER BY fecha_inicio';
-
+                
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($idApartamento);
 		
-		if($fechaInicio && $fechaFinal){
-			$sqlQuery->set($fechaInicio);
-			$sqlQuery->set($fechaFinal);
-		}
 		return $this->getList($sqlQuery);
 	}
 

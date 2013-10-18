@@ -15,7 +15,7 @@ foreach ($apartamentos as $akey => $apartamento) {
         $apartamentos_array[$akey]['adjuntos'][$adkey] = $adjunto;
     }
 }
-$dia_comienzo = date("m/d/y",mktime(0, 0, 0, date("m"), date("d")+1, date("y")));
+$dia_comienzo = date("d-m-Y",mktime(0, 0, 0, date("m"), date("d")+1, date("y")));
 
 $disponibilidades = getCalendario();
 $disponibles = array();

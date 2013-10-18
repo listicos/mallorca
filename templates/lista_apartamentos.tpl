@@ -2,11 +2,11 @@
     <div class="col-lg-6 result-item">
         <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.index}">
             <div class="carousel-inner">
-                {foreach name=adjuntos from=$a['adjuntos'] item=b}
+                {foreach name=adjuntos from=$a->adjuntos item=b}
                     <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
-                        <img src="{$template_url}{$b->ruta}" alt="{$a['apartamento']->nombre}">
+                        <img src="{$template_url}{$b->ruta}" alt="{$a->nombre}">
                         <div class="carousel-caption">
-                            <p>{$a['apartamento']->nombre}</p>
+                            <p>{$a->nombre}</p>
                             <span class="comments-icon">2</span>
                         </div>
                         <div class="add-to-wishlist"></div>
@@ -23,6 +23,6 @@
                 <span class="icon-next"></span>
             </a>
         </div>
-            <input type="hidden" name="precio" value="{$a['apartamento']->tarifaBase}">
+            <input type="hidden" name="precio" value="{$a->precioPorNoche}">
     </div>
 {/foreach}

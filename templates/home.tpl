@@ -66,7 +66,7 @@
                           <option value="2">2 Huéspedes</option>
                           <option value="3">3 Huépedes</option>
                           <option value="4">4 Huépedes</option>
-                          <option value="5+">5+ Huépedes</option>
+                          <option value="5">5+ Huépedes</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -111,7 +111,7 @@
                 <div class="col-lg-12 filters-row">
                     <div class="row more-filters">
                         <div class="col-lg-6">
-                            <a href="#" onclick="return false;" class="btn btn-default">Más filtros</a>
+                            <a href="#" onclick="return false;" class="btn btn-default hidden">Más filtros</a>
                         </div>
                         <div class="col-lg-6">
                             <p><span class="badge">12 anuncios</span> · Mallorca, Islas Baleares, España</p>

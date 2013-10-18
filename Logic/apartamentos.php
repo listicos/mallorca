@@ -50,6 +50,20 @@ function getApartamentosCercanos($lat,$lon) {
 function getApartamentosFilters($fechaInicio,$fechaFinal,$huespedes = false) {
     try {
         $apartamentos = DAOFactory::getApartamentosDAO()->queryApartamentosFilters($fechaInicio, $fechaFinal,$huespedes);
+        
+        foreach ($apartamentos as $apartamento) {
+            $apartamentosAdjuntos = getApartamentosAdjuntos($apartamento->idApartamento);
+            $adjuntos = array();
+            foreach ($apartamentosAdjuntos as $apartamentoAdjunto) {
+                $adjunto = getAdjunto($apartamentoAdjunto->idAdjunto);
+                array_push($adjuntos, $adjunto);
+            }
+            $apartamento->adjuntos = $adjuntos;
+            
+            $disponibilidades = DAOFactory::getDisponibilidadesDAO()->queryByIdApartamentoFechas($apartamento->idApartamento, $fechaInicio, $fechaFinal);
+            
+            $apartamento->precioPorNoche = $disponibilidades[0]->precio;
+        }
         return $apartamentos;
     } catch (Exception $e) {
         return false;
@@ -761,13 +775,5 @@ function cambiarEstatusApartamento($idApartamento){
     }
 }
 
-function buscarApartamentosByFechasAndHuespedes($fechaInicio, $fechaFin, $huespedes) {
-    try {
-        
-    } catch(Exception $exc) {
-        var_dump($exc);
-        return false;
-    }
-}
 
 ?>

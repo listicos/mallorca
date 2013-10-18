@@ -18,8 +18,12 @@ if (strcmp($action, "buscar") == 0) {
             
             $huespedes = $_POST['huespedes'];
 
+            $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes);
             
-
+            $smarty->assign('apartamentos', $apartamentos);
+            $html = $smarty->fetch('lista_apartamentos.tpl');
+            
+            $result['html'] = $html;
             $result['msg'] = 'ok';
             $result['data'] = 'Correcto';
         } else {
