@@ -761,4 +761,13 @@ function cambiarEstatusApartamento($idApartamento){
     }
 }
 
+function buscarApartamentosByFechasAndHuespedes($fechaInicio, $fechaFin, $huespedes) {
+    try {
+        
+    } catch(Exception $exc) {
+        var_dump($exc);
+        return false;
+    }
+}
+
 ?>

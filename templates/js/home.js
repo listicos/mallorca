@@ -1,5 +1,5 @@
 var map;
-var myLatlng = new google.maps.LatLng("40.4216737855101","-3.7001175433777");
+//var myLatlng = new google.maps.LatLng("40.4216737855101","-3.7001175433777");
 
 function initialize() {
     /* if($('input[name=lat]').val() != "") {
@@ -27,10 +27,10 @@ $(document).ready(function(){
     $('.carousel').carousel({
         interval: 5000
     });
-    
+    /*
     initialize();
     google.maps.event.trigger(map, 'resize');
-    map.setCenter(myLatlng);
+    map.setCenter(myLatlng);*/
     
     $('.date-start').datepicker({
         autoclose: true
@@ -65,6 +65,27 @@ $(document).ready(function(){
         $(this).toggleClass("active");
         return false;
     });
+    
+    filtrar();
 });
+
+function filtrar() {
+    $('#main_filters_container form').on('submit', function(e){
+        e.preventDefault();
+        //var valid = $(this).validationEngine('validate');
+        if(true) {
+            var form = $(this).serialize();
+            $.ajax({
+                url : BASE_URL + '/ajax-filtros',
+                data : form,
+                type: 'post',
+                dataType : 'json',
+                success: function(response) {
+                    
+                }
+            });
+        }
+    });
+}
 
 

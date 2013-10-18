@@ -48,28 +48,29 @@
         <h4 class="text-center">¿Cuando quieres ir?</h4>
         <div class="row-fluid">
             <form class="form-inline" role="form">
-                  <div class="form-group">
+                  <div class="form-group col-sm-3">
                     <div id="dateStart" class="filter-inputs date datepicker date-start" data-date-format="dd-mm-yyyy">
                         <input size="16" class="col-lg-12" name="dateStart" type="text" value="{$dia_comienzo}" readonly>
                         <span class="add-on"><i class="glyphicon glyphicon-calendar icon-white"></i></span>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-sm-3">
                     <div id="dateEnd" class="filter-inputs date datepicker date-end" data-date-format="dd-mm-yyyy">
                         <input size="16" class="col-lg-12" name="dateEnd" type="text" value="{$dia_comienzo}" readonly>
                         <span class="add-on"><i class="glyphicon glyphicon-calendar icon-white"></i></span>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <select class="form-control" data-style="btn-defualt"  title="Huéspedes">
-                        <option>1 Huésped</option>
-                        <option>2 Huéspedes</option>
-                        <option>3 Huépedes</option>
-                        <option>4 Huépedes</option>
-                        <option>5+ Huépedes</option>
+                  <div class="form-group col-sm-3">
+                      <select class="form-control" data-style="btn-defualt"  title="Huéspedes" name="huespedes">
+                          <option value="1" >1 Huésped</option>
+                          <option value="2">2 Huéspedes</option>
+                          <option value="3">3 Huépedes</option>
+                          <option value="4">4 Huépedes</option>
+                          <option value="5+">5+ Huépedes</option>
                     </select>
                   </div>
                   <div class="form-group">
+                      <input type="hidden" name="action" value="buscar">
                     <button type="submit" class="btn btn-default form-control btn-primary">Buscar</button>
                 </div>
             </form>
@@ -125,8 +126,7 @@
                                             <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
                                                 <img src="{$template_url}{$b->ruta}" alt="{$a['apartamento']->nombre}">
                                                 <div class="carousel-caption">
-                                                    <p>
-                                                    {$a['apartamento']->nombre}</p>
+                                                    <p>{$a['apartamento']->nombre}</p>
                                                     <span class="comments-icon">2</span>
                                                 </div>
                                                 <div class="add-to-wishlist"></div>
@@ -143,6 +143,7 @@
                                         <span class="icon-next"></span>
                                     </a>
                                 </div>
+                                    <input type="hidden" name="precio" value="{$a['apartamento']->tarifaBase}">
                             </div>
                         {/foreach}
                     </div>
