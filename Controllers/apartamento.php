@@ -1,22 +1,6 @@
 <?php
-
-$template = new Core_template();
-$template->setView('apartamento.php');
-
-$template->setJS('jquery-easing-1.3.js');
-$template->setJS('jquery-transit-modified.js');
-
-$template->setJS('layerslider/layerslider.kreaturamedia.jquery.js');
-$template->setJS('layerslider/layerslider.transitions.js');
-$template->setJS('apartamento.js');
-
-$template->setCSS('apartamento.css');
-$template->setCSS('layerslider/layerslider.css');
-
 $idApartamento = $_GET['id'];
 $apartamento = getApartamento($idApartamento);
-
-$template->setTitle($apartamento->nombre . ' | Click & Booking');
 
 $apartamentos_array = array();
 $apartamentos_array['apartamento'] = $apartamento;
@@ -28,7 +12,8 @@ foreach ($apartamentosAdjuntos as $adkey => $apartamentoAdjunto) {
 }
 
 $direccion = getDireccion($apartamento->idDireccion);
-$direccion->paisNombre = getPais($direccion->idPais)->nombreCompleto;
+if($pais = getPais($direccion->idPais))
+$direccion->paisNombre = $pais->nombreCompleto;
 $apartamentos_array['direccion'] = $direccion;
 
 $opiniones = getOpinionesByApartamento($idApartamento);
@@ -121,7 +106,7 @@ if($disponibilidades){
     }
     $template->setJsVar('disponibles',json_encode($disponibles));
 }
-
+/*
 $template->setAttribute('entrada', $_SESSION['fechaInicio']);
 $template->setAttribute('salida', $_SESSION['fechaFinal']);
 $template->setAttribute('huespedes', $_SESSION['huespedes']);
@@ -133,6 +118,6 @@ $template->setAttribute('menor_precio',$menor_precio);
 $template->setAttribute('apartamento', $apartamentos_array);
 $template->setJsVar('lat', $direccion->lat);
 $template->setJsVar('lon', $direccion->lon);
-
+*/
 $smarty->display('apartamento.tpl');
 ?>

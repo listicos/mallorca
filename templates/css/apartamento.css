@@ -3,11 +3,15 @@
 
 }
 .servicios{
-    border: 1px solid #c8c8c8;
-    background-color: white;
+    
+}
+.servicios .tab-content{
+    border: 1px solid #DDD;
+    background: #FFF;
+    border-top: 0;
 }
 .contenedor-calendario{
-    border: 1px solid #c8c8c8;
+    background: #FFF;
 
 }
 .guardar-anuncio{
@@ -24,23 +28,24 @@
     border: 1px solid #c8c8c8;
 }
 .contenedor-noche{
-    margin-top: 20px;
+    overflow: hidden;
 }
 .precio h1{
-    margin-top: 55px;
+    margin-top: 0;
     border-bottom: 1px dotted #d1d1d1;
-    margin-bottom: 5px;
+    margin-bottom: 30px;
     padding: 5px 0;
 }
 .contenido-calendario {
-    margin-top: 5px;
+    margin-top: 30px;
 }
 .button-reservalo {
     margin-top: 10px;
     height: 65px;
 }
-
-
+.descripcion-servicios{
+    margin-top: 20px;
+}
 .lista-evaluacion{
     margin-top: 20px;
 }

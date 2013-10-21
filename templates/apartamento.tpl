@@ -78,7 +78,7 @@
                     </div>
 
 
-                    <div class="descripcion-servicios row">
+                    <div class="descripcion-servicios row-fluid">
                         <div class="servicios">
                             <div class="row-fluid">
                                 <div class="bs-example bs-example-tabs">
@@ -249,55 +249,53 @@
 
 
                 <div class="columna-derecha col-md-4">
-                    <div class="contenedor-calendario">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <h4 class="text-center">Tu reserva</h4>
-                            </div>
+                    <div class="contenedor-calendario panel panel-default">
+                        <div class="panel-heading">
+                            <h1 class="text-center panel-title">Tu reserva</h1>
                         </div>
-                        <div class="contenedor-noche">
-
-
-                            <div class="col-md-6">
-                                <strong>Desde</strong>  
-                            </div>
-                            <div class=" pull-right col-xs-6">
-
-                                <select class="form-control">
-                                    <option>Por noche</option>
-                                    <option>por semana</option>
-                                    <option>Por mes</option>
-
-                                </select>
-                            </div>
-                        </div>
-                        <div class="precio col-xs-12">
-                            <h1>$ 295</h1>
-                        </div>
-
-                        <div class="contenedor-llegada row-fluid clearfix">
-                            <form class="form-inline" role="form">
-                                <div class="form-group col-md-4">
-                                    <label class="sr-only" for="exampleInputEmail2">llegada</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Llegada">
+                        <div class="panel-body">
+                            <div class="contenedor-noche">
+                                <div class="col-md-6">
+                                    <strong>Desde</strong>  
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label class="sr-only" for="exampleInputEmail2">Salida</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Salida">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <select class="form-control col-md-4">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                <div class=" pull-right col-xs-6">
+
+                                    <select class="form-control">
+                                        <option>Por noche</option>
+                                        <option>por semana</option>
+                                        <option>Por mes</option>
+
                                     </select>
                                 </div>
-                            </form>       
-                        </div>
-                        <div class="contenido-calendario row-fluid">
-                            <div class="button-reservalo col-md-12"><button type="button" class="btn btn-primary btn-lg btn-block">Resérvalo</button></div>
+                            </div>
+                            <div class="precio col-xs-12">
+                                <h1>$ 295</h1>
+                            </div>
+
+                            <div class="contenedor-llegada row-fluid clearfix">
+                                <form class="form-inline" role="form">
+                                    <div class="form-group col-md-4">
+                                        <label class="sr-only" for="exampleInputEmail2">llegada</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Llegada">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="sr-only" for="exampleInputEmail2">Salida</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Salida">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <select class="form-control col-md-4">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </form>       
+                            </div>
+                            <div class="contenido-calendario row-fluid">
+                                <div class="button-reservalo col-md-12"><button type="button" class="btn btn-primary btn-lg btn-block">Resérvalo</button></div>
+                            </div>
                         </div>
                     </div>
                 </div> 
