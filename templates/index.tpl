@@ -6,14 +6,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Mallorca</title>
         {block "style"}
-            <link href="{$template_url_s}/css/styles.css" rel="stylesheet">
             <link href="{$template_url_s}/css/datepicker.css" rel="stylesheet">
             <link href="{$template_url_s}/css/bootstrap.css" rel="stylesheet">
             <link href="{$template_url_s}/css/bootstrap-glyphicons.css" rel="stylesheet">
             <link href="{$template_url_s}/css/bootstrap-select.css" rel="stylesheet">
             <link href="{$template_url_s}/css/jquery-ui.css" rel="stylesheet">
             <link href="{$template_url_s}/css/jquery.ui.slider.css" rel="stylesheet">
-            <link href='http://fonts.googleapis.com/css?family=Marko+One' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Qwigley' rel='stylesheet' type='text/css'>
+            <link href="{$template_url_s}/css/styles.css" rel="stylesheet">
         {/block} 
     </head>
     <body>

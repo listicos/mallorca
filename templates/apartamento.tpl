@@ -294,7 +294,7 @@
                                 </form>       
                             </div>
                             <div class="contenido-calendario row-fluid">
-                                <div class="button-reservalo col-md-12"><button type="button" class="btn btn-primary btn-lg btn-block">Resérvalo</button></div>
+                                <div class="button-reservalo col-md-12"><button type="button" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
                             </div>
                         </div>
                     </div>
