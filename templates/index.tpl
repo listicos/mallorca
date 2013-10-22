@@ -13,13 +13,17 @@
             <link href="{$template_url_s}/css/bootstrap-select.css" rel="stylesheet">
             <link href="{$template_url_s}/css/jquery-ui.css" rel="stylesheet">
             <link href="{$template_url_s}/css/jquery.ui.slider.css" rel="stylesheet">
+            <link href='http://fonts.googleapis.com/css?family=Marko+One' rel='stylesheet' type='text/css'>
         {/block} 
     </head>
     <body>
         <div class="wrapper">
-          {block "content"}{/block}
-        </div>
+           {include file="header.tpl"}
 
+            {block "content"}{/block}
+
+            {include file="footer.tpl"}
+        </div>
             <script type="text/javascript">
                 var BASE_URL = "{$base_url}";
                 var LANGUAGE = "{$lang}";
@@ -35,6 +39,11 @@
             <script src="{$template_url_s}/js/jquery.ui.widget.js"></script>
             <script src="{$template_url_s}/js/jquery.ui.mouse.js"></script>
             <script src="{$template_url_s}/js/jquery.ui.slider.js"></script>
+            {literal}
+            <script type="text/javascript">var switchTo5x=true;</script>
+            <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+            <script type="text/javascript">stLight.options({publisher: "3b010a7f-777e-4ff0-8c20-eda6e545d495", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
+            {/literal}
         {/block}  
     </body>
 </html>

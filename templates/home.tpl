@@ -17,18 +17,21 @@
             </ol>
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="{$template_url_s}/img/header_1.png" alt="Photo 1">
+                    <img src="{$template_url_s}/img/slider/1.jpg" alt="Photo 1">
                 </div>
                 <div class="item">
-                    <img src="{$template_url_s}/img/header_2.png" alt="Photo 2">
+                    <img src="{$template_url_s}/img/slider/2.jpg" alt="Photo 2">
                     <div class="carousel-caption">
-
                     </div>
                 </div>
                 <div class="item">
-                    <img src="{$template_url_s}/img/header_3.png" alt="Photo 3">
+                    <img src="{$template_url_s}/img/slider/3.jpg" alt="Photo 3">
                     <div class="carousel-caption">
-
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{$template_url_s}/img/slider/4.jpg" alt="Photo 4">
+                    <div class="carousel-caption">
                     </div>
                 </div>
             </div>
@@ -69,9 +72,9 @@
                           <option value="5">5+ Huépedes</option>
                     </select>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-sm-3">
                       <input type="hidden" name="action" value="buscar">
-                    <button type="submit" class="btn btn-default form-control btn-primary">Buscar</button>
+                    <button type="submit" class="btn btn-default form-control btn-success">Buscar</button>
                 </div>
             </form>
         </div>
@@ -79,12 +82,12 @@
 </div>
 <div class="container-liquid  content">
     <div class="row">
-        <div class="col-sm-5 main-left-container">
+        <div class="col-sm-5 main-left-container hidden-xs hidden-sm">
             <div class="row"  id="mapa">
                 <div id="details-map-location"></div>
             </div>
         </div>
-        <div class="col-sm-7 main-right-container">
+        <div class="col-md-7 main-right-container">
             <div class="row">
                 <div class="col-lg-12 filters-row">
                     <dl  class="dl-horizontal">
