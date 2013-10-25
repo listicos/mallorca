@@ -1233,6 +1233,7 @@ pre code {
 @media (min-width: 1200px) {
   .container {
     max-width: 1170px;
+
   }
   .col-lg-1,
   .col-lg-2,
@@ -5429,6 +5430,8 @@ a.list-group-item:focus {
 
 .panel-default {
   border-color: #dddddd;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .panel-default > .panel-heading {
