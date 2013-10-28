@@ -1,23 +1,17 @@
 var map;
-var myLatlng = new google.maps.LatLng("40.4216737855101","-3.7001175433777");
-
+//var myLatlng = new google.maps.LatLng("40.4216737855101","-3.7001175433777");
+var marcadores = new Array();
 function initialize() {
-    /* if($('input[name=lat]').val() != "") {
-        var lat = $('input[name=lat]').val();
-        var lon = $('input[name=lon]').val()
-        myLatlng = new google.maps.LatLng(lat,lon);
-    }*/
     var mapOptions = {
         zoom: 15,
-        center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(document.getElementById('details-map-location'), mapOptions);
-
+    /*
     var marker = new google.maps.Marker({
         position: myLatlng,
         map: map
-    });
+    });*/
 }
 
 $(document).ready(function(){
@@ -28,9 +22,8 @@ $(document).ready(function(){
         interval: 5000
     });
     
-    initialize();
-    google.maps.event.trigger(map, 'resize');
-    map.setCenter(myLatlng);
+    
+    actualizarMapa();
     
     $('.date-start').datepicker({
         autoclose: true
@@ -120,6 +113,8 @@ function filtrar() {
                     
                     
                     contarAnuncios();
+                    
+                    actualizarMapa();
                 }
             });
         }
@@ -128,6 +123,43 @@ function filtrar() {
 
 function contarAnuncios() {
     $('.more-filters span.badge').html($('.result-list-container .result-item:not(:hidden)').length + " anuncios");
+}
+
+function actualizarMapa() {
+    
+    var myLatlng;
+    
+    
+    
+    if(!map) {
+        initialize();
+        google.maps.event.trigger(map, 'resize');
+        
+    } else {
+        for(i=0;i<marcadores.length; i++)
+            marcadores[i].setMap(null);
+        marcadores = new Array();
+    }
+    
+    $('.result-list-container .result-item:not(:hidden)').each(function(){
+        var nombre = $(this).find('input[name=nombre]').val();
+        var lat = $(this).find('input[name=lat]').val();
+        var lon = $(this).find('input[name=lon]').val();
+        
+        var marker = new google.maps.Marker({
+            title: nombre,
+            position: new google.maps.LatLng(lat, lon),
+            map: map
+        });
+        
+        marcadores.push(marker);
+        
+        if(!myLatlng) {
+            myLatlon = new google.maps.LatLng(lat, lon);
+        }
+    });
+    
+    map.setCenter(myLatlon);
 }
 
 

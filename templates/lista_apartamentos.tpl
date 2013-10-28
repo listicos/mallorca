@@ -24,5 +24,8 @@
             </a>
         </div>
             <input type="hidden" name="precio" value="{$a->precioPorNoche}">
+            <input type="hidden" name="nombre" value="{$a->nombre}">
+            <input type="hidden" name="lat" value="{$a->direccion->lat}">
+            <input type="hidden" name="lon" value="{$a->direccion->lon}">
     </div>
 {/foreach}

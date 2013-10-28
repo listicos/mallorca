@@ -63,6 +63,9 @@ function getApartamentosFilters($fechaInicio,$fechaFinal,$huespedes = false) {
             $disponibilidades = DAOFactory::getDisponibilidadesDAO()->queryByIdApartamentoFechas($apartamento->idApartamento, $fechaInicio, $fechaFinal);
             
             $apartamento->precioPorNoche = $disponibilidades[0]->precio;
+            
+            if($apartamento->idDireccion)
+                $apartamento->direccion = DAOFactory::getDireccionesDAO ()->load ($apartamento->idDireccion);
         }
         return $apartamentos;
     } catch (Exception $e) {

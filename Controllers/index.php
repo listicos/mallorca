@@ -14,6 +14,9 @@ foreach ($apartamentos as $akey => $apartamento) {
         $adjunto = getAdjunto($apartamentoAdjunto->idAdjunto);
         $apartamentos_array[$akey]['adjuntos'][$adkey] = $adjunto;
     }
+    
+    if($apartamento->idDireccion)
+        $apartamento->direccion = getDireccion ($apartamento->idDireccion);
 }
 $dia_comienzo = date("d-m-Y",mktime(0, 0, 0, date("m"), date("d")+1, date("y")));
 

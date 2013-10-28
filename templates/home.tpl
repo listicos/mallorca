@@ -147,6 +147,9 @@
                                     </a>
                                 </div>
                                     <input type="hidden" name="precio" value="{$a['apartamento']->tarifaBase}">
+                                    <input type="hidden" name="nombre" value="{$a['apartamento']->nombre}">
+                                    <input type="hidden" name="lat" value="{$a['apartamento']->direccion->lat}">
+                                    <input type="hidden" name="lon" value="{$a['apartamento']->direccion->lon}">
                             </div>
                         {/foreach}
                     </div>
