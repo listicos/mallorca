@@ -6,6 +6,10 @@ $user_vars = Core_Util_Click::getUsersVars();
 foreach ($user_vars as $u_k => $u_v) {
 	$smarty->assign($u_k,$u_v);
 }
+$minPrice = 999999999;
+$maxPrice = -999999999;
+
+
 
 foreach ($apartamentos as $akey => $apartamento) {
     $apartamentos_array[$akey]['apartamento'] = $apartamento;
@@ -17,6 +21,9 @@ foreach ($apartamentos as $akey => $apartamento) {
     
     if($apartamento->idDireccion)
         $apartamento->direccion = getDireccion ($apartamento->idDireccion);
+    
+    if($apartamento->tarifaBase > $maxPrice) $maxPrice = $apartamento->tarifaBase;
+    if($apartamento->tarifaBase < $minPrice) $minPrice = $apartamento->tarifaBase;
 }
 $dia_comienzo = date("d-m-Y",mktime(0, 0, 0, date("m"), date("d")+1, date("y")));
 
@@ -28,5 +35,7 @@ foreach ($disponibilidades as $d) {
 //$template->setJsVar('disponibles',json_encode($disponibles));
 $smarty->assign('apartamentos', $apartamentos_array);
 $smarty->assign('dia_comienzo',$dia_comienzo);
+$smarty->assign('minPrice',$minPrice);
+$smarty->assign('maxPrice',$maxPrice);
 $smarty->display('home.tpl');
 ?>

@@ -12,6 +12,12 @@ function initialize() {
         position: myLatlng,
         map: map
     });*/
+    
+    google.maps.event.addListener(map, 'bounds_changed', function() {
+        
+        filtrarPorMapaAndPrecio();
+        
+    });
 }
 
 $(document).ready(function(){
@@ -43,24 +49,16 @@ $(document).ready(function(){
     
     $( "#slider-range" ).slider({
         range: true,
-        min: 0,
-        max: 500,
-        values: [ 75, 300 ],
+        min: minPrice,
+        max: maxPrice,
+        values: [ minPrice, maxPrice ],
         slide: function( event, ui ) {
             $( "#amount-min" ).html( "$" + ui.values[ 0 ] );
             $( "#amount-max" ).html( " $" + ui.values[ 1 ] );
         },
         change: function(event, ui) {
             
-            console.log(ui.values);
-            $('.result-list-container .result-item').each(function(){
-                var precio = $(this).find('input[name=precio]').val() ;
-                if(precio >= ui.values[0] && precio <= ui.values[1])
-                    $(this).show()
-                else $(this).hide();
-                
-                
-            })
+            filtrarPorMapaAndPrecio();
             
             contarAnuncios();
         }
@@ -77,6 +75,37 @@ $(document).ready(function(){
     
     contarAnuncios();
 });
+
+function filtrarPorMapaAndPrecio() {
+    
+    bounds = map.getBounds();
+    prices = $( "#slider-range" ).slider('values');
+    i=0;
+    $('.result-list-container .result-item').each(function(){
+        var precio = $(this).find('input[name=precio]').val();
+        if(precio < prices[0] || precio > prices[1]) {
+            $(this).hide();
+            marcadores[i].setMap(null);
+        } else {
+            var nombre = $(this).find('input[name=nombre]').val();
+            var lat = $(this).find('input[name=lat]').val();
+            var lon = $(this).find('input[name=lon]').val();
+            marcadores[i].setMap(map);
+            position = new google.maps.LatLng(lat, lon);
+            
+            if (bounds.contains(position)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+            
+        }
+
+        i++;
+    })
+    
+    
+}
 
 function filtrar() {
     $('#main_filters_container form').on('submit', function(e){
@@ -141,25 +170,26 @@ function actualizarMapa() {
         marcadores = new Array();
     }
     
+    var latlngbounds = new google.maps.LatLngBounds();
     $('.result-list-container .result-item:not(:hidden)').each(function(){
         var nombre = $(this).find('input[name=nombre]').val();
         var lat = $(this).find('input[name=lat]').val();
         var lon = $(this).find('input[name=lon]').val();
-        
+        var parliament = new google.maps.LatLng(lat, lon);
+	latlngbounds.extend(parliament);
         var marker = new google.maps.Marker({
             title: nombre,
-            position: new google.maps.LatLng(lat, lon),
+            position: parliament,
             map: map
         });
         
         marcadores.push(marker);
         
-        if(!myLatlng) {
-            myLatlon = new google.maps.LatLng(lat, lon);
-        }
+        
     });
     
-    map.setCenter(myLatlon);
+    map.setCenter(latlngbounds.getCenter());
+    map.fitBounds(latlngbounds);
 }
 
 

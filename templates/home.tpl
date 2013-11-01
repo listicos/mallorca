@@ -3,6 +3,10 @@
 {block name="script" append}
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="{$template_url_s}/js/home.js"></script>
+    <script>
+        var minPrice = {$minPrice};
+        var maxPrice = {$maxPrice};
+    </script>
 {/block}
 
 
