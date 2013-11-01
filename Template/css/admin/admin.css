@@ -664,6 +664,12 @@ body{
     width: 350px !important;
     margin: -250px 0 0 -175px;
 }
+
+#disponibilidad_overlay label{
+    text-align: left;
+    margin-left: 10%;
+}
+
 .portlet-title.calendar_blue_bg{
     background: #00b4d3;
     background: -moz-linear-gradient(left,#00b4d3 0,#01849a 100%);

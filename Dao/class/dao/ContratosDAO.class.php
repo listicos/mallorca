@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2013-10-01 15:39
+ * @date: 2013-10-18 16:11
  */
 interface ContratosDAO{
 
@@ -75,6 +75,18 @@ interface ContratosDAO{
 
 	public function queryByFirmado($value);
 
+	public function queryByDiasLargaEstancia($value);
+
+	public function queryByPorcientoLargaEstancia($value);
+
+	public function queryByMesesReservasAnticipadas($value);
+
+	public function queryByPorcientoReservasAnticipadas($value);
+
+	public function queryByDiasReservasUltimoMinuto($value);
+
+	public function queryByPorcientoReservasUltimoMinuto($value);
+
 
 	public function deleteByNombre($value);
 
@@ -99,6 +111,18 @@ interface ContratosDAO{
 	public function deleteByAlquileresLargaEstancia($value);
 
 	public function deleteByFirmado($value);
+
+	public function deleteByDiasLargaEstancia($value);
+
+	public function deleteByPorcientoLargaEstancia($value);
+
+	public function deleteByMesesReservasAnticipadas($value);
+
+	public function deleteByPorcientoReservasAnticipadas($value);
+
+	public function deleteByDiasReservasUltimoMinuto($value);
+
+	public function deleteByPorcientoReservasUltimoMinuto($value);
 
 
 }

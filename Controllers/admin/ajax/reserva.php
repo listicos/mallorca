@@ -78,11 +78,18 @@ else if (strcmp($action, "updateReserva") == 0) {
         $f = $fecha[2] . "-" . $fecha[1] . "-" . $fecha[0];
         $data['fechaSalida'] = $f;
     }
+    
+    $articulos_reserva = array();
+    
+    if(isset($_POST['idArticulo']))
+        $articulos_reserva = $_POST['idArticulo'];
+    
+    
 
     if(isset($_POST['totalReserva']) && strlen($_POST['totalReserva']) > 0)
         $total = $_POST['totalReserva'];
     else
-        $total = getTotalPrice($data['idApartamento'],strtotime($_POST['fechaInicio']),strtotime($_POST['fechaFinal']));
+        $total = getTotalPrice($data['idApartamento'],strtotime($_POST['fechaInicio']),strtotime($_POST['fechaFinal']), $articulos_reserva, $data['adultos']);
     
     if($total && $total>0){
         $data['total'] = $total;
@@ -123,9 +130,42 @@ else if (strcmp($action, "updateReserva") == 0) {
         
         if(isset($_POST['idReservacion'])) {
             $reserva_id = $_POST['idReservacion'];
-            $reserva_id = updateReserva($reserva_id, $data, $data_huesped, $data_cobros);
-        } else         
-            $reserva_id = addReserva($data, $data_huesped, $data_cobros);  
+            $reserva_id = updateReserva($reserva_id, $data, $data_huesped, $data_cobros, $articulos_reserva);
+            
+            $reserva = getReserva($reserva_id);
+            
+            if(strcmp($reserva->estatus, $_POST['estatus']) != 0) {
+                $estatus = $_POST['estatus'];
+                cambiarEstatusReserva($reserva_id, $estatus);
+            }
+            
+        } else {        
+            $reserva_id = addReserva($data, $data_huesped, $data_cobros, $articulos_reserva);
+            if($reserva_id) {
+                try {
+                    $mailer = new Core_Mailer();
+                    $apartamento = getApartamento($data['idApartamento']);
+                    $subject = 'Se ha registrado una nueva reserva';
+                    $empresa = getPropietarioByApartamento($data['idApartamento']);
+                    $to = $empresa->email;
+
+                    $body = createEmailReserva($reserva_id);
+                    
+                    $mailer->send_email($to, $subject, $body);
+                    $mailer->send_email($reservas_email, $subject, $body);
+                    
+                    $user_email = $data_huesped['email'];
+                    $subject = "Gracias, " . $data_huesped['nombre'] . "! Su reserva está siendo procesada.";
+
+                    $mailer->send_email($user_email, $subject, $body);
+                } catch (Exception $e) {
+                    print_r($e);
+                }
+                
+            }
+            
+        }
+        
          if($reserva_id) {
             $result['msg'] = 'ok';
             $result['data'] = 'Se guardaron los cambios correctamente.';
@@ -138,5 +178,72 @@ else if (strcmp($action, "updateReserva") == 0) {
 }
 
 echo json_encode($result);
+
+function createEmailReserva($idReserva) {
+    $reserva_array = array();
+    $reserva = getReserva($idReserva);
+
+    $salida = strtotime($reserva->fechaSalida);
+    $entrada = strtotime($reserva->fechaEntrada);
+    $creacion = strtotime($reserva->tiempoCreacion);
+
+    $dias = array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
+    $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+
+    $reserva->fechaSalidaFormat = $dias[date('w', $salida)] . ' ' . date('d', $salida) . ' de ' . $meses[date('n', $salida) - 1] . ' ' . date('Y', $salida);
+    $reserva->fechaEntradaFormat = $dias[date('w', $entrada)] . ' ' . date('d', $entrada) . ' de ' . $meses[date('n', $entrada) - 1] . ' ' . date('Y', $entrada);
+    $reserva->tiempoCreacion = date('d/m/Y', $creacion);
+
+    $noches = (intval($salida) - intval($entrada)) / 86400;
+    $reserva->noches = $noches;
+    $reserva->total = '€'.money_format('%i', $reserva->total);
+    $reserva_array['reserva'] = $reserva;
+
+    $cliente = getUsuario($reserva->idUsuario);
+    $cliente->fullName = $cliente->nombre . ' ' . $cliente->apellidoPaterno . ' ' . $cliente->apellidoMaterno;
+    $reserva_array['cliente'] = $cliente;
+
+    $apartamento = getApartamento($reserva->idApartamento);
+    $apartamentoTipo = getApartamentosTipos($apartamento->idApartamentosTipo);
+    $apartamento->apartamentoTipo = $apartamentoTipo->nombre;
+    $tipoApartamento = getApartamentosTipos($apartamento->idApartamentosTipo);
+    $apartamento->tipo = $tipoApartamento->nombre;
+    $reserva_array['apartamento'] = $apartamento;
+
+    $reserva_array['direccion'] = getDireccion($apartamento->idDireccion);
+    
+    $articulos = getArticulosByReserva($reserva->idReservacion);
+    
+    foreach ($articulos as $a) {
+        $a->nombre = getArticulo($a->idArticulo)->nombre;
+        $a->precio = getArticulo($a->idArticulo)->precioBase * $a->cantidad;
+    }
+    
+    $reserva_array['articulos'] = $articulos;
+    
+    $apartamentoPagoTipos = getApartamentosPagosTipos($reserva->idApartamento);
+    foreach ($apartamentoPagoTipos as $pagoTipo) {
+        $tipo = getPagoTipo($pagoTipo->idPagoTipo);
+        $pagoTipo->nombre = $tipo->nombre;
+    }
+    
+    $reserva_array['pagosTipos'] = $apartamentoPagoTipos;
+    $apto = getApartamento($reserva->idApartamento);
+    
+    $politicaCancelacion = getPolitica($apto->idPoliticaCancelacion);
+    
+    $fechaCancelacionTime = strtotime($reserva->fechaEntrada) - (($politicaCancelacion->reembolsoDia + 1) * 60 * 60 * 24);
+    $fechaCancelacion = date("d", $fechaCancelacionTime) . " de " . $meses[date("m", $fechaCancelacionTime) - 1] . " de " . date("Y", $fechaCancelacionTime);
+    
+    $reserva_array['politicaCancelacion'] = $politicaCancelacion;
+    $reserva_array['fechaCancelacion'] = $fechaCancelacion;
+
+    
+    $view = new Core_template('confirmaReserva.php');
+    $view->setAttribute('reserva', $reserva_array);
+    
+    $body = $view->getContent();
+    return $body;
+}
 
 ?>

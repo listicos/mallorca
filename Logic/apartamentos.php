@@ -38,6 +38,44 @@ function updateApartamento($idApartamento, $data= array()){
     }
 }
 
+function updateApartamentoContrato ($idApartamento, $data = array()){
+    try {
+        $transaction = new Transaction();
+
+        $apartamento = DAOFactory::getApartamentosDAO()->load($idApartamento);
+        
+        if(is_null($apartamento->idEmpresaContrato)) {
+            $data['tiempoCreacion'] = date("Y-m-d H:i:s");
+            $contrato = DAOFactory::getContratosDAO()->prepare($data);
+            $idContrato = DAOFactory::getContratosDAO()->insert($contrato);
+            $data_empresa_contrato = array('idEmpresa' => $data['idEmpresa'], 'idContrato' => $idContrato);
+            $empresaContrato = DAOFactory::getEmpresasContratosDAO()->prepare($data_empresa_contrato);
+            $id_empresa_contrato = DAOFactory::getEmpresasContratosDAO()->insert($empresaContrato);
+            $apartamento = DAOFactory::getApartamentosDAO()->prepare(array('idEmpresaContrato'=>$id_empresa_contrato, 'ultimaModificacion' => date('Y-m-d H:i:s')));
+        } else {
+            $data['ultimaModificacion'] = date('Y-m-d H:i:s');
+            $empresaContrato = DAOFactory::getEmpresasContratosDAO()->prepare(array(
+                'idEmpresa' => $data['idEmpresa'],
+                'ultimaModificacion' => date('Y-m-d H:i:s')
+            ), $apartamento->idEmpresaContrato);
+            DAOFactory::getEmpresasContratosDAO()->update($empresaContrato);
+            $contrato = DAOFactory::getContratosDAO()->prepare($data, $empresaContrato->idContrato);
+            DAOFactory::getContratosDAO()->update($contrato);
+        }
+        
+        registrarAccion("update", "apartamentos", $idApartamento);
+
+        $transaction->commit();
+
+        return $apartamento;
+    } catch (Exception $e) {
+        var_dump($e);
+        if ($transaction)
+            $transaction->rollback();
+        return false;
+    }
+}
+
 function getApartamentosCercanos($lat,$lon) {
     try {
         $apartamentos = DAOFactory::getApartamentosDAO()->queryByLatLonNear($lat, $lon);
@@ -139,7 +177,17 @@ function getApartamentoAdjunto($idApartamentoAdjunto) {
 function getCalendario(){
     try {
         $disponibilidades = DAOFactory::getDisponibilidadesDAO()->queryCalendario();
-        return $disponibilidades;
+        $disponibles_array = array();
+        foreach ($disponibilidades as $disponibilidad) {
+            
+            $apartamento = DAOFactory::getApartamentosDAO()->load($disponibilidad->idApartamento);
+            $reservaciones = DAOFactory::getReservacionesDAO()->queryByApartamentoIdAndFecha($disponibilidad->idApartamento, $disponibilidad->fechaInicio);
+            $disponibles = $apartamento->cantidad ? : 1;
+            
+            if(count($reservaciones) < $disponibles)
+                array_push ($disponibles_array, $disponibilidad);
+        }
+        return $disponibles_array;
     } catch (Exception $e) {
         return false;
     }
@@ -158,6 +206,19 @@ function getDisponibilidades() {
 function getDisponibilidadByApartamento($idApartamento) {
     try {
         $disponibilidad = DAOFactory::getDisponibilidadesDAO()->queryByIdApartamento($idApartamento);
+        $apartamento = getApartamento($idApartamento);
+        foreach ($disponibilidad as $d) {
+            $fechaContrato = getFechasContratosByApartamentoAndFecha($idApartamento, $d->fechaInicio);
+            if($fechaContrato && count($fechaContrato) > 0) {
+                $d->precioContrato = $fechaContrato[0]->precio;
+            }
+            $disponibles = $apartamento->cantidad ? : 1;
+            $reservas = DAOFactory::getReservacionesDAO()->queryByApartamentoIdAndFecha($idApartamento, $d->fechaInicio);
+            $disponibles -= count($reservas);
+            $d->disponibles = $disponibles < 0 ? 0 : $disponibles;
+            $d->reservados = $apartamento->cantidad - $d->disponibles;
+        }
+        
         return $disponibilidad;
     } catch (Exception $e) {
         return false;
@@ -167,6 +228,12 @@ function getDisponibilidadByApartamento($idApartamento) {
 function getDisponibilidadByApartamentoMenorPrecio($idApartamento,$limit = 1) {
     try {
         $disponibilidad = DAOFactory::getDisponibilidadesDAO()->queryByIdApartamentoMenorPrecio($idApartamento,$limit);
+        $d = $disponibilidad;
+        $fechaContrato = getFechasContratosByApartamentoAndFecha($idApartamento, $d->fechaInicio);
+        if($fechaContrato && count($fechaContrato) > 0) {
+            $d->precioContrato = $fechaContrato[0]->precio;
+        }
+        
         return $disponibilidad;
     } catch (Exception $e) {
         return false;
@@ -189,24 +256,116 @@ function getByIdApartamentoFechas($idApartamento,$fechaInicio = false, $fechaFin
     }
 }
 
-function getTotalPrice($idApartamento,$fechaInicio, $fechaFinal) {
+function getTotalPrice($idApartamento,$fechaInicio, $fechaFinal, $articulos = array(), $adultos = 0) {
     $disponibilidades = getByIdApartamentoFechas($idApartamento,$fechaInicio, $fechaFinal);
+    
     $total = 0;
-
+    
     $noches = ($fechaFinal - $fechaInicio) / 86400;
     $noches_disponibles = 0;
+    
+    $last_d = null;
 
     if($disponibilidades){
         foreach ($disponibilidades as $d) {
             if($d->precio && is_numeric($d->precio) && $d->precio>0){
-                $total+=$d->precio;
+                $total+=$d->precio - ($d->precio * $d->descuento / 100);
                 $noches_disponibles++;
+                $last_d = $d;
+            }
+        }
+        
+        if($noches != $noches_disponibles){
+            return false;
+        }else{
+            
+            if($last_d && $last_d->precioPorConsumo && $total >= $last_d->precioPorConsumo) {
+                $total = $total - ($total * $last_d->descuentoPorConsumo / 100);
+            }
+            
+            foreach ($articulos as $art=>$cant) {
+                $articulo = DAOFactory::getArticulosDAO()->load($art);
+                $total += ($articulo->precioBase * $cant);
+            }
+            
+            if($adultos > 0) {
+                $apto = DAOFactory::getApartamentosDAO()->load($idApartamento);
+                $tasas = 0.45 * $adultos * (($noches <= 7) ? $noches : 7);
+                $total += $tasas;
+            }
+            
+            $IVA = $tasas / 10;
+            
+            $total += $IVA;
+            
+           return $total;
+        }
+    }else{
+        return false;
+    }
+
+}
+
+function getTotalPriceComplete($idApartamento,$fechaInicio, $fechaFinal, $articulos = array(), $adultos = 0) {
+    $disponibilidades = getByIdApartamentoFechas($idApartamento,$fechaInicio, $fechaFinal);
+    $total = 0;
+    
+    $price = array(
+        'pvp' => 0,
+        'articulos' => 0,
+        'subtotal' => 0,
+        'tasas' => 0,
+        'iva' => 0,
+        'total' => 0
+    );
+    
+    $noches = ($fechaFinal - $fechaInicio) / 86400;
+    $noches_disponibles = 0;
+
+    $last_d = null;
+    if($disponibilidades){
+        foreach ($disponibilidades as $d) {
+            if($d->precio && is_numeric($d->precio) && $d->precio>0){
+                $total+=$d->precio - ($d->precio * $d->descuento / 100);
+                $noches_disponibles++;
+                $last_d = $d;
             }
         }
         if($noches != $noches_disponibles){
             return false;
         }else{
-           return $total;
+            
+            if($last_d && $last_d->precioPorConsumo && $total >= $last_d->precioPorConsumo) {
+                $price['pvp_sindescuento'] = money_format("%i", $total);
+                $total = $total - ($total * $last_d->descuentoPorConsumo / 100);
+            }
+            
+            $price['pvp'] = $total;
+            
+            foreach ($articulos as $art=>$cant) {
+                $articulo = DAOFactory::getArticulosDAO()->load($art);
+                $total += ($articulo->precioBase * $cant);
+                $price['articulos'] += ($articulo->precioBase * $cant);
+            }
+            
+            $price['subtotal'] = $total;
+            
+            if($adultos > 0) {
+                $apto = DAOFactory::getApartamentosDAO()->load($idApartamento);
+                $tasas = 0.45 * $adultos * (($noches <= 7) ? $noches : 7);
+                $total += $tasas;
+                $price['tasas'] = $tasas;
+            }
+            
+            $IVA = $tasas / 10;
+            $price['iva'] = $IVA;
+            
+            $total += $IVA;
+            $price['total'] = $total;
+            
+            
+            
+           return $price;
         }
     }else{
         return false;
@@ -231,6 +390,16 @@ function getApartamentosPagosTipos($idApartamento){
         return false;
     }
 }
+
+function getPagoTipo($idPagoTipo){
+    try {
+        $pago = DAOFactory::getPagosTiposDAO()->load($idPagoTipo);
+        return $pago;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 function getApartamentosTipos($idApartamentoTipo){
     try {
         $apartamentoTipo = DAOFactory::getApartamentosTiposDAO()->load($idApartamentoTipo);
@@ -778,5 +947,74 @@ function cambiarEstatusApartamento($idApartamento){
     }
 }
 
+function getPropietarioByApartamento($aptoId) {
+    try {
+        $empresa = DAOFactory::getEmpresasDAO()->queryByApartamentoId($aptoId);
+        
+        return $empresa;
+    } catch(Exception $e) {
+        var_dump($e);
+        return false;
+    }
+}
+
+function getApartamentosMasVisitados($limit = 3) {
+    try {
+        $apartamentos = DAOFactory::getApartamentosDAO()->queryByVisitasAsc($limit);
+        
+        return $apartamentos;
+    } catch(Exception $e) {
+        var_dump($e);
+        return false;
+    }
+}
+
+function getFechasContratosByApartamento($idApartamento) {
+    try {
+        $fechas = DAOFactory::getContratosFechasDAO()->queryByIdApartamento($idApartamento);
+        return $fechas;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+function getFechasContratosByApartamentoAndFecha($idApartamento, $fecha) {
+    try {
+        $fechas = DAOFactory::getContratosFechasDAO()->queryByIdApartamentoAndFecha($idApartamento, $fecha);
+        return $fechas;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+function insertFechasContratos($data = array()) {
+    try {
+        $fechaContrato = DAOFactory::getContratosFechasDAO()->prepare($data);
+        DAOFactory::getContratosFechasDAO()->insert($fechaContrato);
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+function updateFechasContratos($id, $data = array()) {
+    try {
+        $fechaContrato = DAOFactory::getContratosFechasDAO()->prepare($data, $id);
+        DAOFactory::getContratosFechasDAO()->update($fechaContrato);
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+function deleteFechasContratos($id) {
+    try {
+        
+        DAOFactory::getContratosFechasDAO()->delete($id);
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
 
 ?>

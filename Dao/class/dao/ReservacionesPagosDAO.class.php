@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2013-10-02 18:50
+ * @date: 2013-10-28 15:51
  */
 interface ReservacionesPagosDAO{
 
@@ -79,8 +79,6 @@ interface ReservacionesPagosDAO{
 
 	public function queryByIdCuenta($value);
 
-	public function queryByValidado($value);
-
 
 	public function deleteByIdReservacion($value);
 
@@ -109,8 +107,6 @@ interface ReservacionesPagosDAO{
 	public function deleteByTipo($value);
 
 	public function deleteByIdCuenta($value);
-
-	public function deleteByValidado($value);
 
 
 }

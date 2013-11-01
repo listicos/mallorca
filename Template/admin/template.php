@@ -58,7 +58,7 @@
                         <div class="span3 pull-right">
                             <div class="btn-toolbar btn_toolbar_templete"> 
                                 <div class="btn-group">
-                                    <a href="<?php echo $this->base_url; ?>/admin-perfil" class="btn btn-primary">Administrador</a>
+                                    <a href="<?php echo $this->base_url; ?>/admin-perfil" class="btn btn-primary"><?php echo ActiveRole(); ?></a>
                                     <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->base_url; ?>/admin-perfil" media="all">Perfil</a></li>
@@ -79,18 +79,49 @@
                 <div class="menu_custom_templete">
                     <ul class="nav nav-tabs nav-stacked main-menu">
                         <li class="nav-tabs nav_header_templete hidden-tablet "></li>
-                         <!--<li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-calendario"><i class="icon-plus"></i><span class="hidden-tablet"> Rentabilidad</span></a></li>-->
+                        <?php if(hasRoles("Administrador, Socio")) { ?>
+                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-calendario"><i class="icon-plus"></i><span class="hidden-tablet"> Rentabilidad</span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Socio")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-calendario"><i class=" icon-calendar"></i><span class="hidden-tablet"> Calendario</span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Comercial, Socio")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-apartamento-lista"><i class="icon-home"></i><span class="hidden-tablet"> Apartamentos</span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Comercial, Socio")) { ?>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-complejo-lista"><i class="icon-home"></i><span class="hidden-tablet"> Complejos</span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Socio")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-empresa-lista"><i class="icon-th-list"></i><span class="hidden-tablet"> Propietarios</span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Socio, Comercial")) { ?>
                         <!--<li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-contrato-lista"><i class="icon-folder-open"></i><span class="hidden-tablet"> Contratos</span></a></li>-->
-                        <!--<li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-cliente-lista"><i class="icon-briefcase"></i><span class="hidden-tablet"> Huéspedes</span></a></li>-->
-                        <!--<li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-opinion-lista"><i class=" icon-comment"></i><span class="hidden-tablet"> Opiniones</span></a></li>
-                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-articulos-lista"><i class=" icon-shopping-cart"></i><span class="hidden-tablet"> Artículos adicionales</span></a></li>-->
-                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-reserva-lista"><i class="icon-shopping-cart"></i><span class="hidden-tablet"> Reservas <?php if($this->getAlerts()->reservasPendientes > 0 ) echo '<span class="badge badge-important orange pulse animated infinite">'.$this->getAlerts()->reservasPendientes.'</span>'; ?> <?php if($this->getAlerts()->reservasParaHoy > 0 ) echo '<span class="badge badge-important green pulse animated infinite">'.$this->getAlerts()->reservasParaHoy.'</span>'; ?></span></a></li>
-                         <!--<li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-mantenimientos-lista"><i class="icon-wrench"></i><span class="hidden-tablet"> Mantenimientos <?php if($this->getAlerts()->mantenimientosPendientes > 0) echo '<span class="badge orange badge-important pulse animated infinite">'.$this->getAlerts()->mantenimientosPendientes.'</span>'; ?> <?php if($this->getAlerts()->mantenimientosEnCurso > 0) echo '<span class="badge badge-important pulse animated infinite">'.$this->getAlerts()->mantenimientosEnCurso.'</span>'; ?></span></a></li>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-cliente-lista"><i class="icon-briefcase"></i><span class="hidden-tablet"> Huéspedes</span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador")) { ?>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-usuario-lista"><i class="icon-user"></i><span class="hidden-tablet"> Usuarios</span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Socio, Comercial")) { ?>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-opinion-lista"><i class=" icon-comment"></i><span class="hidden-tablet"> Opiniones</span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Comercial, Socio")) { ?>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-articulos-lista"><i class=" icon-shopping-cart"></i><span class="hidden-tablet"> Artículos adicionales</span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Reserva, Socio")) { ?>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-reserva-lista"><i class="icon-shopping-cart"></i><span class="hidden-tablet"> Reservas <?php if($this->getAlerts()->reservasPendientes > 0 ) echo '<span class="badge badge-important orange pulse animated infinite" title="Pendientes">'.$this->getAlerts()->reservasPendientes.'</span>'; ?> <?php if($this->getAlerts()->reservasParaHoy > 0 ) echo '<span class="badge badge-important green pulse animated infinite" title="Para hoy">'.$this->getAlerts()->reservasParaHoy.'</span>'; ?></span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Reserva, Socio, Comercial")) { ?>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-canales-lista"><i class="icon-book"></i><span class="hidden-tablet"> Canales </span></a></li>
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Socio")) { ?>
+                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-mantenimientos-lista"><i class="icon-wrench"></i><span class="hidden-tablet" > Mantenimientos <?php if($this->getAlerts()->mantenimientosPendientes > 0) echo '<span class="badge orange badge-important pulse animated infinite" title="Pendientes">'.$this->getAlerts()->mantenimientosPendientes.'</span>'; ?> <?php if($this->getAlerts()->mantenimientosEnCurso > 0) echo '<span class="badge badge-important pulse animated infinite" title="En curso">'.$this->getAlerts()->mantenimientosEnCurso.'</span>'; ?></span></a></li>
+                         <?php } ?>
+                        <?php if(hasRoles("Administrador")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-factura-lista"><i class=" icon-folder-open"></i><span class="hidden-tablet"> Facturas</span></a></li>
-                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-politicas-lista"><i class="icon-warning-sign"></i><span class="hidden-tablet"> Politicas de cancelación</span></a></li>                                             -->
+                        <?php } ?>
+                        <?php if(hasRoles("Administrador, Socio")) { ?>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-politicas-lista"><i class="icon-warning-sign"></i><span class="hidden-tablet"> Politicas de cancelación</span></a></li>                                             
+                        <?php } ?>
                     </ul>
                 </div>
             <?php } ?>

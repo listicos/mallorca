@@ -1,6 +1,9 @@
 <?php
 
 $usuario_core->validateUser();
+
+AllowRoles("Administrador, Socio");
+
 $template = new Core_template('admin/template.php');
 
 $template->setAttribute('is_visible_header', true);

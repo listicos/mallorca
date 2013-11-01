@@ -24,7 +24,19 @@ $current_date = $this->getAttribute('current_date');
                 <td><input name="idApartamentos[]" value="<?php echo $apar['apartamento']->idApartamento?>" type="checkbox"></td>
                 <td><a href="<?php echo $this->base_url;?>/admin-apartamento-gestion/id:<?php echo $apar['apartamento']->idApartamento;?>"><?php echo $apar['apartamento']->nombre; ?></a></td>
                 <?php foreach ($apar['disponibilidades'] as $day => $disponibilidad) {?>
-                    <td class="<?php echo $disponibilidad['estatus']?>"><?php echo $disponibilidad['precio']?></td>
+                    <td class="<?php echo $disponibilidad['estatus']?>" apartamento-id="<?php echo $apar['apartamento']->idApartamento?>" day="<?php echo $day?>" 
+                        minimoNoches="<?php echo $disponibilidad['minimoNoches'] ?>"
+                        precioPorConsumo="<?php echo $disponibilidad['precioPorConsumo'] ?>"
+                        descuentoPorConsumo="<?php echo $disponibilidad['descuentoPorConsumo'] ?>"
+                        cuponPromocional="<?php echo $disponibilidad['cuponPromocional'] ?>"
+                        descuentoPorCupon="<?php echo $disponibilidad['descuentoPorCupon'] ?>"
+                        >
+                        <span class="precio"><?php echo $disponibilidad['precio']?>
+                        </span>
+                        <span class="desc">
+                            <?php echo $disponibilidad['descuento']?>
+                        </span>
+                    </td>
                 <?php }?>
             </tr>
         <?php } ?>   

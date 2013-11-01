@@ -85,6 +85,14 @@ class ReservacionesMySqlExtDAO extends ReservacionesMySqlDAO {
             $sqlQuery->set($fecha);
             return $this->getList($sqlQuery);
     }
+    
+    public function queryByApartamentoIdAndFecha($idApartamento, $fecha){
+            $sql = 'SELECT * FROM reservaciones WHERE id_apartamento = ? AND ';
+            $sql .= ' UNIX_TIMESTAMP("'.$fecha.'") BETWEEN UNIX_TIMESTAMP(fecha_entrada) AND UNIX_TIMESTAMP(fecha_salida)';
+            $sqlQuery = new SqlQuery($sql);
+            $sqlQuery->setNumber($idApartamento);
+            return $this->getList($sqlQuery);
+    }
 
 }
 

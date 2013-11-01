@@ -3,7 +3,7 @@
  * Class that operate on table 'reservaciones_pagos'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2013-10-02 18:50
+ * @date: 2013-10-28 15:51
  */
 class ReservacionesPagosMySqlDAO implements ReservacionesPagosDAO{
 
@@ -57,7 +57,7 @@ class ReservacionesPagosMySqlDAO implements ReservacionesPagosDAO{
  	 * @param ReservacionesPagosMySql reservacionesPago
  	 */
 	public function insert($reservacionesPago){
-		$sql = 'INSERT INTO reservaciones_pagos (id_reservacion, forma_pago, autorizacion, request, importe, concepto, estado, tiempo_creacion, ultima_modificacion, origen, validada, comentario, tipo, id_cuenta, validado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO reservaciones_pagos (id_reservacion, forma_pago, autorizacion, request, importe, concepto, estado, tiempo_creacion, ultima_modificacion, origen, validada, comentario, tipo, id_cuenta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($reservacionesPago->idReservacion);
@@ -74,7 +74,6 @@ class ReservacionesPagosMySqlDAO implements ReservacionesPagosDAO{
 		$sqlQuery->set($reservacionesPago->comentario);
 		$sqlQuery->set($reservacionesPago->tipo);
 		$sqlQuery->setNumber($reservacionesPago->idCuenta);
-		$sqlQuery->setNumber($reservacionesPago->validado);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$reservacionesPago->idReservacionPago = $id;
@@ -87,7 +86,7 @@ class ReservacionesPagosMySqlDAO implements ReservacionesPagosDAO{
  	 * @param ReservacionesPagosMySql reservacionesPago
  	 */
 	public function update($reservacionesPago){
-		$sql = 'UPDATE reservaciones_pagos SET id_reservacion = ?, forma_pago = ?, autorizacion = ?, request = ?, importe = ?, concepto = ?, estado = ?, tiempo_creacion = ?, ultima_modificacion = ?, origen = ?, validada = ?, comentario = ?, tipo = ?, id_cuenta = ?, validado = ? WHERE id_reservacion_pago = ?';
+		$sql = 'UPDATE reservaciones_pagos SET id_reservacion = ?, forma_pago = ?, autorizacion = ?, request = ?, importe = ?, concepto = ?, estado = ?, tiempo_creacion = ?, ultima_modificacion = ?, origen = ?, validada = ?, comentario = ?, tipo = ?, id_cuenta = ? WHERE id_reservacion_pago = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($reservacionesPago->idReservacion);
@@ -104,7 +103,6 @@ class ReservacionesPagosMySqlDAO implements ReservacionesPagosDAO{
 		$sqlQuery->set($reservacionesPago->comentario);
 		$sqlQuery->set($reservacionesPago->tipo);
 		$sqlQuery->setNumber($reservacionesPago->idCuenta);
-		$sqlQuery->setNumber($reservacionesPago->validado);
 
 		$sqlQuery->setNumber($reservacionesPago->idReservacionPago);
 		return $this->executeUpdate($sqlQuery);
@@ -217,13 +215,6 @@ class ReservacionesPagosMySqlDAO implements ReservacionesPagosDAO{
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByValidado($value){
-		$sql = 'SELECT * FROM reservaciones_pagos WHERE validado = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
-		return $this->getList($sqlQuery);
-	}
-
 
 	public function deleteByIdReservacion($value){
 		$sql = 'DELETE FROM reservaciones_pagos WHERE id_reservacion = ?';
@@ -323,13 +314,6 @@ class ReservacionesPagosMySqlDAO implements ReservacionesPagosDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByValidado($value){
-		$sql = 'DELETE FROM reservaciones_pagos WHERE validado = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
-		return $this->executeUpdate($sqlQuery);
-	}
-
 
 	
 	/**
@@ -355,7 +339,6 @@ class ReservacionesPagosMySqlDAO implements ReservacionesPagosDAO{
 		$reservacionesPago->comentario = $row['comentario'];
 		$reservacionesPago->tipo = $row['tipo'];
 		$reservacionesPago->idCuenta = $row['id_cuenta'];
-		$reservacionesPago->validado = $row['validado'];
 
 		return $reservacionesPago;
 	}

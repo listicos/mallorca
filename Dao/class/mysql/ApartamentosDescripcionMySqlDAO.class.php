@@ -3,7 +3,7 @@
  * Class that operate on table 'apartamentos_descripcion'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2013-10-01 15:39
+ * @date: 2013-10-18 16:11
  */
 class ApartamentosDescripcionMySqlDAO implements ApartamentosDescripcionDAO{
 

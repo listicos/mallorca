@@ -136,6 +136,29 @@ class UsuariosMySqlExtDAO extends UsuariosMySqlDAO {
         
         return $this->getList($sqlQuery);
     }
+    
+    function querySearch($data) {
+        $query = $data['query'];
+        $type = $data['type'];
+        $filter = $data['filter'];
+        
+        
+        if (isset($filter) && $filter != '')
+            $order_by = ' ORDER BY ' . $filter . ' ' . $type;
+        else
+            $order_by = '';
+
+        $sql = 'SELECT distinct u.id_usuario, u.nombre, u.apellido_paterno, u.email, u.telefono, u.id_usuario_grupo FROM usuarios AS u';
+        $sql .= ' INNER JOIN usuarios_grupos AS ug ON u.id_usuario_grupo = ug.id_usuario_grupo';
+        $sql .= " WHERE (u.nombre like '%" . $query . "%' OR u.apellido_paterno like '%" . $query . "%' OR u.apellido_materno like '%" . $query . "%' OR u.email like '%" . $query . "%' OR u.telefono like '%" . $query . "%' )";
+        
+        $sql .= $order_by;
+       
+        $sqlQuery = new SqlQuery($sql);
+        
+        
+        return $this->getList($sqlQuery);
+    }
 
 }
 

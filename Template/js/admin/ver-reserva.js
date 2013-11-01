@@ -5,10 +5,18 @@ $(function(){
 var TARIFA = 1;
 
 function initReservaVer() {
+    
+    $('select[name=idCanal]').on('change', function(){
+        calcularSenia();
+    })
+    
   var date_now = new Date(new Date().setDate(new Date().getDate()-2));
     $('#fechaInicio').datepicker({
         format: "dd-mm-yyyy",     
-        autoclose: true
+        autoclose: true,
+        beforeShowDay: function (date){
+            return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1 ;
+        }
     }).on('changeDate', function(ev) {
         $('#fechaFinal').datepicker('setStartDate', ev.date);
         $('#fechaFinal').datepicker('show');
@@ -18,36 +26,14 @@ function initReservaVer() {
 
     $('#fechaFinal').datepicker({
         format: "dd-mm-yyyy",
-        autoclose: true
+        autoclose: true,
+        beforeShowDay: function (date){
+            return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1 ;
+        }
     });
 
-    $('#fechaInicio, #fechaFinal').on('change',function(){
-      console.log($('.datos_alojamiento :input').serialize());
-        $.ajax({
-            type: "POST",
-            url: BASE_URL+'/admin-ajax-apartamento-calendario',
-            data: $('.datos_alojamiento :input').serialize()+"&action=getPrecio"+"&idApartamento="+$('#idApartamento').val(),
-            dataType: "json",
-            success: function(data) {
-              if(data.msg == 'ok'){
-                $('#totalReserva').val(data.total);
-                updateTotal();
-                  if(data.total==0){
-                    noty({
-                      'type': 'error',
-                      "text":data.total_text,
-                      "layout":"top",
-                    });
-                  }
-              }else{
-                    noty({
-                      'type': 'error',
-                      "text":data.data,
-                      "layout":"top",
-                    });
-              }
-            }
-        });  
+    $('#fechaInicio, #fechaFinal, .articulos-adicionales select, select[name=adultos]').on('change',function(){
+      calcularTotal();  
     });
 
     $('#fechaFinal').datepicker('setStartDate', date_now);
@@ -225,6 +211,12 @@ function initReservaVer() {
     $('input[name=totalReserva]').change(function(){
         updateTotal();
     })
+    
+    if($('#idApartamento').val().length > 0) {
+        fechas($('#idApartamento').val());
+    }
+    
+    calcularSenia();
 }
 
 function showHideResumen() {
@@ -235,20 +227,64 @@ function showHideResumen() {
 }
 
 function calcularTotal() {
-  if($('#fechaInicio').val() == "" || $('#fechaFinal').val() == "") {
-      $('#totalReserva').val(TARIFA);
-  } else {
-      
-  }
+    console.log($('.datos_alojamiento :input').serialize());
+    $.ajax({
+        type: "POST",
+        url: BASE_URL+'/admin-ajax-apartamento-calendario',
+        data: $('.datos_alojamiento :input, .articulos-adicionales select').serialize()+"&action=getPrecio"+"&idApartamento="+$('#idApartamento').val(),
+        dataType: "json",
+        success: function(data) {
+          if(data.msg == 'ok'){
+            $('#totalReserva').val(data.total);
+            if(data.desglosedPrice) {
+                $('.resumen .pvp').html(data.desglosedPrice.pvp_format);
+                $('.resumen .articulos-subtotal').html(data.desglosedPrice.articulos_format);
+                $('.resumen .subtotal').html(data.desglosedPrice.subtotal_format);
+                $('.resumen .tasas').html(data.desglosedPrice.tasas_format);
+                //$('.resumen .iva').html(data.desglosedPrice.iva);
+            }
+            updateTotal();
+              if(data.msg=='error'){
+                noty({
+                  'type': 'error',
+                  "text":data.total_text,
+                  "layout":"top",
+                });
+              }
+          }else{
+                noty({
+                  'type': 'error',
+                  "text":data.data,
+                  "layout":"top",
+                });
+          }
+        }
+    });
 }
+
+
 
 function updateTotal() {
     var total = parseFloat($('input[name=totalReserva]').val());
-    $('#resumen-cuenta .total').html(total);
+    
     $('#resumen-cuenta .importe.blue').each(function(){
         total -= parseFloat($(this).html());
     })
-    $('#resumen-cuenta .totalPendiente').html(total);
+    
+    $.ajax({
+        url: BASE_URL + '/admin-ajax-moneyformater',
+        data: {value:total},
+        type: 'post',
+        dataType: 'json',
+        success: function(response) {
+            if(response.msg == 'ok') {
+                $('#resumen-cuenta .total').html(response.data);
+                $('#resumen-cuenta .totalPendiente').html(response.data);
+            }
+        }
+    })
+    
+    calcularSenia();
 }
 
 function addUserFunctions() {
@@ -284,7 +320,33 @@ function AutoCompleteApto() {
         },
         updater: function(item) {
             $('#idApartamento').val(item.id);
-            if(item.id) {                
+            if(item.id) { 
+                fechas(item.id);
+                $.ajax({
+                    url: BASE_URL + '/admin-ajax-reserva-filtros',
+                    data: { action:'articulosByApto', apartamentoId: item.id},
+                    type: 'post',
+                    dataType: 'json',
+                    success : function(response) {
+                        $('.articulos-adicionales').html('');
+                        if(response.data && response.data.length > 0) {
+                            for(i=0;i<response.data.length;i++) {
+                                var a = response.data[i];
+                                var art = $('#articulohidden .instalaciones_row').clone();
+                                
+                                
+                                art.find('select[name="idArticulo[]"]').attr('name' , "idArticulo[" + a.idArticulo + "]");
+                                art.find('label').append(a.nombre + " (€" + a.precioBase + ")");
+                                $('.articulos-adicionales').append(art);
+                            }
+                            
+                                
+                            $('.articulos-adicionales select').off('change').on('change', calcularTotal);
+
+                            
+                        }
+                    }
+                })
                 return item.text;
             }
         }
@@ -346,5 +408,81 @@ function loadUserDetails(userId) {
     })
 }
 
+var FECHAS_DISPONIBLES;
 
+function fechas(idApartamento) {
+    
+    $.ajax({
+        url: BASE_URL + '/admin-ajax-calendario',
+        data: {action:'getTarifas', idApartamento:idApartamento},
+        type: 'post',
+        dataType: 'json',
+        success: function(response) {
+            FECHAS_DISPONIBLES = new Array();
+            for(i=0;i<response.tarifas.length; i++) {
+                var tarifa = response.tarifas[i];
+                
+                if(tarifa.estatus == 'disponible' && parseInt(tarifa.disponibles) > 0) {
+                    
+                    var fechaInicio = new Date(tarifa.fechaInicio.replace("00:00:00", "").trim()).getTime();
+                    var fechaFinal = new Date(tarifa.fechaFinal.replace("00:00:00", "").trim()).getTime();
+                    
+                    FECHAS_DISPONIBLES.push(fechaInicio + 86400000);
+                }
+            }
+            $('#fechaInicio, #fechaFinal').datepicker('remove');
+            var date_now = new Date(new Date().setDate(new Date().getDate()-2));
+            $('#fechaInicio').datepicker({
+                format: "dd-mm-yyyy",     
+                autoclose: true,
+                beforeShowDay: function (date){
+                    return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1 ;
+                },
+                enableDates: FECHAS_DISPONIBLES
+            }).on('changeDate', function(ev) {
+                $('#fechaFinal').datepicker('setStartDate', ev.date);
+                $('#fechaFinal').datepicker('show');
+            });
+
+            $('#fechaInicio').datepicker('setStartDate', date_now);
+
+            $('#fechaFinal').datepicker({
+                format: "dd-mm-yyyy",
+                autoclose: true,
+                beforeShowDay: function (date){
+                    return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1 ;
+                },
+                enableDates: FECHAS_DISPONIBLES
+            });
+
+            $('#fechaInicio, #fechaFinal, .articulos-adicionales select, select[name=adultos]').on('change',function(){
+              calcularTotal();  
+            });
+
+            $('#fechaFinal').datepicker('setStartDate', date_now);
+            }
+    });
+}
+
+function calcularSenia() {
+    var senia_percent = parseFloat($('select[name=idCanal] option:selected').attr('senia'));
+    var total = parseFloat($('input[name=totalReserva]').val());
+    
+    if(senia_percent > 0 && total > 0) {
+        var senia = total * senia_percent / 100;
+        $.ajax({
+            url: BASE_URL + '/admin-ajax-moneyformater',
+            data: {value:senia},
+            type: 'post',
+            dataType: 'json',
+            success: function(response) {
+                if(response.msg == 'ok') {
+                    $('#resumen-cuenta .senia').html(response.data);
+                }
+            }
+        })
+    }
+    
+    
+}
 

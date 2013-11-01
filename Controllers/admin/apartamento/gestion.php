@@ -3,6 +3,9 @@
 include_once 'Logic/politicas.php';
 
 $usuario_core->validateUser();
+
+AllowRoles("Administrador, Comercial, Socio");
+
 $template = new Core_template('admin/template.php');
 $template->setAttribute('is_visible_header', true);
 $template->setAttribute('is_visible_sidebar', true);
@@ -50,6 +53,15 @@ if (isset($_GET['id'])) {
         $adjunto = getAdjunto($apartamentoAdjunto->idAdjunto);
         $apartamentos_array['adjuntos'][$adkey] = $adjunto;
     }
+    
+    if(isset($apartamento->idEmpresaContrato)) {
+        $empresa_contrato = getEmpresaContrato($apartamento->idEmpresaContrato);
+        $contrato = getContrato($empresa_contrato->idContrato);
+        
+        $apartamentos_array['empresaContrato'] = $empresa_contrato;
+        $apartamentos_array['contrato'] = $contrato;
+        
+    }
 
     $direccion = getDireccion($apartamento->idDireccion);
     $direccion->paisNombre = getPais($direccion->idPais)->nombreCompleto;
@@ -86,6 +98,8 @@ foreach ($instalaciones_categorias as $ckey => $categoria) {
     }
 }
 
+$complejos = AllComplejos();
+
 $template->setAttribute('paises', $paises);
 $template->setAttribute('empresas', $empresas);
 $template->setAttribute('monedas', $monedas);
@@ -97,6 +111,7 @@ $template->setAttribute('habitaciones', $habitaciones);
 $template->setAttribute('tiposApartamento', $tipos_apartamento);
 $template->setAttribute('articulos', $articulos);
 $template->setAttribute('politicas', $politicas);
+$template->setAttribute('complejos', $complejos);
 
 echo $template->render();
 ?>

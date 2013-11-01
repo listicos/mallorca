@@ -3,7 +3,7 @@
  * Class that operate on table 'disponibilidades'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2013-10-01 15:39
+ * @date: 2013-10-22 21:04
  */
 class DisponibilidadesMySqlDAO implements DisponibilidadesDAO{
 
@@ -57,7 +57,7 @@ class DisponibilidadesMySqlDAO implements DisponibilidadesDAO{
  	 * @param DisponibilidadesMySql disponibilidade
  	 */
 	public function insert($disponibilidade){
-		$sql = 'INSERT INTO disponibilidades (fecha_inicio, fecha_final, precio, precio_fin_semana, estatus, id_apartamento, anotacion, precio_contrato) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO disponibilidades (fecha_inicio, fecha_final, precio, precio_fin_semana, estatus, id_apartamento, anotacion, descuento, minimo_noches, precio_por_consumo, descuento_por_consumo, cupon_promocional, descuento_por_cupon) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($disponibilidade->fechaInicio);
@@ -67,7 +67,12 @@ class DisponibilidadesMySqlDAO implements DisponibilidadesDAO{
 		$sqlQuery->set($disponibilidade->estatus);
 		$sqlQuery->setNumber($disponibilidade->idApartamento);
 		$sqlQuery->set($disponibilidade->anotacion);
-		$sqlQuery->set($disponibilidade->precioContrato);
+		$sqlQuery->set($disponibilidade->descuento);
+		$sqlQuery->setNumber($disponibilidade->minimoNoches);
+		$sqlQuery->set($disponibilidade->precioPorConsumo);
+		$sqlQuery->set($disponibilidade->descuentoPorConsumo);
+		$sqlQuery->set($disponibilidade->cuponPromocional);
+		$sqlQuery->set($disponibilidade->descuentoPorCupon);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$disponibilidade->idDisponibilidad = $id;
@@ -80,7 +85,7 @@ class DisponibilidadesMySqlDAO implements DisponibilidadesDAO{
  	 * @param DisponibilidadesMySql disponibilidade
  	 */
 	public function update($disponibilidade){
-		$sql = 'UPDATE disponibilidades SET fecha_inicio = ?, fecha_final = ?, precio = ?, precio_fin_semana = ?, estatus = ?, id_apartamento = ?, anotacion = ?, precio_contrato = ? WHERE id_disponibilidad = ?';
+		$sql = 'UPDATE disponibilidades SET fecha_inicio = ?, fecha_final = ?, precio = ?, precio_fin_semana = ?, estatus = ?, id_apartamento = ?, anotacion = ?, descuento = ?, minimo_noches = ?, precio_por_consumo = ?, descuento_por_consumo = ?, cupon_promocional = ?, descuento_por_cupon = ? WHERE id_disponibilidad = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($disponibilidade->fechaInicio);
@@ -90,7 +95,12 @@ class DisponibilidadesMySqlDAO implements DisponibilidadesDAO{
 		$sqlQuery->set($disponibilidade->estatus);
 		$sqlQuery->setNumber($disponibilidade->idApartamento);
 		$sqlQuery->set($disponibilidade->anotacion);
-		$sqlQuery->set($disponibilidade->precioContrato);
+		$sqlQuery->set($disponibilidade->descuento);
+		$sqlQuery->setNumber($disponibilidade->minimoNoches);
+		$sqlQuery->set($disponibilidade->precioPorConsumo);
+		$sqlQuery->set($disponibilidade->descuentoPorConsumo);
+		$sqlQuery->set($disponibilidade->cuponPromocional);
+		$sqlQuery->set($disponibilidade->descuentoPorCupon);
 
 		$sqlQuery->setNumber($disponibilidade->idDisponibilidad);
 		return $this->executeUpdate($sqlQuery);
@@ -154,8 +164,43 @@ class DisponibilidadesMySqlDAO implements DisponibilidadesDAO{
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByPrecioContrato($value){
-		$sql = 'SELECT * FROM disponibilidades WHERE precio_contrato = ?';
+	public function queryByDescuento($value){
+		$sql = 'SELECT * FROM disponibilidades WHERE descuento = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByMinimoNoches($value){
+		$sql = 'SELECT * FROM disponibilidades WHERE minimo_noches = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByPrecioPorConsumo($value){
+		$sql = 'SELECT * FROM disponibilidades WHERE precio_por_consumo = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByDescuentoPorConsumo($value){
+		$sql = 'SELECT * FROM disponibilidades WHERE descuento_por_consumo = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByCuponPromocional($value){
+		$sql = 'SELECT * FROM disponibilidades WHERE cupon_promocional = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByDescuentoPorCupon($value){
+		$sql = 'SELECT * FROM disponibilidades WHERE descuento_por_cupon = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
@@ -211,8 +256,43 @@ class DisponibilidadesMySqlDAO implements DisponibilidadesDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByPrecioContrato($value){
-		$sql = 'DELETE FROM disponibilidades WHERE precio_contrato = ?';
+	public function deleteByDescuento($value){
+		$sql = 'DELETE FROM disponibilidades WHERE descuento = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByMinimoNoches($value){
+		$sql = 'DELETE FROM disponibilidades WHERE minimo_noches = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByPrecioPorConsumo($value){
+		$sql = 'DELETE FROM disponibilidades WHERE precio_por_consumo = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByDescuentoPorConsumo($value){
+		$sql = 'DELETE FROM disponibilidades WHERE descuento_por_consumo = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByCuponPromocional($value){
+		$sql = 'DELETE FROM disponibilidades WHERE cupon_promocional = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByDescuentoPorCupon($value){
+		$sql = 'DELETE FROM disponibilidades WHERE descuento_por_cupon = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
@@ -236,7 +316,12 @@ class DisponibilidadesMySqlDAO implements DisponibilidadesDAO{
 		$disponibilidade->estatus = $row['estatus'];
 		$disponibilidade->idApartamento = $row['id_apartamento'];
 		$disponibilidade->anotacion = $row['anotacion'];
-		$disponibilidade->precioContrato = $row['precio_contrato'];
+		$disponibilidade->descuento = $row['descuento'];
+		$disponibilidade->minimoNoches = $row['minimo_noches'];
+		$disponibilidade->precioPorConsumo = $row['precio_por_consumo'];
+		$disponibilidade->descuentoPorConsumo = $row['descuento_por_consumo'];
+		$disponibilidade->cuponPromocional = $row['cupon_promocional'];
+		$disponibilidade->descuentoPorCupon = $row['descuento_por_cupon'];
 
 		return $disponibilidade;
 	}

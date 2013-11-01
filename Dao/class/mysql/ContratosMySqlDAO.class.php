@@ -3,7 +3,7 @@
  * Class that operate on table 'contratos'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2013-10-01 15:39
+ * @date: 2013-10-18 16:11
  */
 class ContratosMySqlDAO implements ContratosDAO{
 
@@ -57,7 +57,7 @@ class ContratosMySqlDAO implements ContratosDAO{
  	 * @param ContratosMySql contrato
  	 */
 	public function insert($contrato){
-		$sql = 'INSERT INTO contratos (nombre, tiempo_creacion, ultima_modificacion, precio, porcentaje, descripcion, semana_gratis, especiales, reservas_ultimo_minuto, reservas_anticipadas, alquileres_larga_estancia, firmado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO contratos (nombre, tiempo_creacion, ultima_modificacion, precio, porcentaje, descripcion, semana_gratis, especiales, reservas_ultimo_minuto, reservas_anticipadas, alquileres_larga_estancia, firmado, dias_larga_estancia, porciento_larga_estancia, meses_reservas_anticipadas, porciento_reservas_anticipadas, dias_reservas_ultimo_minuto, porciento_reservas_ultimo_minuto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($contrato->nombre);
@@ -72,6 +72,12 @@ class ContratosMySqlDAO implements ContratosDAO{
 		$sqlQuery->setNumber($contrato->reservasAnticipadas);
 		$sqlQuery->setNumber($contrato->alquileresLargaEstancia);
 		$sqlQuery->setNumber($contrato->firmado);
+		$sqlQuery->setNumber($contrato->diasLargaEstancia);
+		$sqlQuery->setNumber($contrato->porcientoLargaEstancia);
+		$sqlQuery->setNumber($contrato->mesesReservasAnticipadas);
+		$sqlQuery->setNumber($contrato->porcientoReservasAnticipadas);
+		$sqlQuery->setNumber($contrato->diasReservasUltimoMinuto);
+		$sqlQuery->setNumber($contrato->porcientoReservasUltimoMinuto);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$contrato->idContrato = $id;
@@ -84,7 +90,7 @@ class ContratosMySqlDAO implements ContratosDAO{
  	 * @param ContratosMySql contrato
  	 */
 	public function update($contrato){
-		$sql = 'UPDATE contratos SET nombre = ?, tiempo_creacion = ?, ultima_modificacion = ?, precio = ?, porcentaje = ?, descripcion = ?, semana_gratis = ?, especiales = ?, reservas_ultimo_minuto = ?, reservas_anticipadas = ?, alquileres_larga_estancia = ?, firmado = ? WHERE id_contrato = ?';
+		$sql = 'UPDATE contratos SET nombre = ?, tiempo_creacion = ?, ultima_modificacion = ?, precio = ?, porcentaje = ?, descripcion = ?, semana_gratis = ?, especiales = ?, reservas_ultimo_minuto = ?, reservas_anticipadas = ?, alquileres_larga_estancia = ?, firmado = ?, dias_larga_estancia = ?, porciento_larga_estancia = ?, meses_reservas_anticipadas = ?, porciento_reservas_anticipadas = ?, dias_reservas_ultimo_minuto = ?, porciento_reservas_ultimo_minuto = ? WHERE id_contrato = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($contrato->nombre);
@@ -99,6 +105,12 @@ class ContratosMySqlDAO implements ContratosDAO{
 		$sqlQuery->setNumber($contrato->reservasAnticipadas);
 		$sqlQuery->setNumber($contrato->alquileresLargaEstancia);
 		$sqlQuery->setNumber($contrato->firmado);
+		$sqlQuery->setNumber($contrato->diasLargaEstancia);
+		$sqlQuery->setNumber($contrato->porcientoLargaEstancia);
+		$sqlQuery->setNumber($contrato->mesesReservasAnticipadas);
+		$sqlQuery->setNumber($contrato->porcientoReservasAnticipadas);
+		$sqlQuery->setNumber($contrato->diasReservasUltimoMinuto);
+		$sqlQuery->setNumber($contrato->porcientoReservasUltimoMinuto);
 
 		$sqlQuery->setNumber($contrato->idContrato);
 		return $this->executeUpdate($sqlQuery);
@@ -197,6 +209,48 @@ class ContratosMySqlDAO implements ContratosDAO{
 		return $this->getList($sqlQuery);
 	}
 
+	public function queryByDiasLargaEstancia($value){
+		$sql = 'SELECT * FROM contratos WHERE dias_larga_estancia = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByPorcientoLargaEstancia($value){
+		$sql = 'SELECT * FROM contratos WHERE porciento_larga_estancia = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByMesesReservasAnticipadas($value){
+		$sql = 'SELECT * FROM contratos WHERE meses_reservas_anticipadas = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByPorcientoReservasAnticipadas($value){
+		$sql = 'SELECT * FROM contratos WHERE porciento_reservas_anticipadas = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByDiasReservasUltimoMinuto($value){
+		$sql = 'SELECT * FROM contratos WHERE dias_reservas_ultimo_minuto = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByPorcientoReservasUltimoMinuto($value){
+		$sql = 'SELECT * FROM contratos WHERE porciento_reservas_ultimo_minuto = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
 
 	public function deleteByNombre($value){
 		$sql = 'DELETE FROM contratos WHERE nombre = ?';
@@ -282,6 +336,48 @@ class ContratosMySqlDAO implements ContratosDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByDiasLargaEstancia($value){
+		$sql = 'DELETE FROM contratos WHERE dias_larga_estancia = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByPorcientoLargaEstancia($value){
+		$sql = 'DELETE FROM contratos WHERE porciento_larga_estancia = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByMesesReservasAnticipadas($value){
+		$sql = 'DELETE FROM contratos WHERE meses_reservas_anticipadas = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByPorcientoReservasAnticipadas($value){
+		$sql = 'DELETE FROM contratos WHERE porciento_reservas_anticipadas = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByDiasReservasUltimoMinuto($value){
+		$sql = 'DELETE FROM contratos WHERE dias_reservas_ultimo_minuto = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByPorcientoReservasUltimoMinuto($value){
+		$sql = 'DELETE FROM contratos WHERE porciento_reservas_ultimo_minuto = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 
 	
 	/**
@@ -305,6 +401,12 @@ class ContratosMySqlDAO implements ContratosDAO{
 		$contrato->reservasAnticipadas = $row['reservas_anticipadas'];
 		$contrato->alquileresLargaEstancia = $row['alquileres_larga_estancia'];
 		$contrato->firmado = $row['firmado'];
+		$contrato->diasLargaEstancia = $row['dias_larga_estancia'];
+		$contrato->porcientoLargaEstancia = $row['porciento_larga_estancia'];
+		$contrato->mesesReservasAnticipadas = $row['meses_reservas_anticipadas'];
+		$contrato->porcientoReservasAnticipadas = $row['porciento_reservas_anticipadas'];
+		$contrato->diasReservasUltimoMinuto = $row['dias_reservas_ultimo_minuto'];
+		$contrato->porcientoReservasUltimoMinuto = $row['porciento_reservas_ultimo_minuto'];
 
 		return $contrato;
 	}

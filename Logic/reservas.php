@@ -1,11 +1,22 @@
 <?php
 
-function insertReserva($data = array()) {
+function insertReserva($data = array(), $articulos = array()) {
     try {
         $transaction = new Transaction();
 
         $reserva = DAOFactory::getReservacionesDAO()->prepare($data);
         $reserva_id = DAOFactory::getReservacionesDAO()->insert($reserva);
+        
+        foreach ($articulos as $a=>$cant) {
+            if($cant > 0) {
+                $art = DAOFactory::getReservacionesArticulosDAO()->prepare(array(
+                    'idReservacion'=>$reserva_id, 
+                    'idArticulo'=>$a, 
+                    'cantidad' => $cant
+                ));
+                DAOFactory::getReservacionesArticulosDAO()->insert($art);
+            }
+        }
         
         registrarAccion("insert", "reservaciones", $reserva_id);
 
@@ -20,7 +31,7 @@ function insertReserva($data = array()) {
     }
 }
 
-function addReserva($data = array(), $data_usuario = array(), $data_cobros) {
+function addReserva($data = array(), $data_usuario = array(), $data_cobros = array(), $articulos = array()) {
     try {
         $transaction = new Transaction();
         $data['estatus'] = 'Pendiente';
@@ -53,9 +64,16 @@ function addReserva($data = array(), $data_usuario = array(), $data_cobros) {
             $cobro['tiempoCreacion'] = $now;
             $cobro['idCuenta'] = $cuenta_id;
             $cobro['idReservacion'] = $reserva_id;
-            if(!isset($cobro['validado'])) $cobro['validado'] = 0;
+            if(!isset($cobro['validada'])) $cobro['validada'] = 0;
             $reservacion_pago = DAOFactory::getReservacionesPagosDAO()->prepare($cobro);            
             $reservacion_pago_id = DAOFactory::getReservacionesPagosDAO()->insert($reservacion_pago);
+        }
+        
+        foreach ($articulos as $a=>$cant) {
+            if($cant > 0) {
+                $art = DAOFactory::getReservacionesArticulosDAO()->prepare(array('idReservacion'=>$reserva_id, 'idArticulo'=>$a, 'cantidad' => $cant));
+                DAOFactory::getReservacionesArticulosDAO()->insert($art);
+            }
         }
         
         registrarAccion("insert", "reservaciones", $reserva_id);
@@ -71,7 +89,7 @@ function addReserva($data = array(), $data_usuario = array(), $data_cobros) {
     }
 }
 
-function updateReserva($reserva_id, $data = array(), $data_usuario = array(), $data_cobros) {
+function updateReserva($reserva_id, $data = array(), $data_usuario = array(), $data_cobros = array(), $articulos = array()) {
     try {
         $transaction = new Transaction();
 
@@ -115,7 +133,7 @@ function updateReserva($reserva_id, $data = array(), $data_usuario = array(), $d
             if(isset($cobro['idReservacionPago'])) {
                 $reservacion_pago_id = $cobro['idReservacionPago'];
                 $cobro['ultimaModificacion'] = $now;
-                if(!isset($cobro['validado'])) $cobro['validado'] = 0;
+                if(!isset($cobro['validada'])) $cobro['validada'] = 0;
                 $reservacion_pago = DAOFactory::getReservacionesPagosDAO()->prepare($cobro, $reservacion_pago_id);
                 DAOFactory::getReservacionesPagosDAO()->update($reservacion_pago);
                 $cuenta = DAOFactory::getCuentasDAO()->prepare($cobro, $reservacion_pago->idCuenta);
@@ -131,11 +149,20 @@ function updateReserva($reserva_id, $data = array(), $data_usuario = array(), $d
                 $cobro['tiempoCreacion'] = $now;
                 $cobro['idCuenta'] = $cuenta_id;
                 $cobro['idReservacion'] = $reserva_id;
-                if(!isset($cobro['validado'])) $cobro['validado'] = 0;
+                if(!isset($cobro['validada'])) $cobro['validada'] = 0;
                 $reservacion_pago = DAOFactory::getReservacionesPagosDAO()->prepare($cobro);            
                 $reservacion_pago_id = DAOFactory::getReservacionesPagosDAO()->insert($reservacion_pago);
             }
             
+        }
+        
+        DAOFactory::getReservacionesArticulosDAO()->deleteByIdReservacion($reserva_id);
+        
+        foreach ($articulos as $a=>$cant) {
+            if($cant > 0) {
+                $art = DAOFactory::getReservacionesArticulosDAO()->prepare(array('idReservacion'=>$reserva_id, 'idArticulo'=>$a, 'cantidad'=>$cant));
+                DAOFactory::getReservacionesArticulosDAO()->insert($art);
+            }
         }
         
         registrarAccion("update", "reservaciones", $reserva_id);

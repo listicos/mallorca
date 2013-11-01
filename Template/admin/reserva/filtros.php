@@ -27,6 +27,9 @@
             <option value="Pendiente" <?php if(strcmp($reserva->estatus, "Pendiente") == 0) echo "selected"; ?> >Pendiente</option>
             <option value="Aprobado" <?php if(strcmp($reserva->estatus, "Aprobado") == 0) echo "selected"; ?>>Aprobado</option>
             <option value="Rechazado" <?php if(strcmp($reserva->estatus, "Rechazado") == 0) echo "selected"; ?>>Rechazado</option>
+            <option value="Validado" <?php if(strcmp($reserva->estatus, "Validado") == 0) echo "selected"; ?>>Validado</option>
+            <option value="Cancelado por el cliente" <?php if(strcmp($reserva->estatus, "Cancelado por el cliente") == 0) echo "selected"; ?>>Cancelado por el cliente</option>
+            
         </select>
         
     </td>

@@ -109,6 +109,13 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
         $sqlQuery = new SqlQuery($sql);
         return $this->getList($sqlQuery);
     }
+    
+    public function queryByVisitasAsc($limit = 3) {
+        $sql = 'SELECT * FROM apartamentos ORDER BY visitas DESC LIMIT 0, ?';
+        $sqlQuery = new SqlQuery($sql);
+        $sqlQuery->setNumber($limit);
+        return $this->getList($sqlQuery);
+    }
 
 }
 

@@ -30,18 +30,12 @@
                                 </div>
                                 <div class="span4">
                                     <div class="control-group">
-                                        <div class="input-prepend center span12" title="Apellido paterno" data-rel="tooltip">
+                                        <div class="input-prepend center span12" title="Apellidos" data-rel="tooltip">
                                             <span class="add-on"><i class="icon-user"></i></span><input value="<?php if ($is_edit) echo $usuario->apellidoPaterno ?>" class="input-large span10 validate[required]" name="apellidoPaterno" id="respondable_apellidoP" type="text" placeholder="Apellido paterno" data-prompt-position="topLeft:2%"/>
                                         </div>                                      
                                     </div>                                     
                                 </div>
-                                <div class="span4">
-                                    <div class="control-group">
-                                        <div class="input-prepend center span12" title="Apellido materno" data-rel="tooltip">
-                                            <span class="add-on"><i class="icon-user"></i></span><input  value="<?php if ($is_edit) echo $usuario->apellidoMaterno ?>" class="input-large span10 validate[required]" name="apellidoMaterno" id="respondable_apellidoM" type="text" placeholder="Apellido materno" data-prompt-position="topLeft:2%"/>
-                                        </div>                                      
-                                    </div>                                     
-                                </div>  
+                                  
                             </div>
                             <div class="row-fluid">
                                 <div class="span4">

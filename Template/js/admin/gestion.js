@@ -34,9 +34,9 @@ $(document).ready(function(){
     
     $('#disponibilidad_overlay select[name=estatus]').off('change').on('change', function(){
         if ($(this).val() == 'disponible')
-            $('#disponibilidad_overlay input[name=precio]').parents(".input-prepend").slideDown();
+            $('.disponible', '#disponibilidad_overlay').parents(".input-prepend").slideDown();
         else
-            $('#disponibilidad_overlay input[name=precio]').parents(".input-prepend").slideUp();
+            $('.disponible', '#disponibilidad_overlay').parents(".input-prepend").slideUp();
     });
 /*
     $('.empresa_contrato').change(function(){
@@ -298,7 +298,27 @@ function gestionFotosFunctions(){
     }
 }
 
+function calcularPrecioTarifa() {
+    var precio = parseFloat($('.tarifas_modal_form input[name=precio]').val());
+    var descuento = parseFloat($('.tarifas_modal_form input[name=descuento]').val());
+    
+    if(precio > 0 && descuento > 0) {
+        $('.tarifas_modal_form input[name=precioFinal]').val(precio - (precio * descuento / 100));
+    } else {
+        $('.tarifas_modal_form input[name=precioFinal]').val($('#tarifas_modal_form input[name=precio]').val());
+    }
+    
+    
+}
+
 function agregarTarifa(){
+    
+    $('.tarifas_modal_form input[name=precio], .tarifas_modal_form input[name=descuento]').off('change').on('change', function(e){
+        calcularPrecioTarifa();
+    })
+    
+    calcularPrecioTarifa();
+    
     $('.tarifas_modal_form').submit(function(ev){
         ev.preventDefault();
         var form = $(this);

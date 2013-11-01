@@ -3,7 +3,7 @@
 	 * Object represents table 'apartamentos'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2013-10-01 15:39	 
+     	 * @date: 2013-10-23 16:46	 
 	 */
 	class Apartamento{
 		
@@ -48,6 +48,8 @@
 		var $idPoliticaCancelacion;
 		var $idApartamentoDescripcion;
 		var $claveWifi;
+		var $idComplejo;
+		var $visitas;
 		
 	}
 ?>

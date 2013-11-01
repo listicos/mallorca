@@ -85,6 +85,28 @@ if(strcmp($action, "updateMantenimiento") == 0) {
         $idMantenimiento = updateMantenimiento($idMantenimiento, $data, $data_materiales, $data_personal);
     } else {
         $idMantenimiento = insertMantenimiento($data, $data_materiales, $data_personal);
+        
+        if($idMantenimiento) {
+            $apartamento = getApartamento($data['idApartamento']);
+            $empresa = getPropietarioByApartamento($apartamento->idApartamento);
+            try {
+                $mailer = new Core_Mailer();
+                
+                $subject = 'Se ha registrado un mantenimiento';
+                
+                $to = $empresa->email;
+
+                $body = "Mantenimiento registrado en " . $apartamento->nombre . "<br/>";
+                $body .= "Solicitante: " . $data['solicitante'] . "<br/>";
+                $body .= "Ubicacion: " . $data['ubicacion'] . "<br/>";
+                $body .= "Trabajos solicitados: " . $data['trabajosSolicitados'] . "<br/>";
+                $body .= "Fecha: " . date("d-m-Y") . "<br/>";
+
+                $mailer->send_email($to, $subject, $body);
+            } catch (Exception $e) {
+                print_r($e);
+            }
+        }
     }
     
     if($idMantenimiento) {

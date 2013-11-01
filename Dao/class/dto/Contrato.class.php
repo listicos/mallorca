@@ -3,7 +3,7 @@
 	 * Object represents table 'contratos'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2013-10-01 15:39	 
+     	 * @date: 2013-10-18 16:11	 
 	 */
 	class Contrato{
 		
@@ -20,6 +20,12 @@
 		var $reservasAnticipadas;
 		var $alquileresLargaEstancia;
 		var $firmado;
+		var $diasLargaEstancia;
+		var $porcientoLargaEstancia;
+		var $mesesReservasAnticipadas;
+		var $porcientoReservasAnticipadas;
+		var $diasReservasUltimoMinuto;
+		var $porcientoReservasUltimoMinuto;
 		
 	}
 ?>

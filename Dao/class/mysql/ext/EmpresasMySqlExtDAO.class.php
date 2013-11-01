@@ -55,6 +55,16 @@ class EmpresasMySqlExtDAO extends EmpresasMySqlDAO {
 
         return $this->getList($sqlQuery);
     }
+    
+    public function queryByApartamentoId($idApartamento){
+            $sql = 'SELECT * FROM empresas AS e';
+            $sql .= ' INNER JOIN empresas_contratos AS ec ON ec.id_empresa = e.id_empresa';
+            $sql .= ' INNER JOIN apartamentos AS a ON a.id_empresa_contrato = ec.id_empresa_contrato';
+            $sql .= ' WHERE a.id_apartamento = ?';
+            $sqlQuery = new SqlQuery($sql);
+            $sqlQuery->setNumber($idApartamento);
+            return $this->getRow($sqlQuery);
+    }
 
 }
 

@@ -23,7 +23,7 @@ class DisponibilidadesMySqlExtDAO extends DisponibilidadesMySqlDAO{
     }
 
     public function queryCalendario(){
-    	$sql = 'SELECT DISTINCT fecha_inicio FROM disponibilidades WHERE precio >0 AND estatus = "disponible" ORDER BY fecha_inicio';
+    	$sql = 'SELECT fecha_inicio, id_apartamento FROM disponibilidades WHERE precio > 0 AND estatus = "disponible" ORDER BY fecha_inicio';
     	$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
     }

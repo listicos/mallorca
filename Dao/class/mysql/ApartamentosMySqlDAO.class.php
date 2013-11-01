@@ -3,7 +3,7 @@
  * Class that operate on table 'apartamentos'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2013-10-01 15:39
+ * @date: 2013-10-23 16:46
  */
 class ApartamentosMySqlDAO implements ApartamentosDAO{
 
@@ -57,7 +57,7 @@ class ApartamentosMySqlDAO implements ApartamentosDAO{
  	 * @param ApartamentosMySql apartamento
  	 */
 	public function insert($apartamento){
-		$sql = 'INSERT INTO apartamentos (id_empresa_contrato, nombre, id_apartamentos_tipo, id_direccion, id_moneda, horario_entrada, horario_salida, descripcion_corta, descripcion_larga, id_idioma, descripcion_servicios, descripcion_condiciones, tiempo_creacion, ultima_modificacion, estatus, id_usuario, tarifa_base, tarifa_semana, tarifa_mes, estadia_maxima, estadia_minima, huesped_adicional_apartir, huesped_adicional_costo, costo_limpieza, deposito_seguridad, precio_fin_semana, normas, tamanio, capacidad_personas, habitaciones, camas, tipo_cama, banio, mascotas, manual, cantidad, codigo, id_politica_cancelacion, id_apartamento_descripcion, clave_wifi) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO apartamentos (id_empresa_contrato, nombre, id_apartamentos_tipo, id_direccion, id_moneda, horario_entrada, horario_salida, descripcion_corta, descripcion_larga, id_idioma, descripcion_servicios, descripcion_condiciones, tiempo_creacion, ultima_modificacion, estatus, id_usuario, tarifa_base, tarifa_semana, tarifa_mes, estadia_maxima, estadia_minima, huesped_adicional_apartir, huesped_adicional_costo, costo_limpieza, deposito_seguridad, precio_fin_semana, normas, tamanio, capacidad_personas, habitaciones, camas, tipo_cama, banio, mascotas, manual, cantidad, codigo, id_politica_cancelacion, id_apartamento_descripcion, clave_wifi, id_complejo, visitas) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($apartamento->idEmpresaContrato);
@@ -100,6 +100,8 @@ class ApartamentosMySqlDAO implements ApartamentosDAO{
 		$sqlQuery->setNumber($apartamento->idPoliticaCancelacion);
 		$sqlQuery->setNumber($apartamento->idApartamentoDescripcion);
 		$sqlQuery->set($apartamento->claveWifi);
+		$sqlQuery->setNumber($apartamento->idComplejo);
+		$sqlQuery->setNumber($apartamento->visitas);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$apartamento->idApartamento = $id;
@@ -112,7 +114,7 @@ class ApartamentosMySqlDAO implements ApartamentosDAO{
  	 * @param ApartamentosMySql apartamento
  	 */
 	public function update($apartamento){
-		$sql = 'UPDATE apartamentos SET id_empresa_contrato = ?, nombre = ?, id_apartamentos_tipo = ?, id_direccion = ?, id_moneda = ?, horario_entrada = ?, horario_salida = ?, descripcion_corta = ?, descripcion_larga = ?, id_idioma = ?, descripcion_servicios = ?, descripcion_condiciones = ?, tiempo_creacion = ?, ultima_modificacion = ?, estatus = ?, id_usuario = ?, tarifa_base = ?, tarifa_semana = ?, tarifa_mes = ?, estadia_maxima = ?, estadia_minima = ?, huesped_adicional_apartir = ?, huesped_adicional_costo = ?, costo_limpieza = ?, deposito_seguridad = ?, precio_fin_semana = ?, normas = ?, tamanio = ?, capacidad_personas = ?, habitaciones = ?, camas = ?, tipo_cama = ?, banio = ?, mascotas = ?, manual = ?, cantidad = ?, codigo = ?, id_politica_cancelacion = ?, id_apartamento_descripcion = ?, clave_wifi = ? WHERE id_apartamento = ?';
+		$sql = 'UPDATE apartamentos SET id_empresa_contrato = ?, nombre = ?, id_apartamentos_tipo = ?, id_direccion = ?, id_moneda = ?, horario_entrada = ?, horario_salida = ?, descripcion_corta = ?, descripcion_larga = ?, id_idioma = ?, descripcion_servicios = ?, descripcion_condiciones = ?, tiempo_creacion = ?, ultima_modificacion = ?, estatus = ?, id_usuario = ?, tarifa_base = ?, tarifa_semana = ?, tarifa_mes = ?, estadia_maxima = ?, estadia_minima = ?, huesped_adicional_apartir = ?, huesped_adicional_costo = ?, costo_limpieza = ?, deposito_seguridad = ?, precio_fin_semana = ?, normas = ?, tamanio = ?, capacidad_personas = ?, habitaciones = ?, camas = ?, tipo_cama = ?, banio = ?, mascotas = ?, manual = ?, cantidad = ?, codigo = ?, id_politica_cancelacion = ?, id_apartamento_descripcion = ?, clave_wifi = ?, id_complejo = ?, visitas = ? WHERE id_apartamento = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($apartamento->idEmpresaContrato);
@@ -155,6 +157,8 @@ class ApartamentosMySqlDAO implements ApartamentosDAO{
 		$sqlQuery->setNumber($apartamento->idPoliticaCancelacion);
 		$sqlQuery->setNumber($apartamento->idApartamentoDescripcion);
 		$sqlQuery->set($apartamento->claveWifi);
+		$sqlQuery->setNumber($apartamento->idComplejo);
+		$sqlQuery->setNumber($apartamento->visitas);
 
 		$sqlQuery->setNumber($apartamento->idApartamento);
 		return $this->executeUpdate($sqlQuery);
@@ -449,6 +453,20 @@ class ApartamentosMySqlDAO implements ApartamentosDAO{
 		return $this->getList($sqlQuery);
 	}
 
+	public function queryByIdComplejo($value){
+		$sql = 'SELECT * FROM apartamentos WHERE id_complejo = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByVisitas($value){
+		$sql = 'SELECT * FROM apartamentos WHERE visitas = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
 
 	public function deleteByIdEmpresaContrato($value){
 		$sql = 'DELETE FROM apartamentos WHERE id_empresa_contrato = ?';
@@ -730,6 +748,20 @@ class ApartamentosMySqlDAO implements ApartamentosDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByIdComplejo($value){
+		$sql = 'DELETE FROM apartamentos WHERE id_complejo = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByVisitas($value){
+		$sql = 'DELETE FROM apartamentos WHERE visitas = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 
 	
 	/**
@@ -781,6 +813,8 @@ class ApartamentosMySqlDAO implements ApartamentosDAO{
 		$apartamento->idPoliticaCancelacion = $row['id_politica_cancelacion'];
 		$apartamento->idApartamentoDescripcion = $row['id_apartamento_descripcion'];
 		$apartamento->claveWifi = $row['clave_wifi'];
+		$apartamento->idComplejo = $row['id_complejo'];
+		$apartamento->visitas = $row['visitas'];
 
 		return $apartamento;
 	}

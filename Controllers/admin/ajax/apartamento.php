@@ -37,6 +37,8 @@ if (strcmp($action, "insert") == 0) {
 
         if (isset($_POST['nombre']))
             $data_apartamento['nombre'] = $_POST['nombre'];
+        if(isset($_POST['idComplejo']) && strlen($_POST['idComplejo']))
+            $data_apartamento['idComplejo'] = $_POST['idComplejo'];
         if (isset($_POST['idApartamentosTipo']))
             $data_apartamento['idApartamentosTipo'] = $_POST['idApartamentosTipo'];
         if (isset($_POST['capacidadPersonas']))
@@ -173,6 +175,10 @@ if (strcmp($action, "update") == 0) {
 
         if (isset($_POST['nombre']))
             $data_apartamento['nombre'] = $_POST['nombre'];
+        if(isset($_POST['idComplejo']) && strcmp(trim($_POST['idComplejo']), "0") != 0)
+            $data_apartamento['idComplejo'] = $_POST['idComplejo'];
+        else
+            $data_apartamento['idComplejo'] = NULL;
         if (isset($_POST['idApartamentosTipo']))
             $data_apartamento['idApartamentosTipo'] = $_POST['idApartamentosTipo'];
         if (isset($_POST['capacidadPersonas']))
@@ -235,6 +241,8 @@ if (strcmp($action, "update") == 0) {
             $data_apartamento['status'] = $_POST['status'];
         if (isset($_POST['claveWifi']))
             $data_apartamento['claveWifi'] = $_POST['claveWifi'];
+        if (isset($_POST['cantidad']))
+            $data_apartamento['cantidad'] = $_POST['cantidad'];
 
         //$data_apartamento['idContrato'] = '1';
 
@@ -359,10 +367,31 @@ if (strcmp($action, "deleteFoto") == 0) {
 
 if (strcmp($action, "updateContrato") == 0) {
     if (isset($_POST['idApartamento'])) {
-        if (isset($_POST['empresa']) && isset($_POST['contrato'])) {
-            $empresaContrato = getContratosByContratoEmpresaId($_POST['empresa'], $_POST['contrato']);
-            $empresaContrato = array_pop($empresaContrato);
-            if (updateApartamento($_POST['idApartamento'], array('idEmpresaContrato' => $empresaContrato['contratoEmpresa']->idEmpresaContrato, 'ultimaModificacion' => date('Y-m-d H:i:s')))) {
+        if (isset($_POST['idEmpresa'])) {
+            $idApartamento = $_POST['idApartamento'];
+            $empresaContrato = array(
+                'idEmpresa' => NULL,
+                'semanaGratis' => 0,
+                'especiales' => 0,
+                'reservasUltimoMinuto' => 0,
+                'diasReservasUltimoMinuto' => 0,
+                'porcientoReservasUltimoMinuto' => 0,
+                'reservasAnticipadas' => 0,
+                'mesesReservasAnticipadas' => 0,
+                'porcientoReservasAnticipadas' => 0,
+                'alquileresLargaEstancia' => 0,
+                'diasLargaEstancia' => 0,
+                'firmado' => 0,
+                'porcientoLargaEstancia' => 0
+            );
+            
+            foreach (array_keys($empresaContrato) as $k) {
+                if(isset($_POST[$k]) && strlen($_POST[$k])>0) {
+                    $empresaContrato[$k] = $_POST[$k];
+                }
+            }
+            
+            if (updateApartamentoContrato($idApartamento,$empresaContrato)) {
                 $result['msg'] = 'ok';
                 $result['data'] = 'El contrato fue agregado correctamente.';
             } else {

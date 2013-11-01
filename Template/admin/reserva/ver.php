@@ -4,6 +4,10 @@ $apartamentos = $this->getAttribute('apartamentos');
 $usuarios = $this->getAttribute('usuarios');
 $aptoId = $this->getAttribute('apartamentoId');
 $canales = $this->getAttribute('canales');
+$articulos = $this->getAttribute('articulos');
+$articulos_reserva = $this->getAttribute('articulos_reserva');
+$precio_desglosado = $this->getAttribute('precio_desglosado');
+$canal = $this->getAttribute('canal');
 
 if($this->getAttribute('reserva')) {
     $reserva = $this->getAttribute('reserva');
@@ -23,6 +27,24 @@ if($this->getAttribute('reserva')) {
                         echo "<input type='hidden' name='idReservacion' value='".$reserva->idReservacion."'>";
                 ?>
                 <fieldset>
+                    
+                    <legend class="legend_custom">Estado de la reserva</legend>
+                        <div class="row-fluid datos_alojamiento">
+                            <div class="span4">
+                               <div class="input-prepend center span12" title="Estado" data-rel="tooltip">
+                                  <span class="detalles_apartamento_prepend"><i class="icon-user"></i></span>
+                                  <select class="reserva_select span10" name="estatus">
+                                       <option value="Pendiente" <?php if(strcmp($reserva->estatus, "Pendiente") == 0) echo "selected"; ?> >Pendiente</option>
+                                       <option value="Aprobado" <?php if(strcmp($reserva->estatus, "Aprobado") == 0) echo "selected"; ?>>Aprobado</option>
+                                       <option value="Rechazado" <?php if(strcmp($reserva->estatus, "Rechazado") == 0) echo "selected"; ?>>Rechazado</option>
+                                       <option value="Validado" <?php if(strcmp($reserva->estatus, "Validado") == 0) echo "selected"; ?>>Validado</option>
+                                       <option value="Cancelado por el cliente" <?php if(strcmp($reserva->estatus, "Cancelado por el cliente") == 0) echo "selected"; ?>>Cancelado por el cliente</option>
+
+                                  </select>
+                               </div> 
+                           </div>
+                       </div>
+                    
                     <?php if(!isset($aptoId)) { ?>
                     <legend>Buscar propiedad <small>(Busca una propiedad y seleccionala de la lista)</small></legend>
                         <div class="row-fluid">
@@ -172,6 +194,7 @@ if($this->getAttribute('reserva')) {
                                         <?php foreach ($canales as $canal) {
                                             echo '<option value="'.$canal->idCanal.'" ';
                                             if($canal->idCanal == $reserva->idCanal) echo 'selected';
+                                            echo ' senia="'.$canal->senia.'"';
                                             echo '>'.$canal->nombre;
                                             echo '</option>';
                                         }?>
@@ -185,7 +208,7 @@ if($this->getAttribute('reserva')) {
                                        <select class="reserva_select span10" name="adultos">
                                             <?php for ($i=2; $i < 31; $i++) { 
                                              echo '<option value="'.$i.'"';
-                                             if($reserva->adultos == i) echo 'selected';
+                                             if($reserva->adultos == $i) echo 'selected';
                                              echo '>'.$i.'</option>';
                                             }?>
                                        </select>
@@ -198,7 +221,7 @@ if($this->getAttribute('reserva')) {
                                            <option value="0" disabled selected>Ni&ntilde;os</option>
                                             <?php for ($i=1; $i < 31; $i++) { 
                                              echo '<option value="'.$i.'"';
-                                             if($reserva->ninios == i) echo 'selected';
+                                             if($reserva->ninios == $i) echo 'selected';
                                              echo '>'.$i.'</option>';
                                             }?>
                                        </select>
@@ -211,7 +234,7 @@ if($this->getAttribute('reserva')) {
                                            <option value="0" disabled selected>Beb&eacute;s</option>
                                             <?php for ($i=1; $i < 31; $i++) { 
                                              echo '<option value="'.$i.'"';
-                                             if($reserva->bebes == i) echo 'selected';
+                                             if($reserva->bebes == $i) echo 'selected';
                                              echo '>'.$i.'</option>';
                                             }?>
                                        </select>
@@ -219,8 +242,47 @@ if($this->getAttribute('reserva')) {
                                </div>                  
                            </div>
                         </div>
+                        <legend class="legend_custom">Art&iacute;culos adicionales</legend>
+                        <div class="hidden" id="articulohidden">
+                            <div class="span4 instalaciones_row">
+                                    <div class="control-group ">
+                                        <label class="checkbox inline articulo-label">
+                                            
+                                        </label> 
+                                    
+                                        <div class="input-prepend center span12" title="Cantidad" data-rel="tooltip">
 
+                                            <span class="detalles_apartamento_prepend"><i class="icon-globe"></i></span>
+                                            <select name="idArticulo[]" class="reserva_select span9" >
+                                                <?php for($i=0;$i<=200;$i++){?>
+                                                <option value="<?php echo $i ?>"  ><?php echo $i ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div> 
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row-fluid articulos-adicionales">
+                            <?php if($articulos && count($articulos > 0)) foreach ($articulos as $art) { ?>
+                                        <div class="span4 instalaciones_row">
+                                            <div class="control-group">
+                                                <label class="checkbox inline articulo-label">
+                                                    <?php echo $art->nombre; ?> (€<?php echo $art->precioBase;?>)
+                                                </label> 
+                                            
+                                                <div class="input-prepend center span12" title="Cantidad" data-rel="tooltip">
 
+                                                    <span class="detalles_apartamento_prepend"><i class="icon-globe"></i></span>
+                                                    <select name="idArticulo[<?php echo $art->idArticulo ?>]" class="reserva_select span9">
+                                                        <?php for($i=0;$i<=200;$i++){?>
+                                                        <option value="<?php echo $i ?>" <?php if ($articulos_reserva && $articulos_reserva[$art->idArticulo] == $i) { ?> selected="" <?php } ?>  ><?php echo $i ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div> 
+                                            </div>
+                                        </div>
+                            <?php } ?>
+                        </div>
                         <legend class="legend_custom">Datos de cobro</legend>
                         <div class="row-fluid">
                             <div class="span4">
@@ -289,14 +351,17 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div>
+                            
+                            <?php if(hasRoles("Administrador")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
-                                        <label><input type="checkbox" value="1" <?php if($pago->validado) echo 'checked'; ?>  name="transferencia[<?php echo $pago->idReservacionPago ?>][validado]">
+                                        <label><input type="checkbox" value="1" <?php if($pago->validada) echo 'checked'; ?>  name="transferencia[<?php echo $pago->idReservacionPago ?>][validada]">
                                         Validado</label>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                             </div>
                              <legend class="list-separator">&nbsp;</legend>
                             </div>
@@ -345,14 +410,16 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div> 
+                            <?php if(hasRoles("Administrador")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
-                                        <label><input type="checkbox" value="1" <?php if($pago->validado) echo 'checked'; ?>  name="paypal[<?php echo $pago->idReservacionPago ?>][validado]">
+                                        <label><input type="checkbox" value="1" <?php if($pago->validada) echo 'checked'; ?>  name="paypal[<?php echo $pago->idReservacionPago ?>][validada]">
                                         Validado</label>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                             </div>
                             <legend class="list-separator">&nbsp;</legend>
                             </div>
@@ -437,12 +504,14 @@ if($this->getAttribute('reserva')) {
                                         </select>
                                     </div>
                                 </div>
+                                <?php if(hasRoles("Administrador")) { ?>
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
-                                        <label><input type="checkbox" value="1" <?php if($pago->validado) echo 'checked'; ?>  name="tarjeta[<?php echo $pago->idReservacionPago ?>][validado]">
+                                        <label><input type="checkbox" value="1" <?php if($pago->validada) echo 'checked'; ?>  name="tarjeta[<?php echo $pago->idReservacionPago ?>][validada]">
                                         Validado</label>
                                     </div>
                                 </div>
+                                <?php } ?>
                             </div>
                             <div class="span4">
                                 <div class="control-group">
@@ -519,14 +588,16 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div> 
+                            <?php if(hasRoles("Administrador")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
-                                        <label><input type="checkbox" value="1" name="transferencia[XX][validado]">
+                                        <label><input type="checkbox" value="1" name="transferencia[XX][validada]">
                                         Validado</label>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                             </div>
                             <legend class="list-separator">&nbsp;</legend>
                             </div>
@@ -573,6 +644,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div> 
+                            <?php if(hasRoles("Administrador")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
@@ -581,6 +653,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                             </div>
                             <legend class="list-separator">&nbsp;</legend>
                             </div>
@@ -660,14 +733,14 @@ if($this->getAttribute('reserva')) {
                                         </select>
                                     </div>
                                 </div>
-                                
+                                <?php if(hasRoles("Administrador")) { ?>
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" name="tarjeta[XX][validado]">
                                         Validado</label>
                                     </div>
                                 </div>
-                            
+                                <?php } ?>
 
                             </div>
                             <div class="span4">
@@ -730,6 +803,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div>  
+                            <?php if(hasRoles("Administrador")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
@@ -738,6 +812,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                             </div>
                             <legend class="list-separator">&nbsp;</legend>
                             </div>
@@ -800,6 +875,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div>
+                            <?php if(hasRoles("Administrador")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
@@ -808,6 +884,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                             </div>
                             
                              <legend class="list-separator">&nbsp;</legend>
@@ -893,13 +970,14 @@ if($this->getAttribute('reserva')) {
                                         </select>
                                     </div>
                                 </div>
+                                <?php if(hasRoles("Administrador")) { ?>
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" <?php if($pago->validado) echo 'checked'; ?>  name="tarjeta[<?php echo $pago->idReservacionPago ?>][validado]">
                                         Validado</label>
                                     </div>
                                 </div>
-                            
+                                <?php } ?>
 
                             </div>
                             <div class="span4">
@@ -1111,6 +1189,8 @@ if($this->getAttribute('reserva')) {
                                 </div>                                     
                             </div>
                         </div>
+                        
+                        
 
                         <div class="row-fluid">
                         <div class="control-group span12 center">
@@ -1124,7 +1204,7 @@ if($this->getAttribute('reserva')) {
             <div class="clearfix"></div>
         </div>
     </div>
-    <?php if($reserva->idReservacion) { ?>
+ 
     <div id="resumen-cuenta">
         <div class="show-resumen" title="Mostrar Resumen">
             <i class="icon-list"></i>
@@ -1132,10 +1212,46 @@ if($this->getAttribute('reserva')) {
         <div class="resumen">
             <div class="row-fluid">
                 <div class="span6">
+                    Tarifa PVP:
+                </div>
+                <div class="span5 pvp">
+                    <?php if($precio_desglosado) echo money_format ("%i", $precio_desglosado['pvp']); ?>
+                </div>
+                <div class="span6">
+                    Suplementos:
+                </div>
+                <div class="span5 articulos-subtotal">
+                    <?php if($precio_desglosado) echo money_format ("%i", $precio_desglosado['articulos']); ?>
+                </div>
+                <div class="span6">
+                    Subtotal:
+                </div>
+                <div class="span5 subtotal">
+                    <?php if($precio_desglosado) echo money_format ("%i", $precio_desglosado['subtotal']); ?>
+                </div>
+                <div class="span6">
+                    Tasas:
+                </div>
+                <div class="span5 tasas">
+                    <?php if($precio_desglosado) echo money_format ("%i", $precio_desglosado['tasas'] + $precio_desglosado['iva']); ?>
+                </div>
+                <!--<div class="span6">
+                    IVA:
+                </div>
+                <div class="span5 iva">
+                    <?php if($precio_desglosado) echo $precio_desglosado['iva']; ?>
+                </div>-->
+                <div class="span6">
                     Total:
                 </div>
-                <div class="span6 total">
-                    <?php echo $reserva->total ?>
+                <div class="span5 total">
+                    <?php echo money_format ("%i", $reserva->total); ?>
+                </div>
+                <div class="span6">
+                    Se&ntilde;a:
+                </div>
+                <div class="span5 senia">
+                    
                 </div>
             </div>
             <div class="row-fluid pagos">
@@ -1149,7 +1265,7 @@ if($this->getAttribute('reserva')) {
                     <?php echo $pago->tipo ?>:
                 </div>
                 <div class="span6 importe <?php if(strcmp($pago->estado, "confirmada")!=0 || !$pago->validado) echo "red"; else { $total -= $pago->importe; echo 'blue';} ?>">
-                    <?php echo $pago->importe ?>
+                    <?php echo money_format ("%i", $pago->importe) ?>
                 </div>
             </div>
             <?php
@@ -1162,9 +1278,9 @@ if($this->getAttribute('reserva')) {
                     Total pendiente:
                 </div>
                 <div class="span6 totalPendiente">
-                    <?php echo $total ?>
+                    <?php echo money_format ("%i", $total) ?>
                 </div>
             </div>
         </div>
     </div>
-    <?php } ?>
+   

@@ -10,7 +10,7 @@ $apartamento = $this->getAttribute('apartamento');
 $empresas = $this->getAttribute('empresas');
 $articulos = $this->getAttribute('articulos');
 $politicas = $this->getAttribute('politicas');
-
+$complejos = $this->getAttribute('complejos');
 $documentos = $this->getAttribute('documentos');
 
 $edit = $this->getAttribute('edit');
@@ -26,11 +26,13 @@ $edit = $this->getAttribute('edit');
                     <li class="active"><a href="#demo1" data-toggle="tab">General</a></li>
                     <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#contrato" data-toggle="tab" data-ref="contratos">Propietario/Contrato</a></li>-->
                     <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#documentos-tab" data-toggle="tab" data-ref="documentos">Documentos</a></li>
-                    <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo3" data-toggle="tab" data-ref="tarifas">Tarifas</a></li>-->                    
+                    <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo3" data-toggle="tab" data-ref="tarifas">Tarifas</a></li>-->  
+                    <?php if(hasRoles("Administrador, Socio")) { ?>
                     <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="calendario_trigger_tab" data-ref="calendario">Calendario</a></li>
-                    <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="contrato_trigger_tab" data-ref="calendario">Contrato</a></li>-->
+                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="contrato_trigger_tab" data-ref="calendario">Contrato</a></li>
+                    <?php } ?>
                     <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo2" data-toggle="tab" data-ref="fotos">Fotos</a></li>
-                    <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo4" data-toggle="tab" data-ref="avanzados">Avanzado</a></li>-->
+                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo4" data-toggle="tab" data-ref="avanzados">Avanzado</a></li>
                 </ul>
             </div>
         </div>
@@ -66,6 +68,22 @@ $edit = $this->getAttribute('edit');
                                 </div>
                             </div>-->
                         </div>
+                        <div class="row-fluid">
+                            <div class="span8">
+                                <div class="control-group detalles_apartamento_alineacion">
+                                    <div class="input-prepend span12" title="Complejo" data-rel="tooltip" >
+                                        <span class="add-on"><i class="icon-home"></i></span>
+                                        <select class="span10 " name="idComplejo" >
+                                            <option value="0" >No pertenece a ning&uacute;n complejo</option>
+                                            <?php foreach ($complejos as $complejo) { ?>
+                                                <option value="<?php echo $complejo->idComplejo; ?>" <?php if ($edit && ($apartamento['apartamento']->idComplejo == $complejo->idComplejo)) { ?> selected="selected" <?php } ?> ><?php echo $complejo->nombre; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div> 
+                                </div>
+                            </div>
+                          
+                        </div>
                         <legend class="legend_custom titulos_legend">Tipo de anuncio</legend>
                         <div class="row-fluid">
                             <div class="span4">
@@ -76,6 +94,19 @@ $edit = $this->getAttribute('edit');
                                             <option value="" disabled>Tipo de propiedad</option>
                                             <?php foreach ($tiposApartamento as $tipo) { ?>
                                                 <option value="<?php echo $tipo->idApartamentosTipo; ?>" <?php if ($edit && ($apartamento['apartamento']->idApartamentosTipo == $tipo->idApartamentosTipo)) { ?> selected="selected" <?php } ?> ><?php echo $tipo->nombre; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>         
+                            </div>
+                            <div class="span4">
+                                <div class="control-group">
+                                    <div class="input-prepend center span12" title="Cantidad de apartamentos" data-rel="tooltip">
+                                        <span class="detalles_apartamento_prepend"><i class="icon-home"></i></span>
+                                        <select class="span10 validate[required]" name="cantidad" >
+                                            <option value="" disabled>Cantidad de apartamentos</option>
+                                            <?php for ($i = 1; $i < 50; $i++) { ?>
+                                                <option value="<?php echo $i; ?>" <?php if ($edit && ($apartamento['apartamento']->cantidad == $i)) { ?> selected="selected" <?php } ?> ><?php echo $i; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -312,7 +343,7 @@ $edit = $this->getAttribute('edit');
                         <div class="row-fluid">
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="span12 validate[required]" name="normas" rows="5" placeholder="Normas de la casa, explica a tus potenciales huéspedes lo que esperas de ellos..."><?php if ($edit) { ?> <?php echo $apartamento['apartamento']->nombre; ?> <?php } ?></textarea>                                        
+                                    <textarea class="span12" name="normas" rows="5" placeholder="Normas de la casa, explica a tus potenciales huéspedes lo que esperas de ellos..."><?php if ($edit) { ?> <?php echo $apartamento['apartamento']->nombre; ?> <?php } ?></textarea>                                        
                                     <p></p>
                                 </div>                                     
                             </div>   
@@ -400,7 +431,7 @@ $edit = $this->getAttribute('edit');
                                     <textarea class="span12 validate[required]" title="Referencias" data-rel="tooltip" name="referencia" rows="5" placeholder="Dirección..."><?php if ($edit) { echo $apartamento['direccion']->referencia; } ?></textarea>                                        
                                 </div>                                     
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="span12 validate[required]" title="Manuales" data-rel="tooltip" name="manual" rows="5" placeholder="Manual de la casa..."><?php if ($edit) { echo $apartamento['apartamento']->manual; } ?></textarea>                                        
+                                    <textarea class="span12" title="Manuales" data-rel="tooltip" name="manual" rows="5" placeholder="Manual de la casa..."><?php if ($edit) { echo $apartamento['apartamento']->manual; } ?></textarea>                                        
                                 </div>    
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <input class="span12" type="text" title="Contraseña del Wi-Fi" data-rel="tooltip" name="claveWifi" placeholder="Contraseña del Wi-Fi" value="<?php if ($edit) { echo $apartamento['apartamento']->claveWifi; } ?>" />
@@ -810,79 +841,7 @@ $edit = $this->getAttribute('edit');
                             </div>
                         </div>
                     </div>
-                    <!--<legend class="legend_custom titulos_legend">Precio de fin de semana</legend>
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <p>Esto modifica la tarifa diaria de todos los viernes y sábados en tu calendario</p>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span3">
-                            <div class="control-group detalles_apartamento_alineacion">
-                                <div class="input-prepend center span12" title="Precio de fin de semana" data-rel="tooltip">
-                                    <span class="add-on"><i class="icon-download-alt"></i></span>
-                                    <input autocomplete="off" class="input span10" name="precioFinSemana" id="precioFinSemana" 
-                                           type="text" placeholder="Precio de fin de semana" data-provide="typeahead" 
-                                           data-items="10" data-source='[]' value="<?php echo $apartamento['apartamento']->precioFinSemana; ?>"/>
-                                </div> 
-                            </div>
-                        </div>
-
-                    </div>-->
-                    <!--
-                    <legend class="legend_custom titulos_legend">Herramienta de revisión de precios</legend>
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <p class="text-info">Utiliza esta herramienta para comprobar como se ha calculado la tarifa para tu anuncio.
-                                Solo deberás ingresar un rango de fechas y número de huéspedes, y hacer clic en el botón de Probar precio.</p>
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span4">
-                            <div class="control-group detalles_apartamento_alineacion">
-                                <div class="input-prepend center span12" title="Entrada" data-rel="tooltip">
-                                    <span class="add-on"><i class="icon-download-alt"></i>Entrada</span>
-                                    <input autocomplete="off" class="input span10" name="" id="" type="date" placeholder="Llegada" data-provide="typeahead" data-items="" data-source='[]'/>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="span4">
-                            <div class="control-group">
-                                <div class="input-prepend center span12" title="Salida"  data-rel="tooltip">
-                                    <span class="add-on"><i class="icon-download-alt"></i>Salida</span>
-                                    <input autocomplete="off" class="input span10" name="" id="" type="date" placeholder="Salida" data-provide="typeahead" data-items="" data-source='[]'/>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="span4">
-                            <div class="control-group">
-                                <div class="input-prepend center span12" title="Huéspedes" data-rel="tooltip">
-                                    <span class="detalles_apartamento_prepend"><i class="icon-user"></i></span>
-                                    <select class="span10">
-                                        <option value="" disabled selected>Huéspedes</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </div>
-                            </div>         
-                        </div>
-                    </div>
-                    <div class="row-fluid">
-                        <div class="span4">
-                            <div class="control-group detalles_apartamento_alineacion">
-                                <button class="btn btn-success" name="button" type="submit">Probar precio</button>
-                            </div>
-                        </div>
-                    </div>
-                    -->
+                    
                     <br>
                     <div class="row-fluid">
                         <div class="span12 control-group center">
@@ -893,59 +852,20 @@ $edit = $this->getAttribute('edit');
                     </div>
                     </form>
                 </div>
-            <!--    <div class="tab-pane" id="contrato">
-                <legend class="legend_custom titulos_legend">Contrato del apartamento</legend>
-                <form id="contrato_apartamento_form">
-                    <div class="row-fluid contrato_container">
-                        <div class="span6">
-                            <div class="control-group">
-                                <div class="input-prepend center span12" title="Selecciona empresa" data-rel="tooltip">
-                                    <span class="add-on"><i class="icon-th-list"></i></span>
-                                    <select class="span6 validate[required] empresa_contrato" name="empresa" title="Empresas">
-                                        <option value="" disabled="disabled">Selecciona empresa</option>
-                                        <?php foreach ($empresas as $empresa):?>
-                                            <option value="<?php echo $empresa->idEmpresa?>"><?php echo $empresa->nombreFiscal?></option>
-                                        <?php endforeach;?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="span6">
-                            <div class="control-group">
-                                <div class="input-prepend center span12" title="Contratos" data-rel="tooltip" >
-                                    <span class="add-on"><i class="icon-folder-open"></i></span>
-                                    <select class="span6 validate[required] apartamento_contrato" name="contrato"  title="Contratos">
-                                        <option>Ningún contrato seleccionado</option>
-                                    </select>
-                                    <button class="btn  btn-primary trigger_contrato_view" type="button" >Ver</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row-fluid">
-                            <div class=" span12 control-group center">
-                                    <input type="hidden" class="actionGestionGeneral" name="action" value="updateContrato">
-                                    <input type="hidden" name="idApartamento" value="<?php echo $apartamento['apartamento']->idApartamento; ?>">
-                                    <button class="btn  btn-primary noty save_c submitApartamentoGenerales" type="submit" > Guardar</button>
-                                <button class="btn abort-act">Cancelar</button>                                 
-                            </div>
-                        </div>
-                </form>
-                </div>-->
                 <div class="tab-pane" id="demo5">
                     <div class="row-fluid calendar_tarifas_main">
                         <legend class="legend_custom titulos_legend contrato_element">Contrato del apartamento</legend>
                             <form id="contrato_apartamento_form" class="contrato_element">
+                                <input type="hidden" name="idApartamento" value="<?php echo $apartamento['apartamento']->idApartamento;  ?>">
                                 <div class="row-fluid contrato_container">
                                     <div class="span3">
                                         <div class="control-group">
                                             <div class="input-prepend center span12" title="Selecciona empresa" data-rel="tooltip">
                                                 <span class="add-on"><i class="icon-th-list"></i></span>
-                                                <select class="span10 validate[required] empresa_contrato" name="empresa" title="Empresas">
+                                                <select class="span10 validate[required] empresa_contrato" name="idEmpresa" title="Empresas">
                                                     <option value="" disabled="disabled">Selecciona empresa</option>
                                                     <?php foreach ($empresas as $empresa):?>
-                                                        <option value="<?php echo $empresa->idEmpresa?>"><?php echo $empresa->nombreFiscal?></option>
+                                                        <option value="<?php echo $empresa->idEmpresa?>" <?php if($apartamento['empresaContrato'] && $apartamento['empresaContrato']->idEmpresa == $empresa->idEmpresa) echo 'selected'; ?>><?php echo $empresa->nombreFiscal?></option>
                                                     <?php endforeach;?>
                                                 </select>
                                             </div>
@@ -953,31 +873,79 @@ $edit = $this->getAttribute('edit');
                                     </div>
                                     <div class="span9">
                                         <div class="row-fluid instalaciones_container">
-                                            <div class="span3">
-                                                <div class="control-group">
+                                            <div class="row-fluid">
+                                                <div class="control-group span3">
                                                     <label class="checkbox inline" title="Si el cliente reserva una estancia de 28 días o más, Clickandbooking está autorizado a reducir el precio contratado por día y los gastos relacionados suplementarios del 20%" data-rel="tooltip">
-                                                        <input type="checkbox" name="alquileresLargaEstancia" value="1" checked="checked">Alquileres de larga estancia
+                                                        <input type="checkbox" name="alquileresLargaEstancia" value="1" <?php if($apartamento['contrato'] && $apartamento['contrato']->alquileresLargaEstancia) echo 'checked="checked"';?>>Alquileres de larga estancia
                                                     </label> 
-                                                </div>                                        
+                                                </div>
+                                                <div class="control-group span3">
+                                                    <div class="input-prepend center span12" title="Días considerados larga estancia" data-rel="tooltip" >
+                                                        <span class="add-on"><i class="icon-pencil"></i></span>
+                                                        <input autocomplete="off" class="input span10" name="diasLargaEstancia" id="diasLargaEstancia" 
+                                                               type="text" placeholder="Días" data-provide="typeahead" 
+                                                               data-items="10" data-source='[]' value="<?php echo $apartamento['contrato']->diasLargaEstancia; ?>"/>
+                                                    </div> 
+                                                </div>
+                                                <div class="control-group span3">
+                                                    <div class="input-prepend center span12" title="Porciento" data-rel="tooltip" >
+                                                        <span class="add-on"><i class="icon-pencil"></i></span>
+                                                        <input autocomplete="off" class="input span10" name="porcientoLargaEstancia" id="porcientoLargaEstancia" 
+                                                               type="text" placeholder="Porciento" data-provide="typeahead" 
+                                                               data-items="10" data-source='[]' value="<?php echo $apartamento['contrato']->porcientoLargaEstancia; ?>"/>
+                                                    </div> 
+                                                </div>
                                             </div>
-                                            <div class="span3">
-                                                <div class="control-group">
+                                            <div class="row-fluid">
+                                                <div class="control-group span3">
                                                     <label class="checkbox inline" title="Si el cliente reserva sus vacaciones al menos 9 meses antes de la fecha de llegada, ClickAndBooking está autorizado a reducir el precio contratado por día y los gastos relacionados suplementarios del 10%" data-rel="tooltip">
-                                                        <input type="checkbox" name="reservasAnticipadas" value="1" checked="checked">Reserva anticipada (Early Birds)
+                                                        <input type="checkbox" name="reservasAnticipadas" value="1" <?php if($apartamento['contrato'] && $apartamento['contrato']->reservasAnticipadas) echo 'checked="checked"';?>>Reserva anticipada (Early Birds)
                                                     </label> 
-                                                </div>                                        
+                                                </div>
+                                                <div class="control-group span3">
+                                                    <div class="input-prepend center span12" title="Meses de anticipación" data-rel="tooltip" >
+                                                        <span class="add-on"><i class="icon-pencil"></i></span>
+                                                        <input autocomplete="off" class="input span10" name="mesesReservasAnticipadas" id="mesesReservasAnticipadas" 
+                                                               type="text" placeholder="Meses" data-provide="typeahead" 
+                                                               data-items="10" data-source='[]' value="<?php echo $apartamento['contrato']->mesesReservasAnticipadas; ?>"/>
+                                                    </div> 
+                                                </div>
+                                                <div class="control-group span3">
+                                                    <div class="input-prepend center span12" title="Porciento" data-rel="tooltip" >
+                                                        <span class="add-on"><i class="icon-pencil"></i></span>
+                                                        <input autocomplete="off" class="input span10" name="porcientoReservasAnticipadas" id="porcientoReservasAnticipadas" 
+                                                               type="text" placeholder="Porciento" data-provide="typeahead" 
+                                                               data-items="10" data-source='[]' value="<?php echo $apartamento['contrato']->porcientoReservasAnticipadas; ?>"/>
+                                                    </div> 
+                                                </div>
                                             </div>
-                                            <div class="span3">
-                                                <div class="control-group">
+                                            <div class="row-fluid">
+                                                <div class="control-group span3">
                                                     <label class="checkbox inline"  title="Si el cliente reserva sus vacaciones 10 días antes de la llegada, ClickAndBooking está autorizado a reducir el precio contratado por día y los gastos relacionados suplementarios del 33% (válido únicamente para estancias de 7 noches)" data-rel="tooltip">
-                                                        <input type="checkbox" name="reservasUltimoMinuto" value="1" checked="checked">Reserva de último minuto
+                                                        <input type="checkbox" name="reservasUltimoMinuto" value="1" <?php if($apartamento['contrato'] && $apartamento['contrato']->reservasUltimoMinuto) echo 'checked="checked"';?>>Reserva de último minuto
                                                     </label> 
-                                                </div>                                        
+                                                </div>
+                                                <div class="control-group span3">
+                                                    <div class="input-prepend center span12" title="Días de anticipación" data-rel="tooltip" >
+                                                        <span class="add-on"><i class="icon-pencil"></i></span>
+                                                        <input autocomplete="off" class="input span10" name="diasReservasUltimoMinuto" id="diasReservasUltimoMinuto" 
+                                                               type="text" placeholder="Días" data-provide="typeahead" 
+                                                               data-items="10" data-source='[]' value="<?php echo $apartamento['contrato']->diasReservasUltimoMinuto; ?>"/>
+                                                    </div> 
+                                                </div>
+                                                <div class="control-group span3">
+                                                    <div class="input-prepend center span12" title="Porciento" data-rel="tooltip" >
+                                                        <span class="add-on"><i class="icon-pencil"></i></span>
+                                                        <input autocomplete="off" class="input span10" name="porcientoReservasUltimoMinuto" id="porcientoReservasUltimoMinuto" 
+                                                               type="text" placeholder="Porciento" data-provide="typeahead" 
+                                                               data-items="10" data-source='[]' value="<?php echo $apartamento['contrato']->porcientoReservasUltimoMinuto; ?>"/>
+                                                    </div> 
+                                                </div>
                                             </div>
-                                            <div class="span3">
+                                            <div class="row-fluid">
                                                 <div class="control-group">
                                                     <label class="checkbox inline" title="El propietario oferta a ClickAndBooking una estancia de una semana gratis en su casa de vacaciones con fines de márketing (no aplicable en temporada alta). A cambio, el propietario podrá elegir una estancia de una semana en una propiedad de ClickAndBooking de la misma categoría y calidad (no aplicable en temporada alta) Cualquier gasto adicional se pagará en el lugar" data-rel="tooltip">
-                                                        <input type="checkbox" name="semanaGratis" value="1" checked="checked">
+                                                        <input type="checkbox" name="semanaGratis" value="1" <?php if($apartamento['contrato'] && $apartamento['contrato']->semanaGratis) echo 'checked="checked"';?>>
                                                         Semana gratis
                                                     </label> 
                                                 </div>                                        
@@ -985,18 +953,18 @@ $edit = $this->getAttribute('edit');
                                         </div>
 
                                         <div class="row-fluid">
-                                            <div class="span3">
+                                            <div class="row-fluid">
                                                 <div class="control-group">
                                                     <label class="checkbox inline" title="Si durante las 8 semanas previas a la ocupación del alojamiento es más bajo del 25% sobre un periodo de 28 días, ClickAndBooking está autorizado a reducir el precio contratado por día y los gastos relacionados suplementarios del 20% para mejorar la tasa de ocupación." data-rel="tooltip">
-                                                        <input type="checkbox" name="especiales" value="1" checked="checked">
+                                                        <input type="checkbox" name="especiales" value="1" <?php if($apartamento['contrato'] && $apartamento['contrato']->especiales) echo 'checked="checked"';?>>
                                                         Especiales
                                                     </label> 
                                                 </div>                                        
                                             </div>
-                                            <div class="span3">
+                                            <div class="row-fluid">
                                                 <div class="control-group">
                                                     <label class="checkbox inline" title="¿El cliente ya firmo el contrato?" data-rel="tooltip">
-                                                        <input type="checkbox" name="firmado" value="1" checked="checked">
+                                                        <input type="checkbox" name="firmado" value="1" <?php if($apartamento['contrato'] && $apartamento['contrato']->firmado) echo 'checked="checked"';?>>
                                                         Firmado por el cliente
                                                     </label> 
                                                 </div>                                        
@@ -1016,7 +984,9 @@ $edit = $this->getAttribute('edit');
                             </form>
 
 
-                            <br />
+                            
+                    </div>
+                    <div class="row-fluid calendar_tarifas_main">
                         <input type="hidden" class="apartamentoId" name="idApartamento" value="<?php echo $apartamento['apartamento']->idApartamento; ?>"/>
                         <div class="portlet box calendar calendar_blue_border">
                             <div class="portlet-title calendar_blue_bg">
@@ -1042,6 +1012,7 @@ $edit = $this->getAttribute('edit');
                         </div>
                     </div>
                 </div>
+                
                 
             </div>
         </div>
@@ -1104,8 +1075,9 @@ $edit = $this->getAttribute('edit');
                 <div class="span6">
                     <div class="control-group">
                         <div class="input-prepend center span9" title="Fecha inicio" data-rel="tooltip">
-                            <div class="date-start input-append span12 date datepicker" data-date-format="dd-mm-yyyy">
-                                <input  class="span10 validate[required]" size="16" name="fechaInicio" type="text" readonly><span class="add-on"><i class="icon-th"></i></span>
+                            <label>Fecha Inicial</label>
+                            <div id="date-start" class="input-append span12 date datepicker" data-date-format="dd-mm-yyyy">
+                                <input  class="span10 validate[required] date-start" size="16" name="fechaInicio" type="text" readonly><span class="add-on"><i class="icon-th"></i></span>
                             </div>
                         </div> 
                     </div>
@@ -1113,8 +1085,9 @@ $edit = $this->getAttribute('edit');
                 <div class="span6">
                     <div class="control-group">
                         <div class="input-prepend center span9" title="Fecha final" data-rel="tooltip">
-                            <div class="date-end input-append span12 date datepicker" data-date-format="dd-mm-yyyy">
-                                <input  class="span10 validate[required]" size="16" name="fechaFinal" type="text" readonly><span class="add-on"><i class="icon-th"></i></span>
+                            <label>Fecha Final</label>
+                            <div id="date-end" class="input-append span12 date datepicker" data-date-format="dd-mm-yyyy">
+                                <input  class="span10 validate[required] date-end" size="16" name="fechaFinal" type="text" readonly><span class="add-on"><i class="icon-th"></i></span>
                             </div>
                         </div> 
                     </div>
@@ -1122,8 +1095,9 @@ $edit = $this->getAttribute('edit');
                 <div class="span12">
                     <div class="control-group">
                         <div class="input-prepend center span12" title="Disponibilidad" data-rel="tooltip">
+                            <label>Estatus</label>
                             <span class="add-on"><i class="icon-check"></i></span>
-                            <select class="span6 validate[required]" name="estatus">
+                            <select class="span8 validate[required]" name="estatus">
                                 <option value="" disabled>Disponibilidad</option>
                                     <option value="disponible">Disponible</option>
                                     <option value="no disponible">No Disponible</option>
@@ -1131,11 +1105,67 @@ $edit = $this->getAttribute('edit');
                         </div>
                     </div>
                 </div>
-                <div class="span12">
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
                     <div class="control-group">
                         <div class="input-prepend  center span12" title="Precio por noche" data-rel="tooltip">
+                            <label>Precio por noche</label>
                             <span class="add-on"><i class="icon-briefcase"></i></span>
-                            <input class="input-large span6 validate[required]" name="precio" type="text" placeholder="Precio por noche" data-prompt-position="topLeft:2%"/>
+                            <input class="input-large span8 validate[required, custom[number]] disponible" name="precio" type="text" placeholder="Precio por noche" data-prompt-position="topLeft:2%"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <div class="control-group">
+                        <div class="input-prepend  center span12" title="Descuento" data-rel="tooltip">
+                            <label>Descuento</label>
+                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                            <input class="input-large span8 validate[custom[number]] disponible" name="descuento" type="text" placeholder="Descuento" data-prompt-position="topLeft:2%"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <div class="control-group">
+                        <div class="input-prepend  center span12" title="Precio Final" data-rel="tooltip">
+                            <label>Precio Final</label>
+                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                            <input class="input-large span8 disponible" name="precioFinal" readOnly type="text" placeholder="Precio Final" data-prompt-position="topLeft:2%"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <div class="control-group">
+                        <div class="input-prepend  center span12" title="M&iacute;nimo de noches" data-rel="tooltip">
+                            <label>M&iacute;nimo de noches</label>
+                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                            <select class="span8 validate[required] disponible" name="minimoNoches">
+                                <?php for($i=0;$i<=30;$i++){ ?>
+                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                <?php } ?>    
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <div class="control-group">
+                        <div class="input-prepend  center span12" title="Precio por consumo" data-rel="tooltip">
+                            <label>Precio por consumo</label>
+                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                            <input class="input-large span8 validate[custom[number]] disponible" name="precioPorConsumo" type="text" placeholder="Precio por consumo" data-prompt-position="topLeft:2%"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <div class="control-group">
+                        <div class="input-prepend  center span12" title="Descuento por consumo" data-rel="tooltip">
+                            <label>Descuento por consumo</label>
+                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                            <input class="input-large span8 validate[custom[number]] disponible" name="descuentoPorConsumo" type="text" placeholder="Descuento por consumo" data-prompt-position="topLeft:2%"/>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 	 * Object represents table 'reservaciones_pagos'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2013-10-02 18:50	 
+     	 * @date: 2013-10-28 15:51	 
 	 */
 	class ReservacionesPago{
 		
@@ -22,7 +22,6 @@
 		var $comentario;
 		var $tipo;
 		var $idCuenta;
-		var $validado;
 		
 	}
 ?>

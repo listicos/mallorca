@@ -31,3 +31,16 @@ form.searchListForm{
 	width: 100%;
 	overflow: scroll;
 }
+
+#lista_disponibilidades tbody td.disponible,
+#lista_disponibilidades tbody td.sin_registro {
+    cursor: pointer;
+}
+
+#generar-cupon-btn {
+    display: block;
+    margin-left: 4px;
+    margin-top: -29px;
+    position: absolute;
+    right: 8px;
+}

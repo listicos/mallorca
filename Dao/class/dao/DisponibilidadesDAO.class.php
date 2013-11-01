@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2013-10-01 15:39
+ * @date: 2013-10-22 21:04
  */
 interface DisponibilidadesDAO{
 
@@ -65,7 +65,17 @@ interface DisponibilidadesDAO{
 
 	public function queryByAnotacion($value);
 
-	public function queryByPrecioContrato($value);
+	public function queryByDescuento($value);
+
+	public function queryByMinimoNoches($value);
+
+	public function queryByPrecioPorConsumo($value);
+
+	public function queryByDescuentoPorConsumo($value);
+
+	public function queryByCuponPromocional($value);
+
+	public function queryByDescuentoPorCupon($value);
 
 
 	public function deleteByFechaInicio($value);
@@ -82,7 +92,17 @@ interface DisponibilidadesDAO{
 
 	public function deleteByAnotacion($value);
 
-	public function deleteByPrecioContrato($value);
+	public function deleteByDescuento($value);
+
+	public function deleteByMinimoNoches($value);
+
+	public function deleteByPrecioPorConsumo($value);
+
+	public function deleteByDescuentoPorConsumo($value);
+
+	public function deleteByCuponPromocional($value);
+
+	public function deleteByDescuentoPorCupon($value);
 
 
 }

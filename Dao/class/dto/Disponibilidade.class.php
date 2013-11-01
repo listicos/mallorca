@@ -3,7 +3,7 @@
 	 * Object represents table 'disponibilidades'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2013-10-01 15:39	 
+     	 * @date: 2013-10-22 21:04	 
 	 */
 	class Disponibilidade{
 		
@@ -15,7 +15,12 @@
 		var $estatus;
 		var $idApartamento;
 		var $anotacion;
-		var $precioContrato;
+		var $descuento;
+		var $minimoNoches;
+		var $precioPorConsumo;
+		var $descuentoPorConsumo;
+		var $cuponPromocional;
+		var $descuentoPorCupon;
 		
 	}
 ?>

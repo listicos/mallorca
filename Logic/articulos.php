@@ -95,6 +95,29 @@ function getArticulosByApartamento($idApartamento) {
     }
 }
 
+function getArticulosListByApartamento($idApartamento) {
+    try {
+        $articulo_apto = DAOFactory::getApartamentosArticulosDAO()->queryByIdApartamento($idApartamento);
+        $articulos = array();
+        foreach ($articulo_apto as $aa) {
+            $a = DAOFactory::getArticulosDAO()->load($aa->idArticulo);
+            array_push($articulos, $a);
+        }
+        return $articulos;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+function getArticulosByReserva($idReserva) {
+    try {
+        $articulos = DAOFactory::getReservacionesArticulosDAO()->queryByIdReservacion($idReserva);
+        return $articulos;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 function deleteApartamentosArticulos($idApartamento) {
     try {
         $transaction = new Transaction();

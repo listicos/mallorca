@@ -2,6 +2,8 @@
 
 $usuario_core->validateUser();
 
+AllowRoles("Administrador, Socio, Reserva");
+
 $template = new Core_template('admin/template.php');
 $template->setAttribute('is_visible_header', true);
 $template->setAttribute('is_visible_sidebar', true);
@@ -30,6 +32,22 @@ if(isset($_GET['id'])) {
     $template->setAttribute('reserva', $reserva);
     $template->setAttribute('apartamento', $apartamento);
     $template->setAttribute('usuario', $usuario);
+    
+    $articulos = getArticulosListByApartamento($apartamento->idApartamento);
+    $template->setAttribute('articulos', $articulos);
+    
+    $articulos_reserva = getArticulosByReserva($reserva_id);
+    if(count($articulos_reserva) > 0) {
+        $ar = array();
+        foreach ($articulos_reserva as $a)
+            $ar[$a->idArticulo] = $a->cantidad;
+        $template->setAttribute('articulos_reserva', $ar);
+    }
+    
+    if(!isset($ar)) $ar = array();
+    
+    $desglosedPrice = getTotalPriceComplete($apartamento->idApartamento,strtotime($reserva->fechaEntrada),strtotime($reserva->fechaSalida), $ar, $reserva->adultos);
+    $template->setAttribute('precio_desglosado', $desglosedPrice);
 }
 
 $template->setTitle("Centro de reserva");

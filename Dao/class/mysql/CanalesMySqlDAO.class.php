@@ -3,7 +3,7 @@
  * Class that operate on table 'canales'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2013-10-01 15:39
+ * @date: 2013-10-18 18:13
  */
 class CanalesMySqlDAO implements CanalesDAO{
 
@@ -57,12 +57,14 @@ class CanalesMySqlDAO implements CanalesDAO{
  	 * @param CanalesMySql canale
  	 */
 	public function insert($canale){
-		$sql = 'INSERT INTO canales (nombre, comision, senia) VALUES (?, ?, ?)';
+		$sql = 'INSERT INTO canales (nombre, comision, senia, dias_tolerancia, porcentaje_comision) VALUES (?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($canale->nombre);
 		$sqlQuery->set($canale->comision);
 		$sqlQuery->set($canale->senia);
+		$sqlQuery->setNumber($canale->diasTolerancia);
+		$sqlQuery->set($canale->porcentajeComision);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$canale->idCanal = $id;
@@ -75,12 +77,14 @@ class CanalesMySqlDAO implements CanalesDAO{
  	 * @param CanalesMySql canale
  	 */
 	public function update($canale){
-		$sql = 'UPDATE canales SET nombre = ?, comision = ?, senia = ? WHERE id_canal = ?';
+		$sql = 'UPDATE canales SET nombre = ?, comision = ?, senia = ?, dias_tolerancia = ?, porcentaje_comision = ? WHERE id_canal = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($canale->nombre);
 		$sqlQuery->set($canale->comision);
 		$sqlQuery->set($canale->senia);
+		$sqlQuery->setNumber($canale->diasTolerancia);
+		$sqlQuery->set($canale->porcentajeComision);
 
 		$sqlQuery->setNumber($canale->idCanal);
 		return $this->executeUpdate($sqlQuery);
@@ -116,6 +120,20 @@ class CanalesMySqlDAO implements CanalesDAO{
 		return $this->getList($sqlQuery);
 	}
 
+	public function queryByDiasTolerancia($value){
+		$sql = 'SELECT * FROM canales WHERE dias_tolerancia = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByPorcentajeComision($value){
+		$sql = 'SELECT * FROM canales WHERE porcentaje_comision = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
 
 	public function deleteByNombre($value){
 		$sql = 'DELETE FROM canales WHERE nombre = ?';
@@ -138,6 +156,20 @@ class CanalesMySqlDAO implements CanalesDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByDiasTolerancia($value){
+		$sql = 'DELETE FROM canales WHERE dias_tolerancia = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByPorcentajeComision($value){
+		$sql = 'DELETE FROM canales WHERE porcentaje_comision = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 
 	
 	/**
@@ -152,6 +184,8 @@ class CanalesMySqlDAO implements CanalesDAO{
 		$canale->nombre = $row['nombre'];
 		$canale->comision = $row['comision'];
 		$canale->senia = $row['senia'];
+		$canale->diasTolerancia = $row['dias_tolerancia'];
+		$canale->porcentajeComision = $row['porcentaje_comision'];
 
 		return $canale;
 	}

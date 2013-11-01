@@ -81,5 +81,16 @@ else if(strcmp($action, 'cambiarEstatus') == 0) {
     }
 }
 
+else if (strcmp($action, "articulosByApto") == 0) { 
+
+    $aptoid = $_POST['apartamentoId'];
+    
+    $articulos = getArticulosListByApartamento($aptoid);
+    
+    $result['msg'] = 'ok';
+    $result['data'] = $articulos;
+    
+}
+
 echo json_encode($result);
 ?>

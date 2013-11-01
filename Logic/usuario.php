@@ -137,7 +137,12 @@ function getFriendsUsuarioByName($idUsuario, $friendName) {
 
 function searchUsuarios($args) {
     try {
-        return DAOFactory::getUsuariosDAO()->querySearch($args);
+        $usuarios = DAOFactory::getUsuariosDAO()->querySearch($args);
+        foreach ($usuarios as $u) {
+            if($u->idUsuarioGrupo)
+                $u->grupo = DAOFactory::getUsuariosGruposDAO ()->load($u->idUsuarioGrupo);
+        }
+        return $usuarios;
     } catch (Exception $e) {
         return array();
     }
@@ -186,6 +191,42 @@ function searchUsuariosByTerm($args) {
         return DAOFactory::getUsuariosDAO()->queryBuscar($args);
     } catch (Exception $e) {
         return array();
+    }
+}
+
+function getUsuariosGrupos() {
+    try {
+        return DAOFactory::getUsuariosGruposDAO()->queryAll();
+    } catch (Exception $e) {
+        return array();
+    }
+}
+
+function getUsuarioGrupo($usuarioGrupoId) {
+    try {
+        return DAOFactory::getUsuariosGruposDAO()->load($usuarioGrupoId);
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+function deleteUsuario($idUsuario) {
+    try {
+        //start new transaction	
+        $transaction = new Transaction();
+
+        DAOFactory::getUsuariosDAO()->delete($idUsuario);
+        
+        registrarAccion("delete", "usuarios", $idUsuario);
+
+        $transaction->commit();
+
+        return true;
+    } catch (Exception $e) {
+        var_dump($e);
+        if ($transaction)
+            $transaction->rollback();
+        return false;
     }
 }
 

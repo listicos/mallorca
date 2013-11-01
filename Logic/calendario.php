@@ -20,7 +20,7 @@ function insertDisponibilidad($data = array()) {
 function updateDisponibilidad($idDisponibilidad, $data = array()){
     try {
         $transaction = new Transaction();
-
+        
         $disponibilidad = DAOFactory::getDisponibilidadesDAO()->prepare($data, $idDisponibilidad);
         DAOFactory::getDisponibilidadesDAO()->update($disponibilidad);
 
