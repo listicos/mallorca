@@ -79,6 +79,9 @@
                 <div class="menu_custom_templete">
                     <ul class="nav nav-tabs nav-stacked main-menu">
                         <li class="nav-tabs nav_header_templete hidden-tablet "></li>
+                        <?php if(hasRoles("Administrador, Socio, Reserva")) { ?>
+                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-inicio"><i class="icon-home"></i><span class="hidden-tablet"> Inicio</span></a></li>
+                        <?php } ?>
                         <?php if(hasRoles("Administrador, Socio")) { ?>
                          <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-calendario"><i class="icon-plus"></i><span class="hidden-tablet"> Rentabilidad</span></a></li>
                         <?php } ?>

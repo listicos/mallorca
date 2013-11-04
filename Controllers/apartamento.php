@@ -104,20 +104,19 @@ if($disponibilidades){
     foreach ($disponibilidades as $d) {
         $disponibles[] = date('Y-n-j',strtotime($d->fechaInicio));
     }
-    $template->setJsVar('disponibles',json_encode($disponibles));
+    $smarty->assign('disponibles',json_encode($disponibles));
 }
-/*
-$template->setAttribute('entrada', $_SESSION['fechaInicio']);
-$template->setAttribute('salida', $_SESSION['fechaFinal']);
-$template->setAttribute('huespedes', $_SESSION['huespedes']);
 
-$template->setAttribute('provincia', $_SESSION['provincia']);
-$template->setAttribute('ciudad', $_SESSION['ciudad']);
-$template->setAttribute('menor_precio',$menor_precio);
+$smarty->assign('entrada', $_SESSION['fechaInicio']);
+$smarty->assign('salida', $_SESSION['fechaFinal']);
+$smarty->assign('huespedes', $_SESSION['huespedes']);
 
-$template->setAttribute('apartamento', $apartamentos_array);
-$template->setJsVar('lat', $direccion->lat);
-$template->setJsVar('lon', $direccion->lon);
-*/
+
+$smarty->assign('menor_precio',$menor_precio);
+
+$smarty->assign('apartamento', $apartamentos_array);
+$smarty->assign('lat', $direccion->lat);
+$smarty->assign('lon', $direccion->lon);
+
 $smarty->display('apartamento.tpl');
 ?>

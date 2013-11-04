@@ -733,3 +733,7 @@ h1.title_no_contrato{
     -webkit-animation-iteration-count: infinite!important;
     animation-iteration-count: infinite!important;
 }
+
+.contenedor_lista {
+    margin-bottom: 100px;
+}

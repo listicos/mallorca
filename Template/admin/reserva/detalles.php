@@ -151,7 +151,7 @@ if($this->getAttribute('print')) {
                                 <td style="background: transparent;padding: 0; border: 0;">
                                     <table style="border-right: 0;margin-bottom: 0;" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered bootstrap-datatable" id="reservas_detalles_importes" >
                                         <tbody>
-                                            <?php foreach($reserva['reserva']->pagos as $pago) {?>
+                                            <?php  if($reserva['reserva']->pagos) foreach($reserva['reserva']->pagos as $pago) {?>
                                             <tr>
                                                 <td style="width: 40%; background: transparent;; background: transparent;">Forma de pago:</td>
                                                 <td style="background: transparent;"><?php echo $pago->tipo ?></td>
@@ -228,7 +228,7 @@ if($this->getAttribute('print')) {
                                 <td style="background: transparent;padding: 0; border: 0;">
                                     <table style="border-right: 0;margin-bottom: 0;" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered bootstrap-datatable" id="reservas_detalles_importes" >
                                         <tbody>
-                                            <?php foreach($reserva['reserva']->pagosFianza as $pago) {?>
+                                            <?php if($reserva['reserva']->pagosFianza) foreach($reserva['reserva']->pagosFianza as $pago) {?>
                                             <tr>
                                                 <td style="width: 40%; background: transparent;; background: transparent;">Forma de pago:</td>
                                                 <td style="background: transparent;"><?php echo $pago->tipo ?></td>

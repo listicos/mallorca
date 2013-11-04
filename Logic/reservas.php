@@ -295,4 +295,32 @@ function getReservasParaHoy() {
     }
 }
 
+function getReservasParaHoyManana() {
+    try {
+        $estado = "Aprobado";
+        $fecha = date("Y-m-d");
+        
+        $rs_hoy = DAOFactory::getReservacionesDAO()->queryByEstatusAndFechaEntrada($estado, $fecha);
+        $fecha = date("Y-m-d", strtotime("+1 days"));
+        $rs_manana = DAOFactory::getReservacionesDAO()->queryByEstatusAndFechaEntrada($estado, $fecha);
+        return array_merge($rs_hoy, $rs_manana);
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+function getReservasDeHoyAyer() {
+    try {
+        $estado = "Aprobado";
+        $fecha = date("Y-m-d");
+        $rs_hoy = DAOFactory::getReservacionesDAO()->queryByFechaCreacion($fecha);
+        $fecha = date("Y-m-d", strtotime("-1 days"));
+        $rs_ayer = DAOFactory::getReservacionesDAO()->queryByFechaCreacion($fecha);
+        return array_merge($rs_hoy, $rs_ayer);
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+
 ?>

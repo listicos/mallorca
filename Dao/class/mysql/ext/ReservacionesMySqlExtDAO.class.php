@@ -93,6 +93,14 @@ class ReservacionesMySqlExtDAO extends ReservacionesMySqlDAO {
             $sqlQuery->setNumber($idApartamento);
             return $this->getList($sqlQuery);
     }
+    
+    public function queryByFechaCreacion($fecha){
+            $sql = 'SELECT * FROM reservaciones ';
+            $sql .= ' WHERE UNIX_TIMESTAMP(tiempo_creacion) BETWEEN UNIX_TIMESTAMP("'.$fecha.'") AND UNIX_TIMESTAMP("'.date("Y-m-d", strtotime($fecha) + 86400).'")';
+            
+            $sqlQuery = new SqlQuery($sql);
+            return $this->getList($sqlQuery);
+    }
 
 }
 
