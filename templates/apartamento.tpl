@@ -2,7 +2,7 @@
 
 {block name="script" append}
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-    
+    <script src="{$template_url}/js/apartamento.js"></script>
 {/block}
 
 {block name="style" append}
@@ -20,7 +20,8 @@
                 <div class="col-xs-12">      
                     <h5>
                         <a href="" class="property-type">{$apartamento['apartamento']->tipo->nombre}</a>
-                        
+                        <input type="hidden" name="lat" value="{$apartamento['direccion']->lat}">
+                        <input type="hidden" name="lon" value="{$apartamento['direccion']->lon}">
                         <span class="middot">·</span>
                         <span id="display-address" data-location="Riviera Maya, Cancun, Quintana Roo, México">
                             {$apartamento['direccion']->provincia}, {$apartamento['direccion']->paisNombre}
@@ -32,12 +33,12 @@
                 <div class="columna-izquierda col-md-8">
                     <div class="container-fotos">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#"><font><font class="">Casa</font></font></a></li>
-                            <li><a href="#"><font><font>Perfil</font></font></a></li>
-                            <li><a href="#"><font><font class="">Mensajes</font></font></a></li>
+                            <li class="active"><a href="#carousel-apto"><font><font class="">Casa</font></font></a></li>
+                            <li><a href="#mapaContainer"><font><font>Mapa</font></font></a></li>
+                            <li><a href="#"><font><font class="">Calendario</font></font></a></li>
                         </ul>
 
-                        <div class="corousel_apartamentos">
+                        <div id="carousel-apto" class="corousel_apartamentos">
                             <div id="carousel-example-captions" class="carousel slide bs-docs-carousel-example">
                                 <ol class="carousel-indicators">
                                     {foreach from=$apartamento['adjuntos'] item=adjunto name=fotos}
@@ -64,6 +65,14 @@
                                     <span class="icon-next"></span>
                                 </a>
                             </div>
+                        </div>
+                                    
+                        <div id="mapaContainer" class="mapaContainer ">
+                            <div id="mapa"></div>
+                        </div>
+                                    
+                        <div id="calendarioContainer" class="calendarioContainer ">
+                            <div></div>
                         </div>
                     </div>
 

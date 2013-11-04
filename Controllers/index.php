@@ -24,6 +24,9 @@ foreach ($apartamentos as $akey => $apartamento) {
     
     if($apartamento->tarifaBase > $maxPrice) $maxPrice = $apartamento->tarifaBase;
     if($apartamento->tarifaBase < $minPrice) $minPrice = $apartamento->tarifaBase;
+    
+    $comments = getOpinionesByApartamento($apartamento->idApartamento);
+    $apartamentos_array[$akey]['opiniones'] = $comments;
 }
 $dia_comienzo = date("d-m-Y",mktime(0, 0, 0, date("m"), date("d")+1, date("y")));
 

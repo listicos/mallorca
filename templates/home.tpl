@@ -9,6 +9,9 @@
     </script>
 {/block}
 
+{block name="style" append}
+<link href="{$template_url_s}/css/home.css" rel="stylesheet">
+{/block}
 
 {block name="content" append}
 <div class="container-liquid header">
@@ -121,7 +124,7 @@
                             <a href="#" onclick="return false;" class="btn btn-default hidden">Más filtros</a>
                         </div>
                         <div class="col-lg-6">
-                            <p><span class="badge">12 anuncios</span> · Mallorca, Islas Baleares, España</p>
+                            <p><span class="badge">{count($apartamentos)} anuncios</span> · Mallorca, Islas Baleares, España</p>
                         </div>
                     </div>
                     <div class="row result-list-container">
@@ -134,9 +137,9 @@
                                                 <img src="{$template_url}{$b->ruta}" alt="{$a['apartamento']->nombre}">
                                                 <div class="carousel-caption">
                                                     <p>{$a['apartamento']->nombre}</p>
-                                                    <span class="comments-icon">2</span>
+                                                    <span class="comments-icon">{count($a['opiniones'])}</span>
                                                 </div>
-                                                <div class="add-to-wishlist"></div>
+                                                <!--<div class="add-to-wishlist"></div>-->
                                             </div>
                                         {/foreach}
                                     </div>
@@ -154,6 +157,18 @@
                                     <input type="hidden" name="nombre" value="{$a['apartamento']->nombre}">
                                     <input type="hidden" name="lat" value="{$a['apartamento']->direccion->lat}">
                                     <input type="hidden" name="lon" value="{$a['apartamento']->direccion->lon}">
+                                <div class="col-md-12 acciones-apto">
+                                    <div class="col-md-4">
+                                        <span class="priceApto">&euro;{$a['apartamento']->tarifaBase|number_format:2:",":"."}</span>
+                                        <span>Por&nbsp;noche</span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success">Resérvalo</a>
+                                    </div>
+                                </div>
                             </div>
                         {/foreach}
                     </div>

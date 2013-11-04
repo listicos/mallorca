@@ -6,7 +6,7 @@
                     <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
                         <img src="{$template_url}{$b->ruta}" alt="{$a->nombre}">
                         <div class="carousel-caption">
-                            <p>{$a->nombre}</p>
+                            <p><a href="{$base_url}/apartamento/id:{$a->idApartamento}">{$a->nombre}</a></p>
                             <span class="comments-icon">2</span>
                         </div>
                         <div class="add-to-wishlist"></div>
