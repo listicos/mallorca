@@ -309,14 +309,28 @@ function getReservasParaHoyManana() {
     }
 }
 
-function getReservasDeHoyAyer() {
+function getReservasSalidaParaHoyManana() {
     try {
         $estado = "Aprobado";
         $fecha = date("Y-m-d");
-        $rs_hoy = DAOFactory::getReservacionesDAO()->queryByFechaCreacion($fecha);
-        $fecha = date("Y-m-d", strtotime("-1 days"));
-        $rs_ayer = DAOFactory::getReservacionesDAO()->queryByFechaCreacion($fecha);
-        return array_merge($rs_hoy, $rs_ayer);
+        
+        $rs_hoy = DAOFactory::getReservacionesDAO()->queryByEstatusAndFechaSalida($estado, $fecha);
+        $fecha = date("Y-m-d", strtotime("+1 days"));
+        $rs_manana = DAOFactory::getReservacionesDAO()->queryByEstatusAndFechaSalida($estado, $fecha);
+        return array_merge($rs_hoy, $rs_manana);
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+function getReservasRecientes($dias) {
+    try {
+        $estado = "Aprobado";
+        $fechaPost = date("Y-m-d");
+        $fechaAnt = date("Y-m-d", strtotime("-".$dias." days"));
+        $rs = DAOFactory::getReservacionesDAO()->queryByFechaCreacionInRange($fechaAnt, $fechaPost);
+        
+        return $rs;
     } catch (Exception $e) {
         return false;
     }

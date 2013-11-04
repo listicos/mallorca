@@ -1,6 +1,9 @@
 <?php
+
+
 $idApartamento = $_GET['id'];
 $apartamento = getApartamento($idApartamento);
+$apartamento->tipo = getTipoApartamento($apartamento->idApartamentosTipo);
 
 $apartamentos_array = array();
 $apartamentos_array['apartamento'] = $apartamento;
@@ -12,8 +15,11 @@ foreach ($apartamentosAdjuntos as $adkey => $apartamentoAdjunto) {
 }
 
 $direccion = getDireccion($apartamento->idDireccion);
-if($pais = getPais($direccion->idPais))
-$direccion->paisNombre = $pais->nombreCompleto;
+if($direccion->idPais && $pais = getPais($direccion->idPais))
+    $direccion->paisNombre = $pais->nombreCompleto;
+
+    
+
 $apartamentos_array['direccion'] = $direccion;
 
 $opiniones = getOpinionesByApartamento($idApartamento);
@@ -21,6 +27,7 @@ if (count($opiniones) > 0) {
     $total_puntuacion = 0;
     foreach ($opiniones as $opkey => $opinion) {
         $opiniones[$opkey]->fechaCreacion = date('d/m/Y', strtotime($opiniones[$opkey]->fechaCreacion));
+        $opiniones[$opkey]->usuario = getUsuario($opiniones[$opkey]->idUsuario);
         $total_puntuacion += floatval($opiniones[$opkey]->puntuacion);
     }
 

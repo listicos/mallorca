@@ -13,12 +13,12 @@ $apartamentos = $this->getAttribute('apartamentos');
 
 <div class="span11 sidebar-nav-content-custom">
     <div class="contenedor_lista">
-        <h1>Reservas de hoy - ayer</h1>
+        <h1>Check-in</h1>
         <div class="hotel_container_data">
             <div class="column_custom">
                  
                 <div class="listado_boostrap">
-                    <table cellpadding="0" cellspacing="0" border="0" class="panel_lista_tabla table table-striped table-bordered bootstrap-datatable" id="reservasDeHoy_table_list" >
+                    <table cellpadding="0" cellspacing="0" border="0" class="panel_lista_tabla table table-striped table-bordered bootstrap-datatable" id="checkIn_table_list" >
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -28,8 +28,8 @@ $apartamentos = $this->getAttribute('apartamentos');
                                 <th>Fecha</th>
                                 <th>Noches</th>
                                 <th>PAX</th>
-                                <th>Entrada</th>
-                                <th>Salida</th>
+                                <th>Check-in</th>
+                                <th>Check-out</th>
                                 <th>Forma Pago</th>
                                 <th>Estado</th>
                                 <th style="width: 10%;">Acciones</th>
@@ -48,9 +48,9 @@ $apartamentos = $this->getAttribute('apartamentos');
 
         <div class="hotel_container_data">
             <div class="column_custom">
-                <h1>Reservas para hoy - ma&ntilde;ana</h1>
+                <h1>Check-out</h1>
                 <div class="listado_boostrap">
-                    <table cellpadding="0" cellspacing="0" border="0" class="panel_lista_tabla table table-striped table-bordered bootstrap-datatable" id="reservasParaHoy_table_list" >
+                    <table cellpadding="0" cellspacing="0" border="0" class="panel_lista_tabla table table-striped table-bordered bootstrap-datatable" id="checkOut_table_list" >
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -60,8 +60,40 @@ $apartamentos = $this->getAttribute('apartamentos');
                                 <th>Fecha</th>
                                 <th>Noches</th>
                                 <th>PAX</th>
-                                <th>Entrada</th>
-                                <th>Salida</th>
+                                <th>Check-in</th>
+                                <th>Check-out</th>
+                                <th>Forma Pago</th>
+                                <th>Estado</th>
+                                <th style="width: 10%;">Acciones</th>
+                            </tr>      
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="contenedor_lista">
+
+        <div class="hotel_container_data">
+            <div class="column_custom">
+                <h1>Reservas Recientes</h1>
+                <div class="listado_boostrap">
+                    <table cellpadding="0" cellspacing="0" border="0" class="panel_lista_tabla table table-striped table-bordered bootstrap-datatable" id="reservasRecientes_table_list" >
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Código</th>
+                                <th>Huésped</th>
+                                <th>Total</th>
+                                <th>Fecha</th>
+                                <th>Noches</th>
+                                <th>PAX</th>
+                                <th>Check-in</th>
+                                <th>Check-out</th>
                                 <th>Forma Pago</th>
                                 <th>Estado</th>
                                 <th style="width: 10%;">Acciones</th>

@@ -86,6 +86,14 @@ class ReservacionesMySqlExtDAO extends ReservacionesMySqlDAO {
             return $this->getList($sqlQuery);
     }
     
+    public function queryByEstatusAndFechaSalida($estado, $fecha){
+            $sql = 'SELECT * FROM reservaciones WHERE estatus = ? AND fecha_salida = ?';
+            $sqlQuery = new SqlQuery($sql);
+            $sqlQuery->set($estado);
+            $sqlQuery->set($fecha);
+            return $this->getList($sqlQuery);
+    }
+    
     public function queryByApartamentoIdAndFecha($idApartamento, $fecha){
             $sql = 'SELECT * FROM reservaciones WHERE id_apartamento = ? AND ';
             $sql .= ' UNIX_TIMESTAMP("'.$fecha.'") BETWEEN UNIX_TIMESTAMP(fecha_entrada) AND UNIX_TIMESTAMP(fecha_salida)';
@@ -97,6 +105,14 @@ class ReservacionesMySqlExtDAO extends ReservacionesMySqlDAO {
     public function queryByFechaCreacion($fecha){
             $sql = 'SELECT * FROM reservaciones ';
             $sql .= ' WHERE UNIX_TIMESTAMP(tiempo_creacion) BETWEEN UNIX_TIMESTAMP("'.$fecha.'") AND UNIX_TIMESTAMP("'.date("Y-m-d", strtotime($fecha) + 86400).'")';
+            
+            $sqlQuery = new SqlQuery($sql);
+            return $this->getList($sqlQuery);
+    }
+    
+    public function queryByFechaCreacionInRange($fechaInicio, $fechaFin){
+            $sql = 'SELECT * FROM reservaciones ';
+            $sql .= ' WHERE UNIX_TIMESTAMP(tiempo_creacion) BETWEEN UNIX_TIMESTAMP("'.$fechaInicio.'") AND UNIX_TIMESTAMP("'.date("Y-m-d", strtotime($fechaFin)).'")';
             
             $sqlQuery = new SqlQuery($sql);
             return $this->getList($sqlQuery);

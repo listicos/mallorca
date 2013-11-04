@@ -655,6 +655,15 @@ function getTiposApartamentos() {
     }
 }
 
+function getTipoApartamento($idTipo) {
+    try {
+        $tipoApartamentos = DAOFactory::getApartamentosTiposDAO()->load($idTipo);
+        return $tipoApartamentos;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 function deleteAllInstalacionesByApartamento($idApartamento){
     try {
         $transaction = new Transaction();

@@ -7,23 +7,24 @@ $(document).ready(function(){
 });
 
 function inicioInit() {
-    getReservasParaHoyByArgs();
-    getReservasDeHoyByArgs();
+    getReservasCheckInByArgs();
+    getReservasCheckOutByArgs();
+    getReservasRecientesByArgs();
 }
 
-function getReservasParaHoyByArgs(){
+function getReservasCheckInByArgs(){
     LAST_LOAD_RES = 20;
     
     
-    $('#reservasParaHoy_table_list').find('tbody').append(AJAX_MAIN);
+    $('#checkIn_table_list').find('tbody').append(AJAX_MAIN);
     $.ajax({
         dataType: 'json',
         url: BASE_URL + '/admin-ajax-inicio-filtros',
         type: 'POST',
-        data: {action:'reservasParaHoy', limit: LAST_LOAD_RES},
+        data: {action:'checkIn', limit: LAST_LOAD_RES},
         success: function(response){
             if(response.msg == 'ok'){
-                $('#reservasParaHoy_table_list').find('tbody').html(response.html)
+                $('#checkIn_table_list').find('tbody').html(response.html)
                 reservaDetallesOverlay();
                 enviarCorreoFromList();
                 changeStatusReserva();
@@ -33,19 +34,41 @@ function getReservasParaHoyByArgs(){
     });
 }
 
-function getReservasDeHoyByArgs(){
+function getReservasCheckOutByArgs(){
     LAST_LOAD_RES = 20;
     
     
-    $('#reservasDeHoy_table_list').find('tbody').append(AJAX_MAIN);
+    $('#checkOut_table_list').find('tbody').append(AJAX_MAIN);
     $.ajax({
         dataType: 'json',
         url: BASE_URL + '/admin-ajax-inicio-filtros',
         type: 'POST',
-        data: {action:'reservasDeHoy', limit: LAST_LOAD_RES},
+        data: {action:'checkOut', limit: LAST_LOAD_RES},
         success: function(response){
             if(response.msg == 'ok'){
-                $('#reservasDeHoy_table_list').find('tbody').html(response.html)
+                $('#checkOut_table_list').find('tbody').html(response.html)
+                reservaDetallesOverlay();
+                enviarCorreoFromList();
+                changeStatusReserva();
+            }
+            IS_GETTING_RES = false;
+        }
+    });
+}
+
+function getReservasRecientesByArgs(){
+    LAST_LOAD_RES = 20;
+    
+    
+    $('#reservasRecientes_table_list').find('tbody').append(AJAX_MAIN);
+    $.ajax({
+        dataType: 'json',
+        url: BASE_URL + '/admin-ajax-inicio-filtros',
+        type: 'POST',
+        data: {action:'reservasRecientes', limit: LAST_LOAD_RES},
+        success: function(response){
+            if(response.msg == 'ok'){
+                $('#reservasRecientes_table_list').find('tbody').html(response.html)
                 reservaDetallesOverlay();
                 enviarCorreoFromList();
                 changeStatusReserva();
