@@ -12,13 +12,23 @@ function initApartamento() {
             $(ant).hide();
             $(this).parent().addClass('active');
             $($(this).attr('href')).show();
+            if($(this).attr('href').replace('#', "") == 'mapaContainer' && !mapa) {
+                initialize();
+                mapa = true;
+            }
+            if($(this).attr('href').replace('#', "") == 'calendarioContainer' && !calendar) {
+                initCalendar();
+                calendar = true;
+            }
         }
     });
     
-    initCalendar();
     
-    initialize();
+    
+    
 }
+
+var mapa, calendar;
 
 function initialize() {
     var myLatlng = new google.maps.LatLng($('input[name=lat]').val(), $('input[name=lon]').val());
@@ -45,7 +55,7 @@ function initCalendar() {
             if(response.msg == 'ok'){
                 var _tarifas = response.tarifas
                 if(_tarifas.length > 0){
-                    var tarifas_array = []
+                    var tarifas_array = [];
                     for(var i=0;i < _tarifas.length;i++){
                         var tarifa_temp;
                         var price = _tarifas[i].precio ? _tarifas[i].precio+"€" : " 0,00€";
@@ -67,6 +77,7 @@ function initCalendar() {
         }
     })
 }
+
 
 function setTarifasToCalendar(tarifas){
     h = {
