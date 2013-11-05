@@ -93,6 +93,7 @@ if ($sugerencias) {
 if($suge_counter>0)
 $apartamentos_array['sugerencias'] = $sugerencias;
 
+
 $apartamentos_array['instalaciones'] = $instalaciones_array;
 
 $precio = getTotalPrice($idApartamento,strtotime($_SESSION['fechaInicio']),strtotime($_SESSION['fechaFinal']));

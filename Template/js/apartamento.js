@@ -37,6 +37,10 @@ function initialize() {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         center: myLatlng
     }
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map
+    });
     map = new google.maps.Map(document.getElementById('mapa'), mapOptions);
     google.maps.event.trigger(map, 'resize');
     map.setCenter(myLatlng);

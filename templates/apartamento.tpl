@@ -289,6 +289,25 @@
                             </div>
                         </div>
                     </div>
+                                    
+                    <div id="cercanos" class="contenedor-calendario panel panel-default">
+                        <div class="panel-heading">
+                            <h1 class="text-center panel-title">Anuncios similares</h1>
+                        </div>
+                        <div class="panel-body">
+                            {foreach from=$apartamento['sugerencias'] item=sugerencia}
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <a href="{$base_url}/apartamento/id:{$sugerencia->idApartamento}"><img src="{$sugerencia->adjuntoImg}" class="sugerencia-picture"></a>
+                                </div>
+                                <div class="col-md-7">
+                                    <span class="distancia">a {$sugerencia->distancia} km de distancia</span><br/>
+                                    <span>{$sugerencia->precio_base}</span><br/>                                    
+                                </div>
+                            </div>
+                            {/foreach}
+                        </div>
+                    </div>
                 </div> 
             </div>
         </div>

@@ -76,9 +76,9 @@
     border-top: none;
 }
 
-.mapaContainer div {
-    width: 100%;
-    height: 100%;
+#mapa {
+    width: 708px;
+    height: 429px;
 }
 
 .calendarioContainer > div {
@@ -121,4 +121,30 @@ div.leyenda {
 
 .leyenda.anterior {
     background-color: #dddddd;
+}
+
+.sugerencia-picture {
+    width: 100%;
+    height: 85px;
+    border-radius: 4px;
+    border: 1px solid;
+}
+
+.distancia {
+    color: #89DBFF;
+}
+
+#cercanos .row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dddddd;
+}
+
+#cercanos .row:first-child {
+    padding-top: 0;
+}
+
+#cercanos .row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
 }
