@@ -17,7 +17,7 @@ function initApartamento() {
     
     initCalendar();
     
-    //initialize();
+    initialize();
 }
 
 function initialize() {
