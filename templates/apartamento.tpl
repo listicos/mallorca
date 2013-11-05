@@ -3,10 +3,15 @@
 {block name="script" append}
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="{$template_url}/js/apartamento.js"></script>
+    <script src="{$template_url}/js/admin/calendar/app.js"></script>
+    <script src="{$template_url}/js/admin/calendar/breakpoints.js"></script>
+    <script src="{$template_url}/js/admin/calendar/calendar.js"></script>
+    <script src="{$template_url}/js/admin/fullcalendar.min.js"></script>
 {/block}
 
 {block name="style" append}
 <link href="{$template_url_s}/css/apartamento.css" rel="stylesheet">
+<link href="{$template_url}/css/admin/fullcalendar.css" rel="stylesheet">
 {/block}
 
 {block name="content" append}
@@ -31,11 +36,11 @@
             </div>
             <div class="contenedor-columnas row-fluid">
                 <div class="columna-izquierda col-md-8">
-                    <div class="container-fotos">
+                    <div class="container-fotos" id="tabs1">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#carousel-apto"><font><font class="">Casa</font></font></a></li>
                             <li><a href="#mapaContainer"><font><font>Mapa</font></font></a></li>
-                            <li><a href="#"><font><font class="">Calendario</font></font></a></li>
+                            <li><a href="#calendarioContainer"><font><font class="">Calendario</font></font></a></li>
                         </ul>
 
                         <div id="carousel-apto" class="corousel_apartamentos">
@@ -72,7 +77,20 @@
                         </div>
                                     
                         <div id="calendarioContainer" class="calendarioContainer ">
-                            <div></div>
+                            <div class="col-md-8">
+                                <div id="calendar" >
+                                </div>
+                                <div id="calendar-legend">
+                                    <div class="leyenda disponible"></div><div>Disponible</div>
+                                    <div class="leyenda no-disponible"></div><div>No Disponible</div>
+                                    <div class="leyenda anterior"></div><div>No especificado</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <p>El calendario se actualiza cada 5 minutos y la disponibilidad no siempre es exacta.</p>
+                                <p>Algunos anfitriones establecen precios personalizados para dias especificos de su calendario. Las tarifas son por día y no incluyen gastos de limpieza ni el precio por persona adicional que el anfitrion puede establecer para su alojamiento. Si quieres obtener mas informacion lee la descripcion del anuncio.</p>
+                                <p>Te recomendamos que te pongas en contacto con el anfitrion para confirmar la disponibilidad y las tarifas antes de enviar una solicitud de reserva.</p>
+                            </div>
                         </div>
                     </div>
 
@@ -261,10 +279,12 @@
                                             <option>4</option>
                                             <option>5</option>
                                         </select>
+                                        <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
                                     </div>
                                 </form>       
                             </div>
                             <div class="contenido-calendario row-fluid">
+                                
                                 <div class="button-reservalo col-md-12"><button type="button" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
                             </div>
                         </div>

@@ -68,10 +68,12 @@
     padding-top: 22px;
 }
 
-.mapaContainer {
-    height: 450px;
+.mapaContainer, .calendarioContainer {
+    min-height: 450px;
     display: none;
     padding: 10px;
+    border: 1px solid #dddddd;
+    border-top: none;
 }
 
 .mapaContainer div {
@@ -79,6 +81,44 @@
     height: 100%;
 }
 
-.calendarioContainer {
-    display: none;
+.calendarioContainer > div {
+    height: auto;
+}
+
+.calendarioContainer p {
+    text-align: justify;
+}
+
+#calendar {
+    width: 100%;
+    height: auto;
+}
+
+#calendar-legend > div {
+    float: left;
+    margin-left: 10px;
+}
+
+#calendar-legend > div:first-child {
+    margin-left: 0;
+}
+
+div.leyenda {
+    margin-top: 2px;
+    width: 32px;
+    height: 15px;
+    border: 1px solid #dddddd;
+    margin-right: 5px;
+}
+
+.leyenda.disponible {
+    background-color: green;
+}
+
+.leyenda.no-disponible {
+    background-color: red;
+}
+
+.leyenda.anterior {
+    background-color: #dddddd;
 }
