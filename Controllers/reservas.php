@@ -1,4 +1,5 @@
 <?php
+/*
 $template = new Core_template();
 $template->setView('reservas.php');
 $template->setCSS('reservas.css');
@@ -10,14 +11,14 @@ $template->setJS('layerslider/layerslider.transitions.js');
 
 $template->setJS('reservas.js');
 $template->setCSS('layerslider/layerslider.css');
-
+*/
 $dias = array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
 $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 
 $idApartamento = $_GET['id'];
 $apartamento = getApartamento($idApartamento);
 
-$template->setTitle('Reservar '.$apartamento->nombre . ' | Click & Booking');
+//$template->setTitle('Reservar '.$apartamento->nombre . ' | Click & Booking');
 
 $apartamentos_array = array();
 $apartamentos_array['apartamento'] = $apartamento;
@@ -71,24 +72,26 @@ if($precio && is_numeric($precio)){
 $fecha_inicio = $dias[date('w', $unix_inicio)] . ' ' . date('d', $unix_inicio) . ' de ' . $meses[date('n', $unix_inicio) - 1] . ' ' . date('Y', $unix_inicio);
 $fecha_final = $dias[date('w', $unix_final)] . ' ' . date('d', $unix_final) . ' de ' . $meses[date('n', $unix_final) - 1] . ' ' . date('Y', $unix_final);
 
-$template->setAttribute('entrada', $fecha_inicio);
-$template->setAttribute('salida', $fecha_final);
-$template->setAttribute('entrada_format', $_SESSION['fechaInicio']);
-$template->setAttribute('salida_format', $_SESSION['fechaFinal']);
+$smarty->assign('entrada', $fecha_inicio);
+$smarty->assign('salida', $fecha_final);
+$smarty->assign('entrada_format', $_SESSION['fechaInicio']);
+$smarty->assign('salida_format', $_SESSION['fechaFinal']);
 
-$template->setAttribute('huespedes', $_SESSION['huespedes']);
-$template->setAttribute('noches', $noches);
-$template->setAttribute('menor_precio',$menor_precio);
-$template->setAttribute('total_reserva',$precio);
+$smarty->assign('huespedes', $_SESSION['huespedes']);
+$smarty->assign('noches', $noches);
+$smarty->assign('menor_precio',$menor_precio);
+$smarty->assign('total_reserva',$precio);
 
-$template->setAttribute('provincia', $_SESSION['provincia']);
-$template->setAttribute('ciudad', $_SESSION['ciudad']);
 
-$template->setAttribute('apartamento', $apartamentos_array);
-$template->setAttribute('fechas_reservacion', $fechas_reservacion);
+$smarty->assign('apartamento', $apartamentos_array);
+$smarty->assign('fechas_reservacion', $fechas_reservacion);
 
-$template->setJsVar('lat', $direccion->lat);
-$template->setJsVar('lon', $direccion->lon);
+$smarty->assign('lat', $direccion->lat);
+$smarty->assign('lon', $direccion->lon);
 
-echo $template->render();
+$smarty->display('reservas.tpl');
+
+
+
+
 ?>
