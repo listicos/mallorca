@@ -7,6 +7,8 @@
     <script src="{$template_url}/js/admin/calendar/breakpoints.js"></script>
     <script src="{$template_url}/js/admin/calendar/calendar.js"></script>
     <script src="{$template_url}/js/admin/fullcalendar.min.js"></script>
+    <script src="{$template_url}/js/admin/jquery.validationEngine.js"></script>
+    <script src="{$template_url}/js/admin/jquery.validationEngine-es.js"></script>
     <script>
         var FECHAS_DISPONIBLES = {$disponibles};
     </script>
@@ -15,6 +17,7 @@
 {block name="style" append}
 <link href="{$template_url_s}/css/apartamento.css" rel="stylesheet">
 <link href="{$template_url}/css/admin/fullcalendar.css" rel="stylesheet">
+<link href="{$template_url}/css/admin/validationEngine.jquery.css" rel="stylesheet">
 {/block}
 
 {block name="content" append}
@@ -269,11 +272,11 @@
                                 
                                     <div class="form-group col-md-4">
                                         <label class="sr-only" for="exampleInputEmail2">llegada</label>
-                                        <input type="text" class="form-control" id="fechaInicio" placeholder="Llegada" name="fechaInicio">
+                                        <input type="text" class="form-control validate[required]" id="fechaInicio" placeholder="Llegada" name="fechaInicio">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="sr-only" for="exampleInputEmail2">Salida</label>
-                                        <input type="text" class="form-control" id="fechaFinal" placeholder="Salida" name="fechaFinal">
+                                        <input type="text" class="form-control validate[required]" id="fechaFinal" placeholder="Salida" name="fechaFinal">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <select class="form-control col-md-4" name="huespedes">
@@ -299,7 +302,7 @@
                             </div>
                             <div class="contenido-calendario row-fluid">
                                 
-                                <div class="button-reservalo col-md-12"><button type="button" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
+                                <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
                             </div>
                             </form>  
                         </div>

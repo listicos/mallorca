@@ -25,6 +25,25 @@ function initApartamento() {
     
     FechasReserva();
     
+    $('#reservaForm').on('submit', function(e){
+        e.preventDefault();
+        _valid = $(this).validationEngine('validate');
+        if(_valid) {
+            data = $(this).serialize();
+            $.ajax({
+                url: BASE_URL + '/ajax-apartamento',
+                data: data + '&action=reservar',
+                type: 'post',
+                dataType: 'json',
+                success: function(response) {
+                    if(response.msg == 'ok') {
+                        window.location = BASE_URL + '/reservas/id:' + $('input[name=idApartamento]').val();
+                    }
+                }
+            })
+        }
+    })
+    
     
 }
 
@@ -161,3 +180,4 @@ function calcularTotal() {
         }
     });
 }
+
