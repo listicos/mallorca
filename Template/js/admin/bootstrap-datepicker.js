@@ -466,6 +466,7 @@
                     clsName += ' disabled';
                 }
                 //console.log(prevMonth.getTime());
+                console.log(this.enableDates);
                 if(this.enableDates && $.inArray(prevMonth.getTime(), this.enableDates) == -1) {
                     clsName += ' disabled';
                 }

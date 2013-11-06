@@ -45,7 +45,7 @@
         this.hasInput = this.component && this.element.find('input').length;
         if (this.component && this.component.length === 0)
             this.component = false;
-
+        this.enableDates = options.enableDates;
         this.forceParse = true;
         if ('forceParse' in options) {
             this.forceParse = options.forceParse;
@@ -465,6 +465,11 @@
                         $.inArray(prevMonth.getUTCDay(), this.daysOfWeekDisabled) !== -1) {
                     clsName += ' disabled';
                 }
+                
+                if(this.enableDates && $.inArray(prevMonth.getTime(), this.enableDates) == -1) {
+                    clsName += ' disabled';
+                }
+                
                 html.push('<td class="day' + clsName + '">' + prevMonth.getUTCDate() + '</td>');
                 if (prevMonth.getUTCDay() == this.weekEnd) {
                     html.push('</tr>');

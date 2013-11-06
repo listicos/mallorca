@@ -7,6 +7,9 @@
     <script src="{$template_url}/js/admin/calendar/breakpoints.js"></script>
     <script src="{$template_url}/js/admin/calendar/calendar.js"></script>
     <script src="{$template_url}/js/admin/fullcalendar.min.js"></script>
+    <script>
+        var FECHAS_DISPONIBLES = {$disponibles};
+    </script>
 {/block}
 
 {block name="style" append}
@@ -243,33 +246,34 @@
                             <h1 class="text-center panel-title">Tu reserva</h1>
                         </div>
                         <div class="panel-body">
+                            <form class="form-inline" role="form" id="reservaForm">
                             <div class="contenedor-noche">
                                 <div class="col-md-6">
                                     <strong>Desde</strong>  
                                 </div>
                                 <div class=" pull-right col-xs-6">
 
-                                    <select class="form-control">
+                                    <!--<select class="form-control">
                                         <option>Por noche</option>
                                         <option>por semana</option>
                                         <option>Por mes</option>
 
-                                    </select>
+                                    </select>-->
                                 </div>
                             </div>
                             <div class="precio col-xs-12">
-                                <h1>{$apartamento['apartamento']->tarifaBase|number_format:2:',':'.'}&euro;</h1>
+                                <h1>{$menor_precio}</h1>
                             </div>
 
                             <div class="contenedor-llegada row-fluid clearfix">
-                                <form class="form-inline" role="form">
+                                
                                     <div class="form-group col-md-4">
                                         <label class="sr-only" for="exampleInputEmail2">llegada</label>
-                                        <input type="text" class="form-control" id="date-start" placeholder="Llegada">
+                                        <input type="text" class="form-control" id="fechaInicio" placeholder="Llegada" name="fechaInicio">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="sr-only" for="exampleInputEmail2">Salida</label>
-                                        <input type="text" class="form-control" id="date-end" placeholder="Salida">
+                                        <input type="text" class="form-control" id="fechaFinal" placeholder="Salida" name="fechaFinal">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <select class="form-control col-md-4" name="huespedes">
@@ -278,15 +282,26 @@
                                             <option>3</option>
                                             <option>4</option>
                                             <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            <option>12</option>
+                                            <option>13</option>
+                                            <option>14</option>
+                                            <option>15</option>
                                         </select>
                                         <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
                                     </div>
-                                </form>       
+                                     
                             </div>
                             <div class="contenido-calendario row-fluid">
                                 
                                 <div class="button-reservalo col-md-12"><button type="button" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
                             </div>
+                            </form>  
                         </div>
                     </div>
                                     

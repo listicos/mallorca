@@ -10,15 +10,22 @@ if (strcmp($action, "getPrecio") == 0) {
             $fechaInicio = $_POST['fechaInicio'];            
             $fechaFinal = $_POST['fechaFinal'];
             
+            $f = explode("-", $fechaInicio);
+            $fechaInicio = $f[2] .'-'. $f[1] .'-'. $f[0];
+            
+            $f = explode("-", $fechaFinal);
+            $fechaFinal = $f[2] .'-'. $f[1] .'-'. $f[0];
+            
+            
             $_SESSION['fechaInicio'] = $fechaInicio;
             $_SESSION['fechaFinal'] = $fechaFinal;
             $_SESSION['huespedes'] = $_POST['huespedes'];
 
-            $total = getTotalPrice($idApartamento,strtotime($fechaInicio),strtotime($fechaFinal));
+            $total = getTotalPrice($idApartamento,strtotime($fechaInicio),strtotime($fechaFinal), array(), $_POST['huespedes']);
             
             if($total){
                 $result['total'] = $total;
-                $result['total_text'] = '<small>Subtotal:</small> €'.money_format('%i', $total);
+                $result['total_text'] = '€'.money_format('%i', $total);
             }else{
                 $result['total'] = 0;
                 $result['total_text'] = 'No disponible';

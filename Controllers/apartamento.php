@@ -96,7 +96,7 @@ $apartamentos_array['sugerencias'] = $sugerencias;
 
 $apartamentos_array['instalaciones'] = $instalaciones_array;
 
-$precio = getTotalPrice($idApartamento,strtotime($_SESSION['fechaInicio']),strtotime($_SESSION['fechaFinal']));
+$precio = getDisponibilidadByApartamentoMenorPrecio($idApartamento)->precio;
 
 if($precio && is_numeric($precio)){
     $menor_precio = '€'.money_format('%i', $precio) ;

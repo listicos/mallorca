@@ -275,7 +275,7 @@ function getTotalPrice($idApartamento,$fechaInicio, $fechaFinal, $articulos = ar
             }
         }
         
-        if($noches != $noches_disponibles){
+        if($noches > $noches_disponibles){
             return false;
         }else{
             
