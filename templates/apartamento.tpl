@@ -57,7 +57,7 @@
                                 <div class="carousel-inner">
                                     {foreach from=$apartamento['adjuntos'] item=adjunto name=fotos}
                                     <div class="item {if $smarty.foreach.fotos.first}active{/if}">
-                                        <img data-src="holder.js/900x500/auto/#777:#777" src="{$template_url}/{$adjunto->ruta}" alt="900x500">
+                                        <img width="100%" src="{$template_url}/{$adjunto->ruta}" alt="900x500">
                                         <div class="carousel-caption">
                                             <!--<h3><font><font>Etiqueta de Primera diapositiva</font></font></h3>
                                             <p><font><font>Nulla vitae elit libero, un pharetra augue mollis Interdum.</font></font></p>-->
