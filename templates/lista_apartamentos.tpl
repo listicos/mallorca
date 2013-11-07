@@ -6,10 +6,12 @@
                     <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
                         <img src="{$template_url}{$b->ruta}" alt="{$a->nombre}">
                         <div class="carousel-caption">
-                            <p><a href="{$base_url}/apartamento/id:{$a->idApartamento}">{$a->nombre}</a></p>
-                            <span class="comments-icon">2</span>
+                            <p>{$a->nombre}</p>
+                            {if $a->opiniones}
+                            <span class="comments-icon">{$a->opiniones}</span>
+                            {/if}
                         </div>
-                        <div class="add-to-wishlist"></div>
+                        
                     </div>
                 {/foreach}
             </div>
@@ -27,5 +29,15 @@
             <input type="hidden" name="nombre" value="{$a->nombre}">
             <input type="hidden" name="lat" value="{$a->direccion->lat}">
             <input type="hidden" name="lon" value="{$a->direccion->lon}">
+        <div class="row acciones-apto">
+            <div class="col-md-6">
+                <span class="priceApto">{$a->precio_base_format}</span>
+                <span>Por&nbsp;noche</span>
+            </div>
+
+            <div class="col-md-6">
+                <a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="btn btn-success">Resérvalo</a>
+            </div>
+        </div>
     </div>
 {/foreach}

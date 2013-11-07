@@ -105,11 +105,11 @@ function filtrarPorMapaAndPrecio() {
 }
 
 function filtrar() {
-    $('#main_filters_container form').on('submit', function(e){
-        e.preventDefault();
+    $('input[name=dateStart], input[name=dateEnd], select[name=huespedes]').on('change', function(e){
+        
         //var valid = $(this).validationEngine('validate');
         if(true) {
-            var form = $(this).serialize();
+            var form = $('#aptosForm').serialize();
             $.ajax({
                 url : BASE_URL + '/ajax-filtros',
                 data : form,
@@ -142,8 +142,7 @@ function filtrar() {
                     
                     actualizarMapa();
                     
-                    if(response.msg == 'ok')
-                        window.location = BASE_URL + '/buscar'
+                    
                     
                 }
             });

@@ -24,7 +24,7 @@
             <div class="row filters-row" >
                     
                     
-                        <form class="form-inline" role="form">
+                        <form class="form-inline" role="form" id="aptosForm">
                               <div class="form-group col-sm-4">
                                 <div id="dateStart" class="filter-inputs date datepicker date-start" data-date-format="dd-mm-yyyy">
                                     <input size="16" class="col-lg-12" name="dateStart" type="text" value="{$fechaInicio|date_format:"%e-%m-%Y"}" readonly>

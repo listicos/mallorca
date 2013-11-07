@@ -23,6 +23,16 @@ if (strcmp($action, "buscar") == 0) {
             $_SESSION['huespedes'] = $huespedes;
 
             $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes);
+            foreach ($apartamentos as $apto) {
+                if($apto->precioPorNoche) {
+                    $apto->precio_base_format = '€'.money_format('%i', $apto->precioPorNoche) ;
+                } else {
+                    $apto->precio_base_format = 'No disponible';
+                }
+                
+                $opiniones = getOpinionesByApartamento($apartamento->idApartamento);
+                $apto->opiniones = count($opiniones);
+            }
             
             $smarty->assign('apartamentos', $apartamentos);
             $html = $smarty->fetch('lista_apartamentos.tpl');
