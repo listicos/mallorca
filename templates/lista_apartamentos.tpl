@@ -1,4 +1,7 @@
 {foreach name=apartamentos from=$apartamentos item=a}
+    {if $smarty.foreach.apartamentos.iteration % 2 != 0 }
+        <div class="row">
+    {/if}
     <div class="col-lg-6 result-item">
         <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.index}">
             <div class="carousel-inner">
@@ -40,4 +43,7 @@
             </div>
         </div>
     </div>
+    {if $smarty.foreach.apartamentos.iteration % 2 == 0 || $smarty.foreach.apartamentos.last}
+        </div>
+    {/if}
 {/foreach}
