@@ -50,3 +50,19 @@ legend.title {
 }
 
 
+.form-group #dateStart input, .form-group #dateEnd input {
+    border: 1px solid #dddddd;
+    width: 124px;
+}
+
+.form-group #dateStart .add-on, .form-group #dateEnd .add-on {
+    right: -76px;
+}
+
+#mapa {
+    padding: 6px 10px;
+}
+/*
+.container-liquid.content {
+    background-color: #dddddd;
+}*/

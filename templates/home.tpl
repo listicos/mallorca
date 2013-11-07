@@ -1,7 +1,7 @@
 {extends file="index.tpl"}
 
 {block name="script" append}
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>-->
     <script src="{$template_url_s}/js/home.js"></script>
     <script>
         var minPrice = {$minPrice};
@@ -9,6 +9,7 @@
     </script>
     <script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
     <script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.easing.1.2.js"></script>
     <script type="text/javascript" src="{$template_url_s}/js/fancybox/slider.js"></script>
 {/block}
 
@@ -102,6 +103,7 @@
                     <div class="visitados picture">
                         
                         <img src="{$template_url}{$a['adjuntos'][0]->ruta}" width="360px" height="300px" alt="{$a['apartamento']->nombre}">                                    
+                                                
                     </div>
                         
                     <div class="row acciones-apto">
@@ -119,6 +121,7 @@
             {/foreach}
         </div>
     </div>
+    <!--
     <div class="row">
         <div class="col-sm-5 main-left-container hidden-xs hidden-sm">
             <div class="row"  id="mapa">
@@ -176,7 +179,7 @@
                                                     <span class="comments-icon">{count($a['opiniones'])}</span>
                                                     {/if}
                                                 </div>
-                                                <!--<div class="add-to-wishlist"></div>-->
+                                                
                                             </div>
                                         {/foreach}
                                     </div>
@@ -215,6 +218,7 @@
 
             </div>
         </div>
-    </div>
+        
+    </div>-->
 </div>
 {/block}

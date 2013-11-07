@@ -17,6 +17,10 @@ if (strcmp($action, "buscar") == 0) {
             $fechaFinal = $fecha[2] . "-" . $fecha[1] . "-" . $fecha[0];
             
             $huespedes = $_POST['huespedes'];
+            
+            $_SESSION['fechaInicio'] = $fechaInicio;
+            $_SESSION['fechaFinal'] = $fechaFinal;
+            $_SESSION['huespedes'] = $huespedes;
 
             $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes);
             

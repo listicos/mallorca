@@ -1,6 +1,6 @@
 var map;
 //var myLatlng = new google.maps.LatLng("40.4216737855101","-3.7001175433777");
-var marcadores = new Array();/*
+var marcadores = new Array();
 function initialize() {
     var mapOptions = {
         zoom: 15,
@@ -14,7 +14,7 @@ function initialize() {
         filtrarPorMapaAndPrecio();
         
     });
-}*/
+}
 
 $(document).ready(function(){
     
@@ -25,7 +25,7 @@ $(document).ready(function(){
     });
     
     
-    //actualizarMapa();
+    actualizarMapa();
     
     $('.date-start').datepicker({
         autoclose: true
@@ -42,7 +42,7 @@ $(document).ready(function(){
         });
 
     $('.date-end').datepicker('setStartDate', new Date());
-    /*
+    
     $( "#slider-range" ).slider({
         range: true,
         min: minPrice,
@@ -65,15 +65,14 @@ $(document).ready(function(){
     $(".add-to-wishlist").click(function(){
         $(this).toggleClass("active");
         return false;
-    });*/
+    });
     
     filtrar();
     
-    //contarAnuncios();
+    contarAnuncios();
     
-    carruselVisitados();
 });
-/*
+
 function filtrarPorMapaAndPrecio() {
     
     bounds = map.getBounds();
@@ -103,7 +102,7 @@ function filtrarPorMapaAndPrecio() {
     })
     
     
-}*/
+}
 
 function filtrar() {
     $('#main_filters_container form').on('submit', function(e){
@@ -117,7 +116,7 @@ function filtrar() {
                 type: 'post',
                 dataType : 'json',
                 success: function(response) {
-                    /*$('.result-list-container').html(response.html);
+                    $('.result-list-container').html(response.html);
                     $('.result-list-container').find('.carousel').carousel({
                         interval: 5000
                     });
@@ -141,7 +140,7 @@ function filtrar() {
                     
                     contarAnuncios();
                     
-                    actualizarMapa();*/
+                    actualizarMapa();
                     
                     if(response.msg == 'ok')
                         window.location = BASE_URL + '/buscar'
@@ -151,7 +150,7 @@ function filtrar() {
         }
     });
 }
-/*
+
 function contarAnuncios() {
     $('.more-filters span.badge').html($('.result-list-container .result-item:not(:hidden)').length + " anuncios");
 }
@@ -192,14 +191,7 @@ function actualizarMapa() {
     
     map.setCenter(latlngbounds.getCenter());
     map.fitBounds(latlngbounds);
-}*/
-
-function carruselVisitados(){
-    $('#visitados').movingBoxes({
-		startPanel   : 2,      // start with this panel
-		/*width        : 1024,*/    // overall width of movingBoxes (not including navigation arrows)
-		panelWidth   : .45,     // current panel width adjusted to 70% of overall width
-		buildNav     : false
-	});
 }
+
+
 
