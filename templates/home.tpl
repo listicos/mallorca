@@ -149,7 +149,7 @@
                     </dl>
                 </div>
 
-                <div class="col-lg-12 filters-row">
+                <div class="col-lg-11 filters-row">
                     <div class="row more-filters">
                         <div class="col-lg-6">
                             <a href="#" onclick="return false;" class="btn btn-default hidden">Más filtros</a>
@@ -163,12 +163,13 @@
                             {if $smarty.foreach.apartamentos.iteration % 2 != 0 }
                             <div class="row">
                             {/if}
-                            <div class="col-lg-6 result-item">
+                            <div class="col-lg-6">
+                            <div class=" result-item">
                                 <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.index}">
                                     <div class="carousel-inner">
                                         {foreach name=adjuntos from=$a['adjuntos'] item=b}
                                             <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
-                                                <img src="{$template_url}{$b->ruta}" alt="{$a['apartamento']->nombre}">
+                                                <img src="{$template_url}{$b->ruta}" alt="{$a['apartamento']->nombre}" width="378px" height="284px">
                                                 <div class="carousel-caption">
                                                     <p>{$a['apartamento']->nombre}</p>
                                                     {if count($a['opiniones'])}
@@ -203,6 +204,7 @@
                                         <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success">Resérvalo</a>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                             {if $smarty.foreach.apartamentos.iteration % 2 == 0 || $smarty.foreach.apartamentos.last}
                             </div>

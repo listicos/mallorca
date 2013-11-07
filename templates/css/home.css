@@ -37,4 +37,12 @@ legend.title {
     font-size: 35px;
 }
 
+.result-list-container .result-item .carousel-inner > .item {
+    height: 284px;
+}
+
+.result-list-container .result-item .carousel-inner > .item img {
+    height: 284px;
+}
+
 
