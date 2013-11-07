@@ -21,7 +21,9 @@ foreach ($apartamentos as $akey => $apartamento) {
     
     if($apartamento->idDireccion)
         $apartamento->direccion = getDireccion ($apartamento->idDireccion);
-    
+    $d = getDisponibilidadByApartamentoMenorPrecio($apartamento->idApartamento);
+    if($d)
+    $apartamento->tarifaBase = $d->precio;
     if($apartamento->tarifaBase > $maxPrice) $maxPrice = $apartamento->tarifaBase;
     if($apartamento->tarifaBase < $minPrice) $minPrice = $apartamento->tarifaBase;
     

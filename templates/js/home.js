@@ -74,6 +74,8 @@ $(document).ready(function(){
     filtrar();
     
     contarAnuncios();
+    
+    carruselVisitados();
 });
 
 function filtrarPorMapaAndPrecio() {
@@ -192,4 +194,12 @@ function actualizarMapa() {
     map.fitBounds(latlngbounds);
 }
 
+function carruselVisitados(){
+    $('#visitados').movingBoxes({
+		startPanel   : 2,      // start with this panel
+		/*width        : 1024,*/    // overall width of movingBoxes (not including navigation arrows)
+		panelWidth   : .45,     // current panel width adjusted to 70% of overall width
+		buildNav     : false
+	});
+}
 

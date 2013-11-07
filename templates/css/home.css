@@ -2,9 +2,39 @@
     margin-top: 10px;
 }
 
+.acciones-apto > div {
+    text-align: center;
+}
+
 .priceApto {
     color: #00B0FE;
     font-size: 20px;
     font-weight: bold;
 }
+
+#visitados-container {
+    background-color: #F6F8FB;
+}
+
+.scroll-pane { 
+     
+}
+.scroll-content { 
+    /*width: 3860px; 
+    float: left; */
+}
+.scroll-content-item { 
+    width: 360px; 
+    height: 300px; 
+    float: left; 
+    margin: 10px; 
+    display: block; 
+    /*border: 1px solid #dddddd;*/
+}
+
+legend.title {
+    text-align: center;
+    font-size: 35px;
+}
+
 

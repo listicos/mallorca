@@ -82,7 +82,7 @@ $(document).ready(function(){
                 getApartamentoFotos();
         }
     });
-    
+    /*
     $("#geocomplete").geocomplete({
         map: ".map_canvas",
         details: ".formulario_localizacion ",
@@ -103,7 +103,7 @@ $(document).ready(function(){
     $("#geocomplete").on("geocode:dragged", function(event, latLng) {
         $("input[name=lat]").val(latLng.lat());
         $("input[name=lon]").val(latLng.lng());
-    });
+    });*/
     /*
     $("#buscar_direccion").click(function() {
         

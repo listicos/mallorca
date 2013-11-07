@@ -7,10 +7,15 @@
         var minPrice = {$minPrice};
         var maxPrice = {$maxPrice};
     </script>
+    <script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script type="text/javascript" src="{$template_url_s}/js/fancybox/slider.js"></script>
 {/block}
 
 {block name="style" append}
 <link href="{$template_url_s}/css/home.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{$template_url_s}/css/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+<link type="text/css" href="{$template_url_s}/css/fancybox/fancymoves.css" media="screen" charset="utf-8" rel="stylesheet"  />
 {/block}
 
 {block name="content" append}
@@ -88,6 +93,32 @@
     </div>
 </div>
 <div class="container-liquid  content">
+    <div class="row" id="visitados-container">
+        <legend class="title">Mis Ofertas Visitadas</legend>
+        <div id="visitados" class="scroll-pane">
+            {foreach from=$apartamentos name=apto item=a}
+                <div class="result-item">
+                    
+                    <div class="visitados picture">
+                        
+                        <img src="{$template_url}{$a['adjuntos'][0]->ruta}" width="360px" height="300px" alt="{$a['apartamento']->nombre}">                                    
+                    </div>
+                        
+                    <div class="row acciones-apto">
+                        <div class="col-md-6">
+                            <span class="priceApto">&euro;{$a['apartamento']->tarifaBase|number_format:2:",":"."}</span>
+                            <span>Por&nbsp;noche</span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success">Resérvalo</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            {/foreach}
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-5 main-left-container hidden-xs hidden-sm">
             <div class="row"  id="mapa">
@@ -129,6 +160,9 @@
                     </div>
                     <div class="row result-list-container">
                         {foreach name=apartamentos from=$apartamentos item=a}
+                            {if $smarty.foreach.apartamentos.iteration % 2 != 0 }
+                            <div class="row">
+                            {/if}
                             <div class="col-lg-6 result-item">
                                 <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.index}">
                                     <div class="carousel-inner">
@@ -137,7 +171,9 @@
                                                 <img src="{$template_url}{$b->ruta}" alt="{$a['apartamento']->nombre}">
                                                 <div class="carousel-caption">
                                                     <p>{$a['apartamento']->nombre}</p>
+                                                    {if count($a['opiniones'])}
                                                     <span class="comments-icon">{count($a['opiniones'])}</span>
+                                                    {/if}
                                                 </div>
                                                 <!--<div class="add-to-wishlist"></div>-->
                                             </div>
@@ -157,19 +193,20 @@
                                     <input type="hidden" name="nombre" value="{$a['apartamento']->nombre}">
                                     <input type="hidden" name="lat" value="{$a['apartamento']->direccion->lat}">
                                     <input type="hidden" name="lon" value="{$a['apartamento']->direccion->lon}">
-                                <div class="col-md-12 acciones-apto">
-                                    <div class="col-md-4">
+                                <div class="row acciones-apto">
+                                    <div class="col-md-6">
                                         <span class="priceApto">&euro;{$a['apartamento']->tarifaBase|number_format:2:",":"."}</span>
                                         <span>Por&nbsp;noche</span>
                                     </div>
-                                    <div class="col-md-4">
-                                        
-                                    </div>
-                                    <div class="col-md-4">
+                                    
+                                    <div class="col-md-6">
                                         <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success">Resérvalo</a>
                                     </div>
                                 </div>
                             </div>
+                            {if $smarty.foreach.apartamentos.iteration % 2 == 0 || $smarty.foreach.apartamentos.last}
+                            </div>
+                            {/if}
                         {/foreach}
                     </div>
                 </div>
