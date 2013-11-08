@@ -3,6 +3,7 @@
 {block name="script" append}
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="{$template_url_s}/js/buscar.js"></script>
+    <script src="{$template_url_s}/js/jquery.mixitup.min.js"></script>
     <script>
         var minPrice = {$minPrice};
         var maxPrice = {$maxPrice};
@@ -78,23 +79,30 @@
             </div>
         </div>
         <div class="col-md-7 main-right-container">
-            <div class="row">                
+                            
 
-                <div class="col-lg-11 filters-row">
+                
                     <div class="row more-filters">
                         <div class="col-lg-6">
-                            <a href="#" onclick="return false;" class="btn btn-default hidden">Más filtros</a>
+                            <div class="form-group">
+                                <label>Ordenar por</label>
+                                <select class="form-control" id="sorter">
+                                    <option value="['data-name','asc']">Nombre (Ascendente)</option>
+                                    <option value="['data-name','desc']">Nombre (Descendente)</option>
+                                    <option value="['data-price','asc']">Precio (Ascendente)</option>
+                                    <option value="['data-price','desc']">Precio (Descendente)</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-lg-6">
                             <p><span class="badge">{count($apartamentos)} anuncios</span> · Mallorca, Islas Baleares, España</p>
                         </div>
+                        
                     </div>
-                    <div class="row result-list-container">
+                    <div id="resultados" class="row result-list-container">
                         {foreach name=apartamentos from=$apartamentos item=a}
-                            {if $smarty.foreach.apartamentos.iteration % 2 != 0 }
-                            <div class="row">
-                            {/if}
-                            <div class="col-lg-6">
+                            
+                            <div class="col-lg-4 mix apto" data-name="{$a['apartamento']->nombre}" data-price="{$a['apartamento']->tarifaBase}">
                             <div class=" result-item">
                                 <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.index}">
                                     <div class="carousel-inner">
@@ -137,14 +145,12 @@
                                 </div>
                             </div>
                             </div>
-                            {if $smarty.foreach.apartamentos.iteration % 2 == 0 || $smarty.foreach.apartamentos.last}
-                            </div>
-                            {/if}
+                            
                         {/foreach}
                     </div>
-                </div>
+                
 
-            </div>
+            
         </div>
     </div>
 </div>

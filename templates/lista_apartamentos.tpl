@@ -1,20 +1,19 @@
 {foreach name=apartamentos from=$apartamentos item=a}
-    {if $smarty.foreach.apartamentos.iteration % 2 != 0 }
-        <div class="row">
-    {/if}
-    <div class="col-lg-6 result-item">
+                            
+    <div class="col-lg-4 mix apto" data-name="{$a->nombre}" data-price="{$a->precioPorNoche}">
+    <div class=" result-item">
         <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.index}">
             <div class="carousel-inner">
                 {foreach name=adjuntos from=$a->adjuntos item=b}
                     <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
-                        <img src="{$template_url}{$b->ruta}" alt="{$a->nombre}">
+                        <img src="{$template_url}{$b->ruta}" alt="{$a->nombre}" width="378px" height="284px">
                         <div class="carousel-caption">
                             <p>{$a->nombre}</p>
                             {if $a->opiniones}
                             <span class="comments-icon">{$a->opiniones}</span>
                             {/if}
                         </div>
-                        
+                        <!--<div class="add-to-wishlist"></div>-->
                     </div>
                 {/foreach}
             </div>
@@ -43,7 +42,6 @@
             </div>
         </div>
     </div>
-    {if $smarty.foreach.apartamentos.iteration % 2 == 0 || $smarty.foreach.apartamentos.last}
-        </div>
-    {/if}
+    </div>
+
 {/foreach}

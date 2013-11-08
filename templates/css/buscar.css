@@ -38,11 +38,11 @@ legend.title {
 }
 
 .result-list-container .result-item .carousel-inner > .item {
-    height: 284px;
+    height: 210px;
 }
 
 .result-list-container .result-item .carousel-inner > .item img {
-    height: 284px;
+    height: 210px;
 }
 
 .carousel-caption.visitados-caption {
@@ -66,3 +66,16 @@ legend.title {
 .container-liquid.content {
     background-color: #dddddd;
 }*/
+
+.result-list-container .mix{
+    opacity: 0;
+    display: none;
+}
+
+.row.more-filters {
+    padding-top: 15px;
+}
+
+select#sorter {
+    width: 220px;
+}

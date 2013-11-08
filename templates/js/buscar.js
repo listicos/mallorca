@@ -24,7 +24,7 @@ $(document).ready(function(){
         interval: 5000
     });
     
-    
+    ordenar();
     actualizarMapa();
     
     $('.date-start').datepicker({
@@ -71,6 +71,8 @@ $(document).ready(function(){
     
     contarAnuncios();
     
+    
+    
 });
 
 function filtrarPorMapaAndPrecio() {
@@ -81,7 +83,7 @@ function filtrarPorMapaAndPrecio() {
     $('.result-list-container .result-item').each(function(){
         var precio = $(this).find('input[name=precio]').val();
         if(precio < prices[0] || precio > prices[1]) {
-            $(this).hide();
+            $(this).parent().hide();
             marcadores[i].setMap(null);
         } else {
             var nombre = $(this).find('input[name=nombre]').val();
@@ -91,9 +93,9 @@ function filtrarPorMapaAndPrecio() {
             position = new google.maps.LatLng(lat, lon);
             
             if (bounds.contains(position)) {
-                $(this).show();
+                $(this).parent().show();
             } else {
-                $(this).hide();
+                $(this).parent().hide();
             }
             
         }
@@ -190,6 +192,16 @@ function actualizarMapa() {
     
     map.setCenter(latlngbounds.getCenter());
     map.fitBounds(latlngbounds);
+}
+
+function ordenar() {
+    $('#resultados').mixitup();
+    
+    $('#sorter').on('change', function(){
+        filter = eval($(this).val());
+        console.log(filter);
+        $('#resultados').mixitup('sort',filter);
+    })
 }
 
 
