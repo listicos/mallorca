@@ -7,9 +7,9 @@
                 <div class="col-md-4">
                     <h3>Contáctanos</h3>
                     <ul class="contact">
-                        <li class="address">Outlet Rooms S.L.</li>
+                        <li class="address">Mallorca Rent Haus</li>
                         <li class="phone">(123) 563-9899-234</li>
-                        <li class="email"><a href="mailto:contact@companyname.com">contacto@outlet-rooms.com</a></li>
+                        <li class="email"><a href="mailto:contact@companyname.com">contacto@mallorcarenthaus.com</a></li>
                     </ul>
                     <div class="clearfix"></div>    
                 </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="footer-bottom">
             <div class="row">
-                    <div class="col-md-6"><p>Outlet Rooms, S.L.</p></div>
+                    <div class="col-md-6"><p>Mallorca Rent Haus</p></div>
                     <div class="col-md-6">
                         <ul class="nav navbar-nav">
                             <li><a class="to_scroll" href="{$base_url}">Inicio</a></li>
