@@ -93,7 +93,7 @@
         </div>
     </div>
 </div>
-<div class="container-liquid  content">
+<div class="container-liquid  content body-content">
     <div class="row" id="visitados-container">
         <legend class="title">Mis Ofertas Visitadas</legend>
         <div id="visitados" class="scroll-pane">
