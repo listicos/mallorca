@@ -1,6 +1,6 @@
 var map;
 //var myLatlng = new google.maps.LatLng("40.4216737855101","-3.7001175433777");
-var marcadores = new Array();
+var marcadores = [];
 function initialize() {
     var mapOptions = {
         zoom: 15,
@@ -84,11 +84,13 @@ function filtrarPorMapaAndPrecio() {
         var precio = $(this).find('input[name=precio]').val();
         if(precio < prices[0] || precio > prices[1]) {
             $(this).parent().hide();
+            if(marcadores[i])
             marcadores[i].setMap(null);
         } else {
             var nombre = $(this).find('input[name=nombre]').val();
             var lat = $(this).find('input[name=lat]').val();
             var lon = $(this).find('input[name=lon]').val();
+            if(marcadores[i])
             marcadores[i].setMap(map);
             position = new google.maps.LatLng(lat, lon);
             
@@ -139,6 +141,7 @@ function filtrar() {
                     $( "#amount-min" ).html( "$" + $( "#slider-range" ).slider( "values", 0 ));
                     $( "#amount-max" ).html("  $" + $( "#slider-range" ).slider( "values", 1 ) );
                     
+                    ordenar();
                     
                     contarAnuncios();
                     
@@ -167,9 +170,13 @@ function actualizarMapa() {
         google.maps.event.trigger(map, 'resize');
         
     } else {
-        for(i=0;i<marcadores.length; i++)
+        console.log(marcadores);
+        for(i=0;i<marcadores.length; i++) {
+            console.log(i);
+            if(marcadores[i])
             marcadores[i].setMap(null);
-        marcadores = new Array();
+        }
+        marcadores = [];
     }
     
     var latlngbounds = new google.maps.LatLngBounds();
@@ -202,6 +209,9 @@ function ordenar() {
         console.log(filter);
         $('#resultados').mixitup('sort',filter);
     })
+    
+    filter = eval($('#sorter').val());    
+    $('#resultados').mixitup('sort',filter);
 }
 
 

@@ -87,10 +87,10 @@
                             <div class="form-group">
                                 <label>Ordenar por</label>
                                 <select class="form-control" id="sorter">
-                                    <option value="['data-name','asc']">Nombre (Ascendente)</option>
-                                    <option value="['data-name','desc']">Nombre (Descendente)</option>
-                                    <option value="['data-price','asc']">Precio (Ascendente)</option>
-                                    <option value="['data-price','desc']">Precio (Descendente)</option>
+                                    <option value="['data-name','desc']">Nombre (Ascendente)</option>
+                                    <option value="['data-name','asc']">Nombre (Descendente)</option>
+                                    <option value="['data-price','desc']">Precio (Ascendente)</option>
+                                    <option value="['data-price','asc']">Precio (Descendente)</option>
                                 </select>
                             </div>
                         </div>
