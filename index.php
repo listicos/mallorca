@@ -39,7 +39,7 @@ if (is_file($includes)) {
     header('Location:' . $base_url);
 }
 setlocale(LC_MONETARY, 'nl_NL.UTF-8');
-
+/*
 function money_format($format, $number) 
 { 
     $regex  = '/%((?:[\^!\-]|\+|\(|\=.)*)([0-9]+)?'. 
@@ -126,7 +126,7 @@ function money_format($format, $number)
     } 
     return $format; 
 }
-
+*/
 function hasRoles($roles) {
     $role = ActiveRole();
     
