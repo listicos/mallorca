@@ -1,5 +1,5 @@
 <div class="header_container">
-	<div class="header_title pull-left">
+	<!-- <div class="header_title pull-left">
 		<h1><a href="{$base_url}">Mallorca Rent Haus</a></h1>
 	</div>
 	<div class="header_enlaces_sociales">
@@ -9,5 +9,36 @@
 		<span class='st_linkedin_large' displayText='LinkedIn'></span>
 		<span class='st_pinterest_large' displayText='Pinterest'></span>
 		<span class='st_email_large' displayText='Email'></span>	
-	</div>
+	</div> -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo-title" href="index.html">Mallorca Rent Haus</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav pull-right">
+            <li class="active"><a class="to_scroll" href="{$base_url}">Inicio</a></li>
+            <li><a class="to_scroll" href="{$base_url}#servicio">Servicios</a></li>
+            <li><a href="{$base_url}/apartamentos">Apartamentos</a></li>
+            <li><a href="{$base_url}/contacto">Contacto & Mapa</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">ESP<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">ENG</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">EUR € <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">USD $</a></li>
+                <li><a href="#">GBP £</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+    </div>
 </div>

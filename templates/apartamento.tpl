@@ -21,7 +21,7 @@
 {/block}
 
 {block name="content" append}
-       <div class="container row-fluid">
+       <div class="container row-fluid body-content">
             <div class="titulo row-fluid">
                 <div class="col-xs-12">
                     <h2>{$apartamento['apartamento']->nombre}</h2>

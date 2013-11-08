@@ -5,7 +5,7 @@
 {/block}
 
 {block name="content" append}
-       <div class="container row-fluid">
+       <div class="container row-fluid body-content">
         <div class="contenedor-datos col-md-8">
         	 <div class="titulo col-md-12">
 

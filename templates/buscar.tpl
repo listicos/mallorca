@@ -19,7 +19,7 @@
 
 {block name="content" append}
 
-<div class="container-liquid  content">
+<div class="container-liquid  content body-content">
     <div class="row">
         <div class="col-sm-5 main-left-container hidden-xs hidden-sm">
             <div class="row filters-row" >
