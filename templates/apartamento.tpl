@@ -272,29 +272,29 @@
                                 
                                     <div class="form-group col-md-4">
                                         <label class="sr-only" for="exampleInputEmail2">llegada</label>
-                                        <input type="text" class="form-control validate[required]" id="fechaInicio" placeholder="Llegada" name="fechaInicio">
+                                        <input type="text" class="form-control validate[required]" id="fechaInicio" value="{if $entrada}{$entrada|date_format:"%e-%m-%Y"}{/if}" placeholder="Llegada" name="fechaInicio">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="sr-only" for="exampleInputEmail2">Salida</label>
-                                        <input type="text" class="form-control validate[required]" id="fechaFinal" placeholder="Salida" name="fechaFinal">
+                                        <input type="text" class="form-control validate[required]" id="fechaFinal" value="{if $salida}{$salida|date_format:"%e-%m-%Y"}{/if}" placeholder="Salida" name="fechaFinal">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <select class="form-control col-md-4" name="huespedes">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                            <option>13</option>
-                                            <option>14</option>
-                                            <option>15</option>
+                                            <option {if $huespedes eq 1}selected{/if}>1</option>
+                                            <option {if $huespedes eq 2}selected{/if}>2</option>
+                                            <option {if $huespedes eq 3}selected{/if}>3</option>
+                                            <option {if $huespedes eq 4}selected{/if}>4</option>
+                                            <option {if $huespedes eq 5}selected{/if}>5</option>
+                                            <option {if $huespedes eq 6}selected{/if}>6</option>
+                                            <option {if $huespedes eq 7}selected{/if}>7</option>
+                                            <option {if $huespedes eq 8}selected{/if}>8</option>
+                                            <option {if $huespedes eq 9}selected{/if}>9</option>
+                                            <option {if $huespedes eq 10}selected{/if}>10</option>
+                                            <option {if $huespedes eq 11}selected{/if}>11</option>
+                                            <option {if $huespedes eq 12}selected{/if}>12</option>
+                                            <option {if $huespedes eq 13}selected{/if}>13</option>
+                                            <option {if $huespedes eq 14}selected{/if}>14</option>
+                                            <option {if $huespedes eq 15}selected{/if}>15</option>
                                         </select>
                                         <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
                                     </div>

@@ -118,7 +118,10 @@ if($disponibilidades){
 $smarty->assign('entrada', $_SESSION['fechaInicio']);
 $smarty->assign('salida', $_SESSION['fechaFinal']);
 $smarty->assign('huespedes', $_SESSION['huespedes']);
-
+if(isset($_SESSION['fechaInicio']) && isset($_SESSION['fechaFinal'])) {
+    $precio = getTotalPrice($apartamento->idApartamento, strtotime($_SESSION['fechaInicio']), strtotime($_SESSION['fechaFinal']), array(), $_SESSION['huespedes']);
+    $menor_precio = '€'.money_format('%i', $precio) ;
+}
 
 $smarty->assign('menor_precio',$menor_precio);
 
