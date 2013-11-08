@@ -1,6 +1,6 @@
 {foreach name=apartamentos from=$apartamentos item=a}
                             
-    <div class="col-lg-4 mix apto" data-name="{$a->nombre}" data-price="{$a->precioPorNoche}">
+    <div class="col-lg-4 mix apto" data-name="{$a->nombre}" data-price="{$a->precioPorNoche}" data-visitas="{$a->visitas}">
     <div class=" result-item">
         <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.index}">
             <div class="carousel-inner">

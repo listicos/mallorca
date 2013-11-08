@@ -91,6 +91,7 @@
                                     <option value="['data-name','asc']">Nombre (Descendente)</option>
                                     <option value="['data-price','desc']">Precio (Ascendente)</option>
                                     <option value="['data-price','asc']">Precio (Descendente)</option>
+                                    <option value="['data-visitas','asc']">Popularidad</option>
                                 </select>
                             </div>
                         </div>
@@ -102,7 +103,7 @@
                     <div id="resultados" class="row result-list-container">
                         {foreach name=apartamentos from=$apartamentos item=a}
                             
-                            <div class="col-lg-4 mix apto" data-name="{$a['apartamento']->nombre}" data-price="{$a['apartamento']->tarifaBase}">
+                            <div class="col-lg-4 mix apto" data-name="{$a['apartamento']->nombre}" data-price="{$a['apartamento']->tarifaBase}" data-visitas="{$a['apartamento']->visitas}">
                             <div class=" result-item">
                                 <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.index}">
                                     <div class="carousel-inner">

@@ -21,7 +21,7 @@ if (strcmp($action, "buscar") == 0) {
             $_SESSION['fechaInicio'] = $fechaInicio;
             $_SESSION['fechaFinal'] = $fechaFinal;
             $_SESSION['huespedes'] = $huespedes;
-
+            
             $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes);
             foreach ($apartamentos as $apto) {
                 if($apto->precioPorNoche) {

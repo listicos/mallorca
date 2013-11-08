@@ -87,7 +87,7 @@ function getApartamentosCercanos($lat,$lon) {
 
 function getApartamentosFilters($fechaInicio,$fechaFinal,$huespedes = false) {
     try {
-        $apartamentos = DAOFactory::getApartamentosDAO()->queryApartamentosFilters($fechaInicio, $fechaFinal,$huespedes);
+        $apartamentos = DAOFactory::getApartamentosDAO()->queryApartamentosFilters(strtotime($fechaInicio), strtotime($fechaFinal),$huespedes);
         
         foreach ($apartamentos as $apartamento) {
             $apartamentosAdjuntos = getApartamentosAdjuntos($apartamento->idApartamento);

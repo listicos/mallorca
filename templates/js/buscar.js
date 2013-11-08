@@ -129,10 +129,10 @@ function filtrar() {
                     
                     $('.result-list-container').find('input[name=precio]').each(function(){
                         var value = parseFloat($(this).val());
-                        console.log(value);
+                        
                         if(prices[0] > value) prices[0] = value;
                         if(prices[1] < value) prices[1] = value;
-                        console.log(prices);
+                        
                     });
                     
                     
@@ -170,9 +170,8 @@ function actualizarMapa() {
         google.maps.event.trigger(map, 'resize');
         
     } else {
-        console.log(marcadores);
-        for(i=0;i<marcadores.length; i++) {
-            console.log(i);
+        
+        for(i=0;i<marcadores.length; i++) {            
             if(marcadores[i])
             marcadores[i].setMap(null);
         }
@@ -201,14 +200,23 @@ function actualizarMapa() {
     map.fitBounds(latlngbounds);
 }
 
+var mixit = false;
+
 function ordenar() {
-    $('#resultados').mixitup();
     
-    $('#sorter').on('change', function(){
-        filter = eval($(this).val());
-        console.log(filter);
-        $('#resultados').mixitup('sort',filter);
-    })
+    if(!mixit) {
+        $('#resultados').mixitup();
+
+        $('#sorter').on('change', function(){
+            filter = eval($(this).val());
+            console.log(filter);
+            $('#resultados').mixitup('sort',filter);
+        })
+        mixit = true;
+    } else {
+        console.log('refrescando');
+        $('#resultados').mixitup('remix', 'all');
+    }
     
     filter = eval($('#sorter').val());    
     $('#resultados').mixitup('sort',filter);

@@ -15,7 +15,7 @@ foreach ($user_vars as $u_k => $u_v) {
 	$ciudad = isset($_REQUEST['ciudad']) ? $_REQUEST['ciudad']:'';
 */
 
-$apartamentos = getApartamentosFilters(strtotime($user_vars['fechaInicio']),strtotime($user_vars['fechaFinal']),$user_vars['huespedes']);
+$apartamentos = getApartamentosFilters($user_vars['fechaInicio'],$user_vars['fechaFinal'],$user_vars['huespedes']);
 $apartamentos_array = array();
 $coords = array();
 
