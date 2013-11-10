@@ -5,7 +5,18 @@
 .acciones-apto > div {
     text-align: center;
 }
-
+.visitados-anchor-container{
+    display: block;
+}
+.visitados-anchor-inner{
+    position: relative;
+}
+.visitados-anchor-inner .picture img{
+    
+}
+.visitados-anchor-price{
+    position: absolute;
+}
 .priceApto {
     color: #00B0FE;
     font-size: 20px;

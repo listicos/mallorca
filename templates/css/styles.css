@@ -12,7 +12,12 @@ body{
     padding: 0 15px;
     margin: 0 auto;
 }
-
+.checkbox-inline.more-checkbox{
+    padding-left: 0;
+}
+.checkbox-inline.more-checkbox a{
+    padding: 0 5px;
+}
 /* ============ HEADER ============= */
 .header_container{
 
@@ -39,6 +44,31 @@ body{
     color: #FFF;
     font-family: 'Qwigley', cursive;
     font-size: 49px;
+}
+.result-list-container .mix{
+    opacity: 0;
+    display: none;
+}
+.btn-group.separate-group img{
+    display: block;
+    margin: 0 auto;
+}
+.btn-group.separate-group > .btn {
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    border-radius: 4px !important;
+}
+.btn-group.separate-group > .btn:first-child{
+    margin-right: 10px;
+}
+.home .checkbox-inline{
+    margin-right: 10px;
+}
+.home .checkbox-inline + .checkbox-inline{
+    margin-left: 0;
+}
+.body-content.home{
+    max-width: 100% !important;
 }
 .body-content{
 

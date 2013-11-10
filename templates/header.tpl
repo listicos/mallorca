@@ -17,7 +17,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand logo-title" href="index.html">Mallorca Rent Haus</a>
+          <a class="navbar-brand logo-title" href="{$base_url}">Mallorca Rent Haus</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">

@@ -12,6 +12,8 @@
             <link href="{$template_url_s}/css/bootstrap-select.css" rel="stylesheet">
             <link href="{$template_url_s}/css/jquery-ui.css" rel="stylesheet">
             <link href="{$template_url_s}/css/jquery.ui.slider.css" rel="stylesheet">
+            
+            <link href="{$template_url_s}/css/flexslider.css" rel="stylesheet">
             <link href='http://fonts.googleapis.com/css?family=Qwigley' rel='stylesheet' type='text/css'>
             <link href="{$template_url_s}/css/styles.css" rel="stylesheet">
         {/block} 
@@ -39,6 +41,8 @@
             <script src="{$template_url_s}/js/jquery.ui.widget.js"></script>
             <script src="{$template_url_s}/js/jquery.ui.mouse.js"></script>
             <script src="{$template_url_s}/js/jquery.ui.slider.js"></script>
+            
+            <script src="{$template_url_s}/js/jquery.flexslider.js"></script>
             {literal}
             <script type="text/javascript">var switchTo5x=true;</script>
             <!--<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
