@@ -91,7 +91,9 @@
                     </div>
                 </div>
                 <div class="row" id="mapa">
-                    <div id="details-map-location"></div>
+                    <div class="col-md-12">
+                        <div id="details-map-location"></div>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-7">
@@ -266,13 +268,14 @@
                                 <input type="hidden" name="lat" value="">
                                 <input type="hidden" name="lon" value="">
                             <div class="row acciones-apto">
-                                <div class="col-md-6">
-                                    <span class="priceApto">&euro;16,00</span>
-                                    <span>Por&nbsp;noche</span>
+                                <div class="col-xs-8 text-left">
+                                    <img src="{$template_url}/img/pattern_1.jpg"  class="thumbnail" alt="" height="50">
+                                    <span class="text-muted text-apto">Casa/apto. entero</span>
                                 </div>
 
-                                <div class="col-md-6">
-                                    
+                                <div class="col-xs-4 price-apto">
+                                    <p class="priceApto">16,00<small>&euro;</small></p>
+                                    <p class="text-muted">Por&nbsp;noche</p>
                                 </div>
                             </div>
                         </div>
@@ -325,13 +328,14 @@
                                 <input type="hidden" name="lat" value="">
                                 <input type="hidden" name="lon" value="">
                             <div class="row acciones-apto">
-                                <div class="col-md-6">
-                                    <span class="priceApto">&euro;16,00</span>
-                                    <span>Por&nbsp;noche</span>
+                                <div class="col-xs-8 text-left">
+                                    <img src="{$template_url}/img/pattern_1.jpg"  class="thumbnail" alt="" height="50">
+                                    <span class="text-muted text-apto">Casa/apto. entero</span>
                                 </div>
 
-                                <div class="col-md-6">
-                                    
+                                <div class="col-xs-4 price-apto">
+                                    <p class="priceApto">16,00<small>&euro;</small></p>
+                                    <p class="text-muted">Por&nbsp;noche</p>
                                 </div>
                             </div>
                         </div>
