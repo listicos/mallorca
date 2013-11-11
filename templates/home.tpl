@@ -95,6 +95,68 @@
                 </div>
             </div>
             <div class="col-sm-7">
+                <div class="row home-main-slider">
+                    <div class="col-md-12">
+                        <div class="carousel slide"  id="header-slider">
+                            <ol class="carousel-indicators">
+                                <li data-target="#header-slider" data-slide-to="0" class="active"></li>
+                                <li data-target="#header-slider" data-slide-to="1"></li>
+                                <li data-target="#header-slider" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="{$template_url_s}/img/slider/1.jpg" alt="Photo 1">
+                                </div>
+                                <div class="item">
+                                    <img src="{$template_url_s}/img/slider/2.jpg" alt="Photo 2">
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="{$template_url_s}/img/slider/3.jpg" alt="Photo 3">
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="{$template_url_s}/img/slider/4.jpg" alt="Photo 4">
+                                    <div class="carousel-caption">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="back-images layer-1"></div>
+                            <div class="back-images layer-2"></div>
+
+                            <a class="left carousel-control" href="#header-slider" data-slide="prev">
+                                <span class="icon-prev"></span>
+                            </a>
+                            <a class="right carousel-control" href="#header-slider" data-slide="next">
+                                <span class="icon-next"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="search-slider-content">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label class="">Viaje</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="llegada">Llegada</label>
+                                <input type="text" class="form-control" id="llegada" placeholder="Llegada">
+                            </div>
+                            <div class="form-group"><img src="{$template_url}/img/icon-arrowR.png" alt="Photo 4"></div>
+                            <div class="form-group">
+                                <label class="sr-only" for="llegada">Salida</label>
+                                <input type="text" class="form-control" id="llegada" placeholder="Salida">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="huesped">Llegada</label>
+                                <select class="form-control">
+                                    <option value="1">1 Huésped</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <div id="resultados" class="row result-list-container">
                     
                     <div class="col-lg-6 mix apto" data-name="Nombre del apartamento 1" data-price="21,00">
@@ -105,6 +167,7 @@
                                     <div class="item active">
                                         <img src="{$template_url}/img/slide_1.png" alt="">
                                         <div class="carousel-caption">
+                                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
                                             <span class="comments-icon">2</span>
                                         </div>
@@ -112,6 +175,7 @@
                                     <div class="item">
                                         <img src="{$template_url}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
+                                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
                                             <span class="comments-icon">2</span>
                                         </div>
@@ -119,6 +183,7 @@
                                     <div class="item">
                                         <img src="{$template_url}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
+                                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
                                             <span class="comments-icon">2</span>
                                         </div>
@@ -141,13 +206,14 @@
                                 <input type="hidden" name="lat" value="">
                                 <input type="hidden" name="lon" value="">
                             <div class="row acciones-apto">
-                                <div class="col-md-6">
-                                    <span class="priceApto">&euro;16,00</span>
-                                    <span>Por&nbsp;noche</span>
+                                <div class="col-xs-8 text-left">
+                                    <img src="{$template_url}/img/pattern_1.jpg"  class="thumbnail" alt="" height="50">
+                                    <span class="text-muted text-apto">Casa/apto. entero</span>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success">Resérvalo</a>
+                                <div class="col-xs-4 price-apto">
+                                    <p class="priceApto">16,00<small>&euro;</small></p>
+                                    <p class="text-muted">Por&nbsp;noche</p>
                                 </div>
                             </div>
                         </div>
@@ -161,6 +227,7 @@
                                     <div class="item active">
                                         <img src="{$template_url}/img/slide_1.png" alt="">
                                         <div class="carousel-caption">
+                                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
                                             <span class="comments-icon">2</span>
                                         </div>
@@ -168,6 +235,7 @@
                                     <div class="item">
                                         <img src="{$template_url}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
+                                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
                                             <span class="comments-icon">2</span>
                                         </div>
@@ -175,6 +243,7 @@
                                     <div class="item">
                                         <img src="{$template_url}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
+                                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
                                             <span class="comments-icon">2</span>
                                         </div>
@@ -203,7 +272,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success">Resérvalo</a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -217,6 +286,7 @@
                                     <div class="item active">
                                         <img src="{$template_url}/img/slide_1.png" alt="">
                                         <div class="carousel-caption">
+                                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
                                             <span class="comments-icon">2</span>
                                         </div>
@@ -224,6 +294,7 @@
                                     <div class="item">
                                         <img src="{$template_url}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
+                                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
                                             <span class="comments-icon">2</span>
                                         </div>
@@ -231,6 +302,7 @@
                                     <div class="item">
                                         <img src="{$template_url}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
+                                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
                                             <span class="comments-icon">2</span>
                                         </div>
@@ -259,7 +331,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success">Resérvalo</a>
+                                    
                                 </div>
                             </div>
                         </div>

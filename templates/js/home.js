@@ -80,7 +80,7 @@ $(document).ready(function() {
     /*carruselVisitados();*/
 });
 function ordenar() {
-    $('#resultados').mixitup();
+    /*$('#resultados').mixitup();
     
     $('#sorter').on('change', function(){
         filter = eval($(this).val());
@@ -90,7 +90,7 @@ function ordenar() {
     
     filter = eval($('#sorter').val());   
     $('#resultados').mixitup('sort', 'data-price');
-    $('#resultados').mixitup('sort',filter);
+    $('#resultados').mixitup('sort',filter);*/
 }
 function actualizarMapa() {
 

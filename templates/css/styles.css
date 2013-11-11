@@ -46,8 +46,14 @@ body{
     font-size: 49px;
 }
 .result-list-container .mix{
-    opacity: 0;
-    display: none;
+    /*opacity: 0;
+    display: none;*/
+}
+#resultados .carousel-caption{
+    text-align: left;
+}
+#resultados .carousel-caption .book-it{
+    margin-bottom: 10px;
 }
 .btn-group.separate-group img{
     display: block;
@@ -250,8 +256,8 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
 .delimiter {
     clear: both;
 }
-#mapa{
-
+.home #mapa{
+    margin-bottom: 20px;
 }
 #details-map-location{
     width: 100%;

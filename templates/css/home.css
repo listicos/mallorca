@@ -1,9 +1,52 @@
 .acciones-apto {
-    margin-top: 10px;
+    margin: 0;
+    height: 68px;   
 }
-
-.acciones-apto > div {
+.acciones-apto .text-apto{
+    width: 55%;
+    float: left;
+    margin-left: 5px;
+}
+.acciones-apto .price-apto{
     text-align: center;
+    background: #fafafa;
+    border-left: 1px solid #dddddd;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-bottom-right-radius: 3px;
+}
+.acciones-apto > div{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.acciones-apto .thumbnail{
+    height: 50px;
+    padding: 2px;
+    float: left;
+}
+.acciones-apto p{
+    margin: 0;  
+}
+.acciones-apto > div {
+    /*text-align: center;*/
+}
+.home-main-slider{
+    margin-bottom: 20px;
+    position: relative;
+}
+.search-slider-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -287.5px;
+}
+.search-slider-content form{
+    background: #f7f7f7;
+    padding: 15px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #999999;
 }
 .visitados-anchor-container{
     display: block;
@@ -12,7 +55,7 @@
     position: relative;
 }
 .visitados-anchor-inner .picture img{
-    
+
 }
 .visitados-anchor-price{
     position: absolute;
@@ -22,13 +65,19 @@
     font-size: 20px;
     font-weight: bold;
 }
+.priceApto small{
+    margin-left: 2px;
+    font-size: 70%;
+    margin-top: -5px;
+    display: inline-table;
+}
 
 #visitados-container {
     background-color: #dddddd;
 }
 
 .scroll-pane { 
-     
+
 }
 .scroll-content { 
     /*width: 3860px; 
@@ -60,4 +109,11 @@ legend.title {
     position: absolute;
 }
 
-
+#resultados .result-item{
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    padding: 0px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
