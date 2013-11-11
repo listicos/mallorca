@@ -1,6 +1,6 @@
 var map;
 
-var myLatlng = new google.maps.LatLng("40.4216737855101","-3.7001175433777");
+//var myLatlng = new google.maps.LatLng("40.4216737855101","-3.7001175433777");
 var marcadores = [];
 function initialize() {
     var mapOptions = {
@@ -14,11 +14,11 @@ function initialize() {
 
         filtrarPorMapaAndPrecio();
 
-    });*/
+    });
     var marker = new google.maps.Marker({
         position: myLatlng,
         map: map
-    });
+    });*/
 }
 
 $(document).ready(function() {
@@ -32,9 +32,15 @@ $(document).ready(function() {
     ordenar();
 
     actualizarMapa();
-
+    calendarios();
+    ENABLE_DATES = [];
+    for(i = 0; i < disponibles.length; i++) {
+        ENABLE_DATES.push(new Date(disponibles[i]).getTime());
+    }
     $('.date-start').datepicker({
-        autoclose: true
+        autoclose: true,
+        enableDates: ENABLE_DATES,
+        format: "dd-mm-yyyy"
     }).on('changeDate', function(ev) {
         $('.date-end').datepicker('setStartDate', ev.date);
     });
@@ -42,7 +48,9 @@ $(document).ready(function() {
     $('.date-start').datepicker('setStartDate', new Date());
 
     $('.date-end').datepicker({
-        autoclose: true
+        autoclose: true,
+        enableDates: ENABLE_DATES,
+        format: "dd-mm-yyyy"
     }).on('changeDate', function(ev) {
 
     });
@@ -74,6 +82,8 @@ $(document).ready(function() {
      });*/
 
     filtrar();
+    
+    pagination();
 
     //contarAnuncios();
 
@@ -99,11 +109,11 @@ function actualizarMapa() {
     if (!map) {
         initialize();
         google.maps.event.trigger(map, 'resize');
-        map.setCenter(myLatlng);
-    } /*else {
-        console.log(marcadores);
+        
+    } else {
+        
         for (i = 0; i < marcadores.length; i++) {
-            console.log(i);
+            
             if (marcadores[i])
                 marcadores[i].setMap(null);
         }
@@ -129,7 +139,7 @@ function actualizarMapa() {
     });
 
     map.setCenter(latlngbounds.getCenter());
-    map.fitBounds(latlngbounds);*/
+    map.fitBounds(latlngbounds);
 }
 /*
  function filtrarPorMapaAndPrecio() {
@@ -164,93 +174,32 @@ function actualizarMapa() {
  }*/
 
 function filtrar() {
-    $('#main_filters_container form').on('submit', function(e) {
+    $('input, select', '#filtrosFrm').on('change', function(e) {
         e.preventDefault();
         //var valid = $(this).validationEngine('validate');
         if (true) {
-            var form = $(this).serialize();
+            var form = $('#filtrosFrm').serialize();
             $.ajax({
                 url: BASE_URL + '/ajax-filtros',
                 data: form,
                 type: 'post',
                 dataType: 'json',
                 success: function(response) {
-                    /*$('.result-list-container').html(response.html);
-                     $('.result-list-container').find('.carousel').carousel({
-                     interval: 5000
+                    $('#resultados').html(response.html);
+                     $('#resultados').find('.carousel').carousel({
+                        interval: 5000
                      });
                      
-                     var prices = [9999999999, max = -9999999999];
-                     
-                     $('.result-list-container').find('input[name=precio]').each(function(){
-                     var value = parseFloat($(this).val());
-                     console.log(value);
-                     if(prices[0] > value) prices[0] = value;
-                     if(prices[1] < value) prices[1] = value;
-                     console.log(prices);
-                     });
-                     
-                     
-                     
-                     $( "#slider-range" ).slider( "option", "values", prices );
-                     $( "#amount-min" ).html( "$" + $( "#slider-range" ).slider( "values", 0 ));
-                     $( "#amount-max" ).html("  $" + $( "#slider-range" ).slider( "values", 1 ) );
-                     
-                     
-                     contarAnuncios();
-                     
-                     actualizarMapa();*/
+                     actualizarMapa();
 
-                    if (response.msg == 'ok')
-                        window.location = BASE_URL + '/buscar'
+                    calendarios();
 
                 }
             });
         }
     });
 }
-/*
- function contarAnuncios() {
- $('.more-filters span.badge').html($('.result-list-container .result-item:not(:hidden)').length + " anuncios");
- }
- 
- function actualizarMapa() {
- 
- var myLatlng;
- 
- 
- 
- if(!map) {
- initialize();
- google.maps.event.trigger(map, 'resize');
- 
- } else {
- for(i=0;i<marcadores.length; i++)
- marcadores[i].setMap(null);
- marcadores = new Array();
- }
- 
- var latlngbounds = new google.maps.LatLngBounds();
- $('.result-list-container .result-item:not(:hidden)').each(function(){
- var nombre = $(this).find('input[name=nombre]').val();
- var lat = $(this).find('input[name=lat]').val();
- var lon = $(this).find('input[name=lon]').val();
- var parliament = new google.maps.LatLng(lat, lon);
- latlngbounds.extend(parliament);
- var marker = new google.maps.Marker({
- title: nombre,
- position: parliament,
- map: map
- });
- 
- marcadores.push(marker);
- 
- 
- });
- 
- map.setCenter(latlngbounds.getCenter());
- map.fitBounds(latlngbounds);
- }*/
+
 
 function carruselVisitados() {
     /*$('#visitados').movingBoxes({
@@ -258,5 +207,68 @@ function carruselVisitados() {
         panelWidth: .45,
         buildNav: false
     });*/
+}
+
+function calendarios() {
+    $('.result-item').each(function(){
+        enables = eval($(this).find('input[name=disponibilidades]').val());
+        dates = [];
+        for(i=0;i<enables.length;i++)
+            dates.push(new Date(enables[i]).getTime());
+        
+        $(this).find('.calendario').datepicker({
+            startDate: new Date(),
+            enableDates: dates
+        });
+        
+        
+        
+        $(this).find('a.ver-disponibilidad').off('click').on('click', function(e){
+            e.preventDefault();
+            _this = $(this).parent().parent().parent();
+            _this.find('.apartamento-descripcion').fadeToggle();
+            _this.find('.apartamento-calendario').fadeToggle();
+        })
+    });
+    
+    
+}
+var IS_GETTING_EMP = false;
+function pagination() {
+    $(document).scroll(function(e) {
+            
+        if(IS_GETTING_EMP)
+            return false;
+        
+        if(!IS_GETTING_EMP){
+            if ($(window).scrollTop() >= $('.result-item').last().offset().top + 150) {
+                
+                IS_GETTING_EMP = true;
+                
+                var form = $('#filtrosFrm').serialize();
+                form += "&start=" + $('.result-item').length;
+                $.ajax({
+                    url: BASE_URL + '/ajax-filtros',
+                    data: form,
+                    type: 'post',
+                    dataType: 'json',
+                    success: function(response) {
+                        $('#resultados').append(response.html);
+                         $('#resultados').find('.carousel').carousel({
+                            interval: 5000
+                         });
+
+                         actualizarMapa();
+
+                        calendarios();
+                        
+                        IS_GETTING_EMP = false;
+
+                    }
+                });
+                
+            }
+        }
+    });
 }
 

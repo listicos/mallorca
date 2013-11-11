@@ -1,6 +1,6 @@
 .acciones-apto {
     margin: 0;
-    height: 74px;   
+      
 }
 .acciones-apto .text-apto{
     width: 100%;
@@ -10,15 +10,14 @@
 .acciones-apto .price-apto{
     text-align: center;
     background: #f7f7f7;
-    border-left: 1px solid #dddddd;
-    -webkit-border-bottom-right-radius: 3px;
-    -moz-border-radius-bottomright: 3px;
-    border-bottom-right-radius: 3px;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    
     padding: 13px 0;
+    height: 84px;
 }
-.acciones-apto > div{
-    padding-top: 10px;
-    padding-bottom: 10px;
+.acciones-apto > div {
+    
 }
 .acciones-apto .thumbnail{
     height: 50px;
@@ -26,14 +25,19 @@
     float: left;
 }
 .acciones-apto p{
-    margin: 0;  
+      
 }
 .acciones-apto > div {
     /*text-align: center;*/
 }
 .filters-content{
-    margin: 0;
-    border-right: 2px solid #7c90a6;
+    margin: 10px 0 0 0;
+    border: 2px solid #7c90a6;
+    
+    border-bottom: none !important;
+    
+    border-radius: 6px 6px 0 0;
+    
     background: #f7f7f7;
 }
 .filters-content .form-group:last-child{
@@ -135,7 +139,92 @@ legend.title {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    display: table;
+    width: 100%;
 }
+
+.carrusel {
+    width: 70%;
+}
+
+#resultados .result-item > div {
+    display: table-row;
+}
+
+#resultados .result-item .acciones-apto .descripcion-apto {
+    height: 200px;
+}
+
+.descripcion-apto ul {
+    padding: 10px 15px;
+}
+
+.descripcion-apto ul li {
+       
+    font-size: 12px;
+    font-weight: 600;
+    list-style: none;
+    color: #004378;
+}
+
+.descripcion-apto ul li:first-child {
+       
+    font-size: 18px;
+}
+
+#resultados .result-item > div > div {
+    display: table-cell;
+    vertical-align: top;
+}
+
+#resultados .result-item .carousel {
+    
+}
+
+
+
+#resultados {
+   /* height: 755px;
+    overflow-y: auto;*/
+}
+
+#details-map-location {
+    border: 2px solid #7c90a6;
+    border-top: none !important;
+    border-radius: 0 0 6px 6px;
+    
+}
+
+.filtros-title {
+    background-color: #494943;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding-bottom: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2px;
+    position: absolute;
+    right: 17px;
+    width: 90px;
+    border-radius: 0 3px 0 6px;
+}
+
+.acciones-disponibilidad {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.apartamento-descripcion {
+    padding: 10px;
+    text-align: justify;
+}
+
+.apartamento-calendario {
+    padding: 10px 20px;
+    display: none;
+}
+
 @media (max-width: 768px){
     .form-group.arrow_in_search{
         display: none;
@@ -148,5 +237,10 @@ legend.title {
     }
     .search-slider-content .form-group.for_input{
         width: 100%;
+    }
+    
+    #resultados {
+        height: auto;
+        overflow: hidden;
     }
 }

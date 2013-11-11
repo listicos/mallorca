@@ -1,6 +1,6 @@
 <?php
 
-$apartamentos = getApartamentos();
+$apartamentos = getApartamentosMasVisitados(15);
 $apartamentos_array = array();
 
 $user_vars = Core_Util_Click::getUsersVars();
@@ -10,9 +10,22 @@ foreach ($user_vars as $u_k => $u_v) {
 $minPrice = 999999999;
 $maxPrice = -999999999;
 
+$categorias = getAllInstalacionesCategoria();
+foreach ($categorias as $categoria) {
+    $categoria->instalaciones = getInstalacionesByCategoria($categoria->idInstalacionCategoria);
+}
+
+$smarty->assign('categorias', $categorias);
+
+$habitaciones = getTipoHabitaciones();
+$tipos_apartamento = getTiposApartamentos();
+
+$smarty->assign('habitaciones', $habitaciones);
+$smarty->assign('tiposApartamento', $tipos_apartamento);
 
 
 foreach ($apartamentos as $akey => $apartamento) {
+    $apartamento->tipo = getTipoApartamento($apartamento->idApartamentosTipo)->nombre;
     $apartamentos_array[$akey]['apartamento'] = $apartamento;
     $apartamentosAdjuntos = getApartamentosAdjuntos($apartamento->idApartamento);
     foreach ($apartamentosAdjuntos as $adkey => $apartamentoAdjunto) {
@@ -32,6 +45,14 @@ foreach ($apartamentos as $akey => $apartamento) {
 
     $comments = getOpinionesByApartamento($apartamento->idApartamento);
     $apartamentos_array[$akey]['opiniones'] = $comments;
+    
+    $apto_disponibilidades = getDisponibilidadByApartamento($apartamento->idApartamento);
+    $ds = array();
+    foreach ($apto_disponibilidades as $dis) {
+        array_push($ds, date('Y-n-j', strtotime($dis->fechaInicio)));
+    }
+    
+    $apartamentos_array[$akey]['disponibilidades'] = json_encode($ds);
 }
 $dia_comienzo = date("d-m-Y", mktime(0, 0, 0, date("m"), date("d") + 1, date("y")));
 
@@ -42,7 +63,7 @@ if ($disponibilidades) {
         $disponibles[] = date('Y-n-j', strtotime($d->fechaInicio));
     }
 }
-//$template->setJsVar('disponibles',json_encode($disponibles));
+$smarty->assign('disponibles',json_encode($disponibles));
 $smarty->assign('apartamentos', $apartamentos_array);
 $smarty->assign('dia_comienzo', $dia_comienzo);
 $smarty->assign('minPrice', $minPrice);
