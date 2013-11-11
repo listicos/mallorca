@@ -43,7 +43,7 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
             $tipos = $_POST['tiposApartamento'];
         else $tipos = array();
 
-        $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, $start, 3);
+        $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, $start, 10);
         foreach ($apartamentos as $apto) {
             $apto->tipo = getTipoApartamento($apto->idApartamentosTipo)->nombre;
             if($apto->precioPorNoche) {

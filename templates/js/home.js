@@ -241,7 +241,7 @@ function pagination() {
             return false;
         
         if(!IS_GETTING_EMP){
-            if ($(window).scrollTop() >= $('.result-item').last().offset().top + 150) {
+            if ($(window).scrollTop() > $('.result-item').last().offset().top) {
                 
                 IS_GETTING_EMP = true;
                 
