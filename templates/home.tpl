@@ -24,7 +24,29 @@
     <div class="container-liquid  content body-content home">
         <div class="row">
             <div class="col-sm-5">
-                <div class="row form-horizontal" role="form">
+                <div class="row form-horizontal filters-content" role="form">
+                   <div class="search-slider-content">
+                        <div class="form-inline" role="form">
+                            <div class="form-group">
+                                <label class="">Viaje</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="llegada">Llegada</label>
+                                <input type="text" class="form-control" id="llegada" placeholder="Llegada">
+                            </div>
+                            <div class="form-group arrow_in_search"><img src="{$template_url_s}/img/icon-arrowR.png" alt="Photo 4"></div>
+                            <div class="form-group">
+                                <label class="sr-only" for="llegada">Salida</label>
+                                <input type="text" class="form-control" id="llegada" placeholder="Salida">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="huesped">Llegada</label>
+                                <select class="form-control">
+                                    <option value="1">1 Huésped</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-sm-12 form-group">
                         <label class="control-label col-sm-4">Tipo de habitación</label>
                         <div class="col-sm-8">
@@ -32,14 +54,14 @@
                                 <label class="btn btn-default">
                                   <input type="radio" name="options" id="option1">
                                   <div class="text-center">
-                                      <img src="{$template_url}/img/icon-villas.png" alt="">
+                                      <img src="{$template_url_s}/img/icon-villas.png" alt="">
                                       <span>Villas</span>
                                   </div>
                                 </label>
                                 <label class="btn btn-default">
                                 <input type="radio" name="options" id="option2">
                                 <div class="text-center">
-                                      <img src="{$template_url}/img/icon-rural.png" alt="">
+                                      <img src="{$template_url_s}/img/icon-rural.png" alt="">
                                       <span>Turismo rural</span>
                                   </div>
                               </label>
@@ -136,28 +158,6 @@
                             </a>
                         </div>
                     </div>
-                    <div class="search-slider-content">
-                        <form class="form-inline" role="form">
-                            <div class="form-group">
-                                <label class="">Viaje</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="llegada">Llegada</label>
-                                <input type="text" class="form-control" id="llegada" placeholder="Llegada">
-                            </div>
-                            <div class="form-group"><img src="{$template_url}/img/icon-arrowR.png" alt="Photo 4"></div>
-                            <div class="form-group">
-                                <label class="sr-only" for="llegada">Salida</label>
-                                <input type="text" class="form-control" id="llegada" placeholder="Salida">
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="huesped">Llegada</label>
-                                <select class="form-control">
-                                    <option value="1">1 Huésped</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
                 </div>
                 <div id="resultados" class="row result-list-container">
                     
@@ -167,7 +167,7 @@
                                 <div class="carousel-inner">
                                     
                                     <div class="item active">
-                                        <img src="{$template_url}/img/slide_1.png" alt="">
+                                        <img src="{$template_url_s}/img/slide_1.png" alt="">
                                         <div class="carousel-caption">
                                             <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
@@ -175,7 +175,7 @@
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <img src="{$template_url}/img/slide_2.png" alt="">
+                                        <img src="{$template_url_s}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
                                             <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
@@ -183,7 +183,7 @@
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <img src="{$template_url}/img/slide_2.png" alt="">
+                                        <img src="{$template_url_s}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
                                             <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
@@ -209,7 +209,7 @@
                                 <input type="hidden" name="lon" value="">
                             <div class="row acciones-apto">
                                 <div class="col-xs-8 text-left">
-                                    <img src="{$template_url}/img/pattern_1.jpg"  class="thumbnail" alt="" height="50">
+                                    <img src="{$template_url_s}/img/pattern_1.jpg"  class="thumbnail" alt="" height="50">
                                     <span class="text-muted text-apto">Casa/apto. entero</span>
                                 </div>
 
@@ -227,7 +227,7 @@
                                 <div class="carousel-inner">
                                     
                                     <div class="item active">
-                                        <img src="{$template_url}/img/slide_1.png" alt="">
+                                        <img src="{$template_url_s}/img/slide_1.png" alt="">
                                         <div class="carousel-caption">
                                             <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
@@ -235,7 +235,7 @@
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <img src="{$template_url}/img/slide_2.png" alt="">
+                                        <img src="{$template_url_s}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
                                             <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
@@ -243,7 +243,7 @@
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <img src="{$template_url}/img/slide_2.png" alt="">
+                                        <img src="{$template_url_s}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
                                             <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
@@ -269,7 +269,7 @@
                                 <input type="hidden" name="lon" value="">
                             <div class="row acciones-apto">
                                 <div class="col-xs-8 text-left">
-                                    <img src="{$template_url}/img/pattern_1.jpg"  class="thumbnail" alt="" height="50">
+                                    <img src="{$template_url_s}/img/pattern_1.jpg"  class="thumbnail" alt="" height="50">
                                     <span class="text-muted text-apto">Casa/apto. entero</span>
                                 </div>
 
@@ -287,7 +287,7 @@
                                 <div class="carousel-inner">
                                     
                                     <div class="item active">
-                                        <img src="{$template_url}/img/slide_1.png" alt="">
+                                        <img src="{$template_url_s}/img/slide_1.png" alt="">
                                         <div class="carousel-caption">
                                             <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
@@ -295,7 +295,7 @@
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <img src="{$template_url}/img/slide_2.png" alt="">
+                                        <img src="{$template_url_s}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
                                             <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
@@ -303,7 +303,7 @@
                                         </div>
                                     </div>
                                     <div class="item">
-                                        <img src="{$template_url}/img/slide_2.png" alt="">
+                                        <img src="{$template_url_s}/img/slide_2.png" alt="">
                                         <div class="carousel-caption">
                                             <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                             <p>Nombre del apartamento</p>
@@ -329,7 +329,7 @@
                                 <input type="hidden" name="lon" value="">
                             <div class="row acciones-apto">
                                 <div class="col-xs-8 text-left">
-                                    <img src="{$template_url}/img/pattern_1.jpg"  class="thumbnail" alt="" height="50">
+                                    <img src="{$template_url_s}/img/pattern_1.jpg"  class="thumbnail" alt="" height="50">
                                     <span class="text-muted text-apto">Casa/apto. entero</span>
                                 </div>
 

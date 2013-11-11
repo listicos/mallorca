@@ -30,19 +30,29 @@
 .acciones-apto > div {
     /*text-align: center;*/
 }
+.filters-content{
+    margin: 0;
+}
+.filters-content .form-group{
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dddddd;
+}
 .home-main-slider{
     margin-bottom: 20px;
     position: relative;
 }
 .search-slider-content{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -287.5px;
+    margin-bottom: 20px;
 }
-.search-slider-content form{
+.search-slider-content .form-group{
+    border: none;
+    /*padding: 0;*/
+}
+.search-slider-content .form-inline{
     background: #f7f7f7;
-    padding: 15px;
+    padding: 15px 15px 0;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -116,4 +126,15 @@ legend.title {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+}
+@media (max-width: 768px){
+    .form-group.arrow_in_search{
+        display: none;
+    }
+    .search-slider-content .form-group {
+        padding: 0;
+    }
+    .search-slider-content .form-inline{
+        padding: 15px;
+    }
 }

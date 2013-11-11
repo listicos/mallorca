@@ -39,8 +39,6 @@
                     <div class="col-md-6">
                         <ul class="nav navbar-nav">
                             <li><a class="to_scroll" href="{$base_url}">Inicio</a></li>
-                            <li><a class="to_scroll" href="{$base_url}#servicio">Servicios</a></li>
-                            <li><a href="{$base_url}/apartamentos">Apartamentos</a></li>
                             <li><a href="{$base_url}/contacto">Contacto & Mapa</a></li>
                             <li><a href="#" class="to_scroll_top"><span class="caret caret-inverse"></span>Top</a></li>
                         </ul>

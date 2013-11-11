@@ -63,6 +63,7 @@ body{
     -webkit-border-radius: 4px !important;
     -moz-border-radius: 4px !important;
     border-radius: 4px !important;
+    margin-bottom: 5px;
 }
 .btn-group.separate-group > .btn:first-child{
     margin-right: 10px;

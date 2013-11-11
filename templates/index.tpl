@@ -43,6 +43,7 @@
             <script src="{$template_url_s}/js/jquery.ui.slider.js"></script>
             
             <script src="{$template_url_s}/js/jquery.flexslider.js"></script>
+            <script src="{$template_url_s}/js/main.js"></script>
             {literal}
             <script type="text/javascript">var switchTo5x=true;</script>
             <!--<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
