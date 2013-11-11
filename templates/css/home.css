@@ -1,9 +1,9 @@
 .acciones-apto {
     margin: 0;
-    height: 68px;   
+    height: 74px;   
 }
 .acciones-apto .text-apto{
-    width: 55%;
+    width: 100%;
     float: left;
     margin-left: 5px;
 }
@@ -32,6 +32,7 @@
 }
 .filters-content{
     margin: 0;
+    border-right: 2px solid #7c90a6;
 }
 .filters-content .form-group{
     margin-right: 0px;
