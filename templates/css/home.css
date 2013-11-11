@@ -52,6 +52,9 @@
 .search-slider-content{
     margin-bottom: 20px;
 }
+.search-slider-content .form-group.for_input{
+    width: 100px;
+}
 .search-slider-content .form-group{
     border: none;
     /*padding: 0;*/
@@ -142,5 +145,8 @@ legend.title {
     }
     .search-slider-content .form-inline{
         padding: 15px;
+    }
+    .search-slider-content .form-group.for_input{
+        width: 100%;
     }
 }

@@ -30,12 +30,12 @@
                             <div class="form-group">
                                 <label class="">Viaje</label>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group for_input">
                                 <label class="sr-only" for="llegada">Llegada</label>
                                 <input type="text" class="form-control" id="llegada" placeholder="Llegada">
                             </div>
                             <div class="form-group arrow_in_search"><img src="{$template_url_s}/img/icon-arrowR.png" alt="Photo 4"></div>
-                            <div class="form-group">
+                            <div class="form-group for_input">
                                 <label class="sr-only" for="llegada">Salida</label>
                                 <input type="text" class="form-control" id="llegada" placeholder="Salida">
                             </div>
