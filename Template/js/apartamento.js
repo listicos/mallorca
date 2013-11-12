@@ -138,7 +138,7 @@ function FechasReserva() {
     for(i=0;i<FECHAS_DISPONIBLES.length;i++)
         FECHAS_DISPONIBLES[i] = new Date(FECHAS_DISPONIBLES[i]).getTime();
     
-    var date_now = new Date(new Date().setDate(new Date().getDate()-2));
+    var date_now = new Date(new Date().setDate(new Date().getDate()-1));
     $('#fechaInicio').datepicker({
         format: "dd-mm-yyyy",     
         autoclose: true,
@@ -166,7 +166,7 @@ function FechasReserva() {
       calcularTotal();  
     });
 
-    $('#fechaFinal').datepicker('setStartDate', date_now);
+    $('#fechaFinal').datepicker('setStartDate', new Date());
 }
 
 function calcularTotal() {

@@ -40,22 +40,24 @@ $(document).ready(function() {
     $('.date-start').datepicker({
         autoclose: true,
         enableDates: ENABLE_DATES,
-        format: "dd-mm-yyyy"
+        format: "dd-mm-yyyy",
+        startDate: new Date(new Date().setDate(new Date().getDate() - 1))
     }).on('changeDate', function(ev) {
         $('.date-end').datepicker('setStartDate', ev.date);
     });
 
-    $('.date-start').datepicker('setStartDate', new Date());
+    //$('.date-start').datepicker('setStartDate', new Date());
 
     $('.date-end').datepicker({
         autoclose: true,
         enableDates: ENABLE_DATES,
-        format: "dd-mm-yyyy"
+        format: "dd-mm-yyyy",
+        startDate: new Date()
     }).on('changeDate', function(ev) {
-
+        $('.date-start').datepicker('setEndDate', ev.date);
     });
 
-    $('.date-end').datepicker('setStartDate', new Date());
+    //$('.date-end').datepicker('setStartDate', new Date());
     /*
      $( "#slider-range" ).slider({
      range: true,
