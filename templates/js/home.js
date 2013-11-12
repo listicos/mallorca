@@ -176,11 +176,12 @@ function actualizarMapa() {
  }*/
 
 function filtrar() {
-    $('input, select', '#filtrosFrm').off('change').on('change', function(e) {
+    $('#filtrosFrm input, #filtrosFrm select, select[name=order]').off('change').on('change', function(e) {
         e.preventDefault();
         //var valid = $(this).validationEngine('validate');
         if (true) {
             var form = $('#filtrosFrm').serialize();
+            form += ("&order=" + $('select[name=order]').val());
             $.ajax({
                 url: BASE_URL + '/ajax-filtros',
                 data: form,
@@ -299,7 +300,8 @@ function pagination() {
                 IS_GETTING_EMP = true;
                 
                 var form = $('#filtrosFrm').serialize();
-                form += "&start=" + $('.result-item').length;
+                form += ("&order=" + $('select[name=order]').val());
+                form += ("&start=" + $('.result-item').length);
                 $.ajax({
                     url: BASE_URL + '/ajax-filtros',
                     data: form,
@@ -351,6 +353,7 @@ function masFiltros() {
         masFiltros();
         
         var form = $('#filtrosFrm').serialize();
+        form += ("&order=" + $('select[name=order]').val());
         $.ajax({
             url: BASE_URL + '/ajax-filtros',
             data: form,

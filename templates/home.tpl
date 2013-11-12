@@ -51,6 +51,16 @@
                                 <label class="sr-only" for="huesped">Llegada</label>
                                 <select class="form-control" name="huespedes">
                                     <option value="1">1 Huésped</option>
+                                    <option value="2">2 Huéspedes</option>
+                                    <option value="3">3 Huéspedes</option>
+                                    <option value="4">4 Huéspedes</option>
+                                    <option value="5">5 Huéspedes</option>
+                                    <option value="6">6 Huéspedes</option>
+                                    <option value="7">7 Huéspedes</option>
+                                    <option value="8">8 Huéspedes</option>
+                                    <option value="9">9 Huéspedes</option>
+                                    <option value="10">10 Huéspedes</option>
+                                    <option value="11">11 Huéspedes</option>
                                 </select>
                             </div>
                         </div>
@@ -133,46 +143,20 @@
             </div>
             <div class="col-sm-7">
                 <div class="row home-main-slider">
-                    <!--
-                    <div class="col-md-12">
-                        <div class="carousel slide"  id="header-slider">
-                            <ol class="carousel-indicators">
-                                <li data-target="#header-slider" data-slide-to="0" class="active"></li>
-                                <li data-target="#header-slider" data-slide-to="1"></li>
-                                <li data-target="#header-slider" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img src="{$template_url_s}/img/slider/1.jpg" alt="Photo 1">
-                                </div>
-                                <div class="item">
-                                    <img src="{$template_url_s}/img/slider/2.jpg" alt="Photo 2">
-                                    <div class="carousel-caption">
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="{$template_url_s}/img/slider/3.jpg" alt="Photo 3">
-                                    <div class="carousel-caption">
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="{$template_url_s}/img/slider/4.jpg" alt="Photo 4">
-                                    <div class="carousel-caption">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="back-images layer-1"></div>
-                            <div class="back-images layer-2"></div>
-
-                            <a class="left carousel-control" href="#header-slider" data-slide="prev">
-                                <span class="icon-prev"></span>
-                            </a>
-                            <a class="right carousel-control" href="#header-slider" data-slide="next">
-                                <span class="icon-next"></span>
-                            </a>
+                    
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="sr-only" for="huesped">Ordenar por</label>
+                            <select class="form-control" name="order">
+                                <option value="a.nombre ASC">Nombre (Ascendente)</option>
+                                <option value="a.nombre DESC">Nombre (Descendente)</option>
+                                <option value="d.precio ASC">Precio (Ascendente)</option>
+                                <option value="d.precio DESC">Precio (Descendente)</option>
+                                <option value="a.visitas ASC">Popularidad</option>
+                            </select>
                         </div>
                     </div>
-                    -->
+                    
                 </div>
                 <div id="resultados" class="row result-list-container">
                     {foreach from=$apartamentos item=a name=apartamentos}

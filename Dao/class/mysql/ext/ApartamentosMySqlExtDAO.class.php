@@ -33,34 +33,34 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
         return $this->getList($sqlQuery);
     }
 
-    public function queryApartamentosFilters($fechaInicio, $fechaFinal, $huespedes = false, $instalaciones = array(), $tipos = array(), $start = 0, $limit = 10) {
-        $sql = 'SELECT DISTINCT apartamentos.*';
-        $sql.= ' FROM apartamentos';
+    public function queryApartamentosFilters($fechaInicio, $fechaFinal, $huespedes = false, $instalaciones = array(), $tipos = array(), $start = 0, $limit = 10, $order = false) {
+        $sql = 'SELECT DISTINCT a.*';
+        $sql.= ' FROM apartamentos AS a';
         if(count($instalaciones)) {
-            $sql .= " INNER JOIN apartamentos_instalaciones ON apartamentos_instalaciones.id_apartamento = apartamentos.id_apartamento";
+            $sql .= " INNER JOIN apartamentos_instalaciones AS ai ON ai.id_apartamento = a.id_apartamento";
         }
         
         
-        $sql.= " INNER JOIN disponibilidades ON apartamentos.id_apartamento  = disponibilidades.id_apartamento AND disponibilidades.estatus =  'disponible' WHERE 1";
+        $sql.= " INNER JOIN disponibilidades AS d ON a.id_apartamento  = d.id_apartamento AND d.estatus =  'disponible' WHERE 1";
 
         if ($fechaInicio && $fechaFinal && is_numeric($fechaInicio) && $fechaInicio < $fechaFinal) {
             for ($i = $fechaInicio; $i <= $fechaFinal; $i+=86400) {
-                $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS d WHERE apartamentos.id_apartamento = d.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $i) . "' )";
+                $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $i) . "' )";
             }
         } else if ($fechaInicio && is_numeric($fechaInicio)) {
-            $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS d WHERE apartamentos.id_apartamento = d.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $fechaInicio) . "' )";
+            $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $fechaInicio) . "' )";
         } else if ($fechaFinal && is_numeric($fechaFinal)) {
-            $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS d WHERE apartamentos.id_apartamento = d.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $fechaFinal) . "' )";
+            $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $fechaFinal) . "' )";
         }
 
         if ($huespedes) {
-            $sql .= " AND apartamentos.capacidad_personas >= " . $huespedes;
+            $sql .= " AND a.capacidad_personas >= " . $huespedes;
         }
         
         if(count($instalaciones)) {
             foreach ($instalaciones as $ins)
                 if(is_numeric($ins))
-                    $sql .= " AND EXISTS (SELECT id_instalacion from apartamentos_instalaciones WHERE apartamentos_instalaciones.id_apartamento = apartamentos.id_apartamento AND apartamentos_instalaciones.id_instalacion = " . $ins . ") ";
+                    $sql .= " AND EXISTS (SELECT id_instalacion from apartamentos_instalaciones WHERE apartamentos_instalaciones.id_apartamento = a.id_apartamento AND apartamentos_instalaciones.id_instalacion = " . $ins . ") ";
         }
         
         if(count($tipos)) {
@@ -71,12 +71,12 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
                     else 
                         $sql .= " OR ";
                     
-                    $sql .= " apartamentos.id_apartamentos_tipo = " . $tipo;
+                    $sql .= " a.id_apartamentos_tipo = " . $tipo;
                 }
             $sql .= " ) ";
         }
         
-        $sql .= ' ORDER BY precio ASC limit ' . $start . " , " . $limit;
+        $sql .= ' ORDER BY ' . (($order) ? : 'precio ASC') . ' limit ' . $start . " , " . $limit;
         
         $sqlQuery = new SqlQuery($sql);
 
