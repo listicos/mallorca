@@ -56,11 +56,12 @@ function initialize() {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         center: myLatlng
     }
+    map = new google.maps.Map(document.getElementById('mapa'), mapOptions);
     var marker = new google.maps.Marker({
         position: myLatlng,
         map: map
     });
-    map = new google.maps.Map(document.getElementById('mapa'), mapOptions);
+    
     google.maps.event.trigger(map, 'resize');
     map.setCenter(myLatlng);
 }
@@ -68,7 +69,7 @@ function initialize() {
 function initCalendar() {
     $.ajax({
        dataType: "json",
-        url: BASE_URL + "/admin-ajax-calendario",
+        url: BASE_URL + "/ajax-calendario",
         type: "POST",
         data: {
             idApartamento: $('input[name=idApartamento]').val(),

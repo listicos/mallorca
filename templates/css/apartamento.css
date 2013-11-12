@@ -69,7 +69,7 @@
 }
 
 .mapaContainer, .calendarioContainer {
-    min-height: 450px;
+    min-height: 470px;
     display: none;
     padding: 10px;
     border: 1px solid #dddddd;
@@ -77,8 +77,8 @@
 }
 
 #mapa {
-    width: 708px;
-    height: 429px;
+    width: 825px;
+    height: 450px;
 }
 
 .calendarioContainer > div {
