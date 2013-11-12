@@ -56,25 +56,25 @@ class Core_Mailer {
             if(!count($config))
                 $this->config_mailer($mail);
             else {
-                if(isset($config['servidor'])) $mailer->Host = trim($config['servidor']);
-                else $mailer->Host = trim('smtp.gmail.com');
+                if(isset($config['servidor'])) $mail->Host = trim($config['servidor']);
+                else $mail->Host = trim('smtp.gmail.com');
                 
-                if(isset($config['puerto'])) $mailer->Port = trim($config['puerto']);
-                else $mailer->Port = 465;
+                if(isset($config['puerto'])) $mail->Port = trim($config['puerto']);
+                else $mail->Port = 465;
                 
-                if(isset($config['email'])) $mailer->Username = trim($config['email']);
-                else $mailer->Username = trim('ruben.listico@gmail.com');
+                if(isset($config['email'])) $mail->Username = trim($config['email']);
+                else $mail->Username = trim('ruben.listico@gmail.com');
                 
-                if(isset($config['password'])) $mailer->Password = trim($config['password']);
-                else $mailer->Password = trim('534%$DcdE23');
+                if(isset($config['password'])) $mail->Password = trim($config['password']);
+                else $mail->Password = trim('534%$DcdE23');
 
                 if(isset($config['username'])) {
-                    $mailer->setFrom($mailer->Username, trim($config['username']));
-                    $mailer->FromName = trim($config['username']);
+                    $mail->setFrom($mail->Username, trim($config['username']));
+                    $mail->FromName = trim($config['username']);
                 }
                 else {
-                    $mailer->setFrom($mailer->Username, 'Mallorca Rent Haus');
-                    $mailer->FromName = trim('Mallorca Rent Haus');
+                    $mail->setFrom($mail->Username, 'Mallorca Rent Haus');
+                    $mail->FromName = trim('Mallorca Rent Haus');
                 }
                 
                 

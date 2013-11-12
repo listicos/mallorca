@@ -2,6 +2,11 @@
 
 {block name="script" append}
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="{$template_url_s}/js/contacto.js"></script>
+    <script type="text/javascript">
+        var lat = "{$config->direccion->lat}";
+        var lon = "{$config->direccion->lon}";
+    </script>
 {/block}
 
 {block name="style" append}
@@ -18,40 +23,41 @@
 
             <div class="contenedor-mapa row-fluid">
 
-                <div class="container-mapa">
+                <div class="container-mapa" id="container-mapa">
 
-                    Aqui va un mapa
                 </div>      
             </div> 
 
 
             <div class="container-columnas row">
                 <div class="contacto col-md-8">
+                    <form class="form-inline col-md-12" role="form" id="contactoForm">
                     <div class="titulo-contacto col-md-12">
                         <h3>Contáctanos</h3>
                     </div>
                     <div class="datos-contacto row">
-                        <form class="form-inline col-md-12" role="form">
+                        
                             <div class="form-group col-md-6">  
-                                <label class="sr-only" for="exampleInputEmail2">Nombre completo</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombre completo">
+                                <label class="sr-only" for="nombre">Nombre completo</label>
+                                <input type="text" class="form-control validate[required]" name="nombre" placeholder="Nombre completo">
                             </div>
                             <div class="form-group col-md-6">
-                                <label class="sr-only" for="exampleInputEmail2">Correo eletrónico</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Correo electrónico">
+                                <label class="sr-only" for="email">Correo eletrónico</label>
+                                <input type="email" class="form-control validate[required, custom[email]]" name="email" placeholder="Correo electrónico">
                             </div>
-                        </form>
+                        
                     </div>
                     <div class="contenedor-textarea row-fluid">
-                        <form class="bs-example col-md-12">
-                            <textarea class="btn-box-text validate[required]" name="mensaje" placeholder="Mensaje" style="margin: 16px 0px 0px; height: 150px; width: 723px;"></textarea>
-                        </form>
+                        
+                            <textarea class="btn-box-text validate[required]" name="mensaje" placeholder="Mensaje" style=""></textarea>
+                        
                     </div>
                     <div class="contenedor-boton row-fluid">
 
-                        <button type="button" class="btn btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
 
                     </div>
+                    </form>
                 </div>
                 <div class="columna-derecha row-fluid col-md-4">
                     <div class="boletin-informativo col-md-12">

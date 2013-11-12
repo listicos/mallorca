@@ -34,7 +34,7 @@
                                 <div class="span4">
                                     <div class="control-group">
                                         <div class="input-prepend center span12" title="Contrase&ntilde;a" data-rel="tooltip">
-                                            <span class="add-on"><i class="icon-pencil"></i></span><input class="input-large span10" name="senha" type="password" placeholder="Contrase&ntilde;a"  value="<?php echo $configuracion->password; ?>" />
+                                            <span class="add-on"><i class="icon-pencil"></i></span><input class="input-large span10" name="password" type="password" placeholder="Contrase&ntilde;a"  value="<?php echo $configuracion->password; ?>" />
                                         </div>
                                     </div>                                     
                                 </div>  
