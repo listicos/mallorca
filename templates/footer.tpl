@@ -24,12 +24,14 @@
                     </div>
                 </div>
                 <div class="col-md-4">
+                    <form id="suscribirFrm">
                     <h3>Suscríbete</h3>
                     <div class="newsletter form-group">
                         <label>Correo electrónico</label>
-                        <input type="email" class="form-control" />
+                        <input type="email" class="form-control validate[required, custom[email]]" name="email" />
                     </div>
-                    <div class="text-right"><a href="#" class="btn btn-newsletter">Suscíbete</a></div>
+                    <div class="text-right"><a id="suscribirBtn" href="#" class="btn btn-newsletter">Suscríbete</a></div>
+                    </form>
                 </div>
             </div>
         </div>

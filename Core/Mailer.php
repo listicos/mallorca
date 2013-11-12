@@ -17,14 +17,19 @@ class Core_Mailer {
             $mail->AddAddress($to);
             $mail->Subject = $subject;
             if ($message) {
-                $mail->Body = $message;
-                //echo $mail->Body;
+                $mail->MsgHTML($message);
+                
             } else if ($this->_template) {
                 $mail->IsHTML(true);
-                $mail->Body = $this->_template->getContent();
-                //echo $mail->Body;
+                $mail->MsgHTML($this->_template->getContent());
+                
             }
-            return $mail->Send();
+            if($mail->Send()) {
+                return true;
+            } else {
+                echo $mail->ErrorInfo;
+                return false;
+            }
         } else {
             return false;
         }
@@ -32,11 +37,11 @@ class Core_Mailer {
 
     protected function mailer() {
         if (!$this->_mailer) {
-            $mail = new phpmailer();
+            $mail = new PHPMailer();
             $mail->CharSet = "UTF-8";
             $mail->Mailer = "smtp";
             $mail->SMTPAuth = true;
-            $mail->SMTPSecure = "tls";
+            $mail->SMTPSecure = "ssl";
             $this->config_mailer($mail);
 
             $this->_mailer = $mail;
@@ -45,12 +50,13 @@ class Core_Mailer {
     }
 
     protected function config_mailer($mailer) {
-        $mailer->Host = trim(HOST);
-        $mailer->Username = trim(USERNAME);
-        $mailer->Password = trim(PASSWORD);
+        $mailer->Host = trim('smtp.gmail.com');
+        $mailer->Port = 465;
+        $mailer->Username = trim('ruben.listico@gmail.com');
+        $mailer->Password = trim('534%$DcdE23');
 
-        $mailer->From = trim(FROM);
-        $mailer->FromName = trim(FROM_NAME);
+        $mailer->setFrom('ruben.listico@gmail.com', 'Mallorca Rent Haus');
+        $mailer->FromName = trim('Mallorca Rent Haus');
     }
 
 }

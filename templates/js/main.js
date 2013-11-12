@@ -10,4 +10,24 @@ $(document).ready(function() {
         return false;
     });
     
+    $('#suscribirBtn').on('click', function(e){
+        e.preventDefault();
+        _valid = $('#suscribirFrm').validationEngine('validate');
+        if(_valid) {
+            data = $('#suscribirFrm').serialize();
+            $.ajax({
+                url: BASE_URL + '/ajax-suscribir',
+                data: data,
+                type: 'post',
+                dataType: 'json',
+                success: function(response) {
+                    if(response.msg == 'ok')
+                        toastr.success('Gracias por suscribirte a nuestro boletín');
+                    else
+                        toastr.error(response.data);
+                }
+            })
+        }
+    })
+    
 });

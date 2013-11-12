@@ -10,6 +10,7 @@ function insertSuscripcion($data = array()) {
             $suscripcion = DAOFactory::getSubscripcionesDAO()->prepare($data);
             $suscripcion_id = DAOFactory::getSubscripcionesDAO()->insert($suscripcion);
         }
+        return true;
         
     } catch(Exception $e) {
         var_dump($e);
