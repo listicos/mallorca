@@ -89,6 +89,10 @@
 	require_once('class/dto/CondicionesCompra.class.php');
 	require_once('class/mysql/CondicionesCompraMySqlDAO.class.php');
 	require_once('class/mysql/ext/CondicionesCompraMySqlExtDAO.class.php');
+	require_once('class/dao/ConfiguracionDAO.class.php');
+	require_once('class/dto/Configuracion.class.php');
+	require_once('class/mysql/ConfiguracionMySqlDAO.class.php');
+	require_once('class/mysql/ext/ConfiguracionMySqlExtDAO.class.php');
 	require_once('class/dao/ContratosDAO.class.php');
 	require_once('class/dto/Contrato.class.php');
 	require_once('class/mysql/ContratosMySqlDAO.class.php');

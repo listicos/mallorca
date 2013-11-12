@@ -125,6 +125,9 @@
                         <?php if(hasRoles("Administrador, Socio")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-politicas-lista"><i class="icon-warning-sign"></i><span class="hidden-tablet"> Politicas de cancelación</span></a></li>                                             
                         <?php } ?>
+                        <?php if(hasRoles("Administrador")) { ?>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-configuracion"><i class="icon-adjust"></i><span class="hidden-tablet"> Configuraci&oacute;n</span></a></li>                                             
+                        <?php } ?>
                     </ul>
                 </div>
             <?php } ?>

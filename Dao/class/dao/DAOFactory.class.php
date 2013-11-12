@@ -148,6 +148,13 @@ class DAOFactory{
 	}
 
 	/**
+	 * @return ConfiguracionDAO
+	 */
+	public static function getConfiguracionDAO(){
+		return new ConfiguracionMySqlExtDAO();
+	}
+
+	/**
 	 * @return ContratosDAO
 	 */
 	public static function getContratosDAO(){

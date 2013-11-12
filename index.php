@@ -31,6 +31,7 @@ include './Logic/calendario.php';
 include './Logic/reservas.php';
 include './Logic/articulos.php';
 include './Logic/complejos.php';
+include './Logic/configuracion.php';
 
 $includes = $controller->getFileAction();
 if (is_file($includes)) {
@@ -39,7 +40,7 @@ if (is_file($includes)) {
     header('Location:' . $base_url);
 }
 setlocale(LC_MONETARY, 'nl_NL.UTF-8');
-/*
+
 function money_format($format, $number) 
 { 
     $regex  = '/%((?:[\^!\-]|\+|\(|\=.)*)([0-9]+)?'. 
@@ -126,7 +127,7 @@ function money_format($format, $number)
     } 
     return $format; 
 }
-*/
+
 function hasRoles($roles) {
     $role = ActiveRole();
     

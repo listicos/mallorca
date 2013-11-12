@@ -38,38 +38,7 @@ $(document).ready(function(){
         else
             $('.disponible', '#disponibilidad_overlay').parents(".input-prepend").slideUp();
     });
-/*
-    $('.empresa_contrato').change(function(){
-        var idEmpresa = $(this).val();
-        $.ajax({
-            dataType: "json",
-            url: BASE_URL + "/admin-ajax-contrato-gestion",
-            type: "POST",
-            data: {
-                idEmpresa:idEmpresa,
-                action:'getContratosByEmpresa'
-            },
-            success: function(response) {    
-                if(response.msg == 'ok'){
-                    $('.apartamento_contrato').html('');
-                        
-                    $.each(response.data, function(i, value) {
-                        $('.apartamento_contrato').append($('<option>').text(value.nombre).attr('value', value.idContrato));
-                    });
-                    bind_ver_contrato(idEmpresa);
-                }else{
-                    $('.trigger_contrato_view').hide();
-                    noty({
-                        "text":response.data,
-                        "layout":"top",
-                        "type":"error"
-                    });
-                    $('.apartamento_contrato').html($('<option>').text('No se encontraron contratos.').attr('value',''));
-                }
-            }
-        }); 
-    }).change();
-  */  
+
     $('.detalles_apartamento_nav a').click(function (e) {
         e.preventDefault();
         if($(this).parents('li').hasClass('disabled')){
@@ -82,7 +51,6 @@ $(document).ready(function(){
                 getApartamentoFotos();
         }
     });
-    /*
     $("#geocomplete").geocomplete({
         map: ".map_canvas",
         details: ".formulario_localizacion ",
@@ -98,33 +66,14 @@ $(document).ready(function(){
         $("#geocomplete").geocomplete('find', $("input[name=lat]").val() + ', ' + $("input[name=lon]").val());
     }, 20);
 
-    //$("#geocomplete").trigger("geocode");
+    
     
     $("#geocomplete").on("geocode:dragged", function(event, latLng) {
         $("input[name=lat]").val(latLng.lat());
         $("input[name=lon]").val(latLng.lng());
-    });*/
-    /*
-    $("#buscar_direccion").click(function() {
-        
-        var map = $("#geocomplete").geocomplete("map");
-
-        google.maps.event.trigger(map, "resize");
-        console.log()
-        var lat_ = $("input[name=lat]").val()
-        var lon_ = $("input[name=lon]").val()
-        window.setTimeout(function() {
-            map.setCenter(new google.maps.LatLng($("input[name=lat]").val(), $("input[name=lon]").val()));
-            $("input[name=lat]").val(lat_)
-            $("input[name=lon]").val(lon_)
-        }, 20);
-
-
-        $("#geocomplete").trigger("geocode");
-
-    });*/
+    });
     
-    //$("#geocomplete").geocomplete('find', $("input[name=lat]").val() + ', ' + $("input[name=lon]").val());
+    
     
 
     $('.date-start').datepicker({
