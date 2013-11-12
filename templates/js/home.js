@@ -297,7 +297,7 @@ function pagination() {
             return false;
         
         if(!IS_GETTING_EMP){
-            if ($('.result-item').length > 0 && $(window).scrollTop() > $('.result-item').last().offset().top) {
+            if ($('.result-item').length > 0 && $('.result-item').length % 10 == 0 && $(window).scrollTop() > $('.result-item').last().offset().top) {
                 
                 IS_GETTING_EMP = true;
                 

@@ -70,14 +70,14 @@
                         <div class="col-sm-8">
                             <div class="btn-group separate-group" data-toggle="buttons">
                                 <label class="btn btn-default">
-                                  <input type="radio" name="options" id="option1">
+                                    <input type="checkbox" name="alojamientos[]" id="option1" value="1">
                                   <div class="text-center">
                                       <img src="{$template_url_s}/img/icon-villas.png" alt="">
                                       <span>Villas</span>
                                   </div>
                                 </label>
                                 <label class="btn btn-default">
-                                <input type="radio" name="options" id="option2">
+                                    <input type="checkbox" name="alojamientos[]" id="option2" value="2">
                                 <div class="text-center">
                                       <img src="{$template_url_s}/img/icon-rural.png" alt="">
                                       <span>Turismo rural</span>

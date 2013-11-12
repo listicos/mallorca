@@ -46,8 +46,13 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
         if(isset($_POST['order']))
             $order = $_POST['order'];
         else $order = false;
+        
+        if(isset($_POST['alojamientos'])) 
+            $alojamientos = $_POST['alojamientos'];
+        else 
+            $alojamientos = array();
 
-        $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, $start, 10, $order);
+        $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, $alojamientos, $start, 10, $order);
         foreach ($apartamentos as $apto) {
             $apto->tipo = getTipoApartamento($apto->idApartamentosTipo)->nombre;
             if($apto->precioPorNoche) {

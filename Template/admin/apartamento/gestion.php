@@ -112,7 +112,7 @@ $edit = $this->getAttribute('edit');
                                     </div>
                                 </div>         
                             </div>
-                            <div class="span4 hidden">
+                            <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend center span12" title="Tipo de habitación" data-rel="tooltip">
                                         <span class="detalles_apartamento_prepend"><i class="icon-user"></i></span>

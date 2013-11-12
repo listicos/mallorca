@@ -33,11 +33,15 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
         return $this->getList($sqlQuery);
     }
 
-    public function queryApartamentosFilters($fechaInicio, $fechaFinal, $huespedes = false, $instalaciones = array(), $tipos = array(), $start = 0, $limit = 10, $order = false) {
+    public function queryApartamentosFilters($fechaInicio, $fechaFinal, $huespedes = false, $instalaciones = array(), $tipos = array(), $alojamientos = array(), $start = 0, $limit = 10, $order = false) {
         $sql = 'SELECT DISTINCT a.*';
         $sql.= ' FROM apartamentos AS a';
         if(count($instalaciones)) {
             $sql .= " INNER JOIN apartamentos_instalaciones AS ai ON ai.id_apartamento = a.id_apartamento";
+        }
+        
+        if(count($alojamientos)) {
+            $sql .= " INNER JOIN apartamentos_alojamientos AS aa ON aa.id_apartamento = a.id_apartamento";
         }
         
         
@@ -51,6 +55,16 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
             $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $fechaInicio) . "' )";
         } else if ($fechaFinal && is_numeric($fechaFinal)) {
             $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $fechaFinal) . "' )";
+        }
+        
+        if(count($alojamientos)) {
+            $sql .= " AND ( ";
+            foreach ($alojamientos as $key=>$alojamiento) {
+                if($key) $sql .= " OR ";
+                $sql .= " aa.id_alojamiento = " . $alojamiento;
+                
+            }
+            $sql .= " ) ";
         }
 
         if ($huespedes) {
