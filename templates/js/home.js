@@ -84,6 +84,8 @@ $(document).ready(function() {
     filtrar();
     
     pagination();
+    
+    masFiltros();
 
     //contarAnuncios();
 
@@ -174,7 +176,7 @@ function actualizarMapa() {
  }*/
 
 function filtrar() {
-    $('input, select', '#filtrosFrm').on('change', function(e) {
+    $('input, select', '#filtrosFrm').off('change').on('change', function(e) {
         e.preventDefault();
         //var valid = $(this).validationEngine('validate');
         if (true) {
@@ -210,29 +212,80 @@ function carruselVisitados() {
 }
 
 function calendarios() {
-    $('.result-item').each(function(){
-        enables = eval($(this).find('input[name=disponibilidades]').val());
-        dates = [];
-        for(i=0;i<enables.length;i++)
-            dates.push(new Date(enables[i]).getTime());
-        
-        $(this).find('.calendario').datepicker({
-            startDate: new Date(),
-            enableDates: dates
+    $('a.ver-disponibilidad').off('click').on('click', function(e){
+        $('#calendario_modal').modal();
+        e.preventDefault();
+        $.ajax({
+            dataType: "json",
+             url: BASE_URL + "/ajax-calendario",
+             type: "POST",
+             data: {
+                 idApartamento: $(this).attr('apartamento-id'),
+                 action: 'getTarifas'
+             },
+             success: function(response) {
+                 if(response.msg == 'ok'){
+                     
+                     var _tarifas = response.tarifas
+                     if(_tarifas.length > 0){
+                         var tarifas_array = [];
+                         for(var i=0;i < _tarifas.length;i++){
+                             var tarifa_temp;
+                             var price = _tarifas[i].precio ? _tarifas[i].precio+"€" : " 0,00€";
+
+                             if(_tarifas[i].estatus == 'disponible')
+                                 tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('green')};
+                             else
+                                 tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('red')};
+
+                             tarifas_array.push(tarifa_temp)
+                         }
+                         setTarifasToCalendar(tarifas_array);
+                     }else{
+                         setTarifasToCalendar();
+                     }
+                 }else{
+                     setTarifasToCalendar();
+                 }
+             }
+         })
+    });   
+    
+}
+
+function setTarifasToCalendar(tarifas){
+    
+    h = {
+        left: 'title',
+        center: '',
+        right: 'prev,next,month'
+    }
+    $('#calendarioDisponibilidad').removeClass("mobile");
+    $('#calendarioDisponibilidad').fullCalendar('destroy');
+    if(tarifas){
+        console.log('tarifas');
+        $('#calendarioDisponibilidad').fullCalendar({
+            header: h,
+            firstDay: 1,
+            slotMinutes: 15,
+            editable: false,
+            droppable: false,
+            events: tarifas
         });
-        
-        
-        
-        $(this).find('a.ver-disponibilidad').off('click').on('click', function(e){
-            e.preventDefault();
-            _this = $(this).parent().parent().parent();
-            _this.find('.apartamento-descripcion').fadeToggle();
-            _this.find('.apartamento-calendario').fadeToggle();
-        })
-    });
+    }else{
+        console.log('no tarifas');
+        $('#calendarioDisponibilidad').fullCalendar({
+            header: h,
+            slotMinutes: 15,
+            editable: false,
+            droppable: false,
+            events: []
+        });
+    }
     
     
 }
+
 var IS_GETTING_EMP = false;
 function pagination() {
     $(document).scroll(function(e) {
@@ -241,7 +294,7 @@ function pagination() {
             return false;
         
         if(!IS_GETTING_EMP){
-            if ($(window).scrollTop() > $('.result-item').last().offset().top) {
+            if ($('.result-item').length > 0 && $(window).scrollTop() > $('.result-item').last().offset().top) {
                 
                 IS_GETTING_EMP = true;
                 
@@ -272,3 +325,48 @@ function pagination() {
     });
 }
 
+function masFiltros() {
+    $('#moreFiltersBtn').off('click').on('click', function(e){
+        e.preventDefault();
+        
+        $('input[name=instalaciones]').prop('checked', false);
+        $('#filtrosServicios input[name="instalaciones[]"]:checked').each(function(){
+            $('input[name=instalaciones][value="' + $(this).val() + '"]').prop('checked', true);
+        })
+        $('#servicios_modal').modal();
+    })
+    
+    $('#filtrarServiciosBtn').off('click').on('click', function(){
+        btn = $('#filtrosServicios .more-checkbox').clone();
+        $('#filtrosServicios').html('');
+        $('input[name=instalaciones]:checked').each(function(){
+            input = $(this).parent().clone();
+            input.find('input').attr('name', "instalaciones[]");
+            input.find('input').prop('checked', true);
+            $('#filtrosServicios').append(input);
+        })
+        $('#filtrosServicios').append(btn);
+        $('#servicios_modal').modal('toggle');
+        filtrar();
+        masFiltros();
+        
+        var form = $('#filtrosFrm').serialize();
+        $.ajax({
+            url: BASE_URL + '/ajax-filtros',
+            data: form,
+            type: 'post',
+            dataType: 'json',
+            success: function(response) {
+                $('#resultados').html(response.html);
+                 $('#resultados').find('.carousel').carousel({
+                    interval: 5000
+                 });
+
+                 actualizarMapa();
+
+                calendarios();
+
+            }
+        });
+    })
+}

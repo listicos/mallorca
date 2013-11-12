@@ -225,6 +225,46 @@ legend.title {
     display: none;
 }
 
+#calendarioDisponibilidad {
+    width: 96%;
+    margin: auto;
+    min-height: 400px;
+    height: auto;
+}
+
+#calendar-legend > div {
+    float: left;
+    margin-left: 10px;
+}
+
+#calendar-legend > div:first-child {
+    margin-left: 0;
+}
+
+div.leyenda {
+    margin-top: 2px;
+    width: 32px;
+    height: 15px;
+    border: 1px solid #dddddd;
+    margin-right: 5px;
+}
+
+.leyenda.disponible {
+    background-color: green;
+}
+
+.leyenda.no-disponible {
+    background-color: red;
+}
+
+.leyenda.anterior {
+    background-color: #dddddd;
+}
+
+.servicios .checkbox-inline:first-child {
+    margin-left: 10px;
+}
+
 @media (max-width: 768px){
     .form-group.arrow_in_search{
         display: none;

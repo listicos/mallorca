@@ -4,6 +4,10 @@
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="{$template_url_s}/js/home.js"></script>
     <script src="{$template_url_s}/js/jquery.mixitup.min.js"></script>
+    <script src="{$template_url}/js/admin/calendar/app.js"></script>
+    <script src="{$template_url}/js/admin/calendar/breakpoints.js"></script>
+    <script src="{$template_url}/js/admin/calendar/calendar.js"></script>
+    <script src="{$template_url}/js/admin/fullcalendar.min.js"></script>
     <script>
         var minPrice = {$minPrice};
         var maxPrice = {$maxPrice};
@@ -19,6 +23,7 @@
 <link href="{$template_url_s}/css/home.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{$template_url_s}/css/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 <link type="text/css" href="{$template_url_s}/css/fancybox/fancymoves.css" media="screen" charset="utf-8" rel="stylesheet"  />
+<link href="{$template_url}/css/admin/fullcalendar.css" rel="stylesheet">
 {/block}
 
 {block name="content" append}
@@ -76,7 +81,7 @@
                     </div>
                     <div class="col-sm-12 form-group">
                         <label class="control-label col-sm-4">Servicios</label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8" id="filtrosServicios">
                             {foreach from=$categorias item=categoria name=categorias}
                                 {foreach from=$categoria->instalaciones item=instalacion name=instalaciones}
                                     {if $smarty.foreach.instalaciones.iteration < 2}
@@ -87,17 +92,9 @@
                                     {/if}
                                 {/foreach}
                             {/foreach} 
-                            <!--
-                            <div class="checkbox-inline">
-                                <input type="checkbox" class="" />
-                                TV
-                            </div>
-                            <div class="checkbox-inline">
-                                <input type="checkbox" class="" />
-                                Cocina
-                            </div>-->
+                            
                             <div class="checkbox-inline more-checkbox">
-                                <a href="#" class="btn btn-default">MAS</a>
+                                <a href="#" id="moreFiltersBtn" class="btn btn-default">MAS</a>
                             </div>
                             
                         </div>
@@ -247,13 +244,10 @@
                                     <div class="apartamento-descripcion">
                                         {$a['apartamento']->descripcionLarga}
                                     </div>
-                                    <div class="apartamento-calendario" >
-                                        <input type="hidden" name="disponibilidades" value='{$a['disponibilidades']}'>
-                                        <div class="calendario"></div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="acciones-disponibilidad">
-                                    <span><a class="ver-disponibilidad" href="javascript:void(0)">Ver disponibilidad</a></span>
+                                    <span><a class="ver-disponibilidad" apartamento-id="{$a['apartamento']->idApartamento}" href="javascript:void(0)" >Ver disponibilidad</a></span>
                                     <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                 </div>
                             </div>
@@ -266,4 +260,57 @@
             </div>
         </div>
     </div>
+                    
+<div class="modal fade" id="calendario_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Disponibilidad</h4>
+            </div>
+            <div class="modal-body">
+                <div id="calendarioDisponibilidad"></div>
+                <div id="calendar-legend">
+                    <div class="leyenda disponible"></div><div>Disponible</div>
+                    <div class="leyenda no-disponible"></div><div>No Disponible</div>
+                    <div class="leyenda anterior"></div><div>No especificado</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+                    
+<div class="modal fade" id="servicios_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Servicios</h4>
+            </div>
+            <div class="modal-body">
+                <div class="listado-servicios">
+                    {foreach from=$categorias item=categoria}
+                        <legend>{$categoria->nombre}</legend>
+                        <div class="servicios">
+                            {foreach from=$categoria->instalaciones item=instalacion}
+                                <div class="checkbox-inline">
+                                    <input type="checkbox" class="" name="instalaciones" value="{$instalacion->idInstalacion}"/>
+                                    {$instalacion->nombre}
+                                </div>
+                            {/foreach}
+                        </div>
+                    {/foreach}
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="filtrarServiciosBtn">Aceptar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+                    
 {/block}

@@ -67,13 +67,10 @@
                 <div class="apartamento-descripcion">
                     {$a->descripcionLarga}
                 </div>
-                <div class="apartamento-calendario" >
-                    <input type="hidden" name="disponibilidades" value='{$a->disponibilidades}'>
-                    <div class="calendario"></div>
-                </div>
+                
             </div>
             <div class="acciones-disponibilidad">
-                <span><a class="ver-disponibilidad" href="javascript:void(0)">Ver disponibilidad</a></span>
+                <span><a apartamento-id="{$a->idApartamento}" class="ver-disponibilidad" href="javascript:void(0)">Ver disponibilidad</a></span>
                 <a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
             </div>
         </div>
