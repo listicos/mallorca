@@ -19,6 +19,9 @@
         {/block} 
     </head>
     <body>
+        <div id="blocker">
+           <div>Cargando...</div>
+       </div>
         <div class="wrapper">
            {include file="header.tpl"}
 
