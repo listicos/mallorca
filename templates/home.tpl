@@ -217,7 +217,7 @@
                                             <div class="text-left descripcion-apto">
                                                 <ul>
                                                     <li>
-                                                        {$a['apartamento']->nombre}
+                                                        <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}">{$a['apartamento']->nombre}</a>
                                                     </li>
                                                     <li>
                                                         {$a['apartamento']->tipo}
