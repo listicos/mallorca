@@ -47,8 +47,8 @@
                                 </li>
                             </ul>
                             <!--<a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>-->
-                            <input type="hidden" name="precio" value="{$a->nombre}">
-                            <input type="hidden" name="nombre" value="{$a->precioPorNoche}">
+                            <input type="hidden" name="precio" value="{$a->precioPorNoche}">
+                            <input type="hidden" name="nombre" value="{$a->nombre}">
                             <input type="hidden" name="lat" value="{$a->direccion->lat}">
                             <input type="hidden" name="lon" value="{$a->direccion->lon}">
                         </div>

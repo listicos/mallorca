@@ -2,6 +2,7 @@ var map;
 
 //var myLatlng = new google.maps.LatLng("40.4216737855101","-3.7001175433777");
 var marcadores = [];
+var movingMap = false;
 function initialize() {
     var mapOptions = {
         zoom: 15,
@@ -9,16 +10,20 @@ function initialize() {
     }
     map = new google.maps.Map(document.getElementById('details-map-location'), mapOptions);
 
+    google.maps.event.addListener(map, 'dragend', function() {
 
-    /*google.maps.event.addListener(map, 'bounds_changed', function() {
-
-        filtrarPorMapaAndPrecio();
+        filtrarPorMapa();
 
     });
-    var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map
-    });*/
+    
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+        if(movingMap) {
+            filtrarPorMapa();
+            movingMap = false;
+        }
+
+    });
+    
 }
 
 $(document).ready(function() {
@@ -57,41 +62,13 @@ $(document).ready(function() {
         $('.date-start').datepicker('setEndDate', ev.date);
     });
 
-    //$('.date-end').datepicker('setStartDate', new Date());
-    /*
-     $( "#slider-range" ).slider({
-     range: true,
-     min: minPrice,
-     max: maxPrice,
-     values: [ minPrice, maxPrice ],
-     slide: function( event, ui ) {
-     $( "#amount-min" ).html( "$" + ui.values[ 0 ] );
-     $( "#amount-max" ).html( " $" + ui.values[ 1 ] );
-     },
-     change: function(event, ui) {
-     
-     filtrarPorMapaAndPrecio();
-     
-     contarAnuncios();
-     }
-     });
-     $( "#amount-min" ).html( "$" + $( "#slider-range" ).slider( "values", 0 ));
-     $( "#amount-max" ).html("  $" + $( "#slider-range" ).slider( "values", 1 ) );
-     
-     $(".add-to-wishlist").click(function(){
-     $(this).toggleClass("active");
-     return false;
-     });*/
-
     filtrar();
     
     pagination();
     
     masFiltros();
 
-    //contarAnuncios();
-
-    /*carruselVisitados();*/
+    
 });
 function ordenar() {
     /*$('#resultados').mixitup();
@@ -145,37 +122,34 @@ function actualizarMapa() {
     map.setCenter(latlngbounds.getCenter());
     map.fitBounds(latlngbounds);
 }
-/*
- function filtrarPorMapaAndPrecio() {
+
+ function filtrarPorMapa() {
  
- bounds = map.getBounds();
- prices = $( "#slider-range" ).slider('values');
- i=0;
- $('.result-list-container .result-item').each(function(){
- var precio = $(this).find('input[name=precio]').val();
- if(precio < prices[0] || precio > prices[1]) {
- $(this).hide();
- marcadores[i].setMap(null);
- } else {
- var nombre = $(this).find('input[name=nombre]').val();
- var lat = $(this).find('input[name=lat]').val();
- var lon = $(this).find('input[name=lon]').val();
- marcadores[i].setMap(map);
- position = new google.maps.LatLng(lat, lon);
+    bounds = map.getBounds();
+    
+    
+    var form = $('#filtrosFrm').serialize();
+    form += ("&order=" + $('select[name=order]').val());
+    form += ("&bounds[]=" + bounds.getNorthEast().lat() + "&bounds[]=" + bounds.getNorthEast().lng());
+    form += ("&bounds[]=" + bounds.getSouthWest().lat() + "&bounds[]=" + bounds.getSouthWest().lng());
+    $.ajax({
+        url: BASE_URL + '/ajax-filtros',
+        data: form,
+        type: 'post',
+        dataType: 'json',
+        success: function(response) {
+            $('#resultados').html(response.html);
+             $('#resultados').find('.carousel').carousel({
+                interval: 5000
+             });
+
+             calendarios();
+
+        }
+    });
  
- if (bounds.contains(position)) {
- $(this).show();
- } else {
- $(this).hide();
+ 
  }
- 
- }
- 
- i++;
- })
- 
- 
- }*/
 
 function filtrar() {
     $('#filtrosFrm input, #filtrosFrm select, select[name=order]').off('change').on('change', function(e) {
@@ -194,11 +168,11 @@ function filtrar() {
                      $('#resultados').find('.carousel').carousel({
                         interval: 5000
                      });
-                     
+                     movingMapa = false;
                      actualizarMapa();
 
                     calendarios();
-
+                    movingMapa = true;
                 }
             });
         }
@@ -314,11 +288,11 @@ function pagination() {
                          $('#resultados').find('.carousel').carousel({
                             interval: 5000
                          });
-
+                        movingMapa = false;
                          actualizarMapa();
 
                         calendarios();
-                        
+                        movingMapa = true;
                         IS_GETTING_EMP = false;
 
                     }

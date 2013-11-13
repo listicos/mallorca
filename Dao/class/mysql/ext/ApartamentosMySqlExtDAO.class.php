@@ -33,7 +33,7 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
         return $this->getList($sqlQuery);
     }
 
-    public function queryApartamentosFilters($fechaInicio, $fechaFinal, $huespedes = false, $instalaciones = array(), $tipos = array(), $alojamientos = array(), $start = 0, $limit = 10, $order = false) {
+    public function queryApartamentosFilters($fechaInicio, $fechaFinal, $huespedes = false, $instalaciones = array(), $tipos = array(), $alojamientos = array(), $start = 0, $limit = 10, $order = false, $bounds = array()) {
         $sql = 'SELECT DISTINCT a.*';
         $sql.= ' FROM apartamentos AS a';
         if(count($instalaciones)) {
@@ -42,6 +42,10 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
         
         if(count($alojamientos)) {
             $sql .= " INNER JOIN apartamentos_alojamientos AS aa ON aa.id_apartamento = a.id_apartamento";
+        }
+        
+        if(count($bounds) == 4) {
+            $sql .= " INNER JOIN direcciones as dir ON a.id_direccion = dir.id_direccion ";
         }
         
         
@@ -88,6 +92,11 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
                     $sql .= " a.id_apartamentos_tipo = " . $tipo;
                 }
             $sql .= " ) ";
+        }
+        
+        if(count($bounds) == 4) {
+            $sql .= " AND dir.lat <= " . $bounds[0] . " AND dir.lat >=" .$bounds[2];
+            $sql .= " AND dir.lon <= " . $bounds[1] . " AND dir.lon >=" .$bounds[3];
         }
         
         $sql .= ' ORDER BY ' . (($order) ? : 'precio ASC') . ' limit ' . $start . " , " . $limit;
