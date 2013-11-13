@@ -21,7 +21,28 @@ function initContacto() {
                 }
             })
         }
-    })
+    });
+    
+    $('#suscripcionForm').submit(function(e) {
+        e.preventDefault();
+        valid = $(this).validationEngine('validate');
+        if(valid) {
+            data = $(this).serialize();
+            $.ajax({
+                url: BASE_URL + '/ajax-suscribir',
+                data: data,
+                type: 'post',
+                dataType: 'json',
+                success: function(response) {
+                    if(response.msg == 'ok') {
+                        toastr.success(response.data);
+                    } else {
+                        toastr.error(response.data);
+                    }
+                }
+            })
+        }
+    });
     
     initMapa();
 }

@@ -66,12 +66,12 @@
                     <div class="contenido-boletin">
                         <p class="col-md-12">Suscríbete a nuestro boletín ahora para estar actualizado con las novedades.</p>
                     </div>
-                    <form role="form">
+                    <form role="form" id="suscripcionForm">
                         <div class="form-group col-md-12">
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Correo eletrónico">
+                            <input type="email" class="form-control validate[required, custom[email]]" name="email" placeholder="Correo eletrónico">
                         </div>
                         <div class="contenedor-enviar col-md-12">
-                            <button type="button" class="btn btn-primary pull-right">Enviar</button>
+                            <button type="submit" class="btn btn-primary pull-right">Enviar</button>
                         </div>
                         <div class="detalles col-md-12">
                             <h3>Detalles</h3>
