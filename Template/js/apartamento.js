@@ -147,11 +147,12 @@ function FechasReserva() {
         },
         enableDates: FECHAS_DISPONIBLES
     }).on('changeDate', function(ev) {
-        $('#fechaFinal').datepicker('setStartDate', ev.date);
+        $('#fechaFinal').datepicker('setStartDate', new Date(new Date().setDate(new Date(ev.date).getDate() + 1)));
         $('#fechaFinal').datepicker('show');
     });
 
     $('#fechaInicio').datepicker('setStartDate', date_now);
+    
 
     $('#fechaFinal').datepicker({
         format: "dd-mm-yyyy",
@@ -160,13 +161,34 @@ function FechasReserva() {
             return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1 ;
         },
         enableDates: FECHAS_DISPONIBLES
+    }).on('changeDate', function(ev) {
+        $('#fechaInicio').datepicker('setEndDate', new Date(new Date().setDate(new Date(ev.date).getDate())));
+        
     });
+    $('#fechaFinal').datepicker('setStartDate', new Date(new Date().setDate(new Date().getDate())));
+    
+    if($('#fechaInicio').val() != "") {
+        fecha = $('#fechaInicio').val().split("-");
+        date = new Date();
+        date.setFullYear(fecha[2]);
+        date.setMonth(fecha[1]);
+        date.setDate(fecha[0]);
+        $('#fechaFinal').datepicker('setStartDate', new Date(new Date().setDate(new Date(date).getDate())));
+    }
+    if($('#fechaFinal').val() != "") {
+        fecha = $('#fechaFinal').val().split("-");
+        date = new Date();
+        date.setFullYear(fecha[2]);
+        date.setMonth(fecha[1]);
+        date.setDate(fecha[0]);
+        $('#fechaInicio').datepicker('setEndDate', new Date(new Date().setDate(new Date(date).getDate() - 1)));
+    }
 
     $('#fechaInicio, #fechaFinal, select[name=huespedes]').on('change',function(){
       calcularTotal();  
     });
 
-    $('#fechaFinal').datepicker('setStartDate', new Date());
+    
 }
 
 function calcularTotal() {

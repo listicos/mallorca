@@ -5,6 +5,9 @@ $idApartamento = $_GET['id'];
 $apartamento = getApartamento($idApartamento);
 $apartamento->tipo = getTipoApartamento($apartamento->idApartamentosTipo);
 
+//incrementar visitas
+updateApartamento($idApartamento, array('visitas'=> ($apartamento->visitas ? : 0) + 1));
+
 $apartamentos_array = array();
 $apartamentos_array['apartamento'] = $apartamento;
 
