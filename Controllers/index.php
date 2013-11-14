@@ -10,10 +10,10 @@ foreach ($user_vars as $u_k => $u_v) {
 $minPrice = 999999999;
 $maxPrice = -999999999;
 
-/*$categorias = getAllInstalacionesCategoria();
+$categorias = getAllInstalacionesCategoria();
 foreach ($categorias as $categoria) {
     $categoria->instalaciones = getInstalacionesByCategoria($categoria->idInstalacionCategoria);
-}*/
+}
 
 $smarty->assign('categorias', $categorias);
 
