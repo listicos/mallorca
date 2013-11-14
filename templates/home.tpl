@@ -145,7 +145,7 @@
                 <div class="row home-main-slider">
                     {if $trash_text}
                     <div class="col-md-12">
-                        <p class="slide-order-title">{substr($trash_text, 0, 5)}...</p>
+                        <p class="slide-order-title">{substr($trash_text, 0, 150)}...</p>
                     </div>
                     {/if}
                     <div class="col-md-4">
