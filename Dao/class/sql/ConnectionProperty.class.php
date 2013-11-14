@@ -6,10 +6,10 @@
  * @date: 27.11.2007
  */
 class ConnectionProperty{
-	private static $host = 'localhost';
+	private static $host = '127.0.0.1';
 	private static $user = 'root';
 	private static $password = '';
-	private static $database = 'clickandbooking';
+	private static $database = 'mallorca';
 
 	public static function getHost(){
 		return ConnectionProperty::$host;

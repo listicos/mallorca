@@ -292,3 +292,8 @@ div.leyenda {
         overflow: hidden;
     }
 }
+@media (min-width: 1600px){
+    .apartamento-item-content{
+        width: 50%;
+    }
+}

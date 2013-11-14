@@ -143,11 +143,9 @@
             </div>
             <div class="col-sm-7">
                 <div class="row home-main-slider">
-                    {if $trash_text}
                     <div class="col-md-12">
-                        <p class="slide-order-title">{substr($trash_text, 0, 150)}...</p>
+                        <p class="slide-order-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
-                    {/if}
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="sr-only" for="huesped">Ordenar por</label>
@@ -164,7 +162,7 @@
                 </div>
                 <div id="resultados" class="row result-list-container">
                     {foreach from=$apartamentos item=a name=apartamentos}
-                    <div class="col-lg-6 mix apto" data-name="{$a['apartamento']->nombre}" data-price="{$a['apartamento']->tarifaBase}">
+                    <div class="col-lg-12 mix apto apartamento-item-content" data-name="{$a['apartamento']->nombre}" data-price="{$a['apartamento']->tarifaBase}">
                         <div class=" result-item">
                             <div>
                                 <div class="carrusel">
@@ -230,7 +228,7 @@
                             <div>
                                 <div>
                                     <div class="apartamento-descripcion">
-                                        {$a['apartamento']->descripcionLarga}
+                                        {substr($a['apartamento']->descripcionLarga, 0, 150)}...
                                     </div>
                                     
                                 </div>
@@ -241,7 +239,7 @@
                             </div>
                         </div>
                     </div>      
-                     {/foreach}
+                    {/foreach} 
                      
                 </div>
             </div>
