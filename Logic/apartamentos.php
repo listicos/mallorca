@@ -429,6 +429,15 @@ function getAllInstalacionesCategoria() {
     }
 }
 
+function getAllInstalaciones() {
+    try {
+        $instalaciones = DAOFactory::getInstalacionesDAO()->queryAll();
+        return $instalaciones;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 function getInstalacionesByCategoria($idInstalacionCategoria) {
     try {
         $instalaciones = DAOFactory::getInstalacionesDAO()->queryByIdInstalacionCategoria($idInstalacionCategoria);

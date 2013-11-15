@@ -153,15 +153,23 @@
                                         </div>
                                         <div class="tab-pane fade" id="servicios">
                                             <ul class="unstyled col-md-4 pull-left">
-                                                <li> <span class="glyphicon glyphicon-adjust"> Apto para fumadores</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Admite mascotas</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> TV</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> TV por satelite</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Internet  </span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Internet inalámbrico (wifi)</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Aire acondicionado</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Calefacción</span></li>
+                                            {foreach from=$apartamento['instalaciones'] item=instalacion name=servicios}
+                                                
+                                            
+                                                <li> <span class="glyphicon glyphicon-adjust"> {$instalacion->nombre}</span></li>
+                                                
+                                                {if $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 < 1 && $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 >= 0}
+                                                    </ul>
+                                                    <ul class="unstyled col-md-4 pull-center">
+                                                {/if}
+                                                {if $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 * 2 < 1 && $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 * 2 >= 0}
+                                                    </ul>
+                                                    <ul class="unstyled col-md-4 pull-right">
+                                                {/if}
+                                            
+                                            {/foreach}
                                             </ul>
+                                            <!--
                                             <ul class="unstyled col-md-4 pull-center">
                                                 <li> <span class="glyphicon glyphicon-adjust"> Edificio con ascenso</span></li>
                                                 <li> <span class="glyphicon glyphicon-adjust"> Acceso para discapacitados</span></li>
@@ -181,7 +189,8 @@
                                                 <li> <span class="glyphicon glyphicon-adjust"> Lavadora</span></li>
                                                 <li> <span class="glyphicon glyphicon-adjust"> Secadora</span></li>
                                                 <li> <span class="glyphicon glyphicon-adjust"> Peluqueria</span></li>
-                                            </ul>   
+                                            </ul> 
+                                            -->
                                             <div class="delimiter"></div>
                                         </div>
 
