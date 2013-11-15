@@ -6,17 +6,12 @@ $result = array("msg" => "error", "data" => "No tienes los permisos suficientes"
 
 
 if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
-        if(isset($_POST['dateStart']) && strlen(trim($_POST['dateStart']))) {
+        if(isset($_POST['dateStart']) && strlen(trim($_POST['dateStart'])) && isset($_POST['dateEnd']) && strlen(trim($_POST['dateEnd']))) {
             $fechaInicio = $_POST['dateStart'];
             $fecha = explode("-", $fechaInicio);
             $fechaInicio = $fecha[2] . "-" . $fecha[1] . "-" . $fecha[0];
             $_SESSION['fechaInicio'] = $fechaInicio;
-        } else {
-            $fechaInicio = null;
-            unset($_SESSION['fechaInicio']);
-        }
         
-        if(isset($_POST['dateEnd']) && strlen(trim($_POST['dateEnd']))) {
             $fechaFinal = $_POST['dateEnd'];
             $fecha = explode("-", $fechaFinal);
             $fechaFinal = $fecha[2] . "-" . $fecha[1] . "-" . $fecha[0];
@@ -24,6 +19,8 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
         } else {
             $fechaFinal = null;
             unset($_SESSION['fechaFinal']);
+            $fechaInicio = null;
+            unset($_SESSION['fechaInicio']);
         }
 
         $huespedes = $_POST['huespedes'];
