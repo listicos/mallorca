@@ -17,7 +17,8 @@
             <link href="{$template_url_s}/css/toastr.css" rel="stylesheet">
             
             <link href="{$template_url_s}/css/flexslider.css" rel="stylesheet">
-            <link href='http://fonts.googleapis.com/css?family=Qwigley' rel='stylesheet' type='text/css'>
+            <!--<link href='http://fonts.googleapis.com/css?family=Qwigley' rel='stylesheet' type='text/css'>-->
+            <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700' rel='stylesheet' type='text/css'>
             <link href="{$template_url_s}/css/styles.css" rel="stylesheet">
         {/block} 
     </head>
