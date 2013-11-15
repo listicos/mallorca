@@ -198,6 +198,7 @@
                                 </div>
                             </div>   
                         </div>
+                        {if count($apartamento['opiniones'])}
                         <div class="panel-titulo row-fluid">
 
                             <div class="panel panel-default">
@@ -238,6 +239,7 @@
                                 </div>
                             </div>  
                         </div>
+                        {/if}
                     </div>
                 </div>
 
