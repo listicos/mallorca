@@ -113,11 +113,11 @@ body{
 .logo-title{
     color: #FFF !important;
     font-family: 'Cinzel Decorative', cursive;
-    font-size: 49px;
+    font-size: 31px;
     padding: 0;
     line-height: 30px;
     padding-left: 15px;
-    padding-top: 15px;
+    padding-top: 13px;
 }
 /* ========= FOOTER =========== */
 .footer_container{

@@ -34,6 +34,7 @@
         <link href='<?php echo $this->template_url; ?>/css/admin/animated.css' rel='stylesheet'>   
         <link href='<?php echo $this->template_url; ?>/css/admin/admin.css' rel='stylesheet'>     
         <link rel="stylesheet" href="<?php echo $this->template_url; ?>/css/admin/validationEngine.jquery.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700' rel='stylesheet' type='text/css'>
         
 
         <?php foreach ($this->getCSS() as $css): ?>
@@ -52,7 +53,10 @@
                     <div class="row-fluid menu_top_content clearfix">
                         <div class="span9">
                             <div class="span8 menu_top_container">
-                                <a href="<?php echo $this->base_url?>/admin-panel"><img src="<?php echo $this->template_url; ?>/imagen/logo.png"/></a>
+                                <a class="logo-title" href="<?php echo $this->base_url?>/admin-panel">
+                                
+                                Mallorca Rent Haus
+                                </a>
                             </div>
                         </div>
                         <div class="span3 pull-right">

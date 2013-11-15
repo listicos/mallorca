@@ -50,9 +50,9 @@
     border-bottom: 1px solid #dddddd;
 }
 .home-main-slider{
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     position: relative;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 p.slide-order-title {
     /*width: 99%;
@@ -73,7 +73,7 @@ p.slide-order-title {
 }
 .search-slider-content .form-inline{
     background: #f7f7f7;
-    padding: 15px 15px 0;
+    padding: 24px 15px 0;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;

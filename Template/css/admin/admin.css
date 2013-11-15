@@ -1,5 +1,16 @@
+
 .bootstrap-select.tipo_ordena{
     width: 10%;
+}
+.logo-title {
+color: #000;
+font-family: 'Cinzel Decorative', cursive;
+font-size: 31px;
+padding: 0;
+line-height: 30px;
+padding-top: 9px;
+display: block;
+text-decoration: none!important;
 }
 form.searchListForm{
     float: right;
