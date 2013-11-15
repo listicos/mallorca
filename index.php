@@ -163,7 +163,7 @@ function AllowRoles($roles) {
     if(in_array($role, $roles_arr)) {
         return true;
     }
-    header('Location:' . $base_url . '/admin-panel/');
+    header('Location:' . $base_url . '/admin-inicio/');
 }
 
 ?>
