@@ -11,7 +11,7 @@ if (isset($_POST['usuario']) && isset($_POST['password'])) {
         if (isset($_SESSION['user_redirect'])) {
             header('Location:'.$_SESSION['user_redirect']);
         } else {
-            header('Location:'.$base_url.'/admin-panel');
+            header('Location:'.$base_url.'/admin-inicio');
         }
     }
 }
