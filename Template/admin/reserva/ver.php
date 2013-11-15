@@ -352,7 +352,7 @@ if($this->getAttribute('reserva')) {
                                 </div> 
                             </div>
                             
-                            <?php if(hasRoles("Administrador")) { ?>
+                            <?php if(hasRoles("Administrador, Mallorca")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
@@ -410,7 +410,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div> 
-                            <?php if(hasRoles("Administrador")) { ?>
+                            <?php if(hasRoles("Administrador, Mallorca")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
@@ -504,7 +504,7 @@ if($this->getAttribute('reserva')) {
                                         </select>
                                     </div>
                                 </div>
-                                <?php if(hasRoles("Administrador")) { ?>
+                                <?php if(hasRoles("Administrador, Mallorca")) { ?>
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" <?php if($pago->validada) echo 'checked'; ?>  name="tarjeta[<?php echo $pago->idReservacionPago ?>][validada]">
@@ -588,7 +588,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div> 
-                            <?php if(hasRoles("Administrador")) { ?>
+                            <?php if(hasRoles("Administrador, Mallorca")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
@@ -644,7 +644,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div> 
-                            <?php if(hasRoles("Administrador")) { ?>
+                            <?php if(hasRoles("Administrador, Mallorca")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
@@ -733,7 +733,7 @@ if($this->getAttribute('reserva')) {
                                         </select>
                                     </div>
                                 </div>
-                                <?php if(hasRoles("Administrador")) { ?>
+                                <?php if(hasRoles("Administrador, Mallorca")) { ?>
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" name="tarjeta[XX][validado]">
@@ -803,7 +803,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div>  
-                            <?php if(hasRoles("Administrador")) { ?>
+                            <?php if(hasRoles("Administrador, Mallorca")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
@@ -875,7 +875,7 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div> 
                             </div>
-                            <?php if(hasRoles("Administrador")) { ?>
+                            <?php if(hasRoles("Administrador, Mallorca")) { ?>
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
@@ -970,7 +970,7 @@ if($this->getAttribute('reserva')) {
                                         </select>
                                     </div>
                                 </div>
-                                <?php if(hasRoles("Administrador")) { ?>
+                                <?php if(hasRoles("Administrador, Mallorca")) { ?>
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" <?php if($pago->validado) echo 'checked'; ?>  name="tarjeta[<?php echo $pago->idReservacionPago ?>][validado]">

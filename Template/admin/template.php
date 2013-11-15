@@ -79,7 +79,7 @@
                 <div class="menu_custom_templete">
                     <ul class="nav nav-tabs nav-stacked main-menu">
                         <li class="nav-tabs nav_header_templete hidden-tablet "></li>
-                        <?php if(hasRoles("Administrador, Socio, Reserva")) { ?>
+                        <?php if(hasRoles("Administrador, Socio, Reserva, Mallorca")) { ?>
                          <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-inicio"><i class="icon-home"></i><span class="hidden-tablet"> Inicio</span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Socio")) { ?>
@@ -88,29 +88,29 @@
                         <?php if(hasRoles("Administrador, Socio")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-calendario"><i class=" icon-calendar"></i><span class="hidden-tablet"> Calendario</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Comercial, Socio")) { ?>
+                        <?php if(hasRoles("Administrador, Comercial, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-apartamento-lista"><i class="icon-home"></i><span class="hidden-tablet"> Apartamentos</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Comercial, Socio")) { ?>
+                        <?php if(hasRoles("Administrador, Comercial, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-complejo-lista"><i class="icon-home"></i><span class="hidden-tablet"> Complejos</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Socio")) { ?>
+                        <?php if(hasRoles("Administrador, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-empresa-lista"><i class="icon-th-list"></i><span class="hidden-tablet"> Propietarios</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Socio, Comercial")) { ?>
+                        <?php if(hasRoles("Administrador, Socio, Comercial, Mallorca")) { ?>
                         <!--<li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-contrato-lista"><i class="icon-folder-open"></i><span class="hidden-tablet"> Contratos</span></a></li>-->
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-cliente-lista"><i class="icon-briefcase"></i><span class="hidden-tablet"> Huéspedes</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador")) { ?>
+                        <?php if(hasRoles("Administrador, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-usuario-lista"><i class="icon-user"></i><span class="hidden-tablet"> Usuarios</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Socio, Comercial")) { ?>
+                        <?php if(hasRoles("Administrador, Socio, Comercial, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-opinion-lista"><i class=" icon-comment"></i><span class="hidden-tablet"> Opiniones</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Comercial, Socio")) { ?>
+                        <?php if(hasRoles("Administrador, Comercial, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-articulos-lista"><i class=" icon-shopping-cart"></i><span class="hidden-tablet"> Artículos adicionales</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Reserva, Socio")) { ?>
+                        <?php if(hasRoles("Administrador, Reserva, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-reserva-lista"><i class="icon-shopping-cart"></i><span class="hidden-tablet"> Reservas <?php if($this->getAlerts()->reservasPendientes > 0 ) echo '<span class="badge badge-important orange pulse animated infinite" title="Pendientes">'.$this->getAlerts()->reservasPendientes.'</span>'; ?> <?php if($this->getAlerts()->reservasParaHoy > 0 ) echo '<span class="badge badge-important green pulse animated infinite" title="Para hoy">'.$this->getAlerts()->reservasParaHoy.'</span>'; ?></span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Reserva, Socio, Comercial")) { ?>
@@ -122,10 +122,10 @@
                         <?php if(hasRoles("Administrador")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-factura-lista"><i class=" icon-folder-open"></i><span class="hidden-tablet"> Facturas</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Socio")) { ?>
+                        <?php if(hasRoles("Administrador, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-politicas-lista"><i class="icon-warning-sign"></i><span class="hidden-tablet"> Politicas de cancelación</span></a></li>                                             
                         <?php } ?>
-                        <?php if(hasRoles("Administrador")) { ?>
+                        <?php if(hasRoles("Administrador, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-configuracion"><i class="icon-adjust"></i><span class="hidden-tablet"> Configuraci&oacute;n</span></a></li>                                             
                         <?php } ?>
                     </ul>

@@ -27,7 +27,7 @@ $edit = $this->getAttribute('edit');
                     <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#contrato" data-toggle="tab" data-ref="contratos">Propietario/Contrato</a></li>-->
                     <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#documentos-tab" data-toggle="tab" data-ref="documentos">Documentos</a></li>
                     <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo3" data-toggle="tab" data-ref="tarifas">Tarifas</a></li>-->  
-                    <?php if(hasRoles("Administrador, Socio")) { ?>
+                    <?php if(hasRoles("Administrador, Socio, Mallorca")) { ?>
                     <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="calendario_trigger_tab" data-ref="calendario">Calendario</a></li>
                     <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="contrato_trigger_tab" data-ref="calendario">Contrato</a></li>
                     <?php } ?>
