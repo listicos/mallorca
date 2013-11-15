@@ -144,7 +144,7 @@
             <div class="col-sm-7">
                 <div class="row home-main-slider">
                     <div class="col-md-12">
-                        <p class="slide-order-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="slide-order-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, </p>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">

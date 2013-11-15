@@ -65,7 +65,7 @@
         <div>
             <div>
                 <div class="apartamento-descripcion">
-                    {$a->descripcionLarga}
+                    {substr($a['apartamento']->descripcionLarga, 0, 150)}...
                 </div>
                 
             </div>

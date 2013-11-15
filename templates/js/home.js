@@ -140,7 +140,7 @@ function actualizarMapa() {
         success: function(response) {
             $('#resultados').html(response.html);
              $('#resultados').find('.carousel').carousel({
-                interval: 5000
+                interval: false
              });
 
              calendarios();
