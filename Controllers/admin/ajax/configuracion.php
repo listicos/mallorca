@@ -2,7 +2,7 @@
 
 $usuario_core->validateUser();
 
-AllowRoles("Administrador");
+AllowRoles("Administrador, Mallorca");
 
 $action = $_POST["action"];
 $result = array("msg" => "error", "data" => "You do not have sufficient permissions.");
