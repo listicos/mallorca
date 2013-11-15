@@ -19,7 +19,6 @@
             <link href="{$template_url_s}/css/flexslider.css" rel="stylesheet">
             <!--<link href='http://fonts.googleapis.com/css?family=Qwigley' rel='stylesheet' type='text/css'>-->
             <link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed|Cinzel+Decorative|Open+Sans:400,700' rel='stylesheet' type='text/css'>
-            <link href="http://fonts.googleapis.com/css?family=" rel="stylesheet" type="text/css">
             <link href="{$template_url_s}/css/styles.css" rel="stylesheet">
         {/block} 
     </head>
