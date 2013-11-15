@@ -145,7 +145,7 @@ function actualizarMapa() {
 
              calendarios();
              
-             if($('#resultados .apartamento-item-content').length == 0) {
+             if($('#resultados .result-item').length == 0) {
                  $('select[name=order]').addClass('hidden');
              } else {
                  $('select[name=order]').removeClass('hidden');
@@ -180,7 +180,7 @@ function filtrar() {
                     calendarios();
                     movingMapa = true;
                     
-                    if($('#resultados .apartamento-item-content').length == 0) {
+                    if($('#resultados .result-item').length == 0) {
                         $('select[name=order]').addClass('hidden');
                     } else {
                         $('select[name=order]').removeClass('hidden');
@@ -357,7 +357,7 @@ function masFiltros() {
 
                 calendarios();
                 
-                if($('#resultados .apartamento-item-content').length == 0) {
+                if($('#resultados .result-item').length == 0) {
                     $('select[name=order]').addClass('hidden');
                 } else {
                     $('select[name=order]').removeClass('hidden');
