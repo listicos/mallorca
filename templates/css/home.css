@@ -274,8 +274,15 @@ div.leyenda {
 .servicios .checkbox-inline:first-child {
     margin-left: 10px;
 }
-.no_apartamentos_container{}
-.no_apartamentos_container p{}
+.no_apartamentos_container{
+    padding: 20px;
+    padding-top: 0px;
+}
+.no_apartamentos_container p{
+    color: #E01212;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
 @media (max-width: 768px){
     .form-group.arrow_in_search{
         display: none;

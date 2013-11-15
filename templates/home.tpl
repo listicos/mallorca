@@ -147,7 +147,7 @@
                         <h1>Simplemente mejor que un hotel</h1>
                         <p class="slide-order-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
                     </div>
-                    <div class="col-md-4">
+                    <!--<div class="col-md-4">
                         <div class="form-group">
                             <label class="sr-only" for="huesped">Ordenar por</label>
                             <select class="form-control" name="order">
@@ -158,7 +158,7 @@
                                 <option value="a.visitas ASC">Popularidad</option>
                             </select>
                         </div>
-                    </div>
+                    </div>-->
                     
                 </div>
                 <div id="resultados" class="row result-list-container">
