@@ -6,9 +6,9 @@
  * @date: 27.11.2007
  */
 class ConnectionProperty{
-	private static $host = '127.0.0.1';
+	private static $host = 'localhost';
 	private static $user = 'root';
-	private static $password = '';
+	private static $password = '222627';
 	private static $database = 'mallorca';
 
 	public static function getHost(){
