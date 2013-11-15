@@ -132,6 +132,8 @@ function actualizarMapa() {
     form += ("&order=" + $('select[name=order]').val());
     form += ("&bounds[]=" + bounds.getNorthEast().lat() + "&bounds[]=" + bounds.getNorthEast().lng());
     form += ("&bounds[]=" + bounds.getSouthWest().lat() + "&bounds[]=" + bounds.getSouthWest().lng());
+    $('#resultados').fadeOut();
+    $('#loading-filters').fadeIn();
     $.ajax({
         url: BASE_URL + '/ajax-filtros',
         data: form,
@@ -139,6 +141,10 @@ function actualizarMapa() {
         dataType: 'json',
         success: function(response) {
             $('#resultados').html(response.html);
+            
+            $('#loading-filters').fadeOut();
+            $('#resultados').fadeIn();
+            
              $('#resultados').find('.carousel').carousel({
                 interval: 5000
              }).carousel('pause');
@@ -168,13 +174,20 @@ function filtrar() {
         if (valid) {
             var form = $('#filtrosFrm').serialize();
             form += ("&order=" + $('select[name=order]').val());
+            $('#resultados').fadeOut();
+            $('#loading-filters').fadeIn();
             $.ajax({
                 url: BASE_URL + '/ajax-filtros',
                 data: form,
                 type: 'post',
                 dataType: 'json',
                 success: function(response) {
+                    
                     $('#resultados').html(response.html);
+                    
+                    $('#loading-filters').fadeOut();
+                    $('#resultados').fadeIn();
+                    
                      $('#resultados').find('.carousel').carousel({
                         interval: 5000
                      });
@@ -294,6 +307,7 @@ function pagination() {
                 var form = $('#filtrosFrm').serialize();
                 form += ("&order=" + $('select[name=order]').val());
                 form += ("&start=" + $('.result-item').length);
+                $('#loading-filters').fadeIn();
                 $.ajax({
                     url: BASE_URL + '/ajax-filtros',
                     data: form,
@@ -301,6 +315,9 @@ function pagination() {
                     dataType: 'json',
                     success: function(response) {
                         $('#resultados').append(response.html);
+                        
+                        $('#loading-filters').fadeOut();
+                        
                          $('#resultados').find('.carousel').carousel({
                             interval: 5000
                          });

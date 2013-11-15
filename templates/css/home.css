@@ -283,6 +283,11 @@ div.leyenda {
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;
 }
+
+#loading-filters {
+    display: none;
+}
+
 @media (max-width: 768px){
     .form-group.arrow_in_search{
         display: none;
