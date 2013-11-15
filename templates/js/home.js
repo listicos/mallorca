@@ -32,7 +32,7 @@ $(document).ready(function() {
 
     $('.carousel').carousel({
         interval: 5000
-    });
+    }).carousel('pause');
     
     ordenar();
 
@@ -140,8 +140,8 @@ function actualizarMapa() {
         success: function(response) {
             $('#resultados').html(response.html);
              $('#resultados').find('.carousel').carousel({
-                interval: false
-             });
+                interval: 5000
+             }).carousel('pause');
 
              calendarios();
 
