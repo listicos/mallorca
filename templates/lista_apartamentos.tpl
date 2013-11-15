@@ -1,3 +1,4 @@
+{if $apartamentos|@count gt 0}
 {foreach from=$apartamentos item=a name=apartamentos}
 <div class="col-lg-12 mix apto" data-name="{$a->nombre}" data-price="{$a->precioPorNoche}">
     <div class=" result-item">
@@ -77,3 +78,12 @@
     </div>
 </div>
 {/foreach}
+{else}
+<div class="no_apartamentos_container">
+<p>No hemos obtenido ningún resultado que se ajuste a tus criterios de búsqueda. Si los modificas, puede que mejore la búsqueda.</p>
+<p>Prueba con:<p>
+<p>Desactiva algunos filtros.</p>
+<p>Amplía el área de búsqueda.</p>
+<p>Busca una ciudad, una dirección o un punto de referencia.</p>
+</div>
+{/if}

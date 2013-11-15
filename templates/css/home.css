@@ -274,7 +274,8 @@ div.leyenda {
 .servicios .checkbox-inline:first-child {
     margin-left: 10px;
 }
-
+.no_apartamentos_container{}
+.no_apartamentos_container p{}
 @media (max-width: 768px){
     .form-group.arrow_in_search{
         display: none;
