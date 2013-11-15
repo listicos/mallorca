@@ -45,7 +45,7 @@
                             <div class="form-group arrow_in_search"><img src="{$template_url_s}/img/icon-arrowR.png" alt="Photo 4"></div>
                             <div class="form-group for_input">
                                 <label class="sr-only" for="llegada">Salida</label>
-                                <input type="text" class="form-control date-end" id="llegada" name="dateEnd" placeholder="Salida">
+                                <input type="text" class="form-control date-end" id="salida" name="dateEnd" placeholder="Salida">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="huesped">Llegada</label>

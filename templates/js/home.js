@@ -160,8 +160,12 @@ function actualizarMapa() {
 function filtrar() {
     $('#filtrosFrm input, #filtrosFrm select, select[name=order]').off('change').on('change', function(e) {
         e.preventDefault();
-        //var valid = $(this).validationEngine('validate');
-        if (true) {
+        console.log($(this).attr('name'));
+        var valid = $(this).attr('name') != 'dateStart' && $(this).attr('name') != 'dateEnd';
+        if(!valid) {
+            valid = ($('#llegada').val() == $('#salida').val() || ($('#llegada').val() && $('#salida').val() && $('#llegada').val() != "" && $('#salida').val() != ""));
+        }
+        if (valid) {
             var form = $('#filtrosFrm').serialize();
             form += ("&order=" + $('select[name=order]').val());
             $.ajax({
