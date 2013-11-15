@@ -1,7 +1,7 @@
 <?php
 $usuario_core->validateUser();
 
-AllowRoles("Administrador, Socio, Reserva");
+AllowRoles("Administrador, Socio, Reserva, Mallorca");
 
 $template = new Core_template('admin/template.php');
 

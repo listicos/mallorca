@@ -1,7 +1,7 @@
 <?php
 
 $usuario_core->validateUser();
-AllowRoles("Administrador, Comercial, Socio");
+AllowRoles("Administrador, Comercial, Socio, Mallorca");
 
 $template = new Core_template('admin/template.php');
 $template->setAttribute('is_visible_header', true);

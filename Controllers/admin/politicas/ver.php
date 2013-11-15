@@ -4,7 +4,7 @@ include_once 'Logic/politicas.php';
 
 $usuario_core->validateUser();
 
-AllowRoles("Administrador, Socio");
+AllowRoles("Administrador, Socio, Mallorca");
 
 $template = new Core_template('admin/template.php');
 $template->setAttribute('is_visible_header', true);
