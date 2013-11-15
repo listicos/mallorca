@@ -295,5 +295,6 @@ div.leyenda {
 @media (min-width: 1600px){
     .apartamento-item-content{
         width: 50%;
+        float: left;
     }
 }
