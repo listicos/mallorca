@@ -1,6 +1,8 @@
 .acciones-apto {
     margin: 0;
-
+}
+h1{
+    margin-top: 0px;
 }
 .acciones-apto .text-apto{
     width: 100%;
