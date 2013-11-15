@@ -61,6 +61,8 @@ $sugerencias = getApartamentosCercanos($direccion->lat, $direccion->lon);
 $suge_counter = 0;
 
 if ($sugerencias) {
+    if(count($sugerencias) == 1)
+        $sugerencias = getApartamentosMasVisitados (4);
     foreach ($sugerencias as $key => $suge) {
         if($suge->idApartamento == $idApartamento) {
             unset($sugerencias[$key]);
@@ -93,8 +95,10 @@ if ($sugerencias) {
         }
     }
 }
+
 if($suge_counter>0)
-$apartamentos_array['sugerencias'] = $sugerencias;
+    $apartamentos_array['sugerencias'] = $sugerencias;
+
 
 
 $apartamentos_array['instalaciones'] = $instalaciones_array;
