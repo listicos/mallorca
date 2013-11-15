@@ -149,8 +149,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="sr-only" for="huesped">Ordenar por</label>
-                            <select class="form-control" name="order">
+                            
+                            <select class="form-control hidden" name="order">
                                 <option value="a.nombre ASC">Nombre (Ascendente)</option>
                                 <option value="a.nombre DESC">Nombre (Descendente)</option>
                                 <option value="d.precio ASC">Precio (Ascendente)</option>
