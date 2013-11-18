@@ -18,7 +18,7 @@ $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "
 $idApartamento = $_GET['id'];
 $apartamento = getApartamento($idApartamento);
 
-//$template->setTitle('Reservar '.$apartamento->nombre . ' | Click & Booking');
+
 
 $apartamentos_array = array();
 $apartamentos_array['apartamento'] = $apartamento;
