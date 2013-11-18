@@ -98,7 +98,7 @@
                                         {if $instalacion->apartamentos > 0}
                                         <div class="checkbox-inline">
                                             <input type="checkbox" class="" name="instalaciones[]" value="{$instalacion->idInstalacion}"/>
-                                            {$instalacion->nombre}<strong>({$instalacion->apartamentos})</strong>
+                                            <span>{$instalacion->nombre}<strong>({$instalacion->apartamentos})</strong></span>
                                         </div>
                                         {/if}
                                     {/if}
@@ -327,7 +327,7 @@
                                 {if $instalacion->apartamentos > 0}
                                 <div class="checkbox-inline">
                                     <input type="checkbox" class="" name="instalaciones" value="{$instalacion->idInstalacion}"/>
-                                    {$instalacion->nombre}<strong>({$instalacion->apartamentos})</strong>
+                                    <span>{$instalacion->nombre}<strong>({$instalacion->apartamentos})</strong></span>
                                 </div>
                                 {/if}
                             {/foreach}

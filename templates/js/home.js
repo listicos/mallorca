@@ -164,6 +164,12 @@ function actualizarMapa() {
  }
 
 function filtrar() {
+    
+    $('.checkbox-inline span').click(function(e){
+        e.preventDefault();
+        $(this).parent().find('input').click();
+    })
+    
     $('#filtrosFrm input, #filtrosFrm select, select[name=order]').off('change').on('change', function(e) {
         e.preventDefault();
         console.log($(this).attr('name'));
@@ -354,6 +360,7 @@ function masFiltros() {
             input = $(this).parent().clone();
             input.find('input').attr('name', "instalaciones[]");
             input.find('input').prop('checked', true);
+            
             $('#filtrosServicios').append(input);
         })
         $('#filtrosServicios').append(btn);
