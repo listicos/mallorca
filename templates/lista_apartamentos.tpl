@@ -1,6 +1,6 @@
 {if $apartamentos|@count gt 0}
 {foreach from=$apartamentos item=a name=apartamentos}
-<div class="col-lg-12 mix apto" data-name="{$a->nombre}" data-price="{$a->precioPorNoche}">
+<div class="col-lg-12 mix apto apartamento-item-content" data-name="{$a->nombre}" data-price="{$a->precioPorNoche}">
     <div class=" result-item">
         <div>
             <div class="carrusel">
