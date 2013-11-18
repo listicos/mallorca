@@ -249,7 +249,7 @@
                                         {foreach from=$a['instalaciones'] item=instalacion name=servicios}
                                             {if $smarty.foreach.servicios.iteration <= $cantidad}
 
-                                                <li> <span class="glyphicon glyphicon-adjust"> {$instalacion->nombre}</span></li>
+                                                <li> <span class="glyphicon"><img src="{$template_url}/imagen/aceptarGrande.png" width="20px" height="18px"> {$instalacion->nombre}</span></li>
 
                                                 {if $smarty.foreach.servicios.iteration - $cantidad / 3 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 >= 0}
                                                     </ul>
