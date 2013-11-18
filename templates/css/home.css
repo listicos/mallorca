@@ -1,3 +1,7 @@
+.apto-link {
+    font-size: 22px;
+}
+
 .acciones-apto {
     margin: 0;
 }
@@ -227,7 +231,12 @@ legend.title {
 
 .apartamento-descripcion {
     padding: 10px;
-    text-align: justify;
+    
+}
+
+.apartamento-descripcion li {
+    list-style: none;
+    font-size: 12px;
 }
 
 .apartamento-calendario {

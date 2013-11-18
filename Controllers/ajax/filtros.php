@@ -74,6 +74,13 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
             }
 
             $apto->disponibilidades = json_encode($ds);
+            
+            $instalaciones_array = array();
+            $instalaciones_list = getApartamentoInstalacionesByAparatamento($apto->idApartamento);
+            foreach ($instalaciones_list as $ckey => $instalacio) {
+                $instalaciones_array[$ckey] = getInstalacion($instalacio->idInstalacion);
+            }
+            $apto->instalaciones = $instalaciones_array;
         }
         
         $smarty->assign('apartamentos', $apartamentos);

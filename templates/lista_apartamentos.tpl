@@ -38,13 +38,19 @@
                         <div class="text-left descripcion-apto">
                             <ul>
                                 <li>
-                                    <a href="{$base_url}/apartamento/id:{$a->idApartamento}">{$a->nombre}</a>
+                                    <a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="apto-link">{$a->nombre}</a>
                                 </li>
                                 <li>
-                                    {$a->tipo}
+                                    <strong>{$a->tipo}</strong>
                                 </li>
                                 <li>
-                                    Max. ocupaci&oacute;n {$a->capacidadPersonas}
+                                    Max. pax {$a->capacidadPersonas}
+                                </li>
+                                <li>
+                                    Habitaciones {$a->habitaciones}
+                                </li>
+                                <li>
+                                    Ba&ntilde;os {$a->banio}
                                 </li>
                             </ul>
                             <!--<a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>-->
@@ -66,7 +72,29 @@
         <div>
             <div>
                 <div class="apartamento-descripcion">
-                    {substr($a->descripcionLarga, 0, 150)}...
+                    {if count($a->instalaciones) > 9}
+                        {assign var="cantidad" value=9}
+                    {else}
+                        {assign var="cantidad" value=count($a->instalaciones)}
+                    {/if}
+
+                    <ul class="unstyled col-md-4 pull-left">
+                    {foreach from=$a->instalaciones item=instalacion name=servicios}
+                        {if $smarty.foreach.servicios.iteration <= $cantidad}
+
+                            <li> <span class="glyphicon glyphicon-adjust"> {$instalacion->nombre}</span></li>
+
+                            {if $smarty.foreach.servicios.iteration - $cantidad / 3 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 >= 0}
+                                </ul>
+                                <ul class="unstyled col-md-4 pull-center">
+                            {/if}
+                            {if $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 >= 0}
+                                </ul>
+                                <ul class="unstyled col-md-4 pull-right">
+                            {/if}
+                        {/if}
+                    {/foreach}
+                    </ul>
                 </div>
                 
             </div>

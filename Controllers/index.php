@@ -53,6 +53,13 @@ if($apartamentos){
         }
 
         $apartamentos_array[$akey]['disponibilidades'] = json_encode($ds);
+        
+        $instalaciones_array = array();
+        $instalaciones_list = getApartamentoInstalacionesByAparatamento($apartamento->idApartamento);
+        foreach ($instalaciones_list as $ckey => $instalacio) {
+            $instalaciones_array[$ckey] = getInstalacion($instalacio->idInstalacion);
+        }
+        $apartamentos_array[$akey]['instalaciones'] = $instalaciones_array;
     }
 }
 $dia_comienzo = date("d-m-Y", mktime(0, 0, 0, date("m"), date("d") + 1, date("y")));

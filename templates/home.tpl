@@ -201,13 +201,19 @@
                                             <div class="text-left descripcion-apto">
                                                 <ul>
                                                     <li>
-                                                        <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}">{$a['apartamento']->nombre}</a>
+                                                        <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="apto-link">{$a['apartamento']->nombre}</a>
                                                     </li>
                                                     <li>
-                                                        {$a['apartamento']->tipo}
+                                                        <strong>{$a['apartamento']->tipo}</strong>
                                                     </li>
                                                     <li>
-                                                        Max. ocupaci&oacute;n {$a['apartamento']->capacidadPersonas}
+                                                        Max. pax {$a['apartamento']->capacidadPersonas}
+                                                    </li>
+                                                    <li>
+                                                        Habitaciones {$a['apartamento']->habitaciones}
+                                                    </li>
+                                                    <li>
+                                                        Ba&ntilde;os {$a['apartamento']->banio}
                                                     </li>
                                                 </ul>
                                                 <!--<a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>-->
@@ -229,7 +235,29 @@
                             <div>
                                 <div>
                                     <div class="apartamento-descripcion">
-                                        {substr($a['apartamento']->descripcionLarga, 0, 150)}...
+                                        {if count($a['instalaciones']) > 9}
+                                            {assign var="cantidad" value=9}
+                                        {else}
+                                            {assign var="cantidad" value=count($a['instalaciones'])}
+                                        {/if}
+                                        
+                                        <ul class="unstyled col-md-4 pull-left">
+                                        {foreach from=$a['instalaciones'] item=instalacion name=servicios}
+                                            {if $smarty.foreach.servicios.iteration <= $cantidad}
+
+                                                <li> <span class="glyphicon glyphicon-adjust"> {$instalacion->nombre}</span></li>
+
+                                                {if $smarty.foreach.servicios.iteration - $cantidad / 3 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 >= 0}
+                                                    </ul>
+                                                    <ul class="unstyled col-md-4 pull-center">
+                                                {/if}
+                                                {if $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 >= 0}
+                                                    </ul>
+                                                    <ul class="unstyled col-md-4 pull-right">
+                                                {/if}
+                                            {/if}
+                                        {/foreach}
+                                        </ul>
                                     </div>
                                     
                                 </div>
