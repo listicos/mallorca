@@ -69,6 +69,7 @@
                         <label class="control-label col-sm-4">Tipo de habitación</label>
                         <div class="col-sm-8">
                             <div class="btn-group separate-group" data-toggle="buttons">
+                                {if $habitaciones[0]->apartamentos > 0}
                                 <label class="btn btn-default">
                                     <input type="checkbox" name="alojamientos[]" id="option1" value="1">
                                   <div class="text-center">
@@ -76,13 +77,16 @@
                                       <span>Villas({$habitaciones[0]->apartamentos})</span>
                                   </div>
                                 </label>
-                                <label class="btn btn-default">
-                                    <input type="checkbox" name="alojamientos[]" id="option2" value="2">
-                                <div class="text-center">
-                                      <img src="{$template_url_s}/img/icon-rural.png" alt="">
-                                      <span>Turismo rural({$habitaciones[1]->apartamentos})</span>
-                                  </div>
-                              </label>
+                                {/if}
+                                {if $habitaciones[1]->apartamentos > 0}
+                                  <label class="btn btn-default">
+                                        <input type="checkbox" name="alojamientos[]" id="option2" value="2">
+                                    <div class="text-center">
+                                          <img src="{$template_url_s}/img/icon-rural.png" alt="">
+                                          <span>Turismo rural({$habitaciones[1]->apartamentos})</span>
+                                      </div>
+                                  </label>
+                                {/if}
                             </div>
                             <div class="btn-group" data-toggle="buttons">
                               

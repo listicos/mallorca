@@ -191,6 +191,8 @@ function filtrar() {
                     
                     $('#resultados').html(response.html);
                     
+                    //$('#filtrosFrm').html(response.htmlFiltros);
+                    
                     $('#loading-filters').fadeOut();
                     $('#resultados').fadeIn();
                     

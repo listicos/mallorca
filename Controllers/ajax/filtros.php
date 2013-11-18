@@ -85,8 +85,15 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
         
         $smarty->assign('apartamentos', $apartamentos);
         $html = $smarty->fetch('lista_apartamentos.tpl');
+        
+        $smarty->assign('entrada', $_SESSION['fechaInicio']);
+        $smarty->assign('salida', $_SESSION['fechaFinal']);
+        $smarty->assign('huespedes', $_SESSION['huespedes']);
+        
+        $htmlFiltros = $smarty->fetch('filtros.tpl');
 
         $result['html'] = $html;
+        $result['htmlFiltros'] = $htmlFiltros;
         $result['msg'] = 'ok';
         $result['data'] = 'Correcto';
 } else {
