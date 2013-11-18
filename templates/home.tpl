@@ -73,14 +73,14 @@
                                     <input type="checkbox" name="alojamientos[]" id="option1" value="1">
                                   <div class="text-center">
                                       <img src="{$template_url_s}/img/icon-villas.png" alt="">
-                                      <span>Villas</span>
+                                      <span>Villas({$habitaciones[0]->apartamentos})</span>
                                   </div>
                                 </label>
                                 <label class="btn btn-default">
                                     <input type="checkbox" name="alojamientos[]" id="option2" value="2">
                                 <div class="text-center">
                                       <img src="{$template_url_s}/img/icon-rural.png" alt="">
-                                      <span>Turismo rural</span>
+                                      <span>Turismo rural({$habitaciones[1]->apartamentos})</span>
                                   </div>
                               </label>
                             </div>
@@ -95,10 +95,12 @@
                             {foreach from=$categorias item=categoria name=categorias}
                                 {foreach from=$categoria->instalaciones item=instalacion name=instalaciones}
                                     {if $smarty.foreach.instalaciones.iteration < 2}
-                                    <div class="checkbox-inline">
-                                        <input type="checkbox" class="" name="instalaciones[]" value="{$instalacion->idInstalacion}"/>
-                                        {$instalacion->nombre}
-                                    </div>
+                                        {if $instalacion->apartamentos > 0}
+                                        <div class="checkbox-inline">
+                                            <input type="checkbox" class="" name="instalaciones[]" value="{$instalacion->idInstalacion}"/>
+                                            {$instalacion->nombre}<strong>({$instalacion->apartamentos})</strong>
+                                        </div>
+                                        {/if}
                                     {/if}
                                 {/foreach}
                             {/foreach} 
@@ -113,10 +115,12 @@
                         <label class="control-label col-sm-4">Tipo de propiedad</label>
                         <div class="col-sm-8">
                             {foreach from=$tiposApartamento item=tipo}
+                                {if $tipo->apartamentos > 0}
                                 <div class="checkbox-inline">
                                     <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}" />
-                                    {$tipo->nombre}
+                                    {$tipo->nombre}<strong>({$tipo->apartamentos})</strong>
                                 </div>
+                                {/if}
                             {/foreach}
                             <!--
                             <div class="checkbox-inline">
@@ -320,10 +324,12 @@
                         <legend>{$categoria->nombre}</legend>
                         <div class="servicios">
                             {foreach from=$categoria->instalaciones item=instalacion}
+                                {if $instalacion->apartamentos > 0}
                                 <div class="checkbox-inline">
                                     <input type="checkbox" class="" name="instalaciones" value="{$instalacion->idInstalacion}"/>
-                                    {$instalacion->nombre}
+                                    {$instalacion->nombre}<strong>({$instalacion->apartamentos})</strong>
                                 </div>
+                                {/if}
                             {/foreach}
                         </div>
                     {/foreach}

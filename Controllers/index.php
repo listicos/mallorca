@@ -13,12 +13,23 @@ $maxPrice = -999999999;
 $categorias = getAllInstalacionesCategoria();
 foreach ($categorias as $categoria) {
     $categoria->instalaciones = getInstalacionesByCategoria($categoria->idInstalacionCategoria);
+    
+    foreach ($categoria->instalaciones as $instalacion) {
+        $instalacion->apartamentos = count(getApartamentosFilters(0, 0, 1, array($instalacion->idInstalacion)));
+    }
 }
 
 $smarty->assign('categorias', $categorias);
 
 $habitaciones = getTipoHabitaciones();
+foreach ($habitaciones as $habitacion) {
+    $habitacion->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array(), array($habitacion->idAlojamiento)));
+}
 $tipos_apartamento = getTiposApartamentos();
+
+foreach ($tipos_apartamento as $tipoApto) {
+    $tipoApto->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array($tipoApto->idApartamentosTipo)));
+}
 
 $smarty->assign('habitaciones', $habitaciones);
 $smarty->assign('tiposApartamento', $tipos_apartamento);
