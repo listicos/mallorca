@@ -78,20 +78,20 @@
                         {assign var="cantidad" value=count($a->instalaciones)}
                     {/if}
 
-                    <ul class="unstyled col-md-4 pull-left">
+                    <ul>
                     {foreach from=$a->instalaciones item=instalacion name=servicios}
                         {if $smarty.foreach.servicios.iteration <= $cantidad}
 
-                            <li> <span class="glyphicon"><img src="{$template_url}/imagen/aceptarGrande.png" width="20px" height="18px"> {$instalacion->nombre}</span></li>
+                            <li><img src="{$template_url}/imagen/aceptarGrande.png" width="20px" height="18px"> {$instalacion->nombre}</li>
 
-                            {if $smarty.foreach.servicios.iteration - $cantidad / 3 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 >= 0}
+                            <!--{if $smarty.foreach.servicios.iteration - $cantidad / 3 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 >= 0}
                                 </ul>
-                                <ul class="unstyled col-md-4 pull-center">
+                                <ul>
                             {/if}
                             {if $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 >= 0}
                                 </ul>
-                                <ul class="unstyled col-md-4 pull-right">
-                            {/if}
+                                <ul>
+                            {/if}-->
                         {/if}
                     {/foreach}
                     </ul>
