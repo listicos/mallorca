@@ -45,7 +45,7 @@
                             <div class="form-group arrow_in_search"><img src="{$template_url_s}/img/icon-arrowR.png" alt="Photo 4"></div>
                             <div class="form-group for_input">
                                 <label class="sr-only" for="llegada">Salida</label>
-                                <input type="text" class="form-control date-end" id="llegada" name="dateEnd" placeholder="Salida">
+                                <input type="text" class="form-control date-end" id="salida" name="dateEnd" placeholder="Salida">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="huesped">Llegada</label>
@@ -69,20 +69,24 @@
                         <label class="control-label col-sm-4">Tipo de habitación</label>
                         <div class="col-sm-8">
                             <div class="btn-group separate-group" data-toggle="buttons">
-                                <label class="btn btn-default">
+                                {if $habitaciones[0]->apartamentos > 0}
+                                <label class="btn btn-default" id="villas">
                                     <input type="checkbox" name="alojamientos[]" id="option1" value="1">
                                   <div class="text-center">
                                       <img src="{$template_url_s}/img/icon-villas.png" alt="">
-                                      <span>Villas</span>
+                                      <span>Villas<strong>({$habitaciones[0]->apartamentos})</strong></span>
                                   </div>
                                 </label>
-                                <label class="btn btn-default">
-                                    <input type="checkbox" name="alojamientos[]" id="option2" value="2">
-                                <div class="text-center">
-                                      <img src="{$template_url_s}/img/icon-rural.png" alt="">
-                                      <span>Turismo rural</span>
-                                  </div>
-                              </label>
+                                {/if}
+                                {if $habitaciones[1]->apartamentos > 0}
+                                  <label class="btn btn-default" id="rural">
+                                        <input type="checkbox" name="alojamientos[]" id="option2" value="2">
+                                    <div class="text-center">
+                                          <img src="{$template_url_s}/img/icon-rural.png" alt="">
+                                          <span>Turismo rural<strong>({$habitaciones[1]->apartamentos})</strong></span>
+                                      </div>
+                                  </label>
+                                {/if}
                             </div>
                             <div class="btn-group" data-toggle="buttons">
                               
@@ -95,10 +99,12 @@
                             {foreach from=$categorias item=categoria name=categorias}
                                 {foreach from=$categoria->instalaciones item=instalacion name=instalaciones}
                                     {if $smarty.foreach.instalaciones.iteration < 2}
-                                    <div class="checkbox-inline">
-                                        <input type="checkbox" class="" name="instalaciones[]" value="{$instalacion->idInstalacion}"/>
-                                        {$instalacion->nombre}
-                                    </div>
+                                        {if $instalacion->apartamentos > 0}
+                                        <div class="checkbox-inline">
+                                            <input type="checkbox" class="" name="instalaciones[]" value="{$instalacion->idInstalacion}"/>
+                                            <span>{$instalacion->nombre}<strong>({$instalacion->apartamentos})</strong></span>
+                                        </div>
+                                        {/if}
                                     {/if}
                                 {/foreach}
                             {/foreach} 
@@ -113,10 +119,12 @@
                         <label class="control-label col-sm-4">Tipo de propiedad</label>
                         <div class="col-sm-8">
                             {foreach from=$tiposApartamento item=tipo}
+                                {if $tipo->apartamentos > 0}
                                 <div class="checkbox-inline">
                                     <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}" />
-                                    {$tipo->nombre}
+                                    {$tipo->nombre}<strong>({$tipo->apartamentos})</strong>
                                 </div>
+                                {/if}
                             {/foreach}
                             <!--
                             <div class="checkbox-inline">
@@ -149,8 +157,8 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label class="sr-only" for="huesped">Ordenar por</label>
-                            <select class="form-control" name="order">
+                            
+                            <select class="form-control hidden" name="order">
                                 <option value="a.nombre ASC">Nombre (Ascendente)</option>
                                 <option value="a.nombre DESC">Nombre (Descendente)</option>
                                 <option value="d.precio ASC">Precio (Ascendente)</option>
@@ -201,13 +209,19 @@
                                             <div class="text-left descripcion-apto">
                                                 <ul>
                                                     <li>
-                                                        <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}">{$a['apartamento']->nombre}</a>
+                                                        <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="apto-link">{$a['apartamento']->nombre}</a>
                                                     </li>
                                                     <li>
-                                                        {$a['apartamento']->tipo}
+                                                        <strong>{$a['apartamento']->tipo}</strong>
                                                     </li>
                                                     <li>
-                                                        Max. ocupaci&oacute;n {$a['apartamento']->capacidadPersonas}
+                                                        Max. pax {$a['apartamento']->capacidadPersonas}
+                                                    </li>
+                                                    <li>
+                                                        Habitaciones {$a['apartamento']->habitaciones}
+                                                    </li>
+                                                    <li>
+                                                        Ba&ntilde;os {$a['apartamento']->banio}
                                                     </li>
                                                 </ul>
                                                 <!--<a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>-->
@@ -229,7 +243,29 @@
                             <div>
                                 <div>
                                     <div class="apartamento-descripcion">
-                                        {substr($a['apartamento']->descripcionLarga, 0, 150)}...
+                                        {if count($a['instalaciones']) > 9}
+                                            {assign var="cantidad" value=9}
+                                        {else}
+                                            {assign var="cantidad" value=count($a['instalaciones'])}
+                                        {/if}
+                                        
+                                        <ul class="unstyled col-md-4 pull-left">
+                                        {foreach from=$a['instalaciones'] item=instalacion name=servicios}
+                                            {if $smarty.foreach.servicios.iteration <= $cantidad}
+
+                                                <li> <span class="glyphicon"><img src="{$template_url}/imagen/aceptarGrande.png" width="20px" height="18px"> {$instalacion->nombre}</span></li>
+
+                                                {if $smarty.foreach.servicios.iteration - $cantidad / 3 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 >= 0}
+                                                    </ul>
+                                                    <ul class="unstyled col-md-4 pull-center">
+                                                {/if}
+                                                {if $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 >= 0}
+                                                    </ul>
+                                                    <ul class="unstyled col-md-4 pull-right">
+                                                {/if}
+                                            {/if}
+                                        {/foreach}
+                                        </ul>
                                     </div>
                                     
                                 </div>
@@ -242,6 +278,16 @@
                     </div>      
                     {/foreach} 
                      
+                </div>
+                <div id="loading-filters" class="row">
+                    <div class="bubblingG">
+                        <span id="bubblingG_1">
+                        </span>
+                        <span id="bubblingG_2">
+                        </span>
+                        <span id="bubblingG_3">
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -282,10 +328,12 @@
                         <legend>{$categoria->nombre}</legend>
                         <div class="servicios">
                             {foreach from=$categoria->instalaciones item=instalacion}
+                                {if $instalacion->apartamentos > 0}
                                 <div class="checkbox-inline">
                                     <input type="checkbox" class="" name="instalaciones" value="{$instalacion->idInstalacion}"/>
-                                    {$instalacion->nombre}
+                                    <span>{$instalacion->nombre}<strong>({$instalacion->apartamentos})</strong></span>
                                 </div>
+                                {/if}
                             {/foreach}
                         </div>
                     {/foreach}

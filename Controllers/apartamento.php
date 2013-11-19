@@ -57,10 +57,16 @@ $instalaciones_list = getApartamentoInstalacionesByAparatamento($idApartamento);
 foreach ($instalaciones_list as $ckey => $instalacio) {
     $instalaciones_array[$ckey] = getInstalacion($instalacio->idInstalacion);
 }
+
+
+$servicios = getAllInstalaciones();
+
 $sugerencias = getApartamentosCercanos($direccion->lat, $direccion->lon);
 $suge_counter = 0;
 
 if ($sugerencias) {
+    if(count($sugerencias) == 1)
+        $sugerencias = getApartamentosMasVisitados (4);
     foreach ($sugerencias as $key => $suge) {
         if($suge->idApartamento == $idApartamento) {
             unset($sugerencias[$key]);
@@ -93,11 +99,15 @@ if ($sugerencias) {
         }
     }
 }
+
 if($suge_counter>0)
-$apartamentos_array['sugerencias'] = $sugerencias;
+    $apartamentos_array['sugerencias'] = $sugerencias;
+
 
 
 $apartamentos_array['instalaciones'] = $instalaciones_array;
+
+$apartamentos_array['all_instalaciones'] = $servicios;
 
 $precio = getDisponibilidadByApartamentoMenorPrecio($idApartamento)->precio;
 

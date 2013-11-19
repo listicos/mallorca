@@ -8,8 +8,8 @@
 class ConnectionProperty{
 	private static $host = 'localhost';
 	private static $user = 'root';
-	private static $password = '222627';
-	private static $database = 'mallorca';
+	private static $password = '';
+	private static $database = 'clickandbooking';
 
 	public static function getHost(){
 		return ConnectionProperty::$host;

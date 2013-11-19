@@ -99,7 +99,8 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
             $sql .= " AND dir.lon <= " . $bounds[1] . " AND dir.lon >=" .$bounds[3];
         }
         
-        $sql .= ' ORDER BY ' . (($order) ? : 'precio ASC') . ' limit ' . $start . " , " . $limit;
+        $sql .= ' ORDER BY ' . (($order) ? : 'precio ASC');
+        if($limit) $sql .= ' limit ' . $start . " , " . $limit;
         
         $sqlQuery = new SqlQuery($sql);
 

@@ -132,6 +132,8 @@ function actualizarMapa() {
     form += ("&order=" + $('select[name=order]').val());
     form += ("&bounds[]=" + bounds.getNorthEast().lat() + "&bounds[]=" + bounds.getNorthEast().lng());
     form += ("&bounds[]=" + bounds.getSouthWest().lat() + "&bounds[]=" + bounds.getSouthWest().lng());
+    $('#resultados').fadeOut();
+    $('#loading-filters').fadeIn();
     $.ajax({
         url: BASE_URL + '/ajax-filtros',
         data: form,
@@ -139,11 +141,21 @@ function actualizarMapa() {
         dataType: 'json',
         success: function(response) {
             $('#resultados').html(response.html);
+            
+            $('#loading-filters').fadeOut();
+            $('#resultados').fadeIn();
+            
              $('#resultados').find('.carousel').carousel({
                 interval: 5000
              }).carousel('pause');
-
+             actualizarFiltros(response);
              calendarios();
+             
+             if($('#resultados .result-item').length == 0) {
+                 $('select[name=order]').addClass('hidden');
+             } else {
+                 $('select[name=order]').removeClass('hidden');
+             }
 
         }
     });
@@ -152,19 +164,38 @@ function actualizarMapa() {
  }
 
 function filtrar() {
+    
+    $('.checkbox-inline span').click(function(e){
+        e.preventDefault();
+        $(this).parent().find('input').click();
+    })
+    
     $('#filtrosFrm input, #filtrosFrm select, select[name=order]').off('change').on('change', function(e) {
         e.preventDefault();
-        //var valid = $(this).validationEngine('validate');
-        if (true) {
+        console.log($(this).attr('name'));
+        var valid = $(this).attr('name') != 'dateStart' && $(this).attr('name') != 'dateEnd';
+        if(!valid) {
+            valid = ($('#llegada').val() == $('#salida').val() || ($('#llegada').val() && $('#salida').val() && $('#llegada').val() != "" && $('#salida').val() != ""));
+        }
+        if (valid) {
             var form = $('#filtrosFrm').serialize();
             form += ("&order=" + $('select[name=order]').val());
+            $('#resultados').fadeOut();
+            $('#loading-filters').fadeIn();
             $.ajax({
                 url: BASE_URL + '/ajax-filtros',
                 data: form,
                 type: 'post',
                 dataType: 'json',
                 success: function(response) {
+                    
                     $('#resultados').html(response.html);
+                    
+                    actualizarFiltros(response);
+                    
+                    $('#loading-filters').fadeOut();
+                    $('#resultados').fadeIn();
+                    
                      $('#resultados').find('.carousel').carousel({
                         interval: 5000
                      });
@@ -173,6 +204,12 @@ function filtrar() {
 
                     calendarios();
                     movingMapa = true;
+                    
+                    if($('#resultados .result-item').length == 0) {
+                        $('select[name=order]').addClass('hidden');
+                    } else {
+                        $('select[name=order]').removeClass('hidden');
+                    }
                 }
             });
         }
@@ -240,7 +277,7 @@ function setTarifasToCalendar(tarifas){
     $('#calendarioDisponibilidad').removeClass("mobile");
     $('#calendarioDisponibilidad').fullCalendar('destroy');
     if(tarifas){
-        console.log('tarifas');
+        
         $('#calendarioDisponibilidad').fullCalendar({
             header: h,
             firstDay: 1,
@@ -278,6 +315,7 @@ function pagination() {
                 var form = $('#filtrosFrm').serialize();
                 form += ("&order=" + $('select[name=order]').val());
                 form += ("&start=" + $('.result-item').length);
+                $('#loading-filters').fadeIn();
                 $.ajax({
                     url: BASE_URL + '/ajax-filtros',
                     data: form,
@@ -285,6 +323,9 @@ function pagination() {
                     dataType: 'json',
                     success: function(response) {
                         $('#resultados').append(response.html);
+                        
+                        $('#loading-filters').fadeOut();
+                        
                          $('#resultados').find('.carousel').carousel({
                             interval: 5000
                          });
@@ -321,6 +362,7 @@ function masFiltros() {
             input = $(this).parent().clone();
             input.find('input').attr('name', "instalaciones[]");
             input.find('input').prop('checked', true);
+            
             $('#filtrosServicios').append(input);
         })
         $('#filtrosServicios').append(btn);
@@ -340,12 +382,60 @@ function masFiltros() {
                  $('#resultados').find('.carousel').carousel({
                     interval: 5000
                  });
-
+                 actualizarFiltros(response);
                  actualizarMapa();
 
                 calendarios();
+                
+                if($('#resultados .result-item').length == 0) {
+                    $('select[name=order]').addClass('hidden');
+                } else {
+                    $('select[name=order]').removeClass('hidden');
+                }
 
             }
         });
     })
+}
+
+function actualizarFiltros(response) {
+    instalaciones = response.filtrosInstalaciones;
+    var array_instalaciones = [];
+    for(var i in instalaciones) {
+        var instalacion = instalaciones[i];
+        $('input[name^="instalaciones"][value=' + instalacion.idInstalacion + ']').parent().show().find('strong').html('(' + instalacion.apartamentos + ')');
+        array_instalaciones.push(instalacion.idInstalacion);
+    }
+    $('input[name^="instalaciones"]').each(function(){
+        if(-1 == $.inArray($(this).val(), array_instalaciones)) {
+            $(this).parent().hide();
+        }
+    })
+    
+    tipos = response.filtrosApartamentosTipos;
+    var array_tipos = [];
+    for(var t in tipos) {
+        var tipo = tipos[t];
+        $('input[name="tiposApartamento[]"][value=' + tipo.idApartamentosTipo + ']').parent().show().find('strong').html('(' + tipo.apartamentos + ')');
+        array_tipos.push(tipo.idApartamentosTipo);
+    }
+    $('input[name="tiposApartamento[]"]').each(function(){
+        if(-1 == $.inArray($(this).val(), array_tipos)) {
+            $(this).parent().hide();
+        }
+    })
+    
+    tipoHabitacion = response.filtrosApartamentosTiposHabitacion;
+    
+    if(tipoHabitacion[0].apartamentos == 0) {
+        $('#villas').hide();
+    } else {
+        $('#villas').show().find('strong').html('(' + tipoHabitacion[0].apartamentos + ')');
+    }
+    
+    if(tipoHabitacion[1].apartamentos == 0) {
+        $('#rural').hide();
+    } else {
+        $('#rural').show().find('strong').html('(' + tipoHabitacion[1].apartamentos + ')')
+    }
 }

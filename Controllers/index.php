@@ -13,12 +13,23 @@ $maxPrice = -999999999;
 $categorias = getAllInstalacionesCategoria();
 foreach ($categorias as $categoria) {
     $categoria->instalaciones = getInstalacionesByCategoria($categoria->idInstalacionCategoria);
+    
+    foreach ($categoria->instalaciones as $instalacion) {
+        $instalacion->apartamentos = count(getApartamentosFilters(0, 0, 1, array($instalacion->idInstalacion)));
+    }
 }
 
 $smarty->assign('categorias', $categorias);
 
 $habitaciones = getTipoHabitaciones();
+foreach ($habitaciones as $habitacion) {
+    $habitacion->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array(), array($habitacion->idAlojamiento), 0, 0));
+}
 $tipos_apartamento = getTiposApartamentos();
+
+foreach ($tipos_apartamento as $tipoApto) {
+    $tipoApto->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array($tipoApto->idApartamentosTipo)));
+}
 
 $smarty->assign('habitaciones', $habitaciones);
 $smarty->assign('tiposApartamento', $tipos_apartamento);
@@ -53,6 +64,13 @@ if($apartamentos){
         }
 
         $apartamentos_array[$akey]['disponibilidades'] = json_encode($ds);
+        
+        $instalaciones_array = array();
+        $instalaciones_list = getApartamentoInstalacionesByAparatamento($apartamento->idApartamento);
+        foreach ($instalaciones_list as $ckey => $instalacio) {
+            $instalaciones_array[$ckey] = getInstalacion($instalacio->idInstalacion);
+        }
+        $apartamentos_array[$akey]['instalaciones'] = $instalaciones_array;
     }
 }
 $dia_comienzo = date("d-m-Y", mktime(0, 0, 0, date("m"), date("d") + 1, date("y")));
