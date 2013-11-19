@@ -1037,6 +1037,30 @@ function deleteFechasContratos($id) {
     }
 }
 
+function getApartamentosInstalacionesFilters($fechaInicio,$fechaFinal,$huespedes = false, $instalaciones = array(), $tipos = array(), $alojamientos = array(), $bounds = array()) {
+    try {
+        $timeFechaInicio = $fechaInicio ? strtotime($fechaInicio) : 0;
+        $timeFechaFinal = $fechaFinal ? strtotime($fechaFinal) : 0;
+        $instalaciones = DAOFactory::getInstalacionesDAO()->queryApartamentosFilters($timeFechaInicio, $timeFechaFinal,$huespedes, $instalaciones, $tipos, $alojamientos, $bounds);
+                
+        return $instalaciones;
+    } catch (Exception $e) {
+        var_dump($e);
+        return false;
+    }
+}
 
+function getApartamentosTiposFilters($fechaInicio,$fechaFinal,$huespedes = false, $instalaciones = array(), $tipos = array(), $alojamientos = array(), $bounds = array()) {
+    try {
+        $timeFechaInicio = $fechaInicio ? strtotime($fechaInicio) : 0;
+        $timeFechaFinal = $fechaFinal ? strtotime($fechaFinal) : 0;
+        $tipos = DAOFactory::getApartamentosTiposDAO()->queryApartamentosFilters($timeFechaInicio, $timeFechaFinal,$huespedes, $instalaciones, $tipos, $alojamientos, $bounds);
+                
+        return $tipos;
+    } catch (Exception $e) {
+        var_dump($e);
+        return false;
+    }
+}
 
 ?>

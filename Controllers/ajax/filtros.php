@@ -90,10 +90,20 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
         $smarty->assign('salida', $_SESSION['fechaFinal']);
         $smarty->assign('huespedes', $_SESSION['huespedes']);
         
-        $htmlFiltros = $smarty->fetch('filtros.tpl');
+        $instalacionesFiltrosActualizados = getApartamentosInstalacionesFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, $alojamientos, $bounds);
+        
+        
+        $filtrosTiposApto = getApartamentosTiposFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, $alojamientos, $bounds);
+        
+        $habitaciones = getTipoHabitaciones();
+        foreach ($habitaciones as $habitacion) {
+            $habitacion->apartamentos = count(getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, array($habitacion->idAlojamiento), 0, 0, false, $bounds));
+        }
 
         $result['html'] = $html;
-        $result['htmlFiltros'] = $htmlFiltros;
+        $result['filtrosInstalaciones'] = $instalacionesFiltrosActualizados;
+        $result['filtrosApartamentosTipos'] = $filtrosTiposApto;
+        $result['filtrosApartamentosTiposHabitacion'] = $habitaciones;
         $result['msg'] = 'ok';
         $result['data'] = 'Correcto';
 } else {

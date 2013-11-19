@@ -70,20 +70,20 @@
                         <div class="col-sm-8">
                             <div class="btn-group separate-group" data-toggle="buttons">
                                 {if $habitaciones[0]->apartamentos > 0}
-                                <label class="btn btn-default">
+                                <label class="btn btn-default" id="villas">
                                     <input type="checkbox" name="alojamientos[]" id="option1" value="1">
                                   <div class="text-center">
                                       <img src="{$template_url_s}/img/icon-villas.png" alt="">
-                                      <span>Villas({$habitaciones[0]->apartamentos})</span>
+                                      <span>Villas<strong>({$habitaciones[0]->apartamentos})</strong></span>
                                   </div>
                                 </label>
                                 {/if}
                                 {if $habitaciones[1]->apartamentos > 0}
-                                  <label class="btn btn-default">
+                                  <label class="btn btn-default" id="rural">
                                         <input type="checkbox" name="alojamientos[]" id="option2" value="2">
                                     <div class="text-center">
                                           <img src="{$template_url_s}/img/icon-rural.png" alt="">
-                                          <span>Turismo rural({$habitaciones[1]->apartamentos})</span>
+                                          <span>Turismo rural<strong>({$habitaciones[1]->apartamentos})</strong></span>
                                       </div>
                                   </label>
                                 {/if}

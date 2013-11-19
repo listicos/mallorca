@@ -23,7 +23,7 @@ $smarty->assign('categorias', $categorias);
 
 $habitaciones = getTipoHabitaciones();
 foreach ($habitaciones as $habitacion) {
-    $habitacion->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array(), array($habitacion->idAlojamiento)));
+    $habitacion->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array(), array($habitacion->idAlojamiento), 0, 0));
 }
 $tipos_apartamento = getTiposApartamentos();
 

@@ -148,7 +148,7 @@ function actualizarMapa() {
              $('#resultados').find('.carousel').carousel({
                 interval: 5000
              }).carousel('pause');
-
+             actualizarFiltros(response);
              calendarios();
              
              if($('#resultados .result-item').length == 0) {
@@ -191,7 +191,7 @@ function filtrar() {
                     
                     $('#resultados').html(response.html);
                     
-                    //$('#filtrosFrm').html(response.htmlFiltros);
+                    actualizarFiltros(response);
                     
                     $('#loading-filters').fadeOut();
                     $('#resultados').fadeIn();
@@ -277,7 +277,7 @@ function setTarifasToCalendar(tarifas){
     $('#calendarioDisponibilidad').removeClass("mobile");
     $('#calendarioDisponibilidad').fullCalendar('destroy');
     if(tarifas){
-        console.log('tarifas');
+        
         $('#calendarioDisponibilidad').fullCalendar({
             header: h,
             firstDay: 1,
@@ -382,7 +382,7 @@ function masFiltros() {
                  $('#resultados').find('.carousel').carousel({
                     interval: 5000
                  });
-
+                 actualizarFiltros(response);
                  actualizarMapa();
 
                 calendarios();
@@ -396,4 +396,46 @@ function masFiltros() {
             }
         });
     })
+}
+
+function actualizarFiltros(response) {
+    instalaciones = response.filtrosInstalaciones;
+    var array_instalaciones = [];
+    for(var i in instalaciones) {
+        var instalacion = instalaciones[i];
+        $('input[name^="instalaciones"][value=' + instalacion.idInstalacion + ']').parent().show().find('strong').html('(' + instalacion.apartamentos + ')');
+        array_instalaciones.push(instalacion.idInstalacion);
+    }
+    $('input[name^="instalaciones"]').each(function(){
+        if(-1 == $.inArray($(this).val(), array_instalaciones)) {
+            $(this).parent().hide();
+        }
+    })
+    
+    tipos = response.filtrosApartamentosTipos;
+    var array_tipos = [];
+    for(var t in tipos) {
+        var tipo = tipos[t];
+        $('input[name="tiposApartamento[]"][value=' + tipo.idApartamentosTipo + ']').parent().show().find('strong').html('(' + tipo.apartamentos + ')');
+        array_tipos.push(tipo.idApartamentosTipo);
+    }
+    $('input[name="tiposApartamento[]"]').each(function(){
+        if(-1 == $.inArray($(this).val(), array_tipos)) {
+            $(this).parent().hide();
+        }
+    })
+    
+    tipoHabitacion = response.filtrosApartamentosTiposHabitacion;
+    
+    if(tipoHabitacion[0].apartamentos == 0) {
+        $('#villas').hide();
+    } else {
+        $('#villas').show().find('strong').html('(' + tipoHabitacion[0].apartamentos + ')');
+    }
+    
+    if(tipoHabitacion[1].apartamentos == 0) {
+        $('#rural').hide();
+    } else {
+        $('#rural').show().find('strong').html('(' + tipoHabitacion[1].apartamentos + ')')
+    }
 }
