@@ -146,6 +146,18 @@
                 },
                 "validate2fields": {
                     "alertText": "* Por favor entrar HELLO"
+                },
+                confirmationEmail: {
+                    "func": function(field, rules, i, options){
+                        return (field.val() == $('input[name=email]').val()) ? true : false;
+                    },
+                    "alertText": "* El email no coincide"
+                },
+                customCreditCard : {
+                    'func':function(field, rules, i, options) {
+                        return field.attr('valid-card') == "true";
+                    },
+                    'alertText': "* Tarjeta de crédito no permitida"
                 }
             };
             

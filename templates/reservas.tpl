@@ -10,7 +10,7 @@
 {block name="script" append}
 <script src="{$template_url_s}/js/reservas.js"></script>
 <script src="{$template_url}/js/toastr.js"></script>
-<script src="{$template_url}/js/jquery.creditCardValidator.js"></script>
+<script src="{$template_url_s}/js/jquery.creditCardValidator.js"></script>
 <script src="{$template_url}/js/admin/jquery.validationEngine.js"></script>
 <script src="{$template_url}/js/admin/jquery.validationEngine-es.js"></script>
 <script src="{$template_url_s}/js/jquery.flexslider.js"></script>
@@ -43,7 +43,7 @@
                     <!-- TAB CONTENT -->
 
                     <div class="row reservas-list-main tab-content">
-                        <form id="">
+                        <form id="reservaFrm">
                         <!-- reservation_step -->
                         <div class="tab-pane active" id="reservation_step">
                             <div class="col-md-12">
@@ -108,31 +108,31 @@
                                                     <div class="row">
                                                         <div class="col-sm-6 form-group">
                                                             <label for="nombre_viajero">Nombre/s</label>
-                                                            <input type="text" name="nombre_viajero" class="form-control" placeholder="Nombre/s"/>
+                                                            <input type="text" name="nombre" class="form-control validate[required]" placeholder="Nombre/s"/>
                                                         </div>
                                                         <div class="col-sm-6 form-group">
                                                             <label for="apellido_viajero">Apellido/s</label>
-                                                            <input type="text" name="apellido_viajero" class="form-control" placeholder="Apellido/s"/>
+                                                            <input type="text" name="apellidoPaterno" class="form-control validate[required]" placeholder="Apellido/s"/>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                          <div class="col-sm-6 form-group">
                                                              <label>Correo electrónico</label>
-                                                             <input type="email" class="form-control" placeholder="Correo electrónico">
+                                                             <input type="text" name="email" class="form-control validate[required, custom[email]]" placeholder="Correo electrónico">
                                                          </div>
                                                          <div class="col-sm-6 form-group">
                                                              <label>Repita el correo electrónico</label>
-                                                             <input type="email" class="form-control" placeholder="Repita el correo electrónico">
+                                                             <input type="text" name="repeatEmail" class="form-control validate[required, custom[confirmationEmail]]" placeholder="Repita el correo electrónico">
                                                          </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-6 form-group">
                                                             <label for="apellido_viajero">Teléfono móvil</label>
-                                                            <input type="text" name="apellido_viajero" class="form-control" placeholder="Teléfono móvil (para incidencias)"/>
+                                                            <input type="text" name="telefono" class="form-control" placeholder="Teléfono móvil (para incidencias)"/>
                                                         </div>
                                                         <div class="col-sm-6 form-group">
                                                             <label>País de residencia</label>
-                                                            <select class="form-control">
+                                                            <select class="form-control" name="pais">
                                                                 <option value="1">España</option>
                                                                 <option value="2">México</option>
                                                             </select>
@@ -145,7 +145,7 @@
                                 
                                   <div class="panel panel-success">
                                 <div class="panel-heading">
-                                  <h3 class="panel-title">✓ Cobraremos de tu tarjeta: 900,00€</h3>
+                                  <h3 class="panel-title">✓ Cobraremos de tu tarjeta: {$menor_precio}</h3>
                                 </div>
                                 <div class="panel-body">
                                             <div class="row datos-pago-content">
@@ -156,14 +156,14 @@
                                                             <div class="row">
                                                                 <div class="col-md-6 form-group">
                                                                     <label>Tarjeta de Crédito</label>
-                                                                    <select class="form-control">
-                                                                        <option value="1">Master Card</option>
-                                                                        <option value="2">Visa</option>
+                                                                    <select class="form-control" name="tipoTarjeta">
+                                                                        <option value="Master Card">Master Card</option>
+                                                                        <option value="Visa">Visa</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="col-md-6 form-group">
                                                                     <label>Nombre del titular que aparece en la tarjeta</label>
-                                                                    <input type="text" class="form-control" />
+                                                                    <input type="text" class="form-control validate[required]" name="titular"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -173,26 +173,41 @@
                                                                     <div class="col-lg-12">
                                                                         <ul class="cards">                                                                            
                                                                                 <li card="visa" title="Visa" class="visa off">Visa</li>                                                                            
-                                                                                <li title="MasterCard" card="mastercard" class="mastercard off">Master Card</li>                                                                            
+                                                                                <li title="Master Card" card="mastercard" class="mastercard off">Master Card</li>                                                                            
                                                                         </ul>
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
                                                                             <label>Número de tarjeta</label>
-                                                                            <input class="form-control validate[required, custom[customCreditCard]]" type=text name="CardNumber" placeholder="{#numero_tarjeta_credito#}" />
+                                                                            <input class="form-control validate[required, custom[customCreditCard]]" type=text name="numero" placeholder="{#numero_tarjeta_credito#}" />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="col-md-6 form-group">
                                                                     <label class="display-block">Fecha de vencimiento</label>
-                                                                    <select class="form-control vencimiento-option">
+                                                                    <select class="form-control vencimiento-option" name="caducidadMes">
                                                                         <option value="0">Mes</option>
-                                                                        <option value="01">01</option>
-                                                                        <option value="02">02</option>
+                                                                        <option value="1">01</option>
+                                                                        <option value="2">02</option>
+                                                                        <option value="3">03</option>
+                                                                        <option value="4">04</option>
+                                                                        <option value="5">05</option>
+                                                                        <option value="6">06</option>
+                                                                        <option value="7">07</option>
+                                                                        <option value="8">08</option>
+                                                                        <option value="9">09</option>
+                                                                        <option value="10">10</option>
+                                                                        <option value="11">11</option>
+                                                                        <option value="12">12</option>
                                                                     </select>
-                                                                    <select class="form-control vencimiento-option">
+                                                                    <select class="form-control vencimiento-option" name="caducidadAnio">
                                                                         <option value="0">Año</option>
-                                                                        <option value="14">14</option>
-                                                                        <option value="15">15</option>
+                                                                        <option value="2014">2014</option>
+                                                                        <option value="2015">2015</option>
+                                                                        <option value="2016">2016</option>
+                                                                        <option value="2017">2017</option>
+                                                                        <option value="2018">2018</option>
+                                                                        <option value="2019">2019</option>
+                                                                        <option value="2020">2020</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -253,16 +268,18 @@
                                         </div>
                                         <div class="panel-body">
                                             <div class="row total-bottom-content">
-                                                <p><input type="checkbox" name="terminos" /> He leído y acepto los <a href="">Términos y Condiciones de uso</a> y el <a href="">Aviso de privacidad</a></p>
+                                                <p><input type="checkbox" name="terminos" class="validate[required]" /> He leído y acepto los <a href="">Términos y Condiciones de uso</a> y el <a href="">Aviso de privacidad</a></p>
                                                 <p><strong>Total a pagar</strong></p>
-                                                <p class="text-primary font-s24">155,00€</p>
+                                                <p class="text-primary font-s24">{$menor_precio}</p>
                                                 <p><small>El importe incluye todos los impuestos</small></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <a href="#" class="btn btn-primary pay_booking">Pagar reserva</a>
+                                    <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
+                                    <input type="hidden" name="action" value="insert">
+                                    <input type="submit" class="btn btn-primary pay_booking" value="Pagar reserva">
                                 </div>                                                        
                             </div>
                             
@@ -295,7 +312,7 @@
                                 </p>
                                 <br />
                                 <div class="text-right continuar_container">
-                                    <a href="#" class="btn btn-primary go-step-2">Continuar</a>
+                                    <!--<a href="#" class="btn btn-primary go-step-2">Continuar</a>-->
                                 </div>
                             </div>
 

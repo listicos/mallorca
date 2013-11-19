@@ -5,82 +5,71 @@ $action = $_POST["action"];
 $result = array("msg" => "error", "data" => "No tienes los permisos suficientes");
 
 if (strcmp($action, "insert") == 0) {
-    $required = array('fechaEntrada', 'fechaSalida', 'idApartamento',
-        'nombre', 'apellidoPaterno', 'email');
-    $is_valid = true;
-
-    foreach ($required as $r) {
-        if (!isset($_POST[$r])) {
-            $is_valid = false;
-            break;
-        }
-    }
+    $data = array();
+    
+    if(isset($_SESSION['fechaInicio']))
+        $data['fechaEntrada'] = $_SESSION['fechaInicio'];
+    if(isset($_SESSION['fechaFinal']))
+        $data['fechaSalida'] = $_SESSION['fechaFinal'];
+    if(isset($_SESSION['huespedes']))
+        $data['adultos'] = $_SESSION['huespedes'];
+    if(isset($_POST['idApartamento']))
+        $data['idApartamento'] = $_POST['idApartamento'];
+    
+    $canales = getCanales();
+    
+    if($canales && count($canales))
+        $data['idCanal'] = $canales[0]->idCanal;
+    
     $idApartamento = $_POST['idApartamento'];
 
     $apartamento = getApartamento($_POST['idApartamento']);
 
-    if ($is_valid && $apartamento) {
+    if ($apartamento) {
 
-        $total = getTotalPrice($idApartamento, strtotime($_POST['fechaEntrada']), strtotime($_POST['fechaSalida']));
+        $total = getTotalPrice($idApartamento, strtotime($data['fechaEntrada']), strtotime($data['fechaSalida']), array(), $data['huespedes']);
 
         if ($total && is_numeric($total)) {
-            //INSERTANDO USUARIO
-            $usuario_id = false;
-
-            $usuario_data = array();
-            $usuario_data['nombre'] = $_POST['nombre'];
-            $usuario_data['apellidoPaterno'] = $_POST['apellidoPaterno'];
-            $usuario_data['apellidoMaterno'] = $_POST['apellidoMaterno'];
-            $usuario_data['email'] = $_POST['email'];
-            $usuario_data['ultimaModificacion'] = date('Y-m-d H:i:s');
-
-            if (!isset($_POST['idUsuario']) || !is_numeric($_POST['idUsuario']) || !getUsuario($_POST['idUsuario'])) {
-                $usuario_data['password'] = $_POST['password'];
-                $usuario_data['estatus'] = 'activo';
-                $usuario_data['idUsuarioGrupo'] = '2';
-                $usuario_data['tiempoCreacion'] = date('Y-m-d H:i:s');
-                $usuario_id = insertUsuario($usuario_data);
-                $id_huesped = insertHuesped(array('idUsuario' => $usuario_id));
-            } else {
-                $usuario = updateUsuario($_POST['idUsuario'], $usuario_data);
-                if ($usuario) {
-                    $usuario_id = $_POST['idUsuario'];
-                }
+            $data['total'] = $total;
+            //verificar si logueado
+            $usuario = $usuario_core->getUsuario();
+            $data_usuario = array();
+            if($usuario && $usuario->idUsuario) {
+                echo 'usuario';
+                $data['usuarioId'] = $usuario->idUsuario;
             }
-
-            if ($usuario_id) {
-                //INSERTANDO HUESPED
-                /*$huesped = getHuespedByUsuario($usuario_id);
-                if($huesped){
-                    $id_huesped = $huesped->idHuesped;
-                }
-                $id_huesped = insertHuesped(array('idUsuario' => $usuario_id));
-                */
-                
-                //INSERTANDO REERVA
-
-                $reserva_data = array();
-                $reserva_data['idUsuario'] = $usuario_id;
-                $reserva_data['fechaEntrada'] = date('Y-m-d H:i:s', strtotime($_POST['fechaEntrada']));
-                $reserva_data['fechaSalida'] = date('Y-m-d H:i:s', strtotime($_POST['fechaSalida']));
-                $reserva_data['idApartamento'] = $_POST['idApartamento'];
-                $reserva_data['adultos'] = $_POST['adultos'];
-                $reserva_data['ninios'] = $_POST['ninios'];
-                $reserva_data['bebes'] = $_POST['bebes'];
-                $reserva_data['tiempoCreacion'] = date('Y-m-d H:i:s');
-                $reserva_data['ultimaModificacion'] = date('Y-m-d H:i:s');
-                $reserva_data['apartamento'] = serialize($apartamento);
-                $reserva_data['request'] = serialize($_SERVER);
-                $reserva_data['total'] = $total;
-
-                $reserva_id = insertReserva($reserva_data);
-                $usuario_core->setUsuario(getUsuario($usuario_id));
-                
-                $result = array('msg' => 'ok', 'data' => 'Reresva creada correctamente.', 'idReservacion' => $reserva_id);
+            if(isset($_POST['nombre']))
+                $data_usuario['nombre'] = $_POST['nombre'];
+            if(isset($_POST['apellidoPaterno']))
+                $data_usuario['apellidoPaterno'] = $_POST['apellidoPaterno'];
+            if(isset($_POST['email']))
+                $data_usuario['email'] = $_POST['email'];
+            if(isset($_POST['telefono']))
+                $data_usuario['telefono'] = $_POST['telefono'];
             
+            
+            $data_cobro = array('tipo'=>'tarjeta', 'formaPago' => 'pago', 'importe' => $total);
+            if(isset($_POST['tipoTarjeta']))
+                    $data_cobro['tipoTarjeta'] = $_POST['tipoTarjeta'];
+            if(isset($_POST['numero']))
+                    $data_cobro['numero'] = $_POST['numero'];
+            if(isset($_POST['titular']))
+                    $data_cobro['titular'] = $_POST['titular'];
+            if(isset($_POST['caducidadMes']))
+                    $data_cobro['caducidadMes'] = $_POST['caducidadMes'];
+            if(isset($_POST['caducidadAnio']))
+                    $data_cobro['caducidadAnio'] = $_POST['caducidadAnio'];
+            
+            $reservaId = addReserva($data, $data_usuario, array($data_cobro));
+            
+            if($reservaId) {
+                $reserva = getReserva($reservaId);
+                $usuario_core->setUsuario(getUsuario($reserva->idUsuario));
+                $result = array('msg' => 'ok', 'data' => 'Reserva creada correctamente.', 'idReservacion' => $reservaId);
             } else {
-                $result = array('msg' => 'error', 'data' => 'Usuario no pudo ser agregado');
+                $result['data'] = 'No se pudo registrar la reserva';
             }
+            
         } else {
             $result = array('msg' => 'error', 'data' => 'Fechas no disponibles');
         }

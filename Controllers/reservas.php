@@ -1,17 +1,5 @@
 <?php
-/*
-$template = new Core_template();
-$template->setView('reservas.php');
-$template->setCSS('reservas.css');
-$template->setJS('jquery-easing-1.3.js');
-$template->setJS('jquery-transit-modified.js');
 
-$template->setJS('layerslider/layerslider.kreaturamedia.jquery.js');
-$template->setJS('layerslider/layerslider.transitions.js');
-
-$template->setJS('reservas.js');
-$template->setCSS('layerslider/layerslider.css');
-*/
 $dias = array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
 $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 

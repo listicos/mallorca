@@ -35,7 +35,9 @@ function addReserva($data = array(), $data_usuario = array(), $data_cobros = arr
     try {
         $transaction = new Transaction();
         $data['estatus'] = 'Pendiente';
+        
         if(!isset($data['usuarioId'])) {
+            echo 'insert usuario';
             $data_usuario['idUsuarioGrupo'] = 2;
             $data_usuario['tiempoCreacion'] = date("Y-m-d");
             $usuario = DAOFactory::getUsuariosDAO()->prepare($data_usuario);
@@ -45,6 +47,7 @@ function addReserva($data = array(), $data_usuario = array(), $data_cobros = arr
             if(strlen($data_usuario['password']) == 0) {
                 $data_usuario['password'] = DAOFactory::getUsuariosDAO()->load($data['usuarioId'])->password;
             }
+            echo 'update usuario';
             $usuario = DAOFactory::getUsuariosDAO()->prepare($data_usuario, $data['usuarioId']);
             DAOFactory::getUsuariosDAO()->update($usuario);
             $data['idUsuario'] = $data['usuarioId'];
