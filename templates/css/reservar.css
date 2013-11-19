@@ -1,3 +1,15 @@
+td.reserva-datos-title {
+    padding: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+}
+
+td.reserva-datos-title div {
+    padding: 10px 15px;
+    border-radius: 4px 4px 0 0;
+    margin: 0 !important;
+}
+
 .main_content{
     margin-top: 70px;
     margin-bottom: 70px;
@@ -565,7 +577,7 @@ ul.cards li {
     -ms-transition: all .2s;
     -o-transition: all .2s;
     transition: all .2s;
-    background-image: url(../images/card_logos.png);
+    background-image: url(../img/card_logos.png);
     background-position: 0 0;
     float: left;
     height: 32px;
@@ -618,7 +630,7 @@ background-position: 153px 32px;
 
 
 .validCreditCard {
-    background: url(../images/tick.png) right center no-repeat;
+    background: url(../img/tick.png) right center no-repeat;
 }
 
 @media (max-width: 570px) {

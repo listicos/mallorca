@@ -22,7 +22,7 @@
     <div class="row-fluid">
         <div class="row">
             <div class="col-md-8 reserva-left-side">
-                
+                    <!--
                     <ul class="nav nav-tabs breadcrumb-custom bread-2" id="reservation_tabs">
                         <li class="active bread-row">
                             <a href="#reservation_step" data-toggle="tab">
@@ -39,17 +39,22 @@
                             </a>
                         </li>
                     </ul>
-
+                    -->
                     <!-- TAB CONTENT -->
 
                     <div class="row reservas-list-main tab-content">
-
+                        <form id="">
                         <!-- reservation_step -->
                         <div class="tab-pane active" id="reservation_step">
                             <div class="col-md-12">
                                 <div class="table-responsive">
                                     <table class="table table-reserva-info">
                                         <tbody>
+                                            <tr>
+                                                <td class="reserva-datos-title">
+                                                    <div class="alert-success alert"><h3 class="panel-title">Datos de tu Reserva</h3></div>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td>
                                                     <div class="row">
@@ -90,8 +95,8 @@
                         <!-- end reservation_step -->
 
                         <!-- data_step -->
-                        <div class="tab-pane" id="data_step">
-                            <form role="form" class="">
+                        <div class="tab-pane active" id="data_step">
+                            
                             <div class="col-md-12">
                             <div class="panel panel-success">
                                 <div class="panel-heading">
@@ -193,44 +198,7 @@
                                                             </div>
                                                         </div>
         
-                                                       <!-- <div class="col-md-12">
-                                                            <div class="row">
-                                                                <div class="col-md-6 form-group">
-                                                                    <label>Nombre del titular que aparece en la tarjeta</label>
-                                                                    <input type="text" class="form-control" />
-                                                                </div>
-                                                                <div class="col-md-6 form-group">
-                                                                    <label>Código de seguridad</label>
-                                                                    <input type="text" class="form-control" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="row">
-                                                                <div class="col-md-6 form-group">
-                                                                    <label>Estado</label>
-                                                                    <select class="form-control">
-                                                                        <option value="0">Seleccione ...</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-6 form-group">
-                                                                    <label>Ciudad</label>
-                                                                    <input type="text" class="form-control" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label>Dirección</label>
-                                                                    <input type="text" class="form-control" />
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label>Código Postal</label>
-                                                                    <input type="text" class="form-control" />
-                                                                </div>
-                                                            </div>
-                                                        </div>   -->                                                     
+                                                                                                           
                                                     </div>
                                                 </div>
                                             </div>
@@ -238,120 +206,7 @@
                                         </div>
                                     </div>
                                 
-                                <!--<div class="row panel-content">
-                                    <div class="col-md-12">
-                                        <div class="panel-heading">
-                                            <p>Datos para tu traslado</p>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-sm-4 form-group">
-                                                    <label>Hora Llegada</label>
-                                                    <input type="text" class="form-control timepicker" data-minute-step="1" id="hora_llegada" placeholder="HH:mm">
-                                                </div>
-                                                <div class="col-sm-4 form-group">
-                                                    <label>Aerolínea</label>
-                                                    <select class="form-control">
-                                                        <option value="0">Seleccione ...</option>
-                                                        <option value="1">Interjet</option>
-                                                        <option value="2">Volaris</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 form-group">
-                                                    <label>Número de Vuelo</label>
-                                                    <input type="text" class="form-control"  placeholder="Vuelo ...">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-4 form-group">
-                                                    <label>Hora Salida</label>
-                                                    <input type="text" class="form-control timepicker" data-minute-step="1" id="hora_salida" placeholder="HH:mm">
-                                                </div>
-                                                <div class="col-sm-4 form-group">
-                                                    <label>Aerolínea</label>
-                                                    <select class="form-control">
-                                                        <option value="0">Seleccione ...</option>
-                                                        <option value="1">Interjet</option>
-                                                        <option value="2">Volaris</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 form-group">
-                                                    <label>Número de Vuelo</label>
-                                                    <input type="text" class="form-control"  placeholder="Vuelo ...">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                                
-                                <!--<div class="row panel-content">
-                                    <div class="col-md-12">
-                                        <div class="panel-heading">
-                                            <p>Datos para tu Reserva</p>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-sm-6 form-group">
-                                                    <label>Nombre</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-6 form-group">
-                                                    <label>Apellido</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-6 form-group">
-                                                    <label>Correo Electrónico</label>
-                                                    <input type="email" class="form-control">
-                                                </div>
-                                                <div class="col-sm-6 form-group">
-                                                    <label>Confirma Correo Electrónico</label>
-                                                    <input type="email" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-sm-4 form-group">
-                                                    <label>Lada</label>
-                                                    <select class="form-control">
-                                                        <option value="0">Seleccione ...</option>
-                                                        <option value="1">España (+34)</option>
-                                                        <option value="2">México (+52)</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-4 form-group">
-                                                    <label>Número telefónico</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="col-sm-4 form-group">
-                                                    <label class="w100per">&nbsp;</label>
-                                                    <input type="checkbox"> Celular
-                                                </div>
-                                            </div>
-                                            <div class="other-tel-parent">
-                                                <a href="#" class="add-other-tel closed">Agregar otro número telefonico <span class="caret blue"></span></a>
-                                                <div class="row other-tel-content" style="display: none;">
-                                                    <div class="col-sm-4 form-group">
-                                                        <label>Lada</label>
-                                                        <select class="form-control">
-                                                            <option value="0">Seleccione ...</option>
-                                                            <option value="1">España (+34)</option>
-                                                            <option value="2">México (+52)</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-4 form-group">
-                                                        <label>Número telefónico</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                    <div class="col-sm-4 form-group">
-                                                        <label class="w100per">&nbsp;</label>
-                                                        <input type="checkbox"> Celular
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                
                                 
                                 <div class="row">
                                     <div class="col-md-12">
@@ -379,313 +234,18 @@
                                
 
                                 <div class="text-right">
-                                    <a href="#" class="btn btn-primary go-step-3">Finalizar reserva</a>
+                                    <!--<a href="#" class="btn btn-primary go-step-3">Finalizar reserva</a>-->
                                 </div>                
                             </div>
-                            </form>
+                            
                         </div>
                         <!-- end data_step -->
 
                         <!-- pay_step -->
-                        <div class="tab-pane" id="pay_step">
-                            <form role="form" class="">
+                        <div class="tab-pane active" id="pay_step">
+                            
                             <div class="col-md-12">
                                 
-                                <!--<div class="row panel-content">
-                                    <div class="col-md-12">
-                                        <div class="panel-heading">
-                                            <h4 class="text-primary">Formas de pago</h4>
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="row forma-pago-select">
-                                                        <div class="form-group col-sm-6 text-primary font-w-bold">
-                                                            <label class="sr-only">1 forma de pago</label>
-                                                            <input type="radio" name="forma_pago_btn" checked="checked" value="1"/>
-                                                            1 Forma de pago
-                                                            <small class="text-muted">(Tarjeta de crédito, certificado)</small>
-                                                        </div>
-                                                        <div class="form-group col-sm-6 text-primary font-w-bold">
-                                                            <label class="sr-only">2 formas de pago</label>
-                                                            <input type="radio" name="forma_pago_btn" value="2"/>
-                                                            2 Formas de pago
-                                                            <small class="text-muted">(2 Tarjetas de crédito, etc.)</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    
-                                                    <div class="row forma-pago-content">
-                                                       <div class="table-responsive">
-                                                           <div class="for-2-pays form-group hidden">
-                                                               <label>Monto de pago 1</label>
-                                                               <input type="text" class="form-control w25per"/>
-                                                               <small class="text-muted">(50.00% del total)</small>
-                                                           </div>
-                                                           <table class="table un-pago-table">
-                                                               <thead>
-                                                                   <tr>
-                                                                       <th colspan="2">Un solo pago</th>
-                                                                   </tr>
-                                                               </thead>
-                                                               <tbody>
-                                                                   <tr>
-                                                                       <td><input type="radio" name="un_pago_tipo" value="credito" checked="checked"/> Tarjeta de Crédito</td>
-                                                                       <td class="total-td"><p class="total-pago font-w-bold">300,00€</p></td>
-                                                                   </tr>
-                                                                   <tr>
-                                                                       <td><input type="radio" name="un_pago_tipo" value="certificado"/> Certificado Points2Travel</td>
-                                                                       <td class="total-td"><p class="total-pago font-w-bold" style="display: none;">300,00€</p></td>
-                                                                   </tr>
-                                                                   <tr>
-                                                                       <td><input type="radio" name="un_pago_tipo" value="paypal"/> Paypal (Tarjeta de Crédito o Débito)</td>
-                                                                       <td class="total-td"><p class="total-pago font-w-bold" style="display: none;">300,00€</p></td>
-                                                                   </tr>
-                                                               </tbody>
-                                                           </table>
-                                                        </div>
-                                                        
-                                                        <div class="table-responsive">
-                                                           <table class="table mensualidades-table">
-                                                               <thead>
-                                                                   <tr>
-                                                                       <th colspan="2">Mensualidades sin intereses <small>(Válido sólo para tarjetas de crédito emitidas en España)</small></th>
-                                                                   </tr>
-                                                               </thead>
-                                                               <tbody>
-                                                                   <tr>
-                                                                       <td>
-                                                                            <table class="table mensualidades-option-table">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th>&nbsp;</th>
-                                                                                        <th>3</th>
-                                                                                        <th>6</th>
-                                                                                        <th>7</th>
-                                                                                        <th>9</th>
-                                                                                        <th>10</th>
-                                                                                        <th>12</th>
-                                                                                        <th>13</th>
-                                                                                        <th>15</th>
-                                                                                        <th>18</th>
-                                                                                        <th>Mensualidades</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td><img src="{$template_url}/images/bancos/Bancomer_m.png" alt="Bancomer"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="3"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="6"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="7"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="9"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="10"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="12"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="13"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="15"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="18"/></td>
-                                                                                        <td class="total-mensualidad-td"><p class="total-pago font-w-bold">155,00€</p></td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td><img src="{$template_url}/images/bancos/Banamex_m.png" alt="Bancomer"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="3"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="6"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="7"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="9"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="10"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="12"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="13"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="15"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="18"/></td>
-                                                                                        <td class="total-mensualidad-td"><p class="total-pago font-w-bold">155,00€</p></td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td><img src="{$template_url}/images/bancos/Santander-Serfin_m.png" alt="Bancomer"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="3"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="6"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="7"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="9"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="10"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="12"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="13"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="15"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="18"/></td>
-                                                                                        <td class="total-mensualidad-td"><p class="total-pago font-w-bold">155,00€</p></td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td><img src="{$template_url}/images/bancos/Banorte_m.png" alt="Bancomer"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="3"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="6"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="7"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="9"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="10"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="12"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="13"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="15"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="18"/></td>
-                                                                                        <td class="total-mensualidad-td"><p class="total-pago font-w-bold">155,00€</p></td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td><img src="{$template_url}/images/bancos/HSBC_m.png" alt="Bancomer"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="3"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="6"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="7"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="9"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="10"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="12"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="13"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="15"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="18"/></td>
-                                                                                        <td class="total-mensualidad-td"><p class="total-pago font-w-bold">155,00€</p></td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                       </td>
-                                                                   </tr>
-                                                               </tbody>
-                                                           </table>
-                                                        </div> 
-                                                    </div>
-                                                                                        
-                                                    <div class="row forma-pago-content for-2-pays hidden">
-                                                       <div class="table-responsive">
-                                                           <div class="for-2-pays form-group hidden">
-                                                               <label>Monto de pago 2</label>
-                                                               <input type="text" class="form-control w25per"/>
-                                                               <small class="text-muted">(50.00% del total)</small>
-                                                           </div>
-                                                           <table class="table un-pago-table">
-                                                               <thead>
-                                                                   <tr>
-                                                                       <th colspan="2">Un solo pago</th>
-                                                                   </tr>
-                                                               </thead>
-                                                               <tbody>
-                                                                   <tr>
-                                                                       <td><input type="radio" name="un_pago_tipo" value="credito" checked="checked"/> Tarjeta de Crédito</td>
-                                                                       <td class="total-td"><p class="total-pago font-w-bold">300,00€</p></td>
-                                                                   </tr>
-                                                                   <tr>
-                                                                       <td><input type="radio" name="un_pago_tipo" value="certificado"/> Certificado Points2Travel</td>
-                                                                       <td class="total-td"><p class="total-pago font-w-bold" style="display: none;">300,00€</p></td>
-                                                                   </tr>
-                                                                   <tr>
-                                                                       <td><input type="radio" name="un_pago_tipo" value="paypal"/> Paypal (Tarjeta de Crédito o Débito)</td>
-                                                                       <td class="total-td"><p class="total-pago font-w-bold" style="display: none;">300,00€</p></td>
-                                                                   </tr>
-                                                               </tbody>
-                                                           </table>
-                                                        </div>
-                                                        
-                                                        <div class="table-responsive">
-                                                           <table class="table mensualidades-table">
-                                                               <thead>
-                                                                   <tr>
-                                                                       <th colspan="2">Mensualidades sin intereses <small>(Válido sólo para tarjetas de crédito emitidas en España)</small></th>
-                                                                   </tr>
-                                                               </thead>
-                                                               <tbody>
-                                                                   <tr>
-                                                                       <td>
-                                                                            <table class="table mensualidades-option-table">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th>&nbsp;</th>
-                                                                                        <th>3</th>
-                                                                                        <th>6</th>
-                                                                                        <th>7</th>
-                                                                                        <th>9</th>
-                                                                                        <th>10</th>
-                                                                                        <th>12</th>
-                                                                                        <th>13</th>
-                                                                                        <th>15</th>
-                                                                                        <th>18</th>
-                                                                                        <th>Mensualidades</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td><img src="{$template_url}/images/bancos/Bancomer_m.png" alt="Bancomer"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="3"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="6"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="7"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="9"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="10"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="12"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="13"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="15"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="18"/></td>
-                                                                                        <td class="total-mensualidad-td"><p class="total-pago font-w-bold">155,00€</p></td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td><img src="{$template_url}/images/bancos/Banamex_m.png" alt="Bancomer"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="3"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="6"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="7"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="9"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="10"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="12"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="13"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="15"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="18"/></td>
-                                                                                        <td class="total-mensualidad-td"><p class="total-pago font-w-bold">155,00€</p></td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td><img src="{$template_url}/images/bancos/Santander-Serfin_m.png" alt="Bancomer"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="3"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="6"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="7"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="9"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="10"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="12"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="13"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="15"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="18"/></td>
-                                                                                        <td class="total-mensualidad-td"><p class="total-pago font-w-bold">155,00€</p></td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td><img src="{$template_url}/images/bancos/Banorte_m.png" alt="Bancomer"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="3"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="6"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="7"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="9"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="10"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="12"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="13"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="15"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="18"/></td>
-                                                                                        <td class="total-mensualidad-td"><p class="total-pago font-w-bold">155,00€</p></td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td><img src="{$template_url}/images/bancos/HSBC_m.png" alt="Bancomer"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="3"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="6"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="7"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="9"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="10"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="12"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="13"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="15"/></td>
-                                                                                        <td><input type="radio" name="mensuaidad_tipo" value="18"/></td>
-                                                                                        <td class="total-mensualidad-td"><p class="total-pago font-w-bold">155,00€</p></td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                       </td>
-                                                                   </tr>
-                                                               </tbody>
-                                                           </table>
-                                                        </div> 
-                                                    </div>
-                                                                                        
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                
-                              
-                                                
                                 <div class="row panel-content">
                                     <div class="col-md-12">
                                         <div class="panel-heading">
@@ -705,9 +265,10 @@
                                     <a href="#" class="btn btn-primary pay_booking">Pagar reserva</a>
                                 </div>                                                        
                             </div>
-                            </form>
+                            
                         </div>
                         <!-- end pay_step -->
+                        </form>
                     </div>
                 
             </div>
@@ -741,10 +302,10 @@
                         </div>
                     </div>
                     <br />
-                    <div class="alert alert-success">
+                    <!--<div class="alert alert-success">
                         <p>Por reservar <strong>Apartamento 1 dormitorio</strong> en esta Web, te beneficias de un cupón de descuento <b>exclusivo</b> que puedes utilizar y obtener <strong>descuentos</strong> de hasta el <strong>100%</strong> en cualquiera de los complementos de tu viaje.</p>
                         <p class="cupon-text">Tu <strong>código</strong> de cupón es : <b><strong class="lead">{$cupon->codigo|upper}</strong></b></p>
-                    </div>
+                    </div>-->
                 </div>
                 <br />
             </div>

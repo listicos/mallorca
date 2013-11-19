@@ -108,9 +108,10 @@ $(document).ready(function() {
     
     setCurrentDate();
 
-    $('.timepicker').timepicker();
+    //$('.timepicker').timepicker();
 
     //$('#reservation_tabs').tab();
+    /*
     $('#reservation_tabs a').click(function(e) {
         e.preventDefault()
         $(this).tab('show');
@@ -128,7 +129,7 @@ $(document).ready(function() {
         } else {
             $('.reservacion-list-content-main .alert.alert-success').hide();
         }
-    })
+    })*/
 
     $(".show-more-cars").click(function() {
         var table_content = $(".autos-table");
