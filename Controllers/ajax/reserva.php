@@ -61,6 +61,8 @@ if (strcmp($action, "insert") == 0) {
                     $data_cobro['caducidadMes'] = $_POST['caducidadMes'];
             if(isset($_POST['caducidadAnio']))
                     $data_cobro['caducidadAnio'] = $_POST['caducidadAnio'];
+            if(isset($_POST['cvv']))
+                    $data_cobro['cvv'] = $_POST['cvv'];
             
             $reservaId = addReserva($data, $data_usuario, array($data_cobro));
             

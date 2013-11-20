@@ -154,61 +154,63 @@
                                                     <div class="row datos-pago">
                                                         <div class="col-md-12">
                                                             <div class="row">
-                                                                <div class="col-md-6 form-group">
-                                                                    <label>Tarjeta de Crédito</label>
-                                                                    <select class="form-control" name="tipoTarjeta">
-                                                                        <option value="Master Card">Master Card</option>
-                                                                        <option value="Visa">Visa</option>
-                                                                    </select>
+                                                                <div class="col-md-12 form-group">
+                                                                    <div class="col-md-12">
+                                                                        <ul class="cards">                                                                            
+                                                                                <li card="visa" title="Visa" class="visa off">Visa</li>                                                                            
+                                                                                <li title="MasterCard" card="mastercard" class="mastercard off">Master Card</li>                                                                            
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-md-6 form-group">
+                                                                            <label>Número de tarjeta</label>
+                                                                            <input class="form-control validate[required, custom[customCreditCard]]" type=text name="numero" placeholder="{#numero_tarjeta_credito#}" />
+                                                                            <input type="hidden" name="tipoTarjeta">
+                                                                    </div>
+                                                                    <div class="col-md-6 form-group">
+                                                                        <label>Nombre del titular que aparece en la tarjeta</label>
+                                                                        <input type="text" class="form-control validate[required]" name="titular"/>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-md-6 form-group">
-                                                                    <label>Nombre del titular que aparece en la tarjeta</label>
-                                                                    <input type="text" class="form-control validate[required]" name="titular"/>
-                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <div class="col-lg-12">
-                                                                        <ul class="cards">                                                                            
-                                                                                <li card="visa" title="Visa" class="visa off">Visa</li>                                                                            
-                                                                                <li title="Master Card" card="mastercard" class="mastercard off">Master Card</li>                                                                            
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="col-lg-12 form-group">
-                                                                            <label>Número de tarjeta</label>
-                                                                            <input class="form-control validate[required, custom[customCreditCard]]" type=text name="numero" placeholder="{#numero_tarjeta_credito#}" />
-                                                                    </div>
-                                                                </div>
+                                                                
 
                                                                 <div class="col-md-6 form-group">
                                                                     <label class="display-block">Fecha de vencimiento</label>
-                                                                    <select class="form-control vencimiento-option" name="caducidadMes">
+                                                                    <div class="col-md-6">
+                                                                    <select class="form-control vencimiento-option inline" name="caducidadMes">
                                                                         <option value="0">Mes</option>
-                                                                        <option value="1">01</option>
-                                                                        <option value="2">02</option>
-                                                                        <option value="3">03</option>
-                                                                        <option value="4">04</option>
-                                                                        <option value="5">05</option>
-                                                                        <option value="6">06</option>
-                                                                        <option value="7">07</option>
-                                                                        <option value="8">08</option>
-                                                                        <option value="9">09</option>
+                                                                        <option value="01">01</option>
+                                                                        <option value="02">02</option>
+                                                                        <option value="03">03</option>
+                                                                        <option value="04">04</option>
+                                                                        <option value="05">05</option>
+                                                                        <option value="06">06</option>
+                                                                        <option value="07">07</option>
+                                                                        <option value="08">08</option>
+                                                                        <option value="09">09</option>
                                                                         <option value="10">10</option>
                                                                         <option value="11">11</option>
                                                                         <option value="12">12</option>
                                                                     </select>
-                                                                    <select class="form-control vencimiento-option" name="caducidadAnio">
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                    <select class="form-control vencimiento-option inline" name="caducidadAnio">
                                                                         <option value="0">Año</option>
-                                                                        <option value="2014">2014</option>
-                                                                        <option value="2015">2015</option>
-                                                                        <option value="2016">2016</option>
-                                                                        <option value="2017">2017</option>
-                                                                        <option value="2018">2018</option>
-                                                                        <option value="2019">2019</option>
-                                                                        <option value="2020">2020</option>
+                                                                        <option value="14">14</option>
+                                                                        <option value="15">15</option>
+                                                                        <option value="16">16</option>
+                                                                        <option value="17">17</option>
+                                                                        <option value="18">18</option>
                                                                     </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 form-group">
+                                                                    <label>CVV</label>
+                                                                    <input type="text" class="form-control validate[required, custom[integer]]" maxlength="4" name="cvv">
                                                                 </div>
                                                             </div>
                                                         </div>
