@@ -25,14 +25,14 @@ $edit = $this->getAttribute('edit');
                 <ul class="nav nav-tabs detalles_apartamento_nav">
                     <li class="active"><a href="#demo1" data-toggle="tab">General</a></li>
                     <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#contrato" data-toggle="tab" data-ref="contratos">Propietario/Contrato</a></li>-->
-                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#documentos-tab" data-toggle="tab" data-ref="documentos">Documentos</a></li>
+                    <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#documentos-tab" data-toggle="tab" data-ref="documentos">Documentos</a></li>-->
                     <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo3" data-toggle="tab" data-ref="tarifas">Tarifas</a></li>-->  
                     <?php if(hasRoles("Administrador, Socio, Mallorca")) { ?>
-                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="calendario_trigger_tab" data-ref="calendario">Calendario</a></li>
-                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="contrato_trigger_tab" data-ref="calendario">Contrato</a></li>
+                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="calendario_trigger_tab" data-ref="calendario">Planning</a></li>
+                    <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="contrato_trigger_tab" data-ref="calendario">Reglas</a></li>-->
                     <?php } ?>
                     <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo2" data-toggle="tab" data-ref="fotos">Fotos</a></li>
-                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo4" data-toggle="tab" data-ref="avanzados">Avanzado</a></li>
+                    <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo4" data-toggle="tab" data-ref="avanzados">Avanzado</a></li>-->
                 </ul>
             </div>
         </div>
@@ -112,7 +112,7 @@ $edit = $this->getAttribute('edit');
                                     </div>
                                 </div>         
                             </div>
-                            <div class="span4">
+                            <!--<div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend center span12" title="Tipo de habitación" data-rel="tooltip">
                                         <span class="detalles_apartamento_prepend"><i class="icon-user"></i></span>
@@ -124,7 +124,7 @@ $edit = $this->getAttribute('edit');
                                         </select>
                                     </div>
                                 </div>         
-                            </div>
+                            </div>-->
                         </div>             
                         <legend class="legend_custom titulos_legend">Descripción</legend>
                         <div class="row-fluid">
@@ -691,7 +691,7 @@ $edit = $this->getAttribute('edit');
                     <legend class="legend_custom titulos_legend">Condiciones</legend>
                     <div class="row-fluid">
                         <div class="span12">
-                            <p> Política de cancelaciones</p>
+                            <p> Condiciones de reserva</p>
                         </div>
                     </div>
                     <div class="row-fluid">
@@ -991,7 +991,7 @@ $edit = $this->getAttribute('edit');
                             <div class="portlet-body light-grey">
                                 <div class="row-fluid">
                                     <div class="span2 responsive calendario_element" data-tablet="span12 fix-margin" data-desktop="span8">
-                                         <a href="#disponibilidad_overlay" id="event_add" class="btn btn-primary" data-toggle="modal">Agregar tarifa</a>
+                                         <a href="#disponibilidad_overlay" id="event_add" class="btn btn-primary" data-toggle="modal">Modificar</a>
                                     </div>
                                     <div style="margin-left:0px;" class="span2 responsive contrato_element" data-tablet="span12 fix-margin" data-desktop="span8">
                                          <a href="#contrato_precios_overlay" id="event_contrato" class="btn btn-primary" data-toggle="modal">Precios</a>
