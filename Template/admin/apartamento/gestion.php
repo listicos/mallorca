@@ -25,14 +25,14 @@ $edit = $this->getAttribute('edit');
                 <ul class="nav nav-tabs detalles_apartamento_nav">
                     <li class="active"><a href="#demo1" data-toggle="tab">General</a></li>
                     <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#contrato" data-toggle="tab" data-ref="contratos">Propietario/Contrato</a></li>-->
-                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#documentos-tab" data-toggle="tab" data-ref="documentos">Documentos</a></li>
+                    <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#documentos-tab" data-toggle="tab" data-ref="documentos">Documentos</a></li>-->
                     <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo3" data-toggle="tab" data-ref="tarifas">Tarifas</a></li>-->  
                     <?php if(hasRoles("Administrador, Socio, Mallorca")) { ?>
-                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="calendario_trigger_tab" data-ref="calendario">Calendario</a></li>
-                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="contrato_trigger_tab" data-ref="calendario">Contrato</a></li>
+                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="calendario_trigger_tab" data-ref="calendario">Planning</a></li>
+                    <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo5" data-toggle="tab" class="contrato_trigger_tab" data-ref="calendario">Reglas</a></li>-->
                     <?php } ?>
                     <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo2" data-toggle="tab" data-ref="fotos">Fotos</a></li>
-                    <li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo4" data-toggle="tab" data-ref="avanzados">Avanzado</a></li>
+                    <!--<li <?php if (!$edit) { ?> class="disabled" <?php } ?> ><a href="#demo4" data-toggle="tab" data-ref="avanzados">Avanzado</a></li>-->
                 </ul>
             </div>
         </div>
@@ -101,10 +101,10 @@ $edit = $this->getAttribute('edit');
                             </div>
                             <div class="span4">
                                 <div class="control-group">
-                                    <div class="input-prepend center span12" title="Cantidad de apartamentos" data-rel="tooltip">
+                                    <div class="input-prepend center span12" title="Cantidad de propiedades" data-rel="tooltip">
                                         <span class="detalles_apartamento_prepend"><i class="icon-home"></i></span>
                                         <select class="span10 validate[required]" name="cantidad" >
-                                            <option value="" disabled>Cantidad de apartamentos</option>
+                                            <option value="" disabled>Cantidad de propiedades</option>
                                             <?php for ($i = 1; $i < 50; $i++) { ?>
                                                 <option value="<?php echo $i; ?>" <?php if ($edit && ($apartamento['apartamento']->cantidad == $i)) { ?> selected="selected" <?php } ?> ><?php echo $i; ?></option>
                                             <?php } ?>
@@ -112,7 +112,7 @@ $edit = $this->getAttribute('edit');
                                     </div>
                                 </div>         
                             </div>
-                            <div class="span4">
+                            <!--<div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend center span12" title="Tipo de habitación" data-rel="tooltip">
                                         <span class="detalles_apartamento_prepend"><i class="icon-user"></i></span>
@@ -124,7 +124,7 @@ $edit = $this->getAttribute('edit');
                                         </select>
                                     </div>
                                 </div>         
-                            </div>
+                            </div>-->
                         </div>             
                         <legend class="legend_custom titulos_legend">Descripción</legend>
                         <div class="row-fluid">
@@ -248,16 +248,16 @@ $edit = $this->getAttribute('edit');
                                             <option value="8" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '8')) { ?> selected="selected" <?php } ?>>8 personas</option>
                                             <option value="9" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '9')) { ?> selected="selected" <?php } ?>>9 personas</option>
                                             <option value="10" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '10')) { ?> selected="selected" <?php } ?>>10 personas</option>
-                                            <option value="11" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '11')) { ?> selected="selected" <?php } ?>>10 personas</option>
-                                            <option value="12" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '12')) { ?> selected="selected" <?php } ?>>10 personas</option>
-                                            <option value="13" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '13')) { ?> selected="selected" <?php } ?>>10 personas</option>
-                                            <option value="14" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '14')) { ?> selected="selected" <?php } ?>>10 personas</option>
-                                            <option value="15" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '15')) { ?> selected="selected" <?php } ?>>10 personas</option>
-                                            <option value="16" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '16')) { ?> selected="selected" <?php } ?>>10 personas</option>
-                                            <option value="17" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '17')) { ?> selected="selected" <?php } ?>>10 personas</option>
-                                            <option value="18" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '18')) { ?> selected="selected" <?php } ?>>10 personas</option>
-                                            <option value="19" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '19')) { ?> selected="selected" <?php } ?>>10 personas</option>
-                                            <option value="20" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '20')) { ?> selected="selected" <?php } ?>>10 personas</option>
+                                            <option value="11" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '11')) { ?> selected="selected" <?php } ?>>11 personas</option>
+                                            <option value="12" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '12')) { ?> selected="selected" <?php } ?>>12 personas</option>
+                                            <option value="13" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '13')) { ?> selected="selected" <?php } ?>>13 personas</option>
+                                            <option value="14" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '14')) { ?> selected="selected" <?php } ?>>14 personas</option>
+                                            <option value="15" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '15')) { ?> selected="selected" <?php } ?>>15 personas</option>
+                                            <option value="16" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '16')) { ?> selected="selected" <?php } ?>>16 personas</option>
+                                            <option value="17" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '17')) { ?> selected="selected" <?php } ?>>17 personas</option>
+                                            <option value="18" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '18')) { ?> selected="selected" <?php } ?>>18 personas</option>
+                                            <option value="19" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '19')) { ?> selected="selected" <?php } ?>>19 personas</option>
+                                            <option value="20" <?php if ($edit && ($apartamento['apartamento']->capacidadPersonas == '20')) { ?> selected="selected" <?php } ?>>20 personas</option>
                                         </select>
                                     </div>
                                 </div>         
@@ -311,34 +311,26 @@ $edit = $this->getAttribute('edit');
                                         <select class="span10 validate[required]" name="banio">
                                             <option value="" disabled selected>Baños</option>
                                             <option value="0" <?php if ($edit && ($apartamento['apartamento']->banio == '0')) { ?> selected="selected" <?php } ?> >0 baños</option>
-                                            <option value="0.5" <?php if ($edit && ($apartamento['apartamento']->banio == '0.5')) { ?> selected="selected" <?php } ?> >0.5 baños</option>
                                             <option value="1" <?php if ($edit && ($apartamento['apartamento']->banio == '1')) { ?> selected="selected" <?php } ?> >1 baño</option>
-                                            <option value="1.5" <?php if ($edit && ($apartamento['apartamento']->banio == '1.5')) { ?> selected="selected" <?php }else{ ?> <?php if($edit==false) echo "selected='selected'"?> <?php }?>>1.5 baños</option>
                                             <option value="2" <?php if ($edit && ($apartamento['apartamento']->banio == '2')) { ?> selected="selected" <?php } ?> >2 baños</option>
-                                            <option value="2.5" <?php if ($edit && ($apartamento['apartamento']->banio == '2.5')) { ?> selected="selected" <?php } ?> >2.5 baños</option>
                                             <option value="3" <?php if ($edit && ($apartamento['apartamento']->banio == '3')) { ?> selected="selected" <?php } ?> >3 baños</option>
-                                            <option value="3.5" <?php if ($edit && ($apartamento['apartamento']->banio == '3.5')) { ?> selected="selected" <?php } ?> >3.5 baños</option>
                                             <option value="4" <?php if ($edit && ($apartamento['apartamento']->banio == '4')) { ?> selected="selected" <?php } ?> >4 baños</option>
-                                            <option value="4.5" <?php if ($edit && ($apartamento['apartamento']->banio == '4.5')) { ?> selected="selected" <?php } ?> >4.5 baños</option>
                                             <option value="5" <?php if ($edit && ($apartamento['apartamento']->banio == '5')) { ?> selected="selected" <?php } ?> >5 baños</option>
-                                            <option value="5.5" <?php if ($edit && ($apartamento['apartamento']->banio == '5.5')) { ?> selected="selected" <?php } ?> >5.5 baños</option>
                                             <option value="6" <?php if ($edit && ($apartamento['apartamento']->banio == '6')) { ?> selected="selected" <?php } ?> >6 baños</option>
-                                            <option value="6.5" <?php if ($edit && ($apartamento['apartamento']->banio == '6.5')) { ?> selected="selected" <?php } ?> >6.5 baños</option>
                                             <option value="7" <?php if ($edit && ($apartamento['apartamento']->banio == '7')) { ?> selected="selected" <?php } ?> >7 baños</option>
-                                            <option value="7.5" <?php if ($edit && ($apartamento['apartamento']->banio == '7.5')) { ?> selected="selected" <?php } ?> >7.5 baños</option>
                                             <option value="8" <?php if ($edit && ($apartamento['apartamento']->banio == '8')) { ?> selected="selected" <?php } ?> >8 baños</option>
                                         </select>
                                     </div>
                                 </div>         
                             </div>
-                            <div class="span4">
+                            <!--<div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend center span12" title="Tamaño total" data-rel="tooltip">
                                         <span class="detalles_apartamento_prepend"><i class="icon-user"></i></span>
                                         <input type="number" class="span10 validate[required]" step="0.1"  name="tamanio" placeholder="En metros cuadrados"  <?php if ($edit) { ?> value="<?php echo $apartamento['apartamento']->tamanio; ?>" <?php }else{ ?> value="100" <?php }?>/>
                                     </div>
                                 </div>         
-                            </div>
+                            </div>-->
                         </div>
                         <div class="row-fluid">
                             <div class="span8">
@@ -428,7 +420,7 @@ $edit = $this->getAttribute('edit');
                         <div class="row-fluid">
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="span12 validate[required]" title="Referencias" data-rel="tooltip" name="referencia" rows="5" placeholder="Dirección..."><?php if ($edit) { echo $apartamento['direccion']->referencia; } ?></textarea>                                        
+                                    <textarea class="span12" title="Referencias" data-rel="tooltip" name="referencia" rows="5" placeholder="Información adicional para el usuario..."><?php if ($edit) { echo $apartamento['direccion']->referencia; } ?></textarea>                                        
                                 </div>                                     
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <textarea class="span12" title="Manuales" data-rel="tooltip" name="manual" rows="5" placeholder="Manual de la casa..."><?php if ($edit) { echo $apartamento['apartamento']->manual; } ?></textarea>                                        
@@ -437,7 +429,7 @@ $edit = $this->getAttribute('edit');
                                     <input class="span12" type="text" title="Contraseña del Wi-Fi" data-rel="tooltip" name="claveWifi" placeholder="Contraseña del Wi-Fi" value="<?php if ($edit) { echo $apartamento['apartamento']->claveWifi; } ?>" />
                                 </div>
                             </div>
-                            <div class="span4">
+                            <!--<div class="span4">
                                 <div class="row-fluid">
                                     <div class="span6">
                                         <div class="span11 detalles_apartamento_popover">
@@ -470,7 +462,7 @@ $edit = $this->getAttribute('edit');
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                         <br>
                         <div class="row-fluid">
@@ -699,7 +691,7 @@ $edit = $this->getAttribute('edit');
                     <legend class="legend_custom titulos_legend">Condiciones</legend>
                     <div class="row-fluid">
                         <div class="span12">
-                            <p> Política de cancelaciones</p>
+                            <p> Condiciones de reserva</p>
                         </div>
                     </div>
                     <div class="row-fluid">
@@ -999,7 +991,7 @@ $edit = $this->getAttribute('edit');
                             <div class="portlet-body light-grey">
                                 <div class="row-fluid">
                                     <div class="span2 responsive calendario_element" data-tablet="span12 fix-margin" data-desktop="span8">
-                                         <a href="#disponibilidad_overlay" id="event_add" class="btn btn-primary" data-toggle="modal">Agregar tarifa</a>
+                                         <a href="#disponibilidad_overlay" id="event_add" class="btn btn-primary" data-toggle="modal">Modificar</a>
                                     </div>
                                     <div style="margin-left:0px;" class="span2 responsive contrato_element" data-tablet="span12 fix-margin" data-desktop="span8">
                                          <a href="#contrato_precios_overlay" id="event_contrato" class="btn btn-primary" data-toggle="modal">Precios</a>

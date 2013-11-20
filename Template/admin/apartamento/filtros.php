@@ -3,7 +3,7 @@
     <tr class="gradeX">
         <td align="center"><?php echo $apar['apartamento']->idApartamento ?></td>
         <td><?php echo $apar['apartamento']->nombre; ?></td>
-        <td><?php echo $apar['empresa']->nombre.' '.$apar['empresa']->apellidoPaterno; ?></td>
+        <!--<td><?php echo $apar['empresa']->nombre.' '.$apar['empresa']->apellidoPaterno; ?></td>-->
         <td><?php echo $apar['direccion']->provincia . ' ' . $apar['direccion']->codigoPostal; ?></td>
         <td></td>
         <td></td>

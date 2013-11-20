@@ -59,7 +59,7 @@ var Calendar = function () {
                             var tarifas_array = []
                             for(var i=0;i < _tarifas.length;i++){
                                 var tarifa_temp;
-                                var price = _tarifas[i].precio ? _tarifas[i].precio+"€ ("+_tarifas[i].precioContrato+'€)' : " 0,00€";
+                                var price = _tarifas[i].precio ? _tarifas[i].precio+"€" : " 0,00€";
 
                                 if(_tarifas[i].estatus == 'disponible')
                                     tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('green')};

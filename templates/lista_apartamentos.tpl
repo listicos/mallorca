@@ -33,15 +33,11 @@
             </div>
 
             <div class="acciones-apto">
-
-
                         <div class="text-left descripcion-apto">
-                            <ul>
+                        <a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="apto-link">{$a->nombre}</a>
+                            <ul class="home_attr_list">
                                 <li>
-                                    <a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="apto-link">{$a->nombre}</a>
-                                </li>
-                                <li>
-                                    <strong>{$a->tipo}</strong>
+                                    {$a->tipo}
                                 </li>
                                 <li>
                                     Max. pax {$a->capacidadPersonas}

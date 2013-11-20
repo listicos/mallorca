@@ -207,15 +207,13 @@
                                     
                                     
                                             <div class="text-left descripcion-apto">
-                                                <ul>
+                                                 <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="apto-link">{$a['apartamento']->nombre}</a>
+                                                <ul class="home_attr_list">
                                                     <li>
-                                                        <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="apto-link">{$a['apartamento']->nombre}</a>
+                                                        {$a['apartamento']->tipo}
                                                     </li>
                                                     <li>
-                                                        <strong>{$a['apartamento']->tipo}</strong>
-                                                    </li>
-                                                    <li>
-                                                        Max. pax {$a['apartamento']->capacidadPersonas}
+                                                        Capacidad {$a['apartamento']->capacidadPersonas}
                                                     </li>
                                                     <li>
                                                         Habitaciones {$a['apartamento']->habitaciones}
