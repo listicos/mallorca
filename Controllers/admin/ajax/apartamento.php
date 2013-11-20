@@ -61,6 +61,8 @@ if (strcmp($action, "insert") == 0) {
             $data_apartamento['claveWifi'] = $_POST['claveWifi'];
         if(isset($_POST['idComplejo']) && strcmp(trim($_POST['idComplejo']), "0") != 0)
             $data_apartamento['idComplejo'] = $_POST['idComplejo'];
+        else
+            $data_apartamento['idComplejo'] = NULL;
         /* if (isset($_POST['horarioEntrada']))
           $data_apartamento['horarioEntrada'] = date('H:i:s', strtotime('12:00'));
           if (isset($_POST['horarioSalida']))
