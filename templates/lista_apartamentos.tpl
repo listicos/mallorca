@@ -36,22 +36,21 @@
 
 
                         <div class="text-left descripcion-apto">
-                            <ul>
-                                <li>
-                                    <a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="apto-link">{$a->nombre}</a>
-                                </li>
-                                <li>
-                                    <strong>{$a->tipo}</strong>
-                                </li>
-                                <li>
-                                    Max. pax {$a->capacidadPersonas}
-                                </li>
-                                <li>
-                                    Habitaciones {$a->habitaciones}
-                                </li>
-                                <li>
-                                    Ba&ntilde;os {$a->banio}
-                                </li>
+                            <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="apto-link">{$a['apartamento']->nombre}</a>
+                                <ul class="home_attr_list">
+                                    <li>
+                                        {$a['apartamento']->tipo}
+                                    </li>
+                                    <li>
+                                        Max. pax {$a['apartamento']->capacidadPersonas}
+                                    </li>
+                                    <li>
+                                        Habitaciones {$a['apartamento']->habitaciones}
+                                    </li>
+                                    <li>
+                                        Ba&ntilde;os {$a['apartamento']->banio}
+                                    </li>
+                                </ul>
                             </ul>
                             <!--<a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>-->
                             <input type="hidden" name="precio" value="{$a->precioPorNoche}">
