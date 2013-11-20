@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Logic/politicas.php';
+
 //$usuario_core->validateUser();
 $action = $_POST["action"];
 $result = array("msg" => "error", "data" => "No tienes los permisos suficientes");
@@ -35,7 +37,7 @@ if (strcmp($action, "insert") == 0) {
             $usuario = $usuario_core->getUsuario();
             $data_usuario = array();
             if($usuario && $usuario->idUsuario) {
-                echo 'usuario';
+                
                 $data['usuarioId'] = $usuario->idUsuario;
             }
             if(isset($_POST['nombre']))
@@ -65,6 +67,10 @@ if (strcmp($action, "insert") == 0) {
             if($reservaId) {
                 $reserva = getReserva($reservaId);
                 $usuario_core->setUsuario(getUsuario($reserva->idUsuario));
+                
+                
+                enviarCorreoConfirmacionReserva($reserva);
+                
                 $result = array('msg' => 'ok', 'data' => 'Reserva creada correctamente.', 'idReservacion' => $reservaId);
             } else {
                 $result['data'] = 'No se pudo registrar la reserva';
@@ -112,5 +118,101 @@ if (strcmp($action, "removeItem") == 0) {
         $result = array('msg' => 'error', 'data' => 'Faltan datos.');
     }
 }
+
+function enviarCorreoConfirmacionReserva($reserva) {
+    try {
+        
+        $reserva_array = array();
+        $reserva = getReserva($reserva->idReservacion);
+
+        $salida = strtotime($reserva->fechaSalida);
+        $entrada = strtotime($reserva->fechaEntrada);
+        $creacion = strtotime($reserva->tiempoCreacion);
+
+        $dias = array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
+        $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+
+        $reserva->fechaSalidaFormat = $dias[date('w', $salida)] . ' ' . date('d', $salida) . ' de ' . $meses[date('n', $salida) - 1] . ' ' . date('Y', $salida);
+        $reserva->fechaEntradaFormat = $dias[date('w', $entrada)] . ' ' . date('d', $entrada) . ' de ' . $meses[date('n', $entrada) - 1] . ' ' . date('Y', $entrada);
+        $reserva->tiempoCreacion = date('d/m/Y', $creacion);
+
+        $noches = (intval($salida) - intval($entrada)) / 86400;
+        $reserva->noches = $noches;
+        $reserva->total = '€'.money_format('%i', $reserva->total);
+        $reserva_array['reserva'] = $reserva;
+
+        $cliente = getUsuario($reserva->idUsuario);
+        $cliente->fullName = $cliente->nombre . ' ' . $cliente->apellidoPaterno . ' ' . $cliente->apellidoMaterno;
+        $reserva_array['cliente'] = $cliente;
+
+        $apartamento = getApartamento($reserva->idApartamento);
+        $apartamentoTipo = getApartamentosTipos($apartamento->idApartamentosTipo);
+        $apartamento->apartamentoTipo = $apartamentoTipo->nombre;
+        $tipoApartamento = getApartamentosTipos($apartamento->idApartamentosTipo);
+        $apartamento->tipo = $tipoApartamento->nombre;
+        $reserva_array['apartamento'] = $apartamento;
+
+        $reserva_array['direccion'] = getDireccion($apartamento->idDireccion);
+
+        $articulos = getArticulosByReserva($reserva->idReservacion);
+
+        foreach ($articulos as $a) {
+            $a->nombre = getArticulo($a->idArticulo)->nombre;
+            $a->precio = getArticulo($a->idArticulo)->precioBase * $a->cantidad;
+        }
+
+        $reserva_array['articulos'] = $articulos;
+
+        $apartamentoPagoTipos = getApartamentosPagosTipos($reserva->idApartamento);
+        foreach ($apartamentoPagoTipos as $pagoTipo) {
+            $tipo = getPagoTipo($pagoTipo->idPagoTipo);
+            $pagoTipo->nombre = $tipo->nombre;
+        }
+
+        $reserva_array['pagosTipos'] = $apartamentoPagoTipos;
+        $apto = getApartamento($reserva->idApartamento);
+
+        $politicaCancelacion = getPolitica($apto->idPoliticaCancelacion);
+
+        $fechaCancelacionTime = strtotime($reserva->fechaEntrada) - (($politicaCancelacion->reembolsoDia + 1) * 60 * 60 * 24);
+        $fechaCancelacion = date("d", $fechaCancelacionTime) . " de " . $meses[date("m", $fechaCancelacionTime) - 1] . " de " . date("Y", $fechaCancelacionTime);
+
+        $reserva_array['politicaCancelacion'] = $politicaCancelacion;
+        $reserva_array['fechaCancelacion'] = $fechaCancelacion;
+        
+        $mailer = new Core_Mailer();
+
+        global $smarty;
+        $smarty->assign('reserva', $reserva_array);
+        $body = $smarty->fetch('confirmacionEmail.tpl');
+
+        $email_user = $cliente->email;
+
+        $subject = "Gracias, " . $cliente->nombre . "! Su reserva está siendo procesada";
+
+        $config = getConfiguracion();
+        if($config)
+            $data_config = array(
+                'email' => $config->email,
+                'username' => $config->username,
+                'password' => $config->password,
+                'servidor' => $config->servidor,
+                'puerto' => $config->puerto
+            );
+        else $data_config = null;
+        $mailer->send_email($email_user, $subject, $body, $data_config);
+
+        
+        $propietario = getPropietarioByApartamento($reserva->idApartamento);
+
+        $subject = "Se ha registrado una nueva reserva";
+
+        $mailer->send_email($propietario->email, $subject, $body);
+
+    } catch(Exception $exc) {
+        print_r($exc);
+    }
+}
+
 echo json_encode($result);
 ?>

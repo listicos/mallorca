@@ -112,6 +112,9 @@ function reservar() {
                 success: function(response) {
                     if(response.msg == 'ok') {
                         toastr.success(response.data);
+                        setTimeout(function(){
+                            window.location = BASE_URL + '/confirmacion/id:' + response.idReservacion;
+                        }, 3500)
                     } else {
                         toastr.error(response.data);
                     }
