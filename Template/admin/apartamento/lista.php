@@ -34,7 +34,7 @@ $empresaId = $this->getAttribute('empresaId');
                             <tr>
                                 <th>ID</th>
                                 <th>Título</th>
-                                <th>Propietario</th>
+                                <!--<th>Propietario</th>-->
                                 <th>Dirección</th>
                                 <th>Teléfono</th>
                                 <th>Contrato</th>

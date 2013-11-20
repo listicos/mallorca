@@ -66,8 +66,8 @@
                                     <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->base_url; ?>/admin-perfil" media="all">Perfil</a></li>
-                                        <li><a href="#">Configuración</a></li>
-                                        <li><a href="#"></a></li>
+                                        <!--<li><a href="#">Configuración</a></li>
+                                        <li><a href="#"></a></li>-->
                                         <li class="divider"></li>
                                         <li><a href="<?php echo $this->base_url ?>/admin-logout">Cerrar sesión</a>
                                     </ul>
@@ -98,20 +98,20 @@
                         <?php if(hasRoles("Administrador, Comercial, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-complejo-lista"><i class="icon-home"></i><span class="hidden-tablet"> Complejos</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Socio, Mallorca")) { ?>
+                        <?php if(hasRoles("Administrador, Socio")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-empresa-lista"><i class="icon-th-list"></i><span class="hidden-tablet"> Propietarios</span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Socio, Comercial, Mallorca")) { ?>
                         <!--<li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-contrato-lista"><i class="icon-folder-open"></i><span class="hidden-tablet"> Contratos</span></a></li>-->
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-cliente-lista"><i class="icon-briefcase"></i><span class="hidden-tablet"> Huéspedes</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Mallorca")) { ?>
+                        <?php if(hasRoles("Administrador)) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-usuario-lista"><i class="icon-user"></i><span class="hidden-tablet"> Usuarios</span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Socio, Comercial, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-opinion-lista"><i class=" icon-comment"></i><span class="hidden-tablet"> Opiniones</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Comercial, Socio, Mallorca")) { ?>
+                        <?php if(hasRoles("Administrador, Comercial, Socio")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-articulos-lista"><i class=" icon-shopping-cart"></i><span class="hidden-tablet"> Artículos adicionales</span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Reserva, Socio, Mallorca")) { ?>
@@ -129,7 +129,7 @@
                         <?php if(hasRoles("Administrador, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-politicas-lista"><i class="icon-warning-sign"></i><span class="hidden-tablet"> Politicas de cancelación</span></a></li>                                             
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Mallorca")) { ?>
+                        <?php if(hasRoles("Administrador")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-configuracion"><i class="icon-adjust"></i><span class="hidden-tablet"> Configuraci&oacute;n</span></a></li>                                             
                         <?php } ?>
                     </ul>
