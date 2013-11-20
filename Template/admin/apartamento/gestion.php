@@ -420,7 +420,7 @@ $edit = $this->getAttribute('edit');
                         <div class="row-fluid">
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="span12 validate[required]" title="Referencias" data-rel="tooltip" name="referencia" rows="5" placeholder="Información adicional para el usuario..."><?php if ($edit) { echo $apartamento['direccion']->referencia; } ?></textarea>                                        
+                                    <textarea class="span12" title="Referencias" data-rel="tooltip" name="referencia" rows="5" placeholder="Información adicional para el usuario..."><?php if ($edit) { echo $apartamento['direccion']->referencia; } ?></textarea>                                        
                                 </div>                                     
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <textarea class="span12" title="Manuales" data-rel="tooltip" name="manual" rows="5" placeholder="Manual de la casa..."><?php if ($edit) { echo $apartamento['apartamento']->manual; } ?></textarea>                                        
