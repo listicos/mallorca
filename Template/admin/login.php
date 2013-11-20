@@ -80,7 +80,7 @@
     </head>
     <body>
         <div class="row center login_logo_container">
-            <div class="span12 center"><img src="<?php echo $this->template_url ?>/imagen/logo.png"/></div>
+            
         </div>
         <div class="container">      
             <div class="row center">
