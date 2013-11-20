@@ -66,8 +66,8 @@
                                     <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->base_url; ?>/admin-perfil" media="all">Perfil</a></li>
-                                        <!--<li><a href="#">Configuración</a></li>
-                                        <li><a href="#"></a></li>-->
+                                        <li><a href="#">Configuración</a></li>
+                                        <li><a href="#"></a></li>
                                         <li class="divider"></li>
                                         <li><a href="<?php echo $this->base_url ?>/admin-logout">Cerrar sesión</a>
                                     </ul>
@@ -105,7 +105,7 @@
                         <!--<li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-contrato-lista"><i class="icon-folder-open"></i><span class="hidden-tablet"> Contratos</span></a></li>-->
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-cliente-lista"><i class="icon-briefcase"></i><span class="hidden-tablet"> Huéspedes</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador)) { ?>
+                        <?php if(hasRoles("Administrador")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-usuario-lista"><i class="icon-user"></i><span class="hidden-tablet"> Usuarios</span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Socio, Comercial, Mallorca")) { ?>
@@ -127,7 +127,7 @@
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-factura-lista"><i class=" icon-folder-open"></i><span class="hidden-tablet"> Facturas</span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Socio, Mallorca")) { ?>
-                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-politicas-lista"><i class="icon-warning-sign"></i><span class="hidden-tablet"> Politicas de cancelación</span></a></li>                                             
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-politicas-lista"><i class="icon-warning-sign"></i><span class="hidden-tablet"> Condiciones de reserva</span></a></li>                                             
                         <?php } ?>
                         <?php if(hasRoles("Administrador")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-configuracion"><i class="icon-adjust"></i><span class="hidden-tablet"> Configuraci&oacute;n</span></a></li>                                             
