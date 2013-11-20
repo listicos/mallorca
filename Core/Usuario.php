@@ -50,7 +50,6 @@ class Core_Usuario {
             $_SESSION['user_redirect'] = $base_url;
 
         header('Location:' . $base_url . '/admin-login/');
-        exit();
     }
 
     public function getApiClient() {
