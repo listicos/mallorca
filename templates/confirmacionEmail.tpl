@@ -118,7 +118,7 @@
                         </tr>	
                         <tr>
                             <td>E-mail:</td>
-                            <td>reservas@clickandbooking.com</td>
+                            <td>reservas@mallorcarenthaus.com</td>
                         </tr>
                     </table>
                 </td>
@@ -184,7 +184,7 @@
             </tr>
             <tr></tr>
             <tr>
-                <td colspan="2" align="center"><b>Gracias por haber reservado con Click&Booking.</b></td>
+                <td colspan="2" align="center"><b>Gracias por haber reservado con Mallorca Rent Haus.</b></td>
             </tr>	
         </tbody>
     </table>

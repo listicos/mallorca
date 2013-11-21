@@ -125,7 +125,7 @@
         <dt>Fax:</dt>
         <dd>1234567</dd>
         <dt>Email:</dt>
-        <dd>reservas@clickandbooking.com</dd>
+        <dd>reservas@mallorcarenthaus.com</dd>
       </dl></td>
        <td class="col-md-8">
          		<dl class="dl-horizontal">
@@ -215,7 +215,7 @@
       </dl>
       </td></tr>
        <tr>
-         	<th colspan="2">Gracias poe haber reservado con Clickandbooking.</th>
+         	<th colspan="2">Gracias poe haber reservado con Mallorca Rent Haus.</th>
          </tr>
 
           </tr>
