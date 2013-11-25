@@ -61,12 +61,26 @@ var Calendar = function () {
                                 var tarifa_temp;
                                 var price = _tarifas[i].precio ? _tarifas[i].precio+"€" : " 0,00€";
 
-                                if(_tarifas[i].estatus == 'disponible')
+                                if(_tarifas[i].estatus == 'disponible') {
                                     tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('green')};
-                                else
+                                    tarifas_array.push(tarifa_temp);
+                                    if(_tarifas[i].descuento && _tarifas[i].descuento > 0) {
+                                        tarifa_temp = {'title': '  -' + _tarifas[i].descuento + '%', 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': '#EC5C00'};
+                                        tarifas_array.push(tarifa_temp);
+                                    }
+                                    if(_tarifas[i].minimoNoches && parseInt(_tarifas[i].minimoNoches) > 0) {
+                                        tarifa_temp = {'title': _tarifas[i].minimoNoches + ' noche' + ((_tarifas[i].minimoNoches == 1) ? '':'s'), 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': '#8080FF'};
+                                        tarifas_array.push(tarifa_temp);
+                                    }
+                                    if(_tarifas[i].precioPorConsumo && _tarifas[i].precioPorConsumo > 0 && _tarifas[i].descuentoPorConsumo && _tarifas[i].descuentoPorConsumo > 0) {
+                                        tarifa_temp = {'title': _tarifas[i].precioPorConsumo + '€ =' + _tarifas[i].descuentoPorConsumo + '%', 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('blue')};
+                                        tarifas_array.push(tarifa_temp);
+                                    }
+                                } else {
                                     tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('red')};
                                 
-                                tarifas_array.push(tarifa_temp)
+                                    tarifas_array.push(tarifa_temp)
+                                }
                             }
                             Calendar.setTarifasToCalendar(tarifas_array);
                         }else{

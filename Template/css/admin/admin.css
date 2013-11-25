@@ -483,6 +483,22 @@ body{
     margin-top: -2px;
 }
 
+.modal-body-tarifa-gestion {
+    width: 100%;
+    padding: 20px 0;
+    display: none;
+}
+
+.buttons-tarifas-form {
+    text-align: center;
+}
+
+.modal-body-tarifa-gestion label {
+    font-size: 12px;
+    margin-left: 5%;
+    text-align: left;
+}
+
 @media (min-width: 768px) and (max-width: 979px) {
     .contenedor_custom_templete{
         width: 5%;

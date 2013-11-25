@@ -990,14 +990,129 @@ $edit = $this->getAttribute('edit');
 
                             <div class="portlet-body light-grey">
                                 <div class="row-fluid">
-                                    <div class="span2 responsive calendario_element" data-tablet="span12 fix-margin" data-desktop="span8">
-                                         <a href="#disponibilidad_overlay" id="event_add" class="btn btn-primary" data-toggle="modal">Modificar</a>
+                                    <div class="span9">
+                                        <div class="row-fluid">
+                                            <div class="span2 responsive calendario_element" data-tablet="span12 fix-margin" data-desktop="span8">
+                                                 <a href="javascript:void(0)" id="event_add" class="btn btn-primary" >Modificar</a>
+                                            </div>
+                                            <div style="margin-left:0px;" class="span2 responsive contrato_element" data-tablet="span12 fix-margin" data-desktop="span8">
+                                                 <a href="#contrato_precios_overlay" id="event_contrato" class="btn btn-primary" data-toggle="modal">Precios</a>
+                                            </div>
+                                            <div class="span10">
+                                                <div id="calendar" class="has-toolbar"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div style="margin-left:0px;" class="span2 responsive contrato_element" data-tablet="span12 fix-margin" data-desktop="span8">
-                                         <a href="#contrato_precios_overlay" id="event_contrato" class="btn btn-primary" data-toggle="modal">Precios</a>
-                                    </div>
-                                    <div class="span10">
-                                        <div id="calendar" class="has-toolbar"></div>
+                                    <div class="span3">
+                                        <div class="modal-body-tarifa-gestion">
+                                            <form class="tarifas_modal_form">
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <div class="control-group">
+                                                        <div class="input-prepend center span9" title="Fecha inicio" data-rel="tooltip">
+                                                            <label>Fecha Inicial</label>
+                                                            <div id="date-start" class="input-append span12 date datepicker" data-date-format="dd-mm-yyyy">
+                                                                <input  class="span10 validate[required] date-start" size="16" name="fechaInicio" type="text" readonly><span class="add-on"><i class="icon-th"></i></span>
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="control-group">
+                                                        <div class="input-prepend center span9" title="Fecha final" data-rel="tooltip">
+                                                            <label>Fecha Final</label>
+                                                            <div id="date-end" class="input-append span12 date datepicker" data-date-format="dd-mm-yyyy">
+                                                                <input  class="span10 validate[required] date-end" size="16" name="fechaFinal" type="text" readonly><span class="add-on"><i class="icon-th"></i></span>
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                <div class="span12">
+                                                    <div class="control-group">
+                                                        <div class="input-prepend center span12" title="Disponibilidad" data-rel="tooltip">
+                                                            <label>Estatus</label>
+                                                            <span class="add-on"><i class="icon-check"></i></span>
+                                                            <select class="span8 validate[required]" name="estatus">
+                                                                <option value="" disabled>Disponibilidad</option>
+                                                                    <option value="disponible">Disponible</option>
+                                                                    <option value="no disponible">No Disponible</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <div class="control-group">
+                                                        <div class="input-prepend  center span12" title="Precio por noche" data-rel="tooltip">
+                                                            <label>Precio por noche</label>
+                                                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                                                            <input class="input-large span8 validate[required, custom[number]] disponible" name="precio" type="text" placeholder="Precio por noche" data-prompt-position="topLeft:2%"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="control-group">
+                                                        <div class="input-prepend  center span12" title="Descuento" data-rel="tooltip">
+                                                            <label>Descuento</label>
+                                                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                                                            <input class="input-large span8 validate[custom[number]] disponible" name="descuento" type="text" placeholder="Descuento" data-prompt-position="topLeft:2%"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <div class="control-group">
+                                                        <div class="input-prepend  center span12" title="Precio Final" data-rel="tooltip">
+                                                            <label>Precio Final</label>
+                                                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                                                            <input class="input-large span8 disponible" name="precioFinal" readOnly type="text" placeholder="Precio Final" data-prompt-position="topLeft:2%"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="control-group">
+                                                        <div class="input-prepend  center span12" title="M&iacute;nimo de noches" data-rel="tooltip">
+                                                            <label>M&iacute;nimo de noches</label>
+                                                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                                                            <select class="span8 validate[required] disponible" name="minimoNoches">
+                                                                <?php for($i=0;$i<=30;$i++){ ?>
+                                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                                <?php } ?>    
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <div class="control-group">
+                                                        <div class="input-prepend  center span12" title="Precio por consumo" data-rel="tooltip">
+                                                            <label>Precio por consumo</label>
+                                                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                                                            <input class="input-large span8 validate[custom[number]] disponible" name="precioPorConsumo" type="text" placeholder="Precio por consumo" data-prompt-position="topLeft:2%"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="span6">
+                                                    <div class="control-group">
+                                                        <div class="input-prepend  center span12" title="Descuento por consumo" data-rel="tooltip">
+                                                            <label>Desc por consumo</label>
+                                                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                                                            <input class="input-large span8 validate[custom[number]] disponible" name="descuentoPorConsumo" type="text" placeholder="Descuento por consumo" data-prompt-position="topLeft:2%"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row-fluid buttons-tarifas-form">
+                                                <input type="hidden" name="idApartamento" value="<?php echo $apartamento['apartamento']->idApartamento; ?>"/>
+                                                <input type="hidden" name="action" value="agregar_tarifa" />
+                                                <input type="submit" class="btn btn-primary" value="Guardar">
+                                                <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                                            </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1055,7 +1170,7 @@ $edit = $this->getAttribute('edit');
         <!--<button class="btn btn-primary">Save changes</button>-->
     </div>
 </div>
-
+<!--
 <div id="disponibilidad_overlay" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <form class="tarifas_modal_form">
         <div class="modal-header">
@@ -1170,7 +1285,7 @@ $edit = $this->getAttribute('edit');
             <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cerrar</button>
         </div>
     </form>
-</div>
+</div>-->
 
 
 <div id="contrato_precios_overlay" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

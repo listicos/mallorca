@@ -32,11 +32,11 @@ $(document).ready(function(){
     App.init();
     Calendar.init();
     
-    $('#disponibilidad_overlay select[name=estatus]').off('change').on('change', function(){
+    $('.modal-body-tarifa-gestion select[name=estatus]').off('change').on('change', function(){
         if ($(this).val() == 'disponible')
-            $('.disponible', '#disponibilidad_overlay').parents(".input-prepend").slideDown();
+            $('.disponible', '.modal-body-tarifa-gestion').parents(".input-prepend").slideDown();
         else
-            $('.disponible', '#disponibilidad_overlay').parents(".input-prepend").slideUp();
+            $('.disponible', '.modal-body-tarifa-gestion').parents(".input-prepend").slideUp();
     });
 
     $('.detalles_apartamento_nav a').click(function (e) {
@@ -78,6 +78,7 @@ $(document).ready(function(){
 
     $('.date-start').datepicker({
         autoclose: true
+        
     }).on('changeDate', function(ev) {
         $(this).parents('.row-fluid').find('.date-end').datepicker('setStartDate', ev.date);
         $(this).parents('.row-fluid').find('.date-end').datepicker('show');
@@ -254,13 +255,19 @@ function calcularPrecioTarifa() {
     if(precio > 0 && descuento > 0) {
         $('.tarifas_modal_form input[name=precioFinal]').val(precio - (precio * descuento / 100));
     } else {
-        $('.tarifas_modal_form input[name=precioFinal]').val($('#tarifas_modal_form input[name=precio]').val());
+        $('.tarifas_modal_form input[name=precioFinal]').val($('.tarifas_modal_form input[name=precio]').val());
     }
     
     
 }
 
 function agregarTarifa(){
+    
+    $('#event_add').on('click', function(e){
+        
+        e.preventDefault();
+        $('.modal-body-tarifa-gestion').fadeIn();
+    })
     
     $('.tarifas_modal_form input[name=precio], .tarifas_modal_form input[name=descuento]').off('change').on('change', function(e){
         calcularPrecioTarifa();
@@ -285,6 +292,7 @@ function agregarTarifa(){
                         $('#contrato_precios_overlay').modal('hide');
                         $('#calendar').fullCalendar('destroy');
                         Calendar.createTarifas();
+                        $('.modal-body-tarifa-gestion').fadeOut();
                     }
                 }
             }); 
