@@ -33,6 +33,23 @@ else if(strcmp($action, "loadUserDetails") == 0) {
     
 }
 
+else if (strcasecmp($action, 'deleteReserva') == 0) {
+    if(isset($_POST['idReserva'])) {
+        $idReserva = $_POST['idReserva'];
+        
+        $d = deleteReserva($idReserva);
+        
+        if($d) {
+            $result['msg'] = 'ok';
+            $result['data'] = 'Se eliminó la reserva correctamente';
+        } else {
+            $result['data'] = 'No se pudo eliminar la reserva';
+        }
+    } else {
+        $result['data'] = 'Seleccione la reserva';
+    }
+}
+
 else if (strcmp($action, "updateReserva") == 0) {
     $data = array(
         'idApartamento' => null,

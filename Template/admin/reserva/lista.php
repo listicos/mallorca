@@ -48,6 +48,7 @@ $apartamentos = $this->getAttribute('apartamentos');
                             <select class="selectpicker span2" id="ordena_reservas" name="filter" data-style="btn-warning"  title="Ordenar" data-rel="tooltip">
                                 <option value="id_reservacion">Id</option>
                                 <option value="id_huesped">Huesped</option>
+                                <option value="a.nombre">Apartamento</option>
                                 <option value="fecha_entrada" selected="">Fecha de entrada</option>
                                 <option value="fecha_salida">Fecha de salida</option> 
                                 <option value="autorizacion">Estado</option>
@@ -117,6 +118,7 @@ $apartamentos = $this->getAttribute('apartamentos');
                                 <th>ID</th>
                                 <th>Código</th>
                                 <th>Huésped</th>
+                                <th>Apartamento</th>
                                 <th>Total</th>
                                 <th>Fecha</th>
                                 <th>Noches</th>

@@ -62,6 +62,7 @@ $empresaId = $this->getAttribute('empresaId');
     </div>
     <div class="modal-body">
         <input type="hidden" id="apartamentoId" name="apartamentoId">
+        Al eliminar el apartamento se eliminarán todas sus reservas.<br/>
         Está seguro que desea borrar el apartamento?
     </div>
     <div class="modal-footer">

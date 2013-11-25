@@ -228,7 +228,7 @@ function searchReservas($data = array()) {
     try {
         $reservas = DAOFactory::getReservacionesDAO()->searchByArguments($data);
         foreach($reservas as $reserva) {
-            
+            $reserva->apartamento = DAOFactory::getApartamentosDAO()->load($reserva->idApartamento);
             $reserva->huesped = DAOFactory::getUsuariosDAO()->load($reserva->idUsuario);
             $pagos = DAOFactory::getReservacionesPagosDAO()->queryByIdReservacionAndFormaPago($reserva->idReservacion, "pago");
             if($pagos && count($pagos) > 0) {
@@ -335,6 +335,32 @@ function getReservasRecientes($dias) {
         
         return $rs;
     } catch (Exception $e) {
+        return false;
+    }
+}
+
+function deleteReserva($idReserva, $transactional = true) {
+    try {
+        if($transactional)
+            $transaction = new Transaction();
+        
+        $pagos = DAOFactory::getReservacionesPagosDAO()->queryByIdReservacion($idReserva);
+        DAOFactory::getReservacionesPagosDAO()->deleteByIdReservacion($idReserva);
+        foreach ($pagos as $pago) {            
+            DAOFactory::getCuentasDAO()->delete($pago->idCuenta);
+        }
+        
+        DAOFactory::getReservacionesArticulosDAO()->deleteByIdReservacion($idReserva);
+        
+        DAOFactory::getReservacionesDAO()->delete($idReserva);
+        
+        if($transactional) $transaction->commit ();
+        
+        return true;        
+        
+    } catch (Exception $e) {
+        var_dump($e);
+        if($transactional && $transaction) $transaction->rollback();
         return false;
     }
 }

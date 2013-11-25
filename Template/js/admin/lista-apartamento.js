@@ -39,6 +39,7 @@ function apartamentosInit() {
     
     $('#btn_eliminar_apto').click(function(){
         var apartamentoId = $('#apartamentoId').val();
+        
         $.ajax({
            url: BASE_URL + '/admin-ajax-apartamento-filtros',
            type: 'post',

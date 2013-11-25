@@ -29,6 +29,35 @@ function reservasInit() {
     });
 }
 
+function deleteReservas() {
+    $('a.deleteReserva').off('click').on('click', function(e) {
+        e.preventDefault();
+        idReserva = $(this).attr('reserva-id');
+        $.ajax({
+            url: BASE_URL + '/admin-ajax-reserva',
+            data: {action:'deleteReserva', idReserva: idReserva},
+            type: 'post',
+            dataType: 'json',
+            success: function(response) {
+                if(response.msg == 'ok') {
+                    noty({
+                        'type' : 'success',
+                        'text' : response.data,
+                        'layout' : 'top'
+                    });
+                    getReservasByArgs();
+                } else {
+                    noty({
+                        'type' : 'error',
+                        'text' : response.data,
+                        'layout' : 'top'
+                    });
+                }
+            }
+        });
+    })
+}
+
 function getReservasByArgs(){
     LAST_LOAD_RES = 20;
     //$("#empresa_filtro_id").val($("#ordena_apartamentos").val());
@@ -45,6 +74,7 @@ function getReservasByArgs(){
                 reservaDetallesOverlay();
                 enviarCorreoFromList();
                 changeStatusReserva();
+                deleteReservas();
             }
             IS_GETTING_RES = false;
         }

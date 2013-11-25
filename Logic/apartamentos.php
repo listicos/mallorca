@@ -1,4 +1,6 @@
 <?php
+
+
 function insertApartamento($data = array()) {
     try {
         $transaction = new Transaction();
@@ -883,10 +885,9 @@ function deleteApartamento($idApartamento, $inTransaction = true) {
         $reservaciones = DAOFactory::getReservacionesDAO()->queryByIdApartamento($idApartamento);
         
         foreach ($reservaciones as $reservacion) {
-            DAOFactory::getReservacionesPagosDAO()->deleteByIdReservacion($reservacion->idReservacion);
+            deleteReserva($reservacion->idReservacion, FALSE);
         }
         
-        DAOFactory::getReservacionesDAO()->deleteByIdApartamento($idApartamento);
         
         //Borrar condiciones compra por apartamento
         DAOFactory::getCondicionesCompraDAO()->deleteByIdApartamento($idApartamento);

@@ -4,6 +4,7 @@
     <td align="center"><?php echo $reserva->idReservacion; ?></td>
     <td><?php echo $reserva->idReservacion; ?></td>
     <td><?php echo($reserva->huesped->nombre." ".$reserva->huesped->apellidoPaterno); ?></td>
+    <td><?php echo($reserva->apartamento->nombre); ?></td>
     <td><?php echo money_format('%(#1n €', $reserva->total); ?></td>
     <td><?php echo date_format(new DateTime($reserva->tiempoCreacion), "d/m/Y"); ?></td>
     <td><?php echo $reserva->noches ?></td>
@@ -37,7 +38,7 @@
         <a title="Correo" data-rel="tooltip" href="#correo_reserva_overlay" class="openModalCorreo" reserva-id="<?php echo $reserva->idReservacion; ?>" data-toggle="modal"><i class="icon-envelope"></i></a>
         <a title="Ver Reserva" data-rel="tooltip" href="#ver_reserva_overlay" class="verRerva" reserva-id="<?php echo $reserva->idReservacion; ?>" data-toggle="modal"><i class="icon-search"></i></a>
         <a title="Editar" data-rel="tooltip" href="<?php echo $this->base_url.'/admin-reserva-ver/id:'.$reserva->idReservacion ?>" ><i class="icon-edit"></i></a>
-        
+        <a title="Eliminar" data-rel="tooltip" href="javascript:void(0)" reserva-id="<?php echo $reserva->idReservacion ?>" class="deleteReserva" ><i class="icon-trash"></i></a>
     </td>
 </tr>
 <?php }?>

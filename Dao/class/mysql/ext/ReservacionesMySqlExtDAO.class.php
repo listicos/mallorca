@@ -36,15 +36,19 @@ class ReservacionesMySqlExtDAO extends ReservacionesMySqlDAO {
             $order_by = ' ORDER BY r.' . $filter . ' ' . $type;
         else
             $order_by = '';
+        
+        if(strcmp($filter, 'a.nombre') == 0)
+                $order_by = ' ORDER BY ' . $filter . ' ' . $type;
 
         //$filter_date = " AND ((fecha_entrada >= '".$data['dateStartFrom']."' AND fecha_entrada <='".$data['dateStartTo']."') AND (fecha_salida >= '".$data['dateEndFrom']."' AND fecha_salida <= '".$data['dateEndTo']."'))";
 
-        $sql = 'SELECT DISTINCT r.id_reservacion, r.*, u.id_usuario, u.nombre, u.apellido_paterno';
+        $sql = 'SELECT DISTINCT r.id_reservacion, r.*, u.id_usuario, u.nombre, u.apellido_paterno, a.nombre';
         $sql .= ' FROM reservaciones AS r';
         $sql .= ' INNER JOIN usuarios AS u ON u.id_usuario = r.id_usuario';
+        $sql .= ' INNER JOIN apartamentos AS a ON r.id_apartamento = a.id_apartamento';
         
         if(isset($empresaId)) {
-            $sql .= ' INNER JOIN apartamentos AS a ON r.id_apartamento = a.id_apartamento';
+            
             $sql .= ' INNER JOIN empresas_contratos AS c ON c.id_empresa_contrato = a.id_empresa_contrato';
         }
         
