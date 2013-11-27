@@ -990,19 +990,7 @@ $edit = $this->getAttribute('edit');
 
                             <div class="portlet-body light-grey">
                                 <div class="row-fluid">
-                                    <div class="span9">
-                                        <div class="row-fluid">
-                                            <div class="span2 responsive calendario_element" data-tablet="span12 fix-margin" data-desktop="span8">
-                                                 <a href="javascript:void(0)" id="event_add" class="btn btn-primary" >Modificar</a>
-                                            </div>
-                                            <div style="margin-left:0px;" class="span2 responsive contrato_element" data-tablet="span12 fix-margin" data-desktop="span8">
-                                                 <a href="#contrato_precios_overlay" id="event_contrato" class="btn btn-primary" data-toggle="modal">Precios</a>
-                                            </div>
-                                            <div class="span10">
-                                                <div id="calendar" class="has-toolbar"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="span3">
                                         <div class="modal-body-tarifa-gestion">
                                             <form class="tarifas_modal_form">
@@ -1027,6 +1015,22 @@ $edit = $this->getAttribute('edit');
                                                         </div> 
                                                     </div>
                                                 </div>
+                                                <div class="span12">
+                                                    <div class="control-group">
+                                                        <div class="input-prepend center span12" title="Tipo de acción" data-rel="tooltip">
+                                                            <label>Tipo de acción</label>
+                                                            <span class="add-on"><i class="icon-check"></i></span>
+                                                            <select class="span8 validate[required]" name="accion">
+                                                                <option value="" disabled>Tipo de acción</option>
+                                                                    <option value="precio_noche">Precio por noche</option>
+                                                                    <option value="descuento">Descuento</option>
+                                                                    <option value="minimo_noches">Mínimo de noches</option>
+                                                                    <option value="descuento_consumo">Descuento por consumo</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="span12">
                                                     <div class="control-group">
                                                         <div class="input-prepend center span12" title="Disponibilidad" data-rel="tooltip">
@@ -1089,7 +1093,7 @@ $edit = $this->getAttribute('edit');
                                                 <div class="span6">
                                                     <div class="control-group">
                                                         <div class="input-prepend  center span12" title="Precio por consumo" data-rel="tooltip">
-                                                            <label>Precio por consumo</label>
+                                                            <label>Precio base</label>
                                                             <span class="add-on"><i class="icon-briefcase"></i></span>
                                                             <input class="input-large span8 validate[custom[number]] disponible" name="precioPorConsumo" type="text" placeholder="Precio por consumo" data-prompt-position="topLeft:2%"/>
                                                         </div>
@@ -1098,7 +1102,7 @@ $edit = $this->getAttribute('edit');
                                                 <div class="span6">
                                                     <div class="control-group">
                                                         <div class="input-prepend  center span12" title="Descuento por consumo" data-rel="tooltip">
-                                                            <label>Desc por consumo</label>
+                                                            <label>Descuento</label>
                                                             <span class="add-on"><i class="icon-briefcase"></i></span>
                                                             <input class="input-large span8 validate[custom[number]] disponible" name="descuentoPorConsumo" type="text" placeholder="Descuento por consumo" data-prompt-position="topLeft:2%"/>
                                                         </div>
@@ -1112,6 +1116,19 @@ $edit = $this->getAttribute('edit');
                                                 <button class="btn btn-warning" data-dismiss="modal" aria-hidden="true">Cancelar</button>
                                             </div>
                                             </form>
+                                        </div>
+                                    </div>
+                                    <div class="span9">
+                                        <div class="row-fluid">
+                                            <!--<div class="span2 responsive calendario_element" data-tablet="span12 fix-margin" data-desktop="span8">
+                                                 <a href="javascript:void(0)" id="event_add" class="btn btn-primary" >Modificar</a>
+                                            </div>
+                                            <div style="margin-left:0px;" class="span2 responsive contrato_element" data-tablet="span12 fix-margin" data-desktop="span8">
+                                                 <a href="#contrato_precios_overlay" id="event_contrato" class="btn btn-primary" data-toggle="modal">Precios</a>
+                                            </div>-->
+                                            <div class="span12">
+                                                <div id="calendar" class="has-toolbar"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
