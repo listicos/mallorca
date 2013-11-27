@@ -1020,8 +1020,9 @@ $edit = $this->getAttribute('edit');
                                                         <div class="input-prepend center span12" title="Tipo de acción" data-rel="tooltip">
                                                             <label>Tipo de acción</label>
                                                             <span class="add-on"><i class="icon-check"></i></span>
-                                                            <select class="span8 validate[required]" name="accion">
+                                                            <select class="span8 validate[required]" id="tipo_accion">
                                                                 <option value="" disabled>Tipo de acción</option>
+                                                                    <option value="disponibilidad">Disponibilidad</option>
                                                                     <option value="precio_noche">Precio por noche</option>
                                                                     <option value="descuento">Descuento</option>
                                                                     <option value="minimo_noches">Mínimo de noches</option>
@@ -1031,7 +1032,7 @@ $edit = $this->getAttribute('edit');
                                                     </div>
                                                 </div>
 
-                                                <div class="span12">
+                                                <div class="span12 disponibilidad_accion tipo_accion">
                                                     <div class="control-group">
                                                         <div class="input-prepend center span12" title="Disponibilidad" data-rel="tooltip">
                                                             <label>Estatus</label>
@@ -1046,7 +1047,7 @@ $edit = $this->getAttribute('edit');
                                                 </div>
                                             </div>
                                             <div class="row-fluid">
-                                                <div class="span6">
+                                                <div class="span12  precio_noche_accion tipo_accion">
                                                     <div class="control-group">
                                                         <div class="input-prepend  center span12" title="Precio por noche" data-rel="tooltip">
                                                             <label>Precio por noche</label>
@@ -1055,7 +1056,7 @@ $edit = $this->getAttribute('edit');
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="span6">
+                                                <div class="span12  descuento_accion tipo_accion">
                                                     <div class="control-group">
                                                         <div class="input-prepend  center span12" title="Descuento" data-rel="tooltip">
                                                             <label>Descuento</label>
@@ -1066,7 +1067,7 @@ $edit = $this->getAttribute('edit');
                                                 </div>
                                             </div>
                                             <div class="row-fluid">
-                                                <div class="span6">
+                                                <!--<div class="span6">
                                                     <div class="control-group">
                                                         <div class="input-prepend  center span12" title="Precio Final" data-rel="tooltip">
                                                             <label>Precio Final</label>
@@ -1074,8 +1075,8 @@ $edit = $this->getAttribute('edit');
                                                             <input class="input-large span8 disponible" name="precioFinal" readOnly type="text" placeholder="Precio Final" data-prompt-position="topLeft:2%"/>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="span6">
+                                                </div>-->
+                                                <div class="span12  minimo_noches_accion tipo_accion">
                                                     <div class="control-group">
                                                         <div class="input-prepend  center span12" title="M&iacute;nimo de noches" data-rel="tooltip">
                                                             <label>M&iacute;nimo de noches</label>
@@ -1089,7 +1090,7 @@ $edit = $this->getAttribute('edit');
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row-fluid">
+                                            <div class="row-fluid  descuento_consumo_accion tipo_accion">
                                                 <div class="span6">
                                                     <div class="control-group">
                                                         <div class="input-prepend  center span12" title="Precio por consumo" data-rel="tooltip">

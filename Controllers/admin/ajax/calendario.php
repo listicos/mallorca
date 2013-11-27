@@ -102,8 +102,7 @@ if (strcmp($action, "agregar_tarifa") == 0) {
 
             if(isset($_POST['descuento']) && strlen(trim($_POST['descuento'])))
                 $data_disponibilidad['descuento'] = $_POST['descuento'];
-            else
-                $data_disponibilidad['descuento'] = 0;
+            
 
             $data_disponibilidad['precioFinSemana'] = '0';
             $data_disponibilidad['anotacion'] = 'Tarifa';

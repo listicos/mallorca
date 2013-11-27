@@ -32,12 +32,7 @@ $(document).ready(function(){
     App.init();
     Calendar.init();
     
-    $('.modal-body-tarifa-gestion select[name=estatus]').off('change').on('change', function(){
-        if ($(this).val() == 'disponible')
-            $('.disponible', '.modal-body-tarifa-gestion').parents(".input-prepend").slideDown();
-        else
-            $('.disponible', '.modal-body-tarifa-gestion').parents(".input-prepend").slideUp();
-    });
+    
 
     $('.detalles_apartamento_nav a').click(function (e) {
         e.preventDefault();
@@ -261,19 +256,18 @@ function calcularPrecioTarifa() {
     
 }
 
+function mostrarAccionTarifa() {
+    $('.modal-body-tarifa-gestion .tipo_accion').hide().find('input, select').prop('disabled', true);
+    tipo_accion = $('#tipo_accion').val();
+    $('.modal-body-tarifa-gestion .' + tipo_accion + '_accion').show().find('input, select').prop('disabled', false);
+    
+}
+
 function agregarTarifa(){
     
-    $('#event_add').on('click', function(e){
-        
-        e.preventDefault();
-        $('.modal-body-tarifa-gestion').fadeIn();
-    })
+    $('#tipo_accion').on('change', mostrarAccionTarifa);
     
-    $('.tarifas_modal_form input[name=precio], .tarifas_modal_form input[name=descuento]').off('change').on('change', function(e){
-        calcularPrecioTarifa();
-    })
-    
-    calcularPrecioTarifa();
+    mostrarAccionTarifa();
     
     $('.tarifas_modal_form').submit(function(ev){
         ev.preventDefault();
@@ -292,7 +286,7 @@ function agregarTarifa(){
                         $('#contrato_precios_overlay').modal('hide');
                         $('#calendar').fullCalendar('destroy');
                         Calendar.createTarifas();
-                        $('.modal-body-tarifa-gestion').fadeOut();
+                        //$('.modal-body-tarifa-gestion').fadeOut();
                     }
                 }
             }); 
