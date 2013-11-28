@@ -165,12 +165,12 @@ footer .footer-top{
     background: #555657;
 }
 footer .footer-bottom{
-    background: url("../img/footer_bg.gif") repeat center;
     padding: 0 15px;
 
+    background: #464646;
+    border-top: 1px solid #969696;
 }
 footer .footer-bottom .row{
-    background: url("../img/footer_line.gif") repeat-x;
     padding-top: 3px;
     background-size: 18px;
 }
@@ -227,7 +227,7 @@ footer .footer_social a:hover{
     background-position: bottom;
 }
 footer .footer-top h3{
-    border-bottom: 1px solid #585853;
+    border-bottom: 1px solid #DFDFDF;
     padding-bottom: 15px;
     margin: 15px 0;
     color: white;
@@ -295,7 +295,6 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
     clear: both;
 }
 .home #mapa{
-    margin-bottom: 20px;
 }
 #details-map-location{
     width: 100%;
@@ -359,6 +358,10 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
 }
 .range-prices-content p.pull-right{
     text-align: right;
+}
+.phone_contact{
+    font-size: 26px;
+    color: #FFF;
 }
 
 #slider-range.ui-slider-horizontal .ui-slider-handle {

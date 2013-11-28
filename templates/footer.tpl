@@ -6,9 +6,9 @@
                 <p class="text-center">Booking Now 902 000 999</p> -->
                 <div class="col-md-4">
                     <h3>Contáctanos</h3>
+                    <p class="phone_contact">(123) 563-9899-234</p>
                     <ul class="contact">
                         <li class="address">Mallorca Rent Haus</li>
-                        <li class="phone">(123) 563-9899-234</li>
                         <li class="email"><a href="mailto:contact@companyname.com">contacto@mallorcarenthaus.com</a></li>
                     </ul>
                     <div class="clearfix"></div>    
