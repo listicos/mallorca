@@ -57,6 +57,9 @@ color: #2f7493;
 .navbar-inverse {
     border-color: #004A6B;
     background: #555657;
+    border-radius: 0;
+    border: 0;
+    margin-bottom: 5px;
 }
 .navbar-inverse .navbar-nav > li:hover > a{
     background: #2f7493;
@@ -114,7 +117,7 @@ a{color:#2f7493}
     max-width: 1280px !important;
     margin: 0 auto;
 
-    margin-top: 87px;
+    margin-top: 0px;
 
 }
 .logo-title{
