@@ -50,23 +50,23 @@
                             <div class="form-group">
                                 <label class="sr-only" for="huesped">Llegada</label>
                                 <select class="form-control" name="huespedes">
-                                    <option value="1">1 Huésped</option>
-                                    <option value="2">2 Huéspedes</option>
-                                    <option value="3">3 Huéspedes</option>
-                                    <option value="4">4 Huéspedes</option>
-                                    <option value="5">5 Huéspedes</option>
-                                    <option value="6">6 Huéspedes</option>
-                                    <option value="7">7 Huéspedes</option>
-                                    <option value="8">8 Huéspedes</option>
-                                    <option value="9">9 Huéspedes</option>
-                                    <option value="10">10 Huéspedes</option>
-                                    <option value="11">11 Huéspedes</option>
+                                    <option value="1">1 persona</option>
+                                    <option value="2">2 personas</option>
+                                    <option value="3">3 personas</option>
+                                    <option value="4">4 personas</option>
+                                    <option value="5">5 personas</option>
+                                    <option value="6">6 personas</option>
+                                    <option value="7">7 personas</option>
+                                    <option value="8">8 personas</option>
+                                    <option value="9">9 personas</option>
+                                    <option value="10">10 personas</option>
+                                    <option value="11">11 personas</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 form-group">
-                        <label class="control-label col-sm-4">Tipo de habitación</label>
+                        <label class="control-label col-sm-4">Tipo de alojamiento</label>
                         <div class="col-sm-8">
                             <div class="btn-group separate-group" data-toggle="buttons">
                                 {if $habitaciones[0]->apartamentos > 0}

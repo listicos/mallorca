@@ -488,6 +488,10 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
 
     border-color: #DDD;
 }
+.navbar-wrapper{
+    max-width: 1280px;
+    margin: 0 auto;
+}
 .panel-default > .panel-heading h1{
 
 }

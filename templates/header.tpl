@@ -11,6 +11,7 @@
 		<span class='st_email_large' displayText='Email'></span>	
 	</div> -->
     <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-wrapper">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
@@ -39,6 +40,7 @@
               </ul>
             </li>
           </ul>
+        </div>
         </div>
     </div>
 </div>
