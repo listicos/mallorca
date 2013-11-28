@@ -1,11 +1,12 @@
 @import "../bootstrap-glyphicons.less";
 body{
     font-family: Arial;
+    background: #F7F7F7;
 }
 h1, h2, h3, h4 {
 font-family: 'Ubuntu Condensed', sans-serif;
 font-weight: bold;
-color: #337492;
+color: #2f7493;
 }
 .wrapper{
     width: 100%;
@@ -54,8 +55,8 @@ color: #337492;
     border-color: #00b3ff;
 }
 .navbar-inverse {
-    border-color: #004564;
-    background: #00AEF8;
+    border-color: #004A6B;
+    background: #555657;
 }
 .navbar-inverse .navbar-nav > li:hover > a{
     background: #000;
@@ -161,13 +162,12 @@ footer .footer-top{
     background: url("../img/footer_bg.gif") repeat center;
     padding: 0 15px;
     padding-bottom: 15px;
-    background: #00b3ff;
+    background: #555657;
 }
 footer .footer-bottom{
     background: url("../img/footer_bg.gif") repeat center;
     padding: 0 15px;
 
-    background: #337492;
 }
 footer .footer-bottom .row{
     background: url("../img/footer_line.gif") repeat-x;
@@ -491,7 +491,9 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
 .panel-default > .panel-heading h1{
 
 }
-
+.carousel-control.left, .carousel-control.right{
+    background:none;
+}
 /*Preloader*/
 .bubblingG {
 text-align: center;
