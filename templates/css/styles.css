@@ -59,7 +59,7 @@ color: #2f7493;
     background: #555657;
 }
 .navbar-inverse .navbar-nav > li:hover > a{
-    background: #000;
+    background: #2f7493;
     color:#FFF; 
 }
 .header_container .header_enlaces_sociales{
@@ -123,7 +123,11 @@ color: #2f7493;
     padding: 0;
     line-height: 30px;
     padding-left: 15px;
-    padding-top: 0px;
+    padding-top: 10px;
+}
+.logo-title img{
+    width: 157px;
+    
 }
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
 color: #FFF;
