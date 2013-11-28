@@ -15,6 +15,7 @@
 }
 h1{
     margin-top: 0px;
+    text-align: center;;
 }
 .acciones-apto .text-apto{
     width: 100%;
@@ -28,7 +29,18 @@ h1{
     border-bottom: 1px solid #dddddd;
 
     padding: 1px 0;
-    height: 59px;
+    height: 37px;
+}
+.price-apto p{
+    float: left;
+    
+    width: 50%;
+    line-height: 31px;
+}
+.price-apto p strong{
+    color: #2f7493;
+    
+    font-size: 13px;
 }
 .acciones-apto > div {
 
@@ -42,7 +54,6 @@ h1{
 
 }
 .acciones-apto > div {
-    /*text-align: center;*/
 }
 .filters-content{
 
@@ -225,7 +236,9 @@ legend.title {
     vertical-align: top;
 }
 .acciones-disponibilidad a{
+    display: block;
     
+    margin-top: 5px;
 }
 #resultados .result-item .carousel {
 
@@ -258,6 +271,7 @@ legend.title {
     padding: 10px;
     text-align: center;
     font-weight: bold;
+    padding-top: 6px;
 }
 
 .apartamento-descripcion {
@@ -368,7 +382,5 @@ div.leyenda {
 }
 @media (min-width: 1600px){
     .apartamento-item-content{
-        width: 50%;
-        float: left;
     }
 }

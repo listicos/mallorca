@@ -20,18 +20,10 @@ $usuario_core = Core_Usuario::getInstance();
 $usuario = $usuario_core->getUsuario();
 
 include 'Dao/include_dao.php';
-include './Logic/direcciones.php';
-include './Logic/empresas.php';
-include './Logic/usuario.php';
-include './Logic/cuenta.php';
-include './Logic/apartamentos.php';
-include './Logic/contratos.php';
-include './Logic/opiniones.php';
-include './Logic/calendario.php';
-include './Logic/reservas.php';
-include './Logic/articulos.php';
-include './Logic/complejos.php';
-include './Logic/configuracion.php';
+include 'Logic/direcciones.php';
+include 'Logic/apartamentos.php';
+include 'Logic/opiniones.php';
+include 'Logic/configuracion.php';
 
 $includes = $controller->getFileAction();
 if (is_file($includes)) {

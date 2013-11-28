@@ -105,11 +105,10 @@ font-weight: bold;
     margin-left: 0;
 }
 .body-content.home{
-    max-width: 100% !important;
 }
 .body-content{
 
-    max-width: 1460px !important;
+    max-width: 1280px !important;
     margin: 0 auto;
 
     margin-top: 87px;
