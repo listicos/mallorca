@@ -9,16 +9,8 @@
                         {foreach from=$a->adjuntos item=adjunto name=adjuntos}
                         <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
                             <img src="{$template_url}{$adjunto->ruta}" alt="">
-                            <div class="carousel-caption">
-                                
-                                {if $a->opiniones}
-                                <span class="comments-icon">{$a->opiniones}</span>
-                                {/if}
-                            </div>
                         </div>
                         {/foreach}
-
-
                     </div>
                     <div class="back-images layer-1"></div>
                     <div class="back-images layer-2"></div>
@@ -58,45 +50,14 @@
 
 
                         <div class="price-apto">
-                            <p class="priceApto">{$a->precioPorNoche|number_format:2:",":"."}<small>&euro;</small></p>
-                            <p class="text-muted">Por&nbsp;noche</p>
+                            <p class="text-muted">desde <strong>{$a->tarifaBase|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                            <p class="text-muted">hasta <strong>{$a->tarifaBase|number_format:2:",":"."}<small>&euro;</small></strong></p>
                         </div>
 
-
-            </div>
-        </div>
-        <div>
-            <div>
-                <div class="apartamento-descripcion">
-                    {if count($a->instalaciones) > 9}
-                        {assign var="cantidad" value=9}
-                    {else}
-                        {assign var="cantidad" value=count($a->instalaciones)}
-                    {/if}
-
-                    <ul>
-                    {foreach from=$a->instalaciones item=instalacion name=servicios}
-                        {if $smarty.foreach.servicios.iteration <= $cantidad}
-
-                            <li><img src="{$template_url}/imagen/aceptarGrande.png" width="20px" height="18px"> {$instalacion->nombre}</li>
-
-                            <!--{if $smarty.foreach.servicios.iteration - $cantidad / 3 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 >= 0}
-                                </ul>
-                                <ul>
-                            {/if}
-                            {if $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 >= 0}
-                                </ul>
-                                <ul>
-                            {/if}-->
-                        {/if}
-                    {/foreach}
-                    </ul>
-                </div>
-                
-            </div>
-            <div class="acciones-disponibilidad">
-                <span><a apartamento-id="{$a->idApartamento}" class="ver-disponibilidad" href="javascript:void(0)">Ver disponibilidad</a></span>
-                <a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
+                        <div class="acciones-disponibilidad">
+                            <span><a class="ver-disponibilidad" apartamento-id="{$a->idApartamento}" href="javascript:void(0)" >Disponibilidad</a></span>
+                            <a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="btn btn-success book-it">Reservar</a>
+                        </div>
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ var movingMap = false;
 function initialize() {
     var mapOptions = {
         zoom: 15,
+        'scrollwheel': false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(document.getElementById('details-map-location'), mapOptions);
@@ -39,12 +40,12 @@ $(document).ready(function() {
     actualizarMapa();
     calendarios();
     ENABLE_DATES = [];
-    for(i = 0; i < disponibles.length; i++) {
+    /*for(i = 0; i < disponibles.length; i++) {
         ENABLE_DATES.push(new Date(disponibles[i]).getTime());
-    }
+    }*/
     $('.date-start').datepicker({
         autoclose: true,
-        enableDates: ENABLE_DATES,
+        //enableDates: ENABLE_DATES,
         format: "dd-mm-yyyy",
         startDate: new Date(new Date().setDate(new Date().getDate() - 1))
     }).on('changeDate', function(ev) {
@@ -55,7 +56,7 @@ $(document).ready(function() {
 
     $('.date-end').datepicker({
         autoclose: true,
-        enableDates: ENABLE_DATES,
+        //enableDates: ENABLE_DATES,
         format: "dd-mm-yyyy",
         startDate: new Date()
     }).on('changeDate', function(ev) {
@@ -172,7 +173,7 @@ function filtrar() {
     
     $('#filtrosFrm input, #filtrosFrm select, select[name=order]').off('change').on('change', function(e) {
         e.preventDefault();
-        console.log($(this).attr('name'));
+        
         var valid = $(this).attr('name') != 'dateStart' && $(this).attr('name') != 'dateEnd';
         if(!valid) {
             valid = ($('#llegada').val() == $('#salida').val() || ($('#llegada').val() && $('#salida').val() && $('#llegada').val() != "" && $('#salida').val() != ""));
@@ -287,7 +288,7 @@ function setTarifasToCalendar(tarifas){
             events: tarifas
         });
     }else{
-        console.log('no tarifas');
+        
         $('#calendarioDisponibilidad').fullCalendar({
             header: h,
             slotMinutes: 15,

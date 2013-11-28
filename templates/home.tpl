@@ -11,7 +11,7 @@
     <script>
         var minPrice = {$minPrice};
         var maxPrice = {$maxPrice};
-        var disponibles = {$disponibles};
+        /*var disponibles = {$disponibles};*/
     </script>
     <!--<script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
     <script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
@@ -155,10 +155,10 @@
                         <h1>Simplemente mejor que un hotel</h1>
                         <p class="slide-order-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 hidden">
                         <div class="form-group">
                             
-                            <select class="form-control hidden" name="order">
+                            <select class="form-control" name="order">
                                 <option value="a.nombre ASC">Nombre (Ascendente)</option>
                                 <option value="a.nombre DESC">Nombre (Descendente)</option>
                                 <option value="d.precio ASC">Precio (Ascendente)</option>
@@ -179,18 +179,10 @@
                                         <div class="carousel-inner">
                                             {foreach from=$a['adjuntos'] item=adjunto name=adjuntos}
                                             <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
-                                                <!--<img src="{$template_url}{$adjunto->ruta}" alt="">-->
-                                                <img src="http://mallorca.vikatickets.com/Template/recursos/apartamentos/0bf551bc30d9a412aa471553cb4001d1.jpg">
-                                                <div class="carousel-caption">
-                                                    <!--<p>{$a['apartamento']->nombre}</p>-->
-                                                    {if count($a['opiniones'])}
-                                                    <span class="comments-icon">{count($a['opiniones'])}</span>
-                                                    {/if}
-                                                </div>
+                                                <img src="{$template_url}{$adjunto->ruta}" alt="">
+                                                <!--<img src="http://mallorca.vikatickets.com/Template/recursos/apartamentos/0bf551bc30d9a412aa471553cb4001d1.jpg">-->
                                             </div>
                                             {/foreach}
-
-
                                         </div>
                                         <div class="back-images layer-1"></div>
                                         <div class="back-images layer-2"></div>

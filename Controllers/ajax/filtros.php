@@ -63,7 +63,7 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
             } else {
                 $apto->precio_base_format = 'No disponible';
             }
-
+            /*
             $opiniones = getOpinionesByApartamento($apartamento->idApartamento);
             $apto->opiniones = count($opiniones);
             
@@ -73,14 +73,14 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
                 array_push($ds, date('Y-n-j', strtotime($dis->fechaInicio)));
             }
 
-            $apto->disponibilidades = json_encode($ds);
-            
+            $apto->disponibilidades = json_encode($ds);*/
+            /*
             $instalaciones_array = array();
             $instalaciones_list = getApartamentoInstalacionesByAparatamento($apto->idApartamento);
             foreach ($instalaciones_list as $ckey => $instalacio) {
                 $instalaciones_array[$ckey] = getInstalacion($instalacio->idInstalacion);
             }
-            $apto->instalaciones = $instalaciones_array;
+            $apto->instalaciones = $instalaciones_array;*/
         }
         
         $smarty->assign('apartamentos', $apartamentos);

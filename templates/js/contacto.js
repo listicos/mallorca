@@ -60,6 +60,7 @@ function initMapa() {
     pos = new google.maps.LatLng(lat, lon);
     var mapOptions = {
         zoom: 15,
+        'scrollwheel': false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
         
     }
