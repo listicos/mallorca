@@ -29,9 +29,9 @@
 {block name="content" append}
     <div class="container-liquid  content body-content home">
         <div class="row">
-            <div class="col-sm-5 filtros_main_container">
+            <div class="filtros_main_container">
                 <div class="row form-horizontal filters-content" role="form">
-                <div class="filtros-title">Filtra tu busqueda</div>
+                <h4 class="filtros-title">Encontrar mi casa perfecta</h4>
                 <form id="filtrosFrm">
                    <div class="search-slider-content">
                         <div class="form-inline" role="form">
@@ -149,7 +149,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-7">
+            <div class="house_side">
                 <div class="row home-main-slider">
                     <div class="col-md-12">
                         <h1>Simplemente mejor que un hotel</h1>
@@ -180,6 +180,7 @@
                                             {foreach from=$a['adjuntos'] item=adjunto name=adjuntos}
                                             <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
                                                 <img src="{$template_url}{$adjunto->ruta}" alt="">
+                                                <!--<img src="http://mallorca.vikatickets.com/Template/recursos/apartamentos/0bf551bc30d9a412aa471553cb4001d1.jpg">-->
                                                 <div class="carousel-caption">
                                                     <!--<p>{$a['apartamento']->nombre}</p>-->
                                                     {if count($a['opiniones'])}

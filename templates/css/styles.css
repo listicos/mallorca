@@ -48,12 +48,13 @@ font-weight: bold;
 }
 
 /* ============ HEADER ============= */
-.header_container{
 
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+    border-color:#337492;
 }
 .navbar-inverse {
-    background: url("../img/footer_bg.gif") repeat center;
-    border-color: #080808;
+    border-color: #004564;
+    background: #337492;
 }
 .navbar-inverse .navbar-nav > li:hover > a{
     background: #000;
@@ -111,7 +112,7 @@ font-weight: bold;
     max-width: 1460px !important;
     margin: 0 auto;
 
-    margin-top: 52px;
+    margin-top: 87px;
 
 }
 .logo-title{
@@ -121,7 +122,11 @@ font-weight: bold;
     padding: 0;
     line-height: 30px;
     padding-left: 15px;
-    padding-top: 13px;
+    padding-top: 0px;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+color: #FFF;
+background-color: #464646;
 }
 /* ========= FOOTER =========== */
 .footer_container{
@@ -156,15 +161,18 @@ footer .footer-top{
     background: url("../img/footer_bg.gif") repeat center;
     padding: 0 15px;
     padding-bottom: 15px;
+    background: #337492;
 }
 footer .footer-bottom{
     background: url("../img/footer_bg.gif") repeat center;
     padding: 0 15px;
 
+    background: #464646;
 }
 footer .footer-bottom .row{
     background: url("../img/footer_line.gif") repeat-x;
-    padding-top: 11px;
+    padding-top: 3px;
+    background-size: 18px;
 }
 footer .footer-top{
 
@@ -639,9 +647,11 @@ transform: translateY(-21px);
         max-width: 100%;
     }
     .navbar-inverse .navbar-nav > li > a{
-        padding-top: 15px;
-        padding-bottom: 16px;
-    }
+        padding-top: 33px;
+        padding-bottom: 33px;
+    
+        color: #D1D1D1;
+}
 }
 @media (max-width: 575px){
     .header_container{
