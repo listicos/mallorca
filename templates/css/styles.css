@@ -108,6 +108,7 @@ color: #2f7493;
 }
 .body-content.home{
 }
+a{color:#2f7493}
 .body-content{
 
     max-width: 1280px !important;
@@ -500,7 +501,9 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
     margin: 0 auto;
 }
 .panel-default > .panel-heading h1{
+    color: #FFF;
 
+    font-size: 21px;
 }
 .carousel-control.left, .carousel-control.right{
     background:none;

@@ -12,6 +12,8 @@
 .contenedor-calendario{
     background: #FFF;
 
+    margin: 0;
+    margin-bottom: 10px;
 }
 .guardar-anuncio{
     margin-top: 19px;
