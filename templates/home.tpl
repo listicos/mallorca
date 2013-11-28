@@ -143,7 +143,7 @@
                     </div>
                 </form>
                 </div>
-                <div class="row" id="mapa">
+                <div class="row hidden-sm hidden-xs" id="mapa">
                     <div class="col-md-12">
                         <div id="details-map-location"></div>
                     </div>
