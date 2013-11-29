@@ -22,26 +22,23 @@
 
 {block name="content" append}
        <div class="container row-fluid body-content">
-            <div class="titulo row-fluid">
-                <div class="col-xs-12">
-                    <h2>{$apartamento['apartamento']->nombre}</h2>
-                </div>
-            </div>
-            <div class="sub-titulo row-fluid"> 
-                <div class="col-xs-12">      
-                    <h5>
-                        <a href="" class="property-type">{$apartamento['apartamento']->tipo->nombre}</a>
-                        <input type="hidden" name="lat" value="{$apartamento['direccion']->lat}">
-                        <input type="hidden" name="lon" value="{$apartamento['direccion']->lon}">
-                        <span class="middot">·</span>
-                        <span id="display-address" data-location="Riviera Maya, Cancun, Quintana Roo, México">
-                            {$apartamento['direccion']->provincia}, {$apartamento['direccion']->paisNombre}
-                        </span>
-                    </h5>
-                </div>
-            </div>
+            
             <div class="contenedor-columnas row-fluid">
                 <div class="columna-izquierda col-md-8">
+                <div class="titulo row-fluid">
+                    <h2>{$apartamento['apartamento']->nombre}</h2>
+            </div>
+            <div class="sub-titulo row-fluid"> 
+                <h5>
+                    <a href="" class="property-type">{$apartamento['apartamento']->tipo->nombre}</a>
+                    <input type="hidden" name="lat" value="{$apartamento['direccion']->lat}">
+                    <input type="hidden" name="lon" value="{$apartamento['direccion']->lon}">
+                    <span class="middot">·</span>
+                    <span id="display-address" data-location="Riviera Maya, Cancun, Quintana Roo, México">
+                        {$apartamento['direccion']->provincia}, {$apartamento['direccion']->paisNombre}
+                    </span>
+                </h5>
+            </div>
                     <div class="container-fotos" id="tabs1">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#carousel-apto"><font><font class="">Casa</font></font></a></li>
@@ -261,23 +258,7 @@
                         </div>
                         <div class="panel-body">
                             <form class="form-inline" role="form" id="reservaForm">
-                            <div class="contenedor-noche">
-                                <div class="col-md-6">
-                                    <strong>Desde</strong>  
-                                </div>
-                                <div class=" pull-right col-xs-6">
-
-                                    <!--<select class="form-control">
-                                        <option>Por noche</option>
-                                        <option>por semana</option>
-                                        <option>Por mes</option>
-
-                                    </select>-->
-                                </div>
-                            </div>
-                            <div class="precio col-xs-12">
-                                <h1>{$menor_precio}</h1>
-                            </div>
+                            
 
                             <div class="contenedor-llegada row-fluid clearfix">
                                 
@@ -311,10 +292,17 @@
                                     </div>
                                      
                             </div>
-                            <div class="contenido-calendario row-fluid">
-                                
-                                <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
+                            <br />
+                            <div class="row-fluid">
+                                <div class="precio text-right col-md-12">
+                                <strong>Desde</strong><h1>{$menor_precio}</h1>
+                                </div>
+                                <div class="contenido-calendario col-md-12">
+                                    
+                                    <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
+                                </div>
                             </div>
+                            
                             </form>  
                         </div>
                     </div>
