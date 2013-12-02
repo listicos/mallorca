@@ -2,7 +2,7 @@
 
 {block name="script" append}
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-    <script src="{$template_url}/js/apartamento.js"></script>
+    <script src="{$template_url_s}/js/apartamento.js"></script>
     <script src="{$template_url}/js/admin/calendar/app.js"></script>
     <script src="{$template_url}/js/admin/calendar/breakpoints.js"></script>
     <script src="{$template_url}/js/admin/calendar/calendar.js"></script>
@@ -149,45 +149,14 @@
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="servicios">
-                                            <ul class="unstyled col-md-4 pull-left">
+                                            <ul class="unstyled pull-left">
                                             {foreach from=$apartamento['instalaciones'] item=instalacion name=servicios}
                                                 
                                             
-                                                <li> <span class="glyphicon glyphicon-adjust"> {$instalacion->nombre}</span></li>
+                                                <li> <img src="{$template_url_s}/img/tick.png"> {$instalacion->nombre}</li>
                                                 
-                                                {if $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 < 1 && $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 >= 0}
-                                                    </ul>
-                                                    <ul class="unstyled col-md-4 pull-center">
-                                                {/if}
-                                                {if $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 * 2 < 1 && $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 * 2 >= 0}
-                                                    </ul>
-                                                    <ul class="unstyled col-md-4 pull-right">
-                                                {/if}
-                                            
                                             {/foreach}
                                             </ul>
-                                            <!--
-                                            <ul class="unstyled col-md-4 pull-center">
-                                                <li> <span class="glyphicon glyphicon-adjust"> Edificio con ascenso</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Acceso para discapacitados</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Piscina</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Cocina</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Parking incluido</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Portero</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Gimnasio</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Jacuzzi</span></li>
-                                            </ul> 
-                                            <ul class="unstyled col-md-4 pull-right">
-                                                <li> <span class="glyphicon glyphicon-ban-circle"> Chimenea interior</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Timbre/Interfono inalámbrico</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Desayuno</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Apto para toda la familia</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Apto para eventos</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Lavadora</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Secadora</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Peluqueria</span></li>
-                                            </ul> 
-                                            -->
                                             <div class="delimiter"></div>
                                         </div>
 
@@ -198,18 +167,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-fluid">
-                                <div class="col-xs-12">
-                                    &nbsp
-                                </div>
-                            </div>   
                         </div>
                         {if count($apartamento['opiniones'])}
+                        <br />
                         <div class="panel-titulo row-fluid">
-
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Comentarios</h3>
+                                    <h1 class="text-center panel-title">Comentarios</h1>
                                 </div>
                                 <div class="panel-body">
                                     {foreach from=$apartamento['opiniones'] item=opinion}
@@ -228,29 +192,12 @@
                                         <p class="text-right"><strong>{$opinion->fechaCreacion}</strong></p>
                                     </div>
                                     {/foreach}
-                                    
-
-
-                                </div>
-                                <div class="row-fluid col-xs-12">
-                                    <!--<ul class="pagination">
-                                        <li><a href="#">&laquo;</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">&raquo;</a></li>
-                                    </ul>-->
                                 </div>
                             </div>  
                         </div>
                         {/if}
                     </div>
                 </div>
-
-
-
                 <div class="columna-derecha col-md-4">
                     <div class="contenedor-calendario panel panel-default">
                         <div class="panel-heading">
@@ -258,10 +205,7 @@
                         </div>
                         <div class="panel-body">
                             <form class="form-inline" role="form" id="reservaForm">
-                            
-
                             <div class="contenedor-llegada row-fluid clearfix">
-                                
                                     <div class="form-group col-md-4">
                                         <label class="sr-only" for="exampleInputEmail2">llegada</label>
                                         <input type="text" class="form-control validate[required]" id="fechaInicio" value="{if $entrada}{$entrada|date_format:"%e-%m-%Y"}{/if}" placeholder="Llegada" name="fechaInicio">
@@ -292,17 +236,14 @@
                                     </div>
                                      
                             </div>
-                            <br />
                             <div class="row-fluid">
                                 <div class="precio text-right col-md-12">
-                                <strong>Desde</strong><h1>{$menor_precio}</h1>
+                                <h1>{$menor_precio}</h1>
                                 </div>
                                 <div class="contenido-calendario col-md-12">
-                                    
                                     <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
                                 </div>
                             </div>
-                            
                             </form>  
                         </div>
                     </div>
