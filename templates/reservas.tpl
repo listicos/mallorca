@@ -25,8 +25,8 @@
                     <div class="row reservas-list-main tab-content">
                         <form id="reservaFrm">
                         <!-- reservation_step -->
-                        <div class="tab-pane active" id="reservation_step">
-                            <div class="col-md-12">
+                        <div class="tab-pane active clearfix" id="reservation_step">
+                            <div class="col-md-6">
                                 <div class="table-responsive">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -65,14 +65,8 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        <!-- end reservation_step -->
-
-                        <!-- data_step -->
-                        <div class="tab-pane active" id="data_step">
-                            
-                            <div class="col-md-12">
-                            <div class="panel panel-default">
+                        <div class="col-md-6">
+                             <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h1 class="text-center panel-title">Completa tus datos</h1>
                                     </div>
@@ -116,9 +110,14 @@
                                             </div>
                                 </div>
                               </div>
-                                
-                                <br />
-                                <div class="panel panel-default panel-success">
+                        </div>
+                        </div>
+                        <!-- end reservation_step -->
+                        <br />
+                        <!-- data_step -->
+                        <div class="tab-pane active" id="data_step">
+                            
+                                <!--<div class="panel panel-default panel-success">
                                 <div class="panel-heading">
                                   <h1 class="panel-title text-center">✓ Cobraremos de tu tarjeta: {$menor_precio}</h1>
                                 </div>
@@ -199,69 +198,39 @@
                                     </div>
                                 
                                 
-                                    <br />
+                                    <br />-->
                                 
-                                <div class="row">
+               
                                     <div class="col-md-12">
                                      <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h1 class="text-center panel-title">Información adicional</h1>
+                                                <h1 class="text-center panel-title">Termina tu reserva</h1>
                                             </div>
                                             <div class="panel-body">
                                                  <p>Te enviaremos tu reserva por mail a:<br />
-                                            Es imprescindible que lleves contigo el DNI, NIE o Pasaporte para identificarte en la entrada al barco. Tu billete no es transferible a otra persona.</p>
-                                             <div class="form-group row">
-                                <div class="col-md-12">
-                                   <div class="checkbox">
-                                       <input type="checkbox" name="aceptoPoliticas" class="validate[required]">
-                                       Entiendo y acepto las <a id="privacy_policies" href="javascript:void(0)">Políticas de privacidad</a> y las <a id="book_conditions" href="javascript:void(0)">Condiciones de reserva</a>
-                                   </div>
-                                   </div>
-                                            </div>
+                                                    Es imprescindible que lleves contigo el DNI, NIE o Pasaporte para identificarte en la entrada al barco. Tu billete no es transferible a otra persona.</p>
 
+                                               <div class="checkbox">
+                                                   <input type="checkbox" name="aceptoPoliticas" class="validate[required]">
+                                                   Entiendo y acepto las <a id="privacy_policies" href="javascript:void(0)">Políticas de privacidad</a> y las <a id="book_conditions" href="javascript:void(0)">Condiciones de reserva</a>
+                                               </div>
                                             <div class="col-md-12">
                                             <div class="row total-bottom-content">
-                                                <p><input type="checkbox" name="terminos" class="validate[required]" /> He leído y acepto los <a href="">Términos y Condiciones de uso</a> y el <a href="">Aviso de privacidad</a></p>
                                                 <p><strong>Total a pagar</strong></p>
                                                 <p class="text-primary font-s24">{$menor_precio}</p>
                                                 <p><small>El importe incluye todos los impuestos</small></p>
                                             </div>
                                             </div>
                                             <div class="text-right">
-                                    <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
-                                    <input type="hidden" name="action" value="insert">
-                                    <input type="submit" class="btn btn-primary pay_booking" value="Pagar reserva">
-                                </div> 
-
-                                
+                                                <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
+                                                <input type="hidden" name="action" value="insert">
+                                                <input type="submit" class="btn btn-primary pay_booking" value="Finalizar reserva">
+                                            </div>
                                         </div>
-                                    
                                     </div>
                                     </div>
-                                </div>              
-                            </div>
-                            
                         </div>
                         <!-- end data_step -->
-                        <br />
-                        <!-- pay_step -->
-                        <div class="tab-pane active" id="pay_step">
-                            
-                            <div class="col-md-12">
-                                
-                                <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h1 class="text-center panel-title">Total a pagar</h1>
-                                            </div>
-                                            <div class="panel-body">
-                                            
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                 
-                                </div>                                                      
-                        <!-- end pay_step -->
                         </form>
                     </div>
                 
