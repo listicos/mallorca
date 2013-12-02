@@ -21,6 +21,9 @@ color: #2f7493;
 .checkbox-inline.more-checkbox{
     padding-left: 0;
 }
+.panel-default{
+    margin: 0px;
+}
 .checkbox-inline.more-checkbox a{
     padding: 0 5px;
 }
@@ -499,6 +502,9 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
 
     border-color: #DDD;
     padding: 5px 5px;
+}
+.panel-default.panel-success > .panel-heading{
+    background: #139B00;
 }
 .navbar-wrapper{
     max-width: 1280px;

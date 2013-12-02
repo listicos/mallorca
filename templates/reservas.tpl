@@ -18,79 +18,54 @@
 {/block}
 
 {block name="content" append}
-<div class="main_content content">
+<div class="main_content content body-content">
     <div class="row-fluid">
         <div class="row">
             <div class="col-md-8 reserva-left-side">
-                    <!--
-                    <ul class="nav nav-tabs breadcrumb-custom bread-2" id="reservation_tabs">
-                        <li class="active bread-row">
-                            <a href="#reservation_step" data-toggle="tab">
-                                <div class="bread-number">1</div>
-                                <div class="bread-text">Tu Reserva</div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
-                        <li class="bread-row data_step">
-                            <a href="#data_step" data-toggle="tab">
-                                <div class="bread-number">2</div>
-                                <div class="bread-text">Tus Datos</div>
-                                <div class="clearfix"></div>
-                            </a>
-                        </li>
-                    </ul>
-                    -->
-                    <!-- TAB CONTENT -->
-
                     <div class="row reservas-list-main tab-content">
                         <form id="reservaFrm">
                         <!-- reservation_step -->
                         <div class="tab-pane active" id="reservation_step">
                             <div class="col-md-12">
                                 <div class="table-responsive">
-                                    <table class="table table-reserva-info">
-                                        <tbody>
-                                            <tr>
-                                                <td class="reserva-datos-title">
-                                                    <div class="alert-success alert"><h3 class="panel-title">Datos de tu Reserva</h3></div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-sm-3">
-                                                             <div class="flexslider">
-                                                                  <ul class="slides">
-                                                                  {foreach from=$apartamento['adjuntos'] item=imagen}
-                                                                    <li class="slide">
-                                                                      <img src="{$template_url}{$imagen->ruta}">  
-                                                                    </li>
-                                                                  {/foreach}
-                                                                  </ul>
-                                                                </div>
+                                
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h1 class="text-center panel-title">Datos de tu Reserva</h1>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table class="table table-reserva-info">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                 <div class="flexslider">
+                                                                      <ul class="slides">
+                                                                      {foreach from=$apartamento['adjuntos'] item=imagen}
+                                                                        <li class="slide">
+                                                                          <img src="{$template_url}{$imagen->ruta}">  
+                                                                        </li>
+                                                                      {/foreach}
+                                                                      </ul>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="reserva-description col-sm-9">
+                                                                <h3 class="text-primary">{$apartamento['apartamento']->nombre}</h3>
+                                                                <p class="text-muted">Llegada: {$entrada}</p>
+                                                                <p class="text-muted">Salida: {$salida}</p>
+                                                                <p class="text-muted">{$noches} Noche(s)</p>
+                                                                <p class="text-muted"><strong>{$apartamento['condicion']}</strong></p>
+                                                            </div>
                                                         </div>
-                                                        <div class="reserva-description col-sm-9">
-                                                            <h3 class="text-primary">{$apartamento['apartamento']->nombre}</h3>
-                                                            <p class="text-muted">Llegada: {$entrada}</p>
-                                                            <p class="text-muted">Salida: {$salida}</p>
-                                                            <p class="text-muted">{$noches} Noche(s)</p>
-                                                            <p class="text-muted"><strong>{$apartamento['condicion']}</strong></p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-
-                           
-                        
-
-                            
-                            
-                            
-                           
+                        </div>
                         </div>
                         <!-- end reservation_step -->
 
@@ -98,11 +73,11 @@
                         <div class="tab-pane active" id="data_step">
                             
                             <div class="col-md-12">
-                            <div class="panel panel-success">
-                                <div class="panel-heading">
-                                  <h3 class="panel-title">Completa tus datos</h3>
-                                </div>
-                                <div class="panel-body">
+                            <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h1 class="text-center panel-title">Datos de tu Reserva</h1>
+                                    </div>
+                                    <div class="panel-body">
                                   <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="row">
@@ -143,9 +118,10 @@
                                 </div>
                               </div>
                                 
-                                  <div class="panel panel-success">
+                                <br />
+                                <div class="panel panel-default panel-success">
                                 <div class="panel-heading">
-                                  <h3 class="panel-title">✓ Cobraremos de tu tarjeta: {$menor_precio}</h3>
+                                  <h1 class="panel-title text-center">✓ Cobraremos de tu tarjeta: {$menor_precio}</h1>
                                 </div>
                                 <div class="panel-body">
                                             <div class="row datos-pago-content">
@@ -224,68 +200,64 @@
                                     </div>
                                 
                                 
+                                    <br />
                                 
                                 <div class="row">
                                     <div class="col-md-12">
-                                    <div class="bs-callout bs-callout-info">
-                                      <h4>Información adicional</h4>
-                                      <p>Te enviaremos tu reserva por mail a:<br />
+                                     <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h1 class="text-center panel-title">Información adicional</h1>
+                                            </div>
+                                            <div class="panel-body">
+                                                 <p>Te enviaremos tu reserva por mail a:<br />
                                             Es imprescindible que lleves contigo el DNI, NIE o Pasaporte para identificarte en la entrada al barco. Tu billete no es transferible a otra persona.</p>
                                              <div class="form-group row">
-                                <div class="col-lg-12">
+                                <div class="col-md-12">
                                    <div class="checkbox">
                                        <input type="checkbox" name="aceptoPoliticas" class="validate[required]">
                                        Entiendo y acepto las <a id="privacy_policies" href="javascript:void(0)">Políticas de privacidad</a> y las <a id="book_conditions" href="javascript:void(0)">Condiciones de reserva</a>
                                    </div>
-                                   <!--
-                                   <div class="checkbox">
-                                       <input type="checkbox" name="aceptoRecibirOfertas">
-                                       Acepto recibir ofertas y promociones de <strong>outlet-rooms.com</strong>
                                    </div>
-                                   -->
-                                </div>
-                            </div>
+                                            </div>
+                                        </div>
+                                    
                                     </div>
                                     </div>
-                                </div>
-                               
-
-                                <div class="text-right">
-                                    <!--<a href="#" class="btn btn-primary go-step-3">Finalizar reserva</a>-->
-                                </div>                
+                                </div>              
                             </div>
                             
                         </div>
                         <!-- end data_step -->
-
+                        <br />
                         <!-- pay_step -->
                         <div class="tab-pane active" id="pay_step">
                             
                             <div class="col-md-12">
                                 
-                                <div class="row panel-content">
-                                    <div class="col-md-12">
-                                        <div class="panel-heading">
-                                            <h4 class="text-primary">Total a pagar</h4>
-                                        </div>
-                                        <div class="panel-body">
+                                <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h1 class="text-center panel-title">Total a pagar</h1>
+                                            </div>
+                                            <div class="panel-body">
+                                            <div class="col-md-12">
                                             <div class="row total-bottom-content">
                                                 <p><input type="checkbox" name="terminos" class="validate[required]" /> He leído y acepto los <a href="">Términos y Condiciones de uso</a> y el <a href="">Aviso de privacidad</a></p>
                                                 <p><strong>Total a pagar</strong></p>
                                                 <p class="text-primary font-s24">{$menor_precio}</p>
                                                 <p><small>El importe incluye todos los impuestos</small></p>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-right">
+                                            </div>
+                                            <div class="text-right">
                                     <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
                                     <input type="hidden" name="action" value="insert">
                                     <input type="submit" class="btn btn-primary pay_booking" value="Pagar reserva">
-                                </div>                                                        
-                            </div>
-                            
-                        </div>
+                                </div> 
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                 
+                                </div>                                                      
                         <!-- end pay_step -->
                         </form>
                     </div>
