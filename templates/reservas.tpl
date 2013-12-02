@@ -21,14 +21,13 @@
 <div class="main_content content body-content">
     <div class="row-fluid">
         <div class="row">
-            <div class="col-md-8 reserva-left-side">
+            <div class="col-md-12 reserva-left-side">
                     <div class="row reservas-list-main tab-content">
                         <form id="reservaFrm">
                         <!-- reservation_step -->
                         <div class="tab-pane active" id="reservation_step">
                             <div class="col-md-12">
                                 <div class="table-responsive">
-                                
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h1 class="text-center panel-title">Datos de tu Reserva</h1>
@@ -75,7 +74,7 @@
                             <div class="col-md-12">
                             <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h1 class="text-center panel-title">Datos de tu Reserva</h1>
+                                        <h1 class="text-center panel-title">Completa tus datos</h1>
                                     </div>
                                     <div class="panel-body">
                                   <div class="row">
@@ -219,6 +218,22 @@
                                    </div>
                                    </div>
                                             </div>
+
+                                            <div class="col-md-12">
+                                            <div class="row total-bottom-content">
+                                                <p><input type="checkbox" name="terminos" class="validate[required]" /> He leído y acepto los <a href="">Términos y Condiciones de uso</a> y el <a href="">Aviso de privacidad</a></p>
+                                                <p><strong>Total a pagar</strong></p>
+                                                <p class="text-primary font-s24">{$menor_precio}</p>
+                                                <p><small>El importe incluye todos los impuestos</small></p>
+                                            </div>
+                                            </div>
+                                            <div class="text-right">
+                                    <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
+                                    <input type="hidden" name="action" value="insert">
+                                    <input type="submit" class="btn btn-primary pay_booking" value="Pagar reserva">
+                                </div> 
+
+                                
                                         </div>
                                     
                                     </div>
@@ -239,19 +254,7 @@
                                                 <h1 class="text-center panel-title">Total a pagar</h1>
                                             </div>
                                             <div class="panel-body">
-                                            <div class="col-md-12">
-                                            <div class="row total-bottom-content">
-                                                <p><input type="checkbox" name="terminos" class="validate[required]" /> He leído y acepto los <a href="">Términos y Condiciones de uso</a> y el <a href="">Aviso de privacidad</a></p>
-                                                <p><strong>Total a pagar</strong></p>
-                                                <p class="text-primary font-s24">{$menor_precio}</p>
-                                                <p><small>El importe incluye todos los impuestos</small></p>
-                                            </div>
-                                            </div>
-                                            <div class="text-right">
-                                    <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
-                                    <input type="hidden" name="action" value="insert">
-                                    <input type="submit" class="btn btn-primary pay_booking" value="Pagar reserva">
-                                </div> 
+                                            
                                         </div>
                                     </div>
                                     </div>
@@ -262,43 +265,6 @@
                         </form>
                     </div>
                 
-            </div>
-            <div class="col-md-4 reserva-right-side">
-                <div class="reservacion-list-content-main" style="margin-top: 0px;">
-                    <div class="reservacion-list-content">
-                        <div class="row-fluid reservacion-list">
-                            <div><h3>Resumen de tu reserva</h3></div>
-                            <div>
-                                <div class="row">
-                                    <div class="reserva-description col-sm-12">
-                                        <h4 class="text-primary">{$apartamento['apartamento']->nombre}</h4>
-                                        <p class="text-muted">Llegada: {$entrada}</p>
-                                        <p class="text-muted">{$noches} Noches</p>                                        
-                                        <!--<p class="text-muted"><strong>{$apartamento['codicion']}</strong></p>-->
-                                        <p class="text-info lead"><strong>{$menor_precio}</strong></p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div>
-                                <p class="text-info lead">
-                                    <strong class="pull-left">Total </strong> <strong class="pull-right" id="precio-total-label">{$menor_precio}</strong>
-                                </p>
-                                <br />
-                                <div class="text-right continuar_container">
-                                    <!--<a href="#" class="btn btn-primary go-step-2">Continuar</a>-->
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <br />
-                    <!--<div class="alert alert-success">
-                        <p>Por reservar <strong>Apartamento 1 dormitorio</strong> en esta Web, te beneficias de un cupón de descuento <b>exclusivo</b> que puedes utilizar y obtener <strong>descuentos</strong> de hasta el <strong>100%</strong> en cualquiera de los complementos de tu viaje.</p>
-                        <p class="cupon-text">Tu <strong>código</strong> de cupón es : <b><strong class="lead">{$cupon->codigo|upper}</strong></b></p>
-                    </div>-->
-                </div>
-                <br />
             </div>
         </div>
     </div>
