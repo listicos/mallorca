@@ -3,6 +3,9 @@
 $usuario_core->validateUser();
 $template = new Core_template('admin/template.php');
 
+$template->setJS('admin/dropzone.js');
+$template->setCSS('dropzone.css');
+
 AllowRoles("Administrador, Comercial, Socio, Mallorca");
 
 $template->setAttribute('is_visible_header', true);
