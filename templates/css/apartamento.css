@@ -11,6 +11,8 @@
 
     margin: 0;
     margin-bottom: 10px;
+    box-shadow: 1px 1px 2px #000;
+    border: 0;
 }
 .guardar-anuncio{
     margin-top: 19px;
@@ -189,12 +191,12 @@ div.leyenda {
 }
 .desde-precio-reserva, .total-precio-reserva{
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 .desde-precio-reserva h4, .total-precio-reserva h4{
     color: #000;
     font-size: 20px;
-    margin: 25px 0 0;
+    margin: 15px 0 0;
     border-top: 2px solid #ddd;
     padding-top: 10px;
 }
