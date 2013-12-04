@@ -262,18 +262,6 @@
                                             <td>Baños:</td>
                                             <td class="value">{$apartamento['apartamento']->banio}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Personas adicionales:</td>
-                                            <td class="value"><span id="extra_people_price_string">Sin cargo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tarifa semanal:</td>
-                                            <td class="value"><span id="weekly_price_string">${$apartamento['apartamento']->tarifaSemana}</span> /semana</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tarifa mensual:</td>
-                                            <td class="value"><span id="monthly_price_string">${$apartamento['apartamento']->tarifaMes}</span> /mes</td>
-                                        </tr>
                                     </table>
                                 </div>
                                             
