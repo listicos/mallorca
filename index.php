@@ -7,6 +7,8 @@ include('config.php');
 include 'Core/Include.php';
 require 'Lib/smarty/Smarty.class.php';
 
+if(substr_count($_SERVER['REQUEST_URI'], "admin-") > 0) {
+
 $smarty = new Smarty();
 $smarty->debugging = false;
 $smarty->caching = false;
@@ -14,6 +16,7 @@ $smarty->cache_lifetime = 120;
 $smarty->assign("base_url",$base_url);
 $smarty->assign("template_url",$template_url);
 $smarty->assign("template_url_s",$template_url_s);
+}
 
 $controller = new Core_Controller();
 $usuario_core = Core_Usuario::getInstance();
@@ -40,7 +43,7 @@ if (is_file($includes)) {
     header('Location:' . $base_url);
 }
 setlocale(LC_MONETARY, 'nl_NL.UTF-8');
-/*
+
 function money_format($format, $number) 
 { 
     $regex  = '/%((?:[\^!\-]|\+|\(|\=.)*)([0-9]+)?'. 
@@ -127,7 +130,7 @@ function money_format($format, $number)
     } 
     return $format; 
 }
-*/
+
 function hasRoles($roles) {
     $role = ActiveRole();
     
