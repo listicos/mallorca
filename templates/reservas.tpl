@@ -22,6 +22,11 @@
     <div class="row-fluid">
         <div class="row">
             <div class="col-md-12 reserva-left-side">
+                 <ol class="breadcrumb">
+                  <li><a href="{$base_url}">Inicio</a></li>
+                  <li href="{$base_url}/apartamento/id:{$apartamento['apartamento']->id}">{$apartamento['apartamento']->nombre}</li>
+                  <li class="active">Reservar</li>
+                </ol>
                     <div class="row reservas-list-main tab-content">
                         <form id="reservaFrm">
                         <!-- reservation_step -->
@@ -33,34 +38,26 @@
                                         <h1 class="text-center panel-title">Datos de tu Reserva</h1>
                                     </div>
                                     <div class="panel-body">
-                                        <table class="table table-reserva-info">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="row">
-                                                            <div class="col-sm-3">
-                                                                 <div class="flexslider">
-                                                                      <ul class="slides">
-                                                                      {foreach from=$apartamento['adjuntos'] item=imagen}
-                                                                        <li class="slide">
-                                                                          <img src="{$template_url}{$imagen->ruta}">  
-                                                                        </li>
-                                                                      {/foreach}
-                                                                      </ul>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="reserva-description col-sm-9">
-                                                                <h3 class="text-primary">{$apartamento['apartamento']->nombre}</h3>
-                                                                <p class="text-muted">Llegada: {$entrada}</p>
-                                                                <p class="text-muted">Salida: {$salida}</p>
-                                                                <p class="text-muted">{$noches} Noche(s)</p>
-                                                                <p class="text-muted"><strong>{$apartamento['condicion']}</strong></p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                 <div class="flexslider">
+                                                      <ul class="slides">
+                                                      {foreach from=$apartamento['adjuntos'] item=imagen}
+                                                        <li class="slide">
+                                                          <img src="{$template_url}{$imagen->ruta}">  
+                                                        </li>
+                                                      {/foreach}
+                                                      </ul>
+                                                    </div>
+                                            </div>
+                                            <div class="reserva-description col-sm-9">
+                                                <h3 class="text-primary">{$apartamento['apartamento']->nombre}</h3>
+                                                <p class="text-muted">Llegada: {$entrada}</p>
+                                                <p class="text-muted">Salida: {$salida}</p>
+                                                <p class="text-muted">{$noches} Noche(s)</p>
+                                                <p class="text-muted"><strong>{$apartamento['condicion']}</strong></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
