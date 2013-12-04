@@ -28,20 +28,29 @@ class Core_Controller {
     }
 
     public function clean_vars() {
+        
+        global $nonFilterParams;
+        
         if ($_POST && is_array($_POST) && count($_POST) > 0) {
             foreach ($_POST as $p_k => $p_v) {
+                if(in_array($p_k, $nonFilterParams))
+                    continue;
                 if (is_string($p_v))
                     $_POST[$p_k] = strip_tags($p_v);
             }
         }
         if ($_GET && is_array($_GET) && count($_GET) > 0) {
             foreach ($_GET as $p_k => $p_v) {
+                if(in_array($p_k, $nonFilterParams))
+                    continue;
                 if (is_string($p_v))
                     $_GET[$p_k] = strip_tags($p_v);
             }
         }
         if ($_REQUEST && is_array($_REQUEST) && count($_REQUEST) > 0) {
             foreach ($_REQUEST as $p_k => $p_v) {
+                if(in_array($p_k, $nonFilterParams))
+                    continue;
                 if (is_string($p_v))
                     $_REQUEST[$p_k] = strip_tags($p_v);
             }
