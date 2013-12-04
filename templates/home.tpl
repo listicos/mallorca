@@ -65,6 +65,20 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="col-sm-12 form-group">
+                        <label class="control-label col-sm-4">Tipo de propiedad</label>
+                        <div class="col-sm-8">
+                            {foreach from=$tiposApartamento item=tipo}
+                                {if $tipo->apartamentos > 0}
+                                <div class="checkbox-inline">
+                                    <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}" />
+                                    {$tipo->nombre}<strong>({$tipo->apartamentos})</strong>
+                                </div>
+                                {/if}
+                            {/foreach}
+                        </div>
+                    </div>
                     <div class="col-sm-12 form-group">
                         <label class="control-label col-sm-4">Tipo de alojamiento</label>
                         <div class="col-sm-8">
@@ -113,32 +127,6 @@
                                 <a href="#" id="moreFiltersBtn" class="btn btn-default">MAS</a>
                             </div>
                             
-                        </div>
-                    </div>
-                    <div class="col-sm-12 form-group">
-                        <label class="control-label col-sm-4">Tipo de propiedad</label>
-                        <div class="col-sm-8">
-                            {foreach from=$tiposApartamento item=tipo}
-                                {if $tipo->apartamentos > 0}
-                                <div class="checkbox-inline">
-                                    <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}" />
-                                    {$tipo->nombre}<strong>({$tipo->apartamentos})</strong>
-                                </div>
-                                {/if}
-                            {/foreach}
-                            <!--
-                            <div class="checkbox-inline">
-                                <input type="checkbox" class="" />
-                                Casa
-                            </div>
-                            <div class="checkbox-inline">
-                                <input type="checkbox" class="" />
-                                Bed & Breakfast
-                            </div>
-                            <div class="checkbox-inline more-checkbox">
-                                <a href="#" class="btn btn-default">MAS</a>
-                            </div>
-                            -->
                         </div>
                     </div>
                 </form>

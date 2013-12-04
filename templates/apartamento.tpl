@@ -24,6 +24,10 @@
        <div class="container row-fluid body-content">
             
             <div class="contenedor-columnas row-fluid">
+            <ol class="breadcrumb">
+              <li><a href="#">Inicio</a></li>
+              <li class="active">{$apartamento['apartamento']->nombre}</li>
+            </ol>
                 <div class="columna-izquierda col-md-8">
                     <div class="titulo row-fluid">
                         <h2>{$apartamento['apartamento']->nombre}</h2>
