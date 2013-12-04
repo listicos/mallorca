@@ -164,9 +164,9 @@ div.leyenda {
 }
 .flexslider .slides img{
     display: block;
-    height: 450px;
+    height: 445px;
     margin: 0 auto;
-    width: 100%;
+    width: auto;
 }
 .flex-control-thumbs li{
     width: 9.5%;
@@ -175,5 +175,33 @@ div.leyenda {
     overflow: hidden;
     margin-bottom: 3px;
     margin-right: .5%;
-    height: 45px;
+    height: 35px;
+}
+.flexslider .slides > li{
+    overflow: hidden;
+}
+@media (max-width: 600px){
+    .flexslider .slides img{
+        height: 375px;
+    }
+}
+@media (max-width: 450px){
+    .flexslider .slides img{
+        height: 325px;
+    }
+}
+@media (max-width: 380px){
+    .flexslider .slides img{
+        height: 275px;
+    }
+}
+@media (max-width: 320px){
+    .flexslider .slides img{
+        height: 200px;
+    }
+}
+@media (max-width: 320px){
+    .flexslider .slides img{
+        height: 150px;
+    }
 }
