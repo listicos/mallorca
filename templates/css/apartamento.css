@@ -184,8 +184,11 @@ div.leyenda {
     cursor: pointer;
     padding: 5px;
 }
-.total-precio-reserva h3{
+.total-precio-reserva h3, .desde-precio-reserva h3{
     margin-bottom: 0;
+}
+.desde-precio-reserva h2{
+    margin-top: 5px;
 }
 @media (max-width: 600px){
     .flexslider .slides img{

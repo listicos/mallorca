@@ -223,12 +223,19 @@
                             <div class="row-fluid">
                                 <div class="precio text-right col-md-12">
                                     <div class="total-precio-reserva" style="display: none;">
-                                        <h3>Total:</h3>
+                                        <h3>Total</h3>
                                         <h1>{$menor_precio}</h1>
                                     </div>
-                                    <div class="desde-precio-reserva" style="display: none;">
-                                        <h3>Desde: {$menor_precio}</h3>
-                                        <h3>Hasta: {$menor_precio}</h3>
+                                    <div class="row desde-precio-reserva" style="display: none;">
+                                        <div class="col-md-6">
+                                            <h3>Desde</h3>
+                                            <h2 id="menor-precio">{$menor_precio}</h2>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3>Hasta</h3>
+                                            <h2 id="mayor-precio">{$menor_precio}</h2>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="contenido-calendario col-md-12">
