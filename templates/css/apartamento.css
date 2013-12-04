@@ -214,6 +214,11 @@ div.leyenda {
 .reserva-hotel-detalles .table{
     border-top: none;
 }
+
+.titulo h2{
+    margin: 0;
+    
+}
 .contenedor-calendario-right{
     margin-top: 70px;
 }

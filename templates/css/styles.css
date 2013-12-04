@@ -514,6 +514,10 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
     padding: 5px 5px;
     border: 0;
 }
+.breadcrumb{
+    margin: 0;
+    
+}
 .panel-default.panel-success > .panel-heading{
     background: #139B00;
 }
