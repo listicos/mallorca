@@ -128,14 +128,14 @@ $edit = $this->getAttribute('edit');
                         </div>             
                         <legend class="legend_custom titulos_legend">Descripción</legend>
                         <div class="row-fluid">
-                            <div class="span8">
+                            <div class="span12">
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="span12 validate[required]" name="descripcionLarga" rows="11" placeholder="Descripción, mínimo 60 palabras"><?php if ($edit) { ?><?php echo $apartamento['apartamento']->descripcionLarga; ?><?php } ?></textarea>                                        
+                                    <textarea class="editor span12 validate[required]" name="descripcionLarga" rows="11" placeholder="Descripción, mínimo 60 palabras"><?php if ($edit) { ?><?php echo $apartamento['apartamento']->descripcionLarga; ?><?php } ?></textarea>                                        
                                    <!-- <p>La descripción debe contener al menos 15 palabras.Las de los
                                         apartamentos más alquilados contienen más de 150 palabras</p>-->
                                 </div>                                     
                             </div>    
-                            <div class="span4">
+                           <!-- <div class="span4">
                                 <div class="row-fluid">
                                     <div class="span6">
                                         <div class="span11 detalles_apartamento_popover">
@@ -168,7 +168,7 @@ $edit = $this->getAttribute('edit');
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                         <legend class="legend_custom titulos_legend">Servicios</legend>
                         <div class="row-fluid">
@@ -192,43 +192,6 @@ $edit = $this->getAttribute('edit');
                                     <?php } ?>
                                 </div>
                             <?php } ?>  
-                        </div>
-                        <legend class="legend_custom">Servicios y accesorios adicionales</legend>
-                        <div class="row-fluid">
-                            <?php foreach ($articulos as $art) { ?>
-                                        <div class="span3 instalaciones_row">
-                                            <div class="control-group">
-                                                <label class="checkbox inline">
-                                                    <input type="checkbox" name="idArticulo[]"  value="<?php echo $art->idArticulo ?>" <?php if ($edit && (in_array($art->idArticulo, $apartamento['articulos']))) { ?> checked="checked" <?php } ?> ><?php echo $art->nombre; ?> (€<?php echo $art->precioBase;?>)
-                                                </label> 
-                                            </div>                                        
-                                        </div>
-                            <?php } ?>
-                        </div>
-                        <legend class="legend_custom">Formas de pago</legend> 
-                        <div class="row-fluid">
-                            <?php foreach ($tipos_pagos as $tpago) { ?>
-                                <div class="span2">
-                                    <div class="control-group">
-                                        <input type="checkbox" name="idPagoTipo[]" class="" value="<?php echo $tpago->idPagoTipo; ?>" <?php if ($edit && (in_array($tpago->idPagoTipo, $apartamento['pagos']))) { ?> checked="checked" <?php } ?> data-prompt-position="topLeft:2%"> <?php echo $tpago->nombre; ?>
-                                    </div> 
-                                </div>    
-                            <?php } ?>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="span4 center">
-                                <div class="control-group">                                    
-                                    <div class="input-prepend center span11" title="Moneda base" data-rel="tooltip">
-                                        <span class="add-on"><i class="other-icon-money"></i></span>
-                                        <select class="input_large span10" name="idMoneda">
-                                            <option value="" disabled selected>Moneda base</option>                                        
-                                            <?php foreach ($monedas as $moneda) { ?>
-                                                <option value="<?php echo $moneda->idMoneda; ?>" <?php if ($edit && ($apartamento['moneda']->idMoneda == $moneda->idMoneda)) { ?> selected="selected" <?php } else { ?> <?php if ($moneda->nombre == 'Euro') echo 'selected="selected"' ?> <?php } ?> > <?php echo $moneda->simbolo . ' ' . $moneda->nombre; ?></option>
-                                            <?php } ?>   
-                                        </select> 
-                                    </div>                                     
-                                </div>
-                            </div>
                         </div>
                         <legend class="legend_custom titulos_legend">Detalles</legend>
                         <div class="row-fluid">

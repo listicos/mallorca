@@ -53,7 +53,7 @@ if($apartamentos){
             $maxPrice = $apartamento->tarifaBase;
         if ($apartamento->tarifaBase < $minPrice)
             $minPrice = $apartamento->tarifaBase;
-
+        /*
         $comments = getOpinionesByApartamento($apartamento->idApartamento);
         $apartamentos_array[$akey]['opiniones'] = $comments;
 
@@ -64,28 +64,28 @@ if($apartamentos){
         }
 
         $apartamentos_array[$akey]['disponibilidades'] = json_encode($ds);
-        
-        $instalaciones_array = array();
+        */
+        /*$instalaciones_array = array();
         $instalaciones_list = getApartamentoInstalacionesByAparatamento($apartamento->idApartamento);
         foreach ($instalaciones_list as $ckey => $instalacio) {
             $instalaciones_array[$ckey] = getInstalacion($instalacio->idInstalacion);
         }
-        $apartamentos_array[$akey]['instalaciones'] = $instalaciones_array;
+        $apartamentos_array[$akey]['instalaciones'] = $instalaciones_array;*/
     }
 }
 $dia_comienzo = date("d-m-Y", mktime(0, 0, 0, date("m"), date("d") + 1, date("y")));
-
+/*
 $disponibilidades = getCalendario();
 $disponibles = array();
 if ($disponibilidades) {
     foreach ($disponibilidades as $d) {
         $disponibles[] = date('Y-n-j', strtotime($d->fechaInicio));
     }
-}
+}*/
 $trash_text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a nisi et purus elementum fermentum a id quam. Curabitur iaculis lacinia massa, a semper arcu sollicitudin et.';
 $smarty->assign('trash_text', $trash_text);
 
-$smarty->assign('disponibles',json_encode($disponibles));
+//$smarty->assign('disponibles',json_encode($disponibles));
 $smarty->assign('apartamentos', $apartamentos_array);
 $smarty->assign('dia_comienzo', $dia_comienzo);
 $smarty->assign('minPrice', $minPrice);

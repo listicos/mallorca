@@ -98,7 +98,7 @@
                         <?php if(hasRoles("Administrador, Comercial, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-complejo-lista"><i class="icon-home"></i><span class="hidden-tablet"> Complejos</span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Socio")) { ?>
+                        <?php if(hasRoles("Administrador, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-empresa-lista"><i class="icon-th-list"></i><span class="hidden-tablet"> Propietarios</span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Socio, Comercial, Mallorca")) { ?>

@@ -1,10 +1,12 @@
 @import "../bootstrap-glyphicons.less";
 body{
     font-family: Arial;
+    background: #FFF;
 }
 h1, h2, h3, h4 {
 font-family: 'Ubuntu Condensed', sans-serif;
 font-weight: bold;
+color: #2f7493;
 }
 .wrapper{
     width: 100%;
@@ -18,6 +20,9 @@ font-weight: bold;
 }
 .checkbox-inline.more-checkbox{
     padding-left: 0;
+}
+.panel-default{
+    margin: 0px;
 }
 .checkbox-inline.more-checkbox a{
     padding: 0 5px;
@@ -48,15 +53,19 @@ font-weight: bold;
 }
 
 /* ============ HEADER ============= */
-.header_container{
 
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+    border-color: #00b3ff;
 }
 .navbar-inverse {
-    background: url("../img/footer_bg.gif") repeat center;
-    border-color: #080808;
+    border-color: #004A6B;
+    background: #555657;
+    border-radius: 0;
+    border: 0;
+    margin-bottom: 5px;
 }
 .navbar-inverse .navbar-nav > li:hover > a{
-    background: #000;
+    background: #2f7493;
     color:#FFF; 
 }
 .header_container .header_enlaces_sociales{
@@ -104,14 +113,24 @@ font-weight: bold;
     margin-left: 0;
 }
 .body-content.home{
-    max-width: 100% !important;
 }
+a{color:#2f7493}
 .body-content{
 
-    max-width: 1460px !important;
+    max-width: 1233px !important;
     margin: 0 auto;
 
-    margin-top: 52px;
+    margin-top: 0px;
+
+    background: #f7f7f7;  
+
+    box-shadow: 0px 0px 3px #000;
+
+    padding-bottom: 20px;
+
+    margin-top: -10px;
+
+    padding-top: 15px;
 
 }
 .logo-title{
@@ -121,7 +140,15 @@ font-weight: bold;
     padding: 0;
     line-height: 30px;
     padding-left: 15px;
-    padding-top: 13px;
+    padding-top: 10px;
+}
+.logo-title img{
+    width: 157px;
+    
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+color: #FFF;
+background-color: #337492;
 }
 /* ========= FOOTER =========== */
 .footer_container{
@@ -136,7 +163,7 @@ font-weight: bold;
     color: #d4d4d4 !important;
 }
 footer.bs-footer{
-    margin-top: 30px;
+    margin-top: 0px;
     color: #868686;
     padding-bottom: 0px;
     text-shadow: 0 1px 1px #000;
@@ -156,15 +183,17 @@ footer .footer-top{
     background: url("../img/footer_bg.gif") repeat center;
     padding: 0 15px;
     padding-bottom: 15px;
+    background: #555657;
 }
 footer .footer-bottom{
-    background: url("../img/footer_bg.gif") repeat center;
     padding: 0 15px;
 
+    background: #464646;
+    border-top: 1px solid #969696;
 }
 footer .footer-bottom .row{
-    background: url("../img/footer_line.gif") repeat-x;
-    padding-top: 11px;
+    padding-top: 3px;
+    background-size: 18px;
 }
 footer .footer-top{
 
@@ -219,7 +248,7 @@ footer .footer_social a:hover{
     background-position: bottom;
 }
 footer .footer-top h3{
-    border-bottom: 1px solid #585853;
+    border-bottom: 1px solid #DFDFDF;
     padding-bottom: 15px;
     margin: 15px 0;
     color: white;
@@ -287,7 +316,6 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
     clear: both;
 }
 .home #mapa{
-    margin-bottom: 20px;
 }
 #details-map-location{
     width: 100%;
@@ -351,6 +379,10 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
 }
 .range-prices-content p.pull-right{
     text-align: right;
+}
+.phone_contact{
+    font-size: 26px;
+    color: #FFF;
 }
 
 #slider-range.ui-slider-horizontal .ui-slider-handle {
@@ -470,7 +502,7 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
     color: #FFF;
 
 
-    background: #3A3A3A;
+    background: #555657;
 
 
 
@@ -479,11 +511,30 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
 
 
     border-color: #DDD;
+    padding: 5px 5px;
+    border: 0;
+}
+.breadcrumb{
+    
+    background: #FFF;
+    margin-bottom: 10px;
+    border: 1px solid #ECECEC;
+}
+.panel-default.panel-success > .panel-heading{
+    background: #139B00;
+}
+.navbar-wrapper{
+    max-width: 1280px;
+    margin: 0 auto;
 }
 .panel-default > .panel-heading h1{
+    color: #FFF;
 
+    font-size: 18px;
 }
-
+.carousel-control.left, .carousel-control.right{
+    background:none;
+}
 /*Preloader*/
 .bubblingG {
 text-align: center;
@@ -639,9 +690,11 @@ transform: translateY(-21px);
         max-width: 100%;
     }
     .navbar-inverse .navbar-nav > li > a{
-        padding-top: 15px;
-        padding-bottom: 16px;
-    }
+        padding-top: 33px;
+        padding-bottom: 33px;
+    
+        color: #F8F8F8;
+}
 }
 @media (max-width: 575px){
     .header_container{

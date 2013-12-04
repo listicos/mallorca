@@ -11,7 +11,7 @@
     <script>
         var minPrice = {$minPrice};
         var maxPrice = {$maxPrice};
-        var disponibles = {$disponibles};
+        /*var disponibles = {$disponibles};*/
     </script>
     <!--<script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
     <script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
@@ -29,9 +29,9 @@
 {block name="content" append}
     <div class="container-liquid  content body-content home">
         <div class="row">
-            <div class="col-sm-5 filtros_main_container">
+            <div class="filtros_main_container">
                 <div class="row form-horizontal filters-content" role="form">
-                <div class="filtros-title">Filtra tu busqueda</div>
+                <h4 class="filtros-title">encontrar mi casa perfecta</h4>
                 <form id="filtrosFrm">
                    <div class="search-slider-content">
                         <div class="form-inline" role="form">
@@ -50,23 +50,37 @@
                             <div class="form-group">
                                 <label class="sr-only" for="huesped">Llegada</label>
                                 <select class="form-control" name="huespedes">
-                                    <option value="1">1 Huésped</option>
-                                    <option value="2">2 Huéspedes</option>
-                                    <option value="3">3 Huéspedes</option>
-                                    <option value="4">4 Huéspedes</option>
-                                    <option value="5">5 Huéspedes</option>
-                                    <option value="6">6 Huéspedes</option>
-                                    <option value="7">7 Huéspedes</option>
-                                    <option value="8">8 Huéspedes</option>
-                                    <option value="9">9 Huéspedes</option>
-                                    <option value="10">10 Huéspedes</option>
-                                    <option value="11">11 Huéspedes</option>
+                                    <option value="1">1 persona</option>
+                                    <option value="2">2 personas</option>
+                                    <option value="3">3 personas</option>
+                                    <option value="4">4 personas</option>
+                                    <option value="5">5 personas</option>
+                                    <option value="6">6 personas</option>
+                                    <option value="7">7 personas</option>
+                                    <option value="8">8 personas</option>
+                                    <option value="9">9 personas</option>
+                                    <option value="10">10 personas</option>
+                                    <option value="11">11 personas</option>
                                 </select>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-sm-12 form-group">
-                        <label class="control-label col-sm-4">Tipo de habitación</label>
+                        <label class="control-label col-sm-4">Tipo de propiedad</label>
+                        <div class="col-sm-8">
+                            {foreach from=$tiposApartamento item=tipo}
+                                {if $tipo->apartamentos > 0}
+                                <div class="checkbox-inline">
+                                    <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}" />
+                                    {$tipo->nombre}<strong>({$tipo->apartamentos})</strong>
+                                </div>
+                                {/if}
+                            {/foreach}
+                        </div>
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <label class="control-label col-sm-4">Tipo de alojamiento</label>
                         <div class="col-sm-8">
                             <div class="btn-group separate-group" data-toggle="buttons">
                                 {if $habitaciones[0]->apartamentos > 0}
@@ -115,50 +129,24 @@
                             
                         </div>
                     </div>
-                    <div class="col-sm-12 form-group">
-                        <label class="control-label col-sm-4">Tipo de propiedad</label>
-                        <div class="col-sm-8">
-                            {foreach from=$tiposApartamento item=tipo}
-                                {if $tipo->apartamentos > 0}
-                                <div class="checkbox-inline">
-                                    <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}" />
-                                    {$tipo->nombre}<strong>({$tipo->apartamentos})</strong>
-                                </div>
-                                {/if}
-                            {/foreach}
-                            <!--
-                            <div class="checkbox-inline">
-                                <input type="checkbox" class="" />
-                                Casa
-                            </div>
-                            <div class="checkbox-inline">
-                                <input type="checkbox" class="" />
-                                Bed & Breakfast
-                            </div>
-                            <div class="checkbox-inline more-checkbox">
-                                <a href="#" class="btn btn-default">MAS</a>
-                            </div>
-                            -->
-                        </div>
-                    </div>
                 </form>
                 </div>
-                <div class="row" id="mapa">
+                <div class="row hidden-sm hidden-xs" id="mapa">
                     <div class="col-md-12">
                         <div id="details-map-location"></div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-7">
+            <div class="house_side">
                 <div class="row home-main-slider">
                     <div class="col-md-12">
                         <h1>Simplemente mejor que un hotel</h1>
                         <p class="slide-order-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 hidden">
                         <div class="form-group">
                             
-                            <select class="form-control hidden" name="order">
+                            <select class="form-control" name="order">
                                 <option value="a.nombre ASC">Nombre (Ascendente)</option>
                                 <option value="a.nombre DESC">Nombre (Descendente)</option>
                                 <option value="d.precio ASC">Precio (Ascendente)</option>
@@ -180,16 +168,9 @@
                                             {foreach from=$a['adjuntos'] item=adjunto name=adjuntos}
                                             <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
                                                 <img src="{$template_url}{$adjunto->ruta}" alt="">
-                                                <div class="carousel-caption">
-                                                    <!--<p>{$a['apartamento']->nombre}</p>-->
-                                                    {if count($a['opiniones'])}
-                                                    <span class="comments-icon">{count($a['opiniones'])}</span>
-                                                    {/if}
-                                                </div>
+                                                <!--<img src="http://mallorca.vikatickets.com/Template/recursos/apartamentos/0bf551bc30d9a412aa471553cb4001d1.jpg">-->
                                             </div>
                                             {/foreach}
-
-
                                         </div>
                                         <div class="back-images layer-1"></div>
                                         <div class="back-images layer-2"></div>
@@ -231,45 +212,14 @@
                                         
 
                                             <div class="price-apto">
-                                                <p class="priceApto">{$a['apartamento']->tarifaBase|number_format:2:",":"."}<small>&euro;</small></p>
-                                                <p class="text-muted">Por&nbsp;noche</p>
+                                                <!--<p class="priceApto"></p>-->
+                                                <p class="text-muted">desde <strong>{$a['apartamento']->tarifaBase|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                                                <p class="text-muted">hasta <strong>{$a['apartamento']->tarifaBase|number_format:2:",":"."}<small>&euro;</small></strong></p>
                                             </div>
-                                        
-                                    
+                                             <div class="acciones-disponibilidad">
+                                    <span><a class="ver-disponibilidad" apartamento-id="{$a['apartamento']->idApartamento}" href="javascript:void(0)" >Disponibilidad</a></span>
+                                    <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reservar</a>
                                 </div>
-                            </div>
-                            <div>
-                                <div>
-                                    <div class="apartamento-descripcion">
-                                        {if count($a['instalaciones']) > 9}
-                                            {assign var="cantidad" value=9}
-                                        {else}
-                                            {assign var="cantidad" value=count($a['instalaciones'])}
-                                        {/if}
-                                        
-                                        <ul>
-                                        {foreach from=$a['instalaciones'] item=instalacion name=servicios}
-                                            {if $smarty.foreach.servicios.iteration <= $cantidad}
-
-                                                <li><img src="{$template_url}/imagen/aceptarGrande.png" width="20px" height="18px"> {$instalacion->nombre}</li>
-
-                                               <!-- {if $smarty.foreach.servicios.iteration - $cantidad / 3 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 >= 0}
-                                                    </ul>
-                                                    <ul class="unstyled col-md-4 pull-center">
-                                                {/if}
-                                                {if $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 < 1 && $smarty.foreach.servicios.iteration - $cantidad / 3 * 2 >= 0}
-                                                    </ul>
-                                                    <ul class="unstyled col-md-4 pull-right">
-                                                {/if}-->
-                                            {/if}
-                                        {/foreach}
-                                        </ul>
-                                    </div>
-                                    
-                                </div>
-                                <div class="acciones-disponibilidad">
-                                    <span><a class="ver-disponibilidad" apartamento-id="{$a['apartamento']->idApartamento}" href="javascript:void(0)" >Ver disponibilidad</a></span>
-                                    <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>
                                 </div>
                             </div>
                         </div>

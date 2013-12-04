@@ -1,17 +1,17 @@
-.container{
-
-}
-.servicios{
-    
+.columna-derecha{
+    margin-top: 20px;
 }
 .servicios .tab-content{
     border: 1px solid #DDD;
     background: #FFF;
     border-top: 0;
 }
-.contenedor-calendario{
+.panel-default{
     background: #FFF;
 
+    margin: 0;
+    margin-bottom: 10px;
+    border: 1px solid #CCC;
 }
 .guardar-anuncio{
     margin-top: 19px;
@@ -32,21 +32,35 @@
 .precio h1{
     margin-top: 0;
     border-bottom: 1px dotted #d1d1d1;
-    margin-bottom: 30px;
+    margin-bottom: 11px;
     padding: 5px 0;
 }
 .contenido-calendario {
-    margin-top: 30px;
+    padding: 0;
 }
 .button-reservalo {
-    margin-top: 10px;
-    height: 65px;
 }
 .descripcion-servicios{
     margin-top: 20px;
 }
 .lista-evaluacion{
     margin-top: 20px;
+}
+#servicios ul{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+#servicios ul li{
+    list-style: none;
+
+    width: 33%;
+    float: left;
+    padding: 8px 0px;
+    font-weight: bold;
 }
 .espacio1{
     margin-top: 15px;
@@ -58,7 +72,7 @@
     padding-top: 20px;
 }
 .panel-titulo{
-    padding-top: 20px;
+    padding-top: 0px;
 }
 .contenido-comentarios1{
     border-top: none;
@@ -74,6 +88,7 @@
     padding: 10px;
     border: 1px solid #dddddd;
     border-top: none;
+    background: #FFF;
 }
 
 #mapa {
@@ -147,4 +162,88 @@ div.leyenda {
 #cercanos .row:last-child {
     border-bottom: none;
     padding-bottom: 0;
+}
+.flexslider .slides img{
+    display: block;
+    height: 445px;
+    margin: 0 auto;
+    width: auto;
+}
+.flex-control-thumbs li{
+    width: 13.78%;
+    float: left;
+    margin: 0;
+    overflow: hidden;
+    margin-bottom: 3px;
+    margin-right: .25%;
+    height: 49px;
+    margin-left: .25%;
+}
+.flexslider .slides > li{
+    overflow: hidden;
+}
+.contenedor-llegada .form-control[readonly]{
+    cursor: pointer;
+    padding: 5px;
+}
+.total-precio-reserva h3, .desde-precio-reserva h3{
+    margin-bottom: 0;
+}
+.desde-precio-reserva, .total-precio-reserva{
+    text-align: center;
+    margin-bottom: 15px;
+}
+.desde-precio-reserva h4, .total-precio-reserva h4{
+    color: #000;
+    font-size: 20px;
+    margin: 15px 0 0;
+    border-top: 2px solid #ddd;
+    padding-top: 10px;
+}
+.desde-precio-reserva small, .total-precio-reserva small{
+    font-size: 10px;
+    font-weight: bold;
+    display: block;
+}
+.reserva-hotel-detalles{
+    margin-top: 20px;
+}
+.reserva-hotel-detalles h4{
+    text-align: center;
+}
+.reserva-hotel-detalles .table{
+    border-top: none;
+}
+
+.titulo h2{
+    margin: 0;
+    
+}
+.contenedor-calendario-right{
+    margin-top: 70px;
+}
+@media (max-width: 600px){
+    .flexslider .slides img{
+        height: 375px;
+    }
+}
+@media (max-width: 450px){
+    .flexslider .slides img{
+        height: 325px;
+    }
+}
+@media (max-width: 380px){
+    .flexslider .slides img{
+        height: 275px;
+    }
+}
+@media (max-width: 320px){
+    .flexslider .slides img{
+        height: 200px;
+    }
+}
+@media (max-width: 320px){
+    .flexslider .slides img{
+        height: 150px;
+    }
 }

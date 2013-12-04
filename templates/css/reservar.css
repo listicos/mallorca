@@ -9,10 +9,10 @@ td.reserva-datos-title div {
     border-radius: 4px 4px 0 0;
     margin: 0 !important;
 }
-
+.flexslider{
+    padding-top: 0px!important;
+}
 .main_content{
-    margin-top: 70px;
-    margin-bottom: 70px;
     padding: 15px;
 }
 .breadcrumb-custom{
@@ -114,6 +114,7 @@ width: 100%;
     margin-top: 0;
     margin-bottom: 5px;
     text-align: center;
+    color: #FFF;
 }
 .reservas-list-main .table thead{
     background: #eeeeee;
@@ -632,7 +633,9 @@ background-position: 153px 32px;
 .validCreditCard {
     background: url(../img/tick.png) right center no-repeat;
 }
-
+.panel.panel-success h3{
+    color: #555657;
+}
 @media (max-width: 570px) {
     .nav.nav-tabs.breadcrumb-custom .bread-row{
         width: 100%;

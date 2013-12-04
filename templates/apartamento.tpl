@@ -2,7 +2,7 @@
 
 {block name="script" append}
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-    <script src="{$template_url}/js/apartamento.js"></script>
+    <script src="{$template_url_s}/js/apartamento.js"></script>
     <script src="{$template_url}/js/admin/calendar/app.js"></script>
     <script src="{$template_url}/js/admin/calendar/breakpoints.js"></script>
     <script src="{$template_url}/js/admin/calendar/calendar.js"></script>
@@ -22,26 +22,29 @@
 
 {block name="content" append}
        <div class="container row-fluid body-content">
-            <div class="titulo row-fluid">
-                <div class="col-xs-12">
-                    <h2>{$apartamento['apartamento']->nombre}</h2>
-                </div>
-            </div>
-            <div class="sub-titulo row-fluid"> 
-                <div class="col-xs-12">      
-                    <h5>
-                        <a href="" class="property-type">{$apartamento['apartamento']->tipo->nombre}</a>
-                        <input type="hidden" name="lat" value="{$apartamento['direccion']->lat}">
-                        <input type="hidden" name="lon" value="{$apartamento['direccion']->lon}">
-                        <span class="middot">·</span>
-                        <span id="display-address" data-location="Riviera Maya, Cancun, Quintana Roo, México">
-                            {$apartamento['direccion']->provincia}, {$apartamento['direccion']->paisNombre}
-                        </span>
-                    </h5>
-                </div>
-            </div>
+            
             <div class="contenedor-columnas row-fluid">
+            <div class="columna-izquierda col-md-12">
+                <ol class="breadcrumb">
+                  <li><a href="{$base_url}">Inicio</a></li>
+                  <li class="active">{$apartamento['apartamento']->nombre}</li>
+                </ol>
+            </div>
                 <div class="columna-izquierda col-md-8">
+                    <div class="titulo row-fluid">
+                        <h2>{$apartamento['apartamento']->nombre}</h2>
+                    </div>
+                    <div class="sub-titulo row-fluid"> 
+                        <h5>
+                            <a href="" class="property-type">{$apartamento['apartamento']->tipo->nombre}</a>
+                            <input type="hidden" name="lat" value="{$apartamento['direccion']->lat}">
+                            <input type="hidden" name="lon" value="{$apartamento['direccion']->lon}">
+                            <span class="middot">·</span>
+                            <span id="display-address" data-location="Riviera Maya, Cancun, Quintana Roo, México">
+                                {$apartamento['direccion']->provincia}, {$apartamento['direccion']->paisNombre}
+                            </span>
+                        </h5>
+                    </div>
                     <div class="container-fotos" id="tabs1">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#carousel-apto"><font><font class="">Casa</font></font></a></li>
@@ -50,32 +53,15 @@
                         </ul>
 
                         <div id="carousel-apto" class="corousel_apartamentos">
-                            <div id="carousel-example-captions" class="carousel slide bs-docs-carousel-example">
-                                <ol class="carousel-indicators">
-                                    {foreach from=$apartamento['adjuntos'] item=adjunto name=fotos}
-                                    <li data-target="#carousel-example-captions" data-slide-to="{$smarty.foreach.fotos.iteration - 1}" class="{if $smarty.foreach.fotos.first}active{/if}"></li>
-                                    
+                            <div class="flexslider">
+                                <ul class="slides">
+                                   {foreach from=$apartamento['adjuntos'] item=adjunto}                                   
+                                      <li data-thumb="{$template_url}/{$adjunto->ruta}">
+                                        <img src="{$template_url}/{$adjunto->ruta}">
+                                      </li>
                                     {/foreach}
-                                </ol>
-                                <div class="carousel-inner">
-                                    {foreach from=$apartamento['adjuntos'] item=adjunto name=fotos}
-                                    <div class="item {if $smarty.foreach.fotos.first}active{/if}">
-                                        <img width="100%" src="{$template_url}/{$adjunto->ruta}" alt="900x500">
-                                        <div class="carousel-caption">
-                                            <!--<h3><font><font>Etiqueta de Primera diapositiva</font></font></h3>
-                                            <p><font><font>Nulla vitae elit libero, un pharetra augue mollis Interdum.</font></font></p>-->
-                                        </div>
-                                    </div>
-                                    {/foreach}
-                                    
-                                </div>
-                                <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
-                                    <span class="icon-prev"></span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
-                                    <span class="icon-next"></span>
-                                </a>
-                            </div>
+                                </ul>
+                              </div>
                         </div>
                                     
                         <div id="mapaContainer" class="mapaContainer ">
@@ -112,11 +98,12 @@
                                     </ul>
                                     <div id="myTabContent" class="tab-content col-md-12">
                                         <div class="tab-pane fade active in row" id="descripcion">
-                                            <p class="col-md-6"> {$apartamento['apartamento']->descripcionLarga} </p>
-                                            <div class="col-md-6 tabla-descripcion">
+                                            <div class="col-md-12"> {$apartamento['apartamento']->descripcionLarga} </div>
+                                            <!--<div class="col-md-6 tabla-descripcion">
                                                 <table class="table table-bordered table-striped">
-                                                    <tbody><tr>
-                                                            <td>Tipo de habitación:</td>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Alojamiento:</td>
                                                             <td class="value">{$apartamento['apartamento']->tipo->nombre}</td>
                                                         </tr>
                                                         <tr>
@@ -149,48 +136,17 @@
                                                         </tr>
 
                                                     </tbody></table>
-                                            </div>
+                                            </div>-->
                                         </div>
                                         <div class="tab-pane fade" id="servicios">
-                                            <ul class="unstyled col-md-4 pull-left">
+                                            <ul class="unstyled pull-left">
                                             {foreach from=$apartamento['instalaciones'] item=instalacion name=servicios}
                                                 
                                             
-                                                <li> <span class="glyphicon glyphicon-adjust"> {$instalacion->nombre}</span></li>
+                                                <li> <img src="{$template_url_s}/img/tick.png"> {$instalacion->nombre}</li>
                                                 
-                                                {if $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 < 1 && $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 >= 0}
-                                                    </ul>
-                                                    <ul class="unstyled col-md-4 pull-center">
-                                                {/if}
-                                                {if $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 * 2 < 1 && $smarty.foreach.servicios.iteration - count($apartamento['instalaciones']) / 3 * 2 >= 0}
-                                                    </ul>
-                                                    <ul class="unstyled col-md-4 pull-right">
-                                                {/if}
-                                            
                                             {/foreach}
                                             </ul>
-                                            <!--
-                                            <ul class="unstyled col-md-4 pull-center">
-                                                <li> <span class="glyphicon glyphicon-adjust"> Edificio con ascenso</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Acceso para discapacitados</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Piscina</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Cocina</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Parking incluido</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Portero</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Gimnasio</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Jacuzzi</span></li>
-                                            </ul> 
-                                            <ul class="unstyled col-md-4 pull-right">
-                                                <li> <span class="glyphicon glyphicon-ban-circle"> Chimenea interior</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Timbre/Interfono inalámbrico</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Desayuno</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Apto para toda la familia</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Apto para eventos</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Lavadora</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Secadora</span></li>
-                                                <li> <span class="glyphicon glyphicon-adjust"> Peluqueria</span></li>
-                                            </ul> 
-                                            -->
                                             <div class="delimiter"></div>
                                         </div>
 
@@ -201,18 +157,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row-fluid">
-                                <div class="col-xs-12">
-                                    &nbsp
-                                </div>
-                            </div>   
                         </div>
                         {if count($apartamento['opiniones'])}
+                        <br />
                         <div class="panel-titulo row-fluid">
-
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Comentarios</h3>
+                                    <h1 class="text-center panel-title">Comentarios</h1>
                                 </div>
                                 <div class="panel-body">
                                     {foreach from=$apartamento['opiniones'] item=opinion}
@@ -231,65 +182,30 @@
                                         <p class="text-right"><strong>{$opinion->fechaCreacion}</strong></p>
                                     </div>
                                     {/foreach}
-                                    
-
-
-                                </div>
-                                <div class="row-fluid col-xs-12">
-                                    <!--<ul class="pagination">
-                                        <li><a href="#">&laquo;</a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">&raquo;</a></li>
-                                    </ul>-->
                                 </div>
                             </div>  
                         </div>
                         {/if}
                     </div>
                 </div>
-
-
-
-                <div class="columna-derecha col-md-4">
+                <div class="columna-derecha col-md-4 contenedor-calendario-right">
                     <div class="contenedor-calendario panel panel-default">
                         <div class="panel-heading">
                             <h1 class="text-center panel-title">Tu reserva</h1>
                         </div>
                         <div class="panel-body">
                             <form class="form-inline" role="form" id="reservaForm">
-                            <div class="contenedor-noche">
-                                <div class="col-md-6">
-                                    <strong>Desde</strong>  
-                                </div>
-                                <div class=" pull-right col-xs-6">
-
-                                    <!--<select class="form-control">
-                                        <option>Por noche</option>
-                                        <option>por semana</option>
-                                        <option>Por mes</option>
-
-                                    </select>-->
-                                </div>
-                            </div>
-                            <div class="precio col-xs-12">
-                                <h1>{$menor_precio}</h1>
-                            </div>
-
                             <div class="contenedor-llegada row-fluid clearfix">
-                                
                                     <div class="form-group col-md-4">
-                                        <label class="sr-only" for="exampleInputEmail2">llegada</label>
-                                        <input type="text" class="form-control validate[required]" id="fechaInicio" value="{if $entrada}{$entrada|date_format:"%e-%m-%Y"}{/if}" placeholder="Llegada" name="fechaInicio">
+                                        <label class="" for="fechaInicio">Llegada</label>
+                                        <input type="text" readonly="true" class="form-control validate[required]" id="fechaInicio" value="{if $entrada}{$entrada|date_format:"%e-%m-%Y"}{/if}" placeholder="Llegada" name="fechaInicio">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label class="sr-only" for="exampleInputEmail2">Salida</label>
-                                        <input type="text" class="form-control validate[required]" id="fechaFinal" value="{if $salida}{$salida|date_format:"%e-%m-%Y"}{/if}" placeholder="Salida" name="fechaFinal">
+                                        <label class="" for="fechaFinal">Salida</label>
+                                        <input type="text" readonly="true" class="form-control validate[required]" id="fechaFinal" value="{if $salida}{$salida|date_format:"%e-%m-%Y"}{/if}" placeholder="Salida" name="fechaFinal">
                                     </div>
                                     <div class="form-group col-md-4">
+                                        <label class="" for="huespedes">Personas</label>
                                         <select class="form-control col-md-4" name="huespedes">
                                             <option {if $huespedes eq 1}selected{/if}>1</option>
                                             <option {if $huespedes eq 2}selected{/if}>2</option>
@@ -311,9 +227,50 @@
                                     </div>
                                      
                             </div>
-                            <div class="contenido-calendario row-fluid">
-                                
-                                <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
+                            <div class="row-fluid">
+                                <div class="precio text-right col-md-12">
+                                    <div class="total-precio-reserva" style="display: none;">
+                                        <h4 class="text-right">Total <span>{$menor_precio}</span></h4>
+                                        <small class="text-right">Impuestos y tasas incuidas<br />Sujeto a disponibilidad</small>
+                                    </div>
+                                    <div class="row desde-precio-reserva" style="display: none;">
+                                        <div class="col-md-12">
+                                            <h4>Desde <span>{$menor_precio}</span> - hasta <span>{$menor_precio}</span></h4>
+                                            <small>impuestos y tasas incuidas, sujeto a disponibilidad</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                            
+                                <div class="contenido-calendario col-md-12">
+                                    <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
+                                </div>
+                                            
+                                <div class="reserva-hotel-detalles">
+                                    <h4>{$apartamento['apartamento']->nombre}</h4>
+                                    <table class="table table-striped table-bordered">
+                                        <tr>
+                                            <td>Tipo de alojamiento:</td>
+                                            <td class="value">{$apartamento['apartamento']->tipo->nombre}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Capacidad:</td>
+                                            <td class="value">{$apartamento['apartamento']->capacidadPersonas} personas</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dormitorios:</td>
+                                            <td class="value">{$apartamento['apartamento']->habitaciones}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Camas:</td>
+                                            <td class="value">{$apartamento['apartamento']->camas}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Baños:</td>
+                                            <td class="value">{$apartamento['apartamento']->banio}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                            
                             </div>
                             </form>  
                         </div>
