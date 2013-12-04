@@ -24,7 +24,7 @@
             <div class="col-md-12 reserva-left-side">
                  <ol class="breadcrumb">
                   <li><a href="{$base_url}">Inicio</a></li>
-                  <li href="{$base_url}/apartamento/id:{$apartamento['apartamento']->id}">{$apartamento['apartamento']->nombre}</li>
+                  <li><a href="{$base_url}/apartamento/id:{$apartamento['apartamento']->idApartamento}">{$apartamento['apartamento']->nombre}</a></li>
                   <li class="active">Reservar</li>
                 </ol>
                     <div class="row reservas-list-main tab-content">
