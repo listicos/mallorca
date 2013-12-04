@@ -182,7 +182,7 @@
                         {/if}
                     </div>
                 </div>
-                <div class="columna-derecha col-md-4">
+                <div class="columna-derecha col-md-4 contenedor-calendario-right">
                     <div class="contenedor-calendario panel panel-default">
                         <div class="panel-heading">
                             <h1 class="text-center panel-title">Tu reserva</h1>
