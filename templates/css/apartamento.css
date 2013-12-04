@@ -180,6 +180,10 @@ div.leyenda {
 .flexslider .slides > li{
     overflow: hidden;
 }
+.contenedor-llegada .form-control[readonly]{
+    cursor: pointer;
+    padding: 5px;
+}
 @media (max-width: 600px){
     .flexslider .slides img{
         height: 375px;

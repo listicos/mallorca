@@ -25,20 +25,20 @@
             
             <div class="contenedor-columnas row-fluid">
                 <div class="columna-izquierda col-md-8">
-                <div class="titulo row-fluid">
-                    <h2>{$apartamento['apartamento']->nombre}</h2>
-            </div>
-            <div class="sub-titulo row-fluid"> 
-                <h5>
-                    <a href="" class="property-type">{$apartamento['apartamento']->tipo->nombre}</a>
-                    <input type="hidden" name="lat" value="{$apartamento['direccion']->lat}">
-                    <input type="hidden" name="lon" value="{$apartamento['direccion']->lon}">
-                    <span class="middot">·</span>
-                    <span id="display-address" data-location="Riviera Maya, Cancun, Quintana Roo, México">
-                        {$apartamento['direccion']->provincia}, {$apartamento['direccion']->paisNombre}
-                    </span>
-                </h5>
-            </div>
+                    <div class="titulo row-fluid">
+                        <h2>{$apartamento['apartamento']->nombre}</h2>
+                    </div>
+                    <div class="sub-titulo row-fluid"> 
+                        <h5>
+                            <a href="" class="property-type">{$apartamento['apartamento']->tipo->nombre}</a>
+                            <input type="hidden" name="lat" value="{$apartamento['direccion']->lat}">
+                            <input type="hidden" name="lon" value="{$apartamento['direccion']->lon}">
+                            <span class="middot">·</span>
+                            <span id="display-address" data-location="Riviera Maya, Cancun, Quintana Roo, México">
+                                {$apartamento['direccion']->provincia}, {$apartamento['direccion']->paisNombre}
+                            </span>
+                        </h5>
+                    </div>
                     <div class="container-fotos" id="tabs1">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#carousel-apto"><font><font class="">Casa</font></font></a></li>
@@ -190,14 +190,15 @@
                             <form class="form-inline" role="form" id="reservaForm">
                             <div class="contenedor-llegada row-fluid clearfix">
                                     <div class="form-group col-md-4">
-                                        <label class="sr-only" for="exampleInputEmail2">llegada</label>
-                                        <input type="text" class="form-control validate[required]" id="fechaInicio" value="{if $entrada}{$entrada|date_format:"%e-%m-%Y"}{/if}" placeholder="Llegada" name="fechaInicio">
+                                        <label class="" for="fechaInicio">Llegada</label>
+                                        <input type="text" readonly="true" class="form-control validate[required]" id="fechaInicio" value="{if $entrada}{$entrada|date_format:"%e-%m-%Y"}{/if}" placeholder="Llegada" name="fechaInicio">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label class="sr-only" for="exampleInputEmail2">Salida</label>
-                                        <input type="text" class="form-control validate[required]" id="fechaFinal" value="{if $salida}{$salida|date_format:"%e-%m-%Y"}{/if}" placeholder="Salida" name="fechaFinal">
+                                        <label class="" for="fechaFinal">Salida</label>
+                                        <input type="text" readonly="true" class="form-control validate[required]" id="fechaFinal" value="{if $salida}{$salida|date_format:"%e-%m-%Y"}{/if}" placeholder="Salida" name="fechaFinal">
                                     </div>
                                     <div class="form-group col-md-4">
+                                        <label class="" for="huespedes">Huéspedes</label>
                                         <select class="form-control col-md-4" name="huespedes">
                                             <option {if $huespedes eq 1}selected{/if}>1</option>
                                             <option {if $huespedes eq 2}selected{/if}>2</option>
