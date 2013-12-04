@@ -25,7 +25,7 @@
             
             <div class="contenedor-columnas row-fluid">
             <ol class="breadcrumb">
-              <li><a href="#">Inicio</a></li>
+              <li><a href="{$base_url}">Inicio</a></li>
               <li class="active">{$apartamento['apartamento']->nombre}</li>
             </ol>
                 <div class="columna-izquierda col-md-8">
