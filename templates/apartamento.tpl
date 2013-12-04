@@ -97,7 +97,7 @@
                                                 <table class="table table-bordered table-striped">
                                                     <tbody>
                                                         <tr>
-                                                            <td>Tipo de habitación:</td>
+                                                            <td>Alojamiento:</td>
                                                             <td class="value">{$apartamento['apartamento']->tipo->nombre}</td>
                                                         </tr>
                                                         <tr>
@@ -242,7 +242,7 @@
                                 <div class="reserva-hotel-detalles">
                                     <table class="table table-striped table-bordered">
                                         <tr>
-                                            <td>Tipo de habitación:</td>
+                                            <td>Alojamiento:</td>
                                             <td class="value">{$apartamento['apartamento']->tipo->nombre}</td>
                                         </tr>
                                         <tr>
