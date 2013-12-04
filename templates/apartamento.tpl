@@ -92,8 +92,8 @@
                                     </ul>
                                     <div id="myTabContent" class="tab-content col-md-12">
                                         <div class="tab-pane fade active in row" id="descripcion">
-                                            <div class="col-md-6"> {$apartamento['apartamento']->descripcionLarga} </div>
-                                            <div class="col-md-6 tabla-descripcion">
+                                            <div class="col-md-12"> {$apartamento['apartamento']->descripcionLarga} </div>
+                                            <!--<div class="col-md-6 tabla-descripcion">
                                                 <table class="table table-bordered table-striped">
                                                     <tbody>
                                                         <tr>
@@ -130,7 +130,7 @@
                                                         </tr>
 
                                                     </tbody></table>
-                                            </div>
+                                            </div>-->
                                         </div>
                                         <div class="tab-pane fade" id="servicios">
                                             <ul class="unstyled pull-left">
@@ -199,7 +199,7 @@
                                         <input type="text" readonly="true" class="form-control validate[required]" id="fechaFinal" value="{if $salida}{$salida|date_format:"%e-%m-%Y"}{/if}" placeholder="Salida" name="fechaFinal">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label class="" for="huespedes">Huéspedes</label>
+                                        <label class="" for="huespedes">Personas</label>
                                         <select class="form-control col-md-4" name="huespedes">
                                             <option {if $huespedes eq 1}selected{/if}>1</option>
                                             <option {if $huespedes eq 2}selected{/if}>2</option>
@@ -240,9 +240,10 @@
                                 </div>
                                             
                                 <div class="reserva-hotel-detalles">
+                                    <h4>{$apartamento['apartamento']->nombre}</h4>
                                     <table class="table table-striped table-bordered">
                                         <tr>
-                                            <td>Alojamiento:</td>
+                                            <td>Tipo de alojamiento:</td>
                                             <td class="value">{$apartamento['apartamento']->tipo->nombre}</td>
                                         </tr>
                                         <tr>

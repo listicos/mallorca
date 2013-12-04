@@ -209,6 +209,9 @@ div.leyenda {
 .reserva-hotel-detalles{
     margin-top: 20px;
 }
+.reserva-hotel-detalles h4{
+    text-align: center;
+}
 .reserva-hotel-detalles .table{
     border-top: none;
 }
