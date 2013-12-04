@@ -92,7 +92,7 @@
                                     </ul>
                                     <div id="myTabContent" class="tab-content col-md-12">
                                         <div class="tab-pane fade active in row" id="descripcion">
-                                            <p class="col-md-6"> {$apartamento['apartamento']->descripcionLarga} </p>
+                                            <div class="col-md-6"> {$apartamento['apartamento']->descripcionLarga} </div>
                                             <div class="col-md-6 tabla-descripcion">
                                                 <table class="table table-bordered table-striped">
                                                     <tbody><tr>
