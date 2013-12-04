@@ -95,7 +95,8 @@
                                             <div class="col-md-6"> {$apartamento['apartamento']->descripcionLarga} </div>
                                             <div class="col-md-6 tabla-descripcion">
                                                 <table class="table table-bordered table-striped">
-                                                    <tbody><tr>
+                                                    <tbody>
+                                                        <tr>
                                                             <td>Tipo de habitación:</td>
                                                             <td class="value">{$apartamento['apartamento']->tipo->nombre}</td>
                                                         </tr>
@@ -227,20 +228,54 @@
                                         <h1>{$menor_precio}</h1>
                                     </div>
                                     <div class="row desde-precio-reserva" style="display: none;">
-                                        <div class="col-md-6">
-                                            <h3>Desde</h3>
-                                            <h2 id="menor-precio">{$menor_precio}</h2>
+                                        <div class="col-md-12">
+                                            <h4>Desde <span>{$menor_precio}</span> - hasta <span>{$menor_precio}</span></h4>
+                                            <small>impuestos y tasas incuidas, sujeto a disponibilidad</small>
                                         </div>
-                                        <div class="col-md-6">
-                                            <h3>Hasta</h3>
-                                            <h2 id="mayor-precio">{$menor_precio}</h2>
-                                        </div>
-                                        
                                     </div>
                                 </div>
+                                            
                                 <div class="contenido-calendario col-md-12">
                                     <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
                                 </div>
+                                            
+                                <div class="reserva-hotel-detalles">
+                                    <table class="table table-striped table-bordered">
+                                        <tr>
+                                            <td>Tipo de habitación:</td>
+                                            <td class="value">{$apartamento['apartamento']->tipo->nombre}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Capacidad:</td>
+                                            <td class="value">{$apartamento['apartamento']->capacidadPersonas} personas</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dormitorios:</td>
+                                            <td class="value">{$apartamento['apartamento']->habitaciones}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Camas:</td>
+                                            <td class="value">{$apartamento['apartamento']->camas}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Baños:</td>
+                                            <td class="value">{$apartamento['apartamento']->banio}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Personas adicionales:</td>
+                                            <td class="value"><span id="extra_people_price_string">Sin cargo</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tarifa semanal:</td>
+                                            <td class="value"><span id="weekly_price_string">${$apartamento['apartamento']->tarifaSemana}</span> /semana</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tarifa mensual:</td>
+                                            <td class="value"><span id="monthly_price_string">${$apartamento['apartamento']->tarifaMes}</span> /mes</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                            
                             </div>
                             </form>  
                         </div>
