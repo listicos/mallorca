@@ -225,7 +225,7 @@
                                 <div class="precio text-right col-md-12">
                                     <div class="total-precio-reserva" style="display: none;">
                                         <h4 class="text-right">Total <span>{$menor_precio}</span></h4>
-                                        <small class="text-right">Impuestos y tasas incuidas. <br />Sujeto a disponibilidad</small>
+                                        <small class="text-right">Impuestos y tasas incuidas<br />Sujeto a disponibilidad</small>
                                     </div>
                                     <div class="row desde-precio-reserva" style="display: none;">
                                         <div class="col-md-12">

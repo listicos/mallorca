@@ -32,13 +32,6 @@
                 <li><a href="#">ENG</a></li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">EUR € <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">USD $</a></li>
-                <li><a href="#">GBP £</a></li>
-              </ul>
-            </li>
           </ul>
         </div>
         </div>
