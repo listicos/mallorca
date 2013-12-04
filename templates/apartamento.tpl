@@ -224,8 +224,8 @@
                             <div class="row-fluid">
                                 <div class="precio text-right col-md-12">
                                     <div class="total-precio-reserva" style="display: none;">
-                                        <h3>Total</h3>
-                                        <h1>{$menor_precio}</h1>
+                                        <h4 class="text-right">Total <span>{$menor_precio}</span></h4>
+                                        <small class="text-right">impuestos y tasas incuidas, sujeto a disponibilidad</small>
                                     </div>
                                     <div class="row desde-precio-reserva" style="display: none;">
                                         <div class="col-md-12">
