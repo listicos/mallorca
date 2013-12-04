@@ -20,7 +20,6 @@ class Core_template {
 
         $this->template_path = $template_dir . DIRECTORY_SEPARATOR . $template;  
         
-        $this->alerts = AlertsManager::getAlerts();
     }
 
     public function setTemplate($template) {

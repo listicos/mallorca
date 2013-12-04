@@ -9,7 +9,4 @@ include 'Util/PaginatorSimpleMobile.php';
 include 'Util/General.php';
 include 'Util/Click.php';
 include 'Mailer.php';
-include 'AlertsManager.php';
-include 'PdfWriter.php';
-
 ?>
