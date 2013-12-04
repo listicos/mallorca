@@ -16,6 +16,7 @@ class SqlQuery{
 	 * @param String $txt zapytanie sql
 	 */
 	function SqlQuery($txt){
+		var_dump($txt);
 		$this->txt = $txt;
 	}
 
