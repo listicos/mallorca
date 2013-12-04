@@ -13,8 +13,11 @@ $template->setAttribute('is_visible_sidebar', true);
 $template->setTitle("Detalles del apartamento");
 $template->setView('admin/apartamento/gestion.php');
 $template->setJS('admin/dropzone.js');
+$template->setJS('../ckeditor/ckeditor.js');
+$template->setJS('../ckeditor/adapters/jquery.js');
 $template->setJS('admin/gestion.js');
 $template->setCSS('dropzone.css');
+$template->setCSS('ckeditor.css');
 
 if (isset($_GET['id'])) {
     $idApartamento = $_GET['id'];

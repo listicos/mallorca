@@ -32,7 +32,7 @@ $(document).ready(function(){
     App.init();
     Calendar.init();
     
-    
+    $( 'textarea.editor' ).ckeditor();
 
     $('.detalles_apartamento_nav a').click(function (e) {
         e.preventDefault();

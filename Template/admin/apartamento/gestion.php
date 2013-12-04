@@ -130,7 +130,7 @@ $edit = $this->getAttribute('edit');
                         <div class="row-fluid">
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="span12 validate[required]" name="descripcionLarga" rows="11" placeholder="Descripción, mínimo 60 palabras"><?php if ($edit) { ?><?php echo $apartamento['apartamento']->descripcionLarga; ?><?php } ?></textarea>                                        
+                                    <textarea class="editor span12 validate[required]" name="descripcionLarga" rows="11" placeholder="Descripción, mínimo 60 palabras"><?php if ($edit) { ?><?php echo $apartamento['apartamento']->descripcionLarga; ?><?php } ?></textarea>                                        
                                    <!-- <p>La descripción debe contener al menos 15 palabras.Las de los
                                         apartamentos más alquilados contienen más de 150 palabras</p>-->
                                 </div>                                     
