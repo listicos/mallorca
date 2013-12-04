@@ -46,7 +46,7 @@
                             <li><a href="#calendarioContainer"><font><font class="">Calendario</font></font></a></li>
                         </ul>
 
-                        <div id="flexslider-apto">
+                        <div id="carousel-apto" class="corousel_apartamentos">
                             <div class="flexslider">
                                 <ul class="slides">
                                    {foreach from=$apartamento['adjuntos'] item=adjunto}                                   
