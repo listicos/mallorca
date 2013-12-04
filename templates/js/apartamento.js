@@ -1,34 +1,34 @@
 $(initApartamento);
 
 function initApartamento() {
-    
+
     //tabs
-    $('#tabs1 ul.nav.nav-tabs a').on('click', function(e){
+    $('#tabs1 ul.nav.nav-tabs a').on('click', function(e) {
         e.preventDefault();
-        if(!$(this).parent().hasClass('active')) {
+        if (!$(this).parent().hasClass('active')) {
             ant = $('ul.nav.nav-tabs li.active a').attr('href');
             console.log(ant);
             $('ul.nav.nav-tabs li.active').removeClass('active');
             $(ant).hide();
             $(this).parent().addClass('active');
             $($(this).attr('href')).show();
-            if($(this).attr('href').replace('#', "") == 'mapaContainer' && !mapa) {
+            if ($(this).attr('href').replace('#', "") == 'mapaContainer' && !mapa) {
                 initialize();
                 mapa = true;
             }
-            if($(this).attr('href').replace('#', "") == 'calendarioContainer' && !calendar) {
+            if ($(this).attr('href').replace('#', "") == 'calendarioContainer' && !calendar) {
                 initCalendar();
                 calendar = true;
             }
         }
     });
-    
+
     FechasReserva();
-    
-    $('#reservaForm').on('submit', function(e){
+
+    $('#reservaForm').on('submit', function(e) {
         e.preventDefault();
         _valid = $(this).validationEngine('validate');
-        if(_valid) {
+        if (_valid) {
             data = $(this).serialize();
             $.ajax({
                 url: BASE_URL + '/ajax-apartamento',
@@ -36,15 +36,21 @@ function initApartamento() {
                 type: 'post',
                 dataType: 'json',
                 success: function(response) {
-                    if(response.msg == 'ok') {
+                    if (response.msg == 'ok') {
                         window.location = BASE_URL + '/reservas/id:' + $('input[name=idApartamento]').val();
                     }
                 }
             })
         }
     })
-    
-    
+
+    $('.flexslider').flexslider({
+        animation: "fade",
+        controlNav: "thumbnails",
+        start: function(slider) {
+
+        }
+    });
 }
 
 var mapa, calendar;
@@ -61,14 +67,14 @@ function initialize() {
         position: myLatlng,
         map: map
     });
-    
+
     google.maps.event.trigger(map, 'resize');
     map.setCenter(myLatlng);
 }
 
 function initCalendar() {
     $.ajax({
-       dataType: "json",
+        dataType: "json",
         url: BASE_URL + "/ajax-calendario",
         type: "POST",
         data: {
@@ -76,15 +82,15 @@ function initCalendar() {
             action: 'getTarifas'
         },
         success: function(response) {
-            if(response.msg == 'ok'){
+            if (response.msg == 'ok') {
                 var _tarifas = response.tarifas
-                if(_tarifas.length > 0){
+                if (_tarifas.length > 0) {
                     var tarifas_array = [];
-                    for(var i=0;i < _tarifas.length;i++){
+                    for (var i = 0; i < _tarifas.length; i++) {
                         var tarifa_temp;
-                        var price = _tarifas[i].precio ? _tarifas[i].precio+"€" : " 0,00€";
+                        var price = _tarifas[i].precio ? _tarifas[i].precio + "€" : " 0,00€";
 
-                        if(_tarifas[i].estatus == 'disponible')
+                        if (_tarifas[i].estatus == 'disponible')
                             tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('green')};
                         else
                             tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('red')};
@@ -92,10 +98,10 @@ function initCalendar() {
                         tarifas_array.push(tarifa_temp)
                     }
                     setTarifasToCalendar(tarifas_array);
-                }else{
+                } else {
                     setTarifasToCalendar();
                 }
-            }else{
+            } else {
                 setTarifasToCalendar();
             }
         }
@@ -103,7 +109,7 @@ function initCalendar() {
 }
 
 
-function setTarifasToCalendar(tarifas){
+function setTarifasToCalendar(tarifas) {
     h = {
         left: 'title',
         center: '',
@@ -111,7 +117,7 @@ function setTarifasToCalendar(tarifas){
     }
     $('#calendar').removeClass("mobile");
     $('#calendar').fullCalendar('destroy');
-    if(tarifas){
+    if (tarifas) {
         console.log('tarifas');
         $('#calendar').fullCalendar({
             header: h,
@@ -121,7 +127,7 @@ function setTarifasToCalendar(tarifas){
             droppable: false,
             events: tarifas
         });
-    }else{
+    } else {
         console.log('no tarifas');
         $('#calendar').fullCalendar({
             header: h,
@@ -134,16 +140,16 @@ function setTarifasToCalendar(tarifas){
 }
 
 function FechasReserva() {
-    
-    for(i=0;i<FECHAS_DISPONIBLES.length;i++)
+
+    for (i = 0; i < FECHAS_DISPONIBLES.length; i++)
         FECHAS_DISPONIBLES[i] = new Date(FECHAS_DISPONIBLES[i]).getTime();
-    
-    var date_now = new Date(new Date().setDate(new Date().getDate()-1));
+
+    var date_now = new Date(new Date().setDate(new Date().getDate() - 1));
     $('#fechaInicio').datepicker({
-        format: "dd-mm-yyyy",     
+        format: "dd-mm-yyyy",
         autoclose: true,
-        beforeShowDay: function (date){
-            return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1 ;
+        beforeShowDay: function(date) {
+            return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1;
         },
         enableDates: FECHAS_DISPONIBLES
     }).on('changeDate', function(ev) {
@@ -152,22 +158,22 @@ function FechasReserva() {
     });
 
     $('#fechaInicio').datepicker('setStartDate', date_now);
-    
+
 
     $('#fechaFinal').datepicker({
         format: "dd-mm-yyyy",
         autoclose: true,
-        beforeShowDay: function (date){
-            return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1 ;
+        beforeShowDay: function(date) {
+            return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1;
         },
         enableDates: FECHAS_DISPONIBLES
     }).on('changeDate', function(ev) {
         $('#fechaInicio').datepicker('setEndDate', new Date(new Date().setDate(new Date(ev.date).getDate())));
-        
+
     });
     $('#fechaFinal').datepicker('setStartDate', new Date(new Date().setDate(new Date().getDate())));
-    
-    if($('#fechaInicio').val() != "") {
+
+    if ($('#fechaInicio').val() != "") {
         fecha = $('#fechaInicio').val().split("-");
         date = new Date();
         date.setFullYear(fecha[2]);
@@ -175,7 +181,7 @@ function FechasReserva() {
         date.setDate(fecha[0]);
         $('#fechaFinal').datepicker('setStartDate', new Date(new Date().setDate(new Date(date).getDate())));
     }
-    if($('#fechaFinal').val() != "") {
+    if ($('#fechaFinal').val() != "") {
         fecha = $('#fechaFinal').val().split("-");
         date = new Date();
         date.setFullYear(fecha[2]);
@@ -184,11 +190,11 @@ function FechasReserva() {
         $('#fechaInicio').datepicker('setEndDate', new Date(new Date().setDate(new Date(date).getDate() - 1)));
     }
 
-    $('#fechaInicio, #fechaFinal, select[name=huespedes]').on('change',function(){
-      calcularTotal();  
+    $('#fechaInicio, #fechaFinal, select[name=huespedes]').on('change', function() {
+        calcularTotal();
     });
 
-    
+
 }
 
 function calcularTotal() {

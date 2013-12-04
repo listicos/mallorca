@@ -46,33 +46,16 @@
                             <li><a href="#calendarioContainer"><font><font class="">Calendario</font></font></a></li>
                         </ul>
 
-                        <div id="carousel-apto" class="corousel_apartamentos">
-                            <div id="carousel-example-captions" class="carousel slide bs-docs-carousel-example">
-                                <ol class="carousel-indicators">
-                                    {foreach from=$apartamento['adjuntos'] item=adjunto name=fotos}
-                                    <li data-target="#carousel-example-captions" data-slide-to="{$smarty.foreach.fotos.iteration - 1}" class="{if $smarty.foreach.fotos.first}active{/if}"></li>
-                                    
+                        <div id="flexslider-apto">
+                            <div class="flexslider">
+                                <ul class="slides">
+                                   {foreach from=$apartamento['adjuntos'] item=adjunto}                                   
+                                      <li data-thumb="{$template_url}/{$adjunto->ruta}">
+                                        <img src="{$template_url}/{$adjunto->ruta}">
+                                      </li>
                                     {/foreach}
-                                </ol>
-                                <div class="carousel-inner">
-                                    {foreach from=$apartamento['adjuntos'] item=adjunto name=fotos}
-                                    <div class="item {if $smarty.foreach.fotos.first}active{/if}">
-                                        <img width="100%" src="{$template_url}/{$adjunto->ruta}" alt="900x500">
-                                        <div class="carousel-caption">
-                                            <!--<h3><font><font>Etiqueta de Primera diapositiva</font></font></h3>
-                                            <p><font><font>Nulla vitae elit libero, un pharetra augue mollis Interdum.</font></font></p>-->
-                                        </div>
-                                    </div>
-                                    {/foreach}
-                                    
-                                </div>
-                                <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
-                                    <span class="icon-prev"></span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
-                                    <span class="icon-next"></span>
-                                </a>
-                            </div>
+                                </ul>
+                              </div>
                         </div>
                                     
                         <div id="mapaContainer" class="mapaContainer ">
