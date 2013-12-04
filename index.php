@@ -7,15 +7,15 @@ include('config.php');
 include 'Core/Include.php';
 require 'Lib/smarty/Smarty.class.php';
 
-if(substr_count($_SERVER['REQUEST_URI'], "admin-") > 0) {
+if(substr_count($_SERVER['REQUEST_URI'], "/admin-") == 0) {
 
-$smarty = new Smarty();
-$smarty->debugging = false;
-$smarty->caching = false;
-$smarty->cache_lifetime = 120;
-$smarty->assign("base_url",$base_url);
-$smarty->assign("template_url",$template_url);
-$smarty->assign("template_url_s",$template_url_s);
+    $smarty = new Smarty();
+    $smarty->debugging = false;
+    $smarty->caching = false;
+    $smarty->cache_lifetime = 120;
+    $smarty->assign("base_url",$base_url);
+    $smarty->assign("template_url",$template_url);
+    $smarty->assign("template_url_s",$template_url_s);
 }
 
 $controller = new Core_Controller();
