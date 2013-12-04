@@ -222,7 +222,14 @@
                             </div>
                             <div class="row-fluid">
                                 <div class="precio text-right col-md-12">
-                                <h1>{$menor_precio}</h1>
+                                    <div class="total-precio-reserva" style="display: none;">
+                                        <h3>Total:</h3>
+                                        <h1>{$menor_precio}</h1>
+                                    </div>
+                                    <div class="desde-precio-reserva" style="display: none;">
+                                        <h3>Desde: {$menor_precio}</h3>
+                                        <h3>Hasta: {$menor_precio}</h3>
+                                    </div>
                                 </div>
                                 <div class="contenido-calendario col-md-12">
                                     <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>

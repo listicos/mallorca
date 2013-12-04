@@ -192,9 +192,10 @@ function FechasReserva() {
 
     $('#fechaInicio, #fechaFinal, select[name=huespedes]').on('change', function() {
         calcularTotal();
+        checkForTotaltext();
     });
 
-
+    checkForTotaltext();
 }
 
 function calcularTotal() {
@@ -209,4 +210,12 @@ function calcularTotal() {
         }
     });
 }
-
+function checkForTotaltext(){
+    if ($('#fechaInicio').val() != "" || $('#fechaFinal').val() != ""){
+        $('.desde-precio-reserva').hide();
+        $('.total-precio-reserva').show();
+    }else{
+        $('.total-precio-reserva').hide();
+        $('.desde-precio-reserva').show();
+    }
+}
