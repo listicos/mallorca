@@ -171,13 +171,14 @@ div.leyenda {
     width: auto;
 }
 .flex-control-thumbs li{
-    width: 9.5%;
+    width: 13.78%;
     float: left;
     margin: 0;
     overflow: hidden;
     margin-bottom: 3px;
-    margin-right: .5%;
-    height: 35px;
+    margin-right: .25%;
+    height: 49px;
+    margin-left: .25%;
 }
 .flexslider .slides > li{
     overflow: hidden;
