@@ -59,6 +59,7 @@ function initialize() {
     var myLatlng = new google.maps.LatLng($('input[name=lat]').val(), $('input[name=lon]').val());
     var mapOptions = {
         zoom: 15,
+        'scrollwheel': false,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         center: myLatlng
     }
