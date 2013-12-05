@@ -50,8 +50,12 @@
 
 
                         <div class="price-apto">
-                            <p class="text-muted">desde <strong>{$a->tarifaBase|number_format:2:",":"."}<small>&euro;</small></strong></p>
-                            <p class="text-muted">hasta <strong>{$a->tarifaBase|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                            {if $a->precioMinimo || $a->precioMaximo}
+                            <p class="text-muted">desde <strong>{$a->precioMinimo|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                            <p class="text-muted">hasta <strong>{$a->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                            {else}
+                                <p class="text-muted">No disponible</p>
+                            {/if}
                         </div>
 
                         <div class="acciones-disponibilidad">

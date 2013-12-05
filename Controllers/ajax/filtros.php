@@ -58,11 +58,9 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
         $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, $alojamientos, $start, 10, $order, $bounds);
         foreach ($apartamentos as $apto) {
             $apto->tipo = getTipoApartamento($apto->idApartamentosTipo)->nombre;
-            if($apto->precioPorNoche) {
-                $apto->precio_base_format = '€'.money_format('%i', $apto->precioPorNoche) ;
-            } else {
-                $apto->precio_base_format = 'No disponible';
-            }
+            $rangoPrecios = getRangoPreciosByApartamento($apto->idApartamento, $fechaInicio ? : date('Y-m-d'), $fechaFinal ? : 0);
+            $apto->precioMinimo = $rangoPrecios[0];
+            $apto->precioMaximo = $rangoPrecios[1];
             /*
             $opiniones = getOpinionesByApartamento($apartamento->idApartamento);
             $apto->opiniones = count($opiniones);

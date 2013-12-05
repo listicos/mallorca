@@ -69,16 +69,22 @@
                     <div class="col-sm-12 form-group">
                         <label class="control-label col-sm-4">Tipo de propiedad</label>
                         <div class="col-sm-8">
-                            {foreach from=$tiposApartamento item=tipo}
-                                {if $tipo->apartamentos > 0}
-                                <div class="checkbox-inline">
-                                    <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}" />
-                                    {$tipo->nombre}<strong>({$tipo->apartamentos})</strong>
-                                </div>
-                                {/if}
-                            {/foreach}
+                            <div class="btn-group separate-group" data-toggle="buttons">
+                                {foreach from=$tiposApartamento item=tipo}
+                                    {if $tipo->apartamentos > 0}
+                                        <label class="btn btn-default">
+                                            <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}" />
+                                            <div class="text-center">
+                                              <span>{$tipo->nombre}<strong>({$tipo->apartamentos})</strong></span>
+                                            </div>
+                                            
+                                        </label>
+                                    {/if}
+                                {/foreach}
+                            </div>
                         </div>
                     </div>
+                    <!--
                     <div class="col-sm-12 form-group">
                         <label class="control-label col-sm-4">Tipo de alojamiento</label>
                         <div class="col-sm-8">
@@ -95,10 +101,10 @@
                                 {if $habitaciones[1]->apartamentos > 0}
                                   <label class="btn btn-default" id="rural">
                                         <input type="checkbox" name="alojamientos[]" id="option2" value="2">
-                                    <div class="text-center">
+                                        <div class="text-center">
                                           <img src="{$template_url_s}/img/icon-rural.png" alt="">
                                           <span>Turismo rural<strong>({$habitaciones[1]->apartamentos})</strong></span>
-                                      </div>
+                                        </div>
                                   </label>
                                 {/if}
                             </div>
@@ -106,7 +112,7 @@
                               
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="col-sm-12 form-group">
                         <label class="control-label col-sm-4">Servicios</label>
                         <div class="col-sm-8" id="filtrosServicios">
@@ -212,9 +218,12 @@
                                         
 
                                             <div class="price-apto">
-                                                <!--<p class="priceApto"></p>-->
-                                                <p class="text-muted">desde <strong>{$a['apartamento']->tarifaBase|number_format:2:",":"."}<small>&euro;</small></strong></p>
-                                                <p class="text-muted">hasta <strong>{$a['apartamento']->tarifaBase|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                                                {if $a['apartamento']->precioMinimo || $a['apartamento']->precioMaximo}
+                                                <p class="text-muted">desde <strong>{$a['apartamento']->precioMinimo|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                                                <p class="text-muted">hasta <strong>{$a['apartamento']->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                                                {else}
+                                                    <p class="text-muted">No disponible</p>
+                                                {/if}
                                             </div>
                                              <div class="acciones-disponibilidad">
                                     <span><a class="ver-disponibilidad" apartamento-id="{$a['apartamento']->idApartamento}" href="javascript:void(0)" >Disponibilidad</a></span>

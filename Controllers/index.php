@@ -48,13 +48,9 @@ if($apartamentos){
 
         if ($apartamento->idDireccion)
             $apartamento->direccion = getDireccion($apartamento->idDireccion);
-        $d = getDisponibilidadByApartamentoMenorPrecio($apartamento->idApartamento);
-        if ($d)
-            $apartamento->tarifaBase = $d->precio;
-        if ($apartamento->tarifaBase > $maxPrice)
-            $maxPrice = $apartamento->tarifaBase;
-        if ($apartamento->tarifaBase < $minPrice)
-            $minPrice = $apartamento->tarifaBase;
+        $rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, date('Y-m-d'), 0);
+            $apartamento->precioMinimo = $rangoPrecios[0];
+            $apartamento->precioMaximo = $rangoPrecios[1];
         /*
         $comments = getOpinionesByApartamento($apartamento->idApartamento);
         $apartamentos_array[$akey]['opiniones'] = $comments;

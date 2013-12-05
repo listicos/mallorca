@@ -1064,4 +1064,28 @@ function getApartamentosTiposFilters($fechaInicio,$fechaFinal,$huespedes = false
     }
 }
 
+function getRangoPreciosByApartamento($idApto, $fechaInicial = 0, $fechaFinal = 0) {
+    try {
+        $fechaInicial = ($fechaInicial && strlen(trim($fechaInicial))) ? $fechaInicial : date('Y-m-d');
+        
+        $disponibilidades = DAOFactory::getDisponibilidadesDAO()->queryByIdApartamentoFechas($idApto, $fechaInicial, $fechaFinal);
+        if(!$disponibilidades || !count($disponibilidades))
+            return array(0,0);
+        $precios = array(9999999999999, 0);
+        
+        foreach ($disponibilidades as $d) {
+            $p = $d->precio - ($d->precio * $d->descuento / 100);
+            if($precios[0] > $p)
+                $precios[0] = $p;
+            if($precios[1] < $p)
+                $precios[1] = $p;
+        }
+                
+        return $precios;
+    } catch (Exception $e) {
+        var_dump($e);
+        return false;
+    }
+}
+
 ?>
