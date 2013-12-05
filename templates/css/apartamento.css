@@ -219,6 +219,11 @@ div.leyenda {
     margin: 0;
     
 }
+.review-author-link{
+    font-family: 'Ubuntu Condensed', sans-serif; font-weight: bold;
+    font-size: 22px;
+    font-weight: bold;
+}
 .contenedor-calendario-right{
     margin-top: 70px;
 }
