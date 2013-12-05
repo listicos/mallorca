@@ -11,11 +11,13 @@ $minPrice = 999999999;
 $maxPrice = -999999999;
 
 $categorias = getAllInstalacionesCategoria();
+$instalacionesFiltrosActualizados = getApartamentosInstalacionesFilters(0,0);
 foreach ($categorias as $categoria) {
-    $categoria->instalaciones = getInstalacionesByCategoria($categoria->idInstalacionCategoria);
+    $categoria->instalaciones = array();
     
-    foreach ($categoria->instalaciones as $instalacion) {
-        $instalacion->apartamentos = count(getApartamentosFilters(0, 0, 1, array($instalacion->idInstalacion)));
+    foreach ($instalacionesFiltrosActualizados as $instalacion) {
+        if($instalacion->idInstalacionCategoria == $categoria->idInstalacionCategoria)
+            array_push($categoria->instalaciones, $instalacion);
     }
 }
 
