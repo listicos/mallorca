@@ -168,10 +168,7 @@
                                 <div class="panel-body">
                                     {foreach from=$apartamento['opiniones'] item=opinion}
                                     <div class="contenido-comentarios1">
-                                        <div class="panel-comentarios col-xs-2">
-                                            <img data-src="holder.js/80x80" src="" class="img-thumbnail" alt="80x80" style="width: 80px; height: 80px;">
-                                        </div>
-                                        <div class="titulo-nombre col-xs-10">
+                                        <div class="titulo-nombre col-xs-12">
                                             <a href="" class="review-author-link" title="{$opinion->usuario->nombre}">{$opinion->usuario->nombre}</a>
                                             <p>
                                                 {$opinion->opinion}

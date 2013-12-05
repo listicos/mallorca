@@ -31,13 +31,11 @@
         <div class="row">
             <div class="filtros_main_container">
                 <div class="row form-horizontal filters-content" role="form">
-                <h4 class="filtros-title">encontrar mi casa perfecta</h4>
+                <h4 class="filtros-title">Encontrar mi casa perfecta</h4>
                 <form id="filtrosFrm">
                    <div class="search-slider-content">
                         <div class="form-inline" role="form">
-                            <div class="form-group">
-                                <label class="">Viaje</label>
-                            </div>
+                                <legend>Disponibilidad</legend>
                             <div class="form-group for_input">
                                 <label class="sr-only" for="llegada">Llegada</label>
                                 <input type="text" class="form-control date-start" id="llegada" name="dateStart" placeholder="Llegada">
@@ -48,7 +46,7 @@
                                 <input type="text" class="form-control date-end" id="salida" name="dateEnd" placeholder="Salida">
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="huesped">Llegada</label>
+                                <label class="sr-only" for="huesped">Personas</label>
                                 <select class="form-control" name="huespedes">
                                     <option value="1">1 persona</option>
                                     <option value="2">2 personas</option>
@@ -67,8 +65,8 @@
                     </div>
                     
                     <div class="col-sm-12 form-group">
-                        <label class="control-label col-sm-4">Tipo de propiedad</label>
-                        <div class="col-sm-8">
+                        <legend>Tipo de alojamiento</legend>
+                        <div class="">
                             <div class="btn-group separate-group" data-toggle="buttons">
                                 {foreach from=$tiposApartamento item=tipo}
                                     {if $tipo->apartamentos > 0}
@@ -114,8 +112,8 @@
                         </div>
                     </div>-->
                     <div class="col-sm-12 form-group">
-                        <label class="control-label col-sm-4">Servicios</label>
-                        <div class="col-sm-8" id="filtrosServicios">
+                        <legend>Servicios</legend>
+                        <div id="filtrosServicios">
                             {foreach from=$categorias item=categoria name=categorias}
                                 {foreach from=$categoria->instalaciones item=instalacion name=instalaciones}
                                     {if $smarty.foreach.instalaciones.iteration < 2}

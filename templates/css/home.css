@@ -12,6 +12,7 @@
 
 .acciones-apto {
     margin: 0;
+    width: 30%;
 }
 h1{
     margin-top: 0px;
@@ -30,16 +31,19 @@ h1{
     border-bottom: 1px solid #dddddd;
 
     padding: 1px 0;
-    height: 37px;
+    background-image: url('../img/grey_wall.png'); background-size: 500px;
+    overflow: hidden;
 }
 .price-apto p{
     float: left;
     
     width: 50%;
-    line-height: 31px;
+    line-height: 27px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 .price-apto p strong{
-    color: #2f7493;
+    color: #FFFFFF;
     
     font-size: 13px;
 }
@@ -52,6 +56,7 @@ h1{
     float: left;
 }
 .acciones-apto p{
+    color: #E2E2E2;
 
 }
 .acciones-apto > div {
@@ -91,9 +96,18 @@ p.slide-order-title {
     font-size: 13px;
 }
 .search-slider-content{
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border-bottom: 1px solid #CCC;
-    padding-bottom: 10px;
+    padding-bottom: 1px;
+}
+legend{
+    padding: 0;
+
+    margin: 0;
+    border: 0;
+    font-size: 13px;
+    padding-bottom: 7px;
+    font-weight: bold;
 }
 .search-slider-content .form-group.for_input{
     width: 100px;
@@ -175,10 +189,11 @@ legend.title {
     margin-bottom: 10px;
     border: 1px solid #dddddd;
     padding: 0px;
-    display: table;
+    display: block;
     width: 100%;
     box-shadow: 0px 0px 4px #CFCFCF;
     background: #FFF;
+    overflow: hidden;
 }
 
 .carrusel {
@@ -186,11 +201,11 @@ legend.title {
 }
 
 #resultados .result-item > div {
-    display: table-row;
+    display: block;
 }
 
 #resultados .result-item .acciones-apto .descripcion-apto {
-    height: 157px;
+    height: auto;
 }
 .home_attr_list{
 }
@@ -232,8 +247,9 @@ legend.title {
 }
 
 #resultados .result-item > div > div {
-    display: table-cell;
+    display: block;
     vertical-align: top;
+    float: left;
 }
 .acciones-disponibilidad a{
     display: block;
@@ -263,13 +279,15 @@ legend.title {
 }
 
 .filtros-title {
-    padding-bottom: 7px;
-    padding-top: 7px;
+    padding-bottom: 12px;
+    padding-top: 12px;
     background: #555657;
     color: #FFF;
     margin-top: 0px;
     text-align: center;
     background-image: url('../img/grey_wall.png'); background-size: 500px;
+    font-size: 20px;
+    margin-bottom: 0;
 }
 
 .acciones-disponibilidad {
@@ -397,6 +415,17 @@ div.leyenda {
         height: auto;
         overflow: hidden;
     }
+    #resultados .result-item .acciones-apto .descripcion-apto{
+
+    }
+    .apto-link{
+    font-size: 15px;
+}
+    .descripcion-apto ul li{
+    font-size: 12px;
+    padding: 1px;
+}
+    .acciones-disponibilidad{}
 }
 @media (min-width: 1600px){
     .apartamento-item-content{

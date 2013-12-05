@@ -107,7 +107,14 @@ color: #2f7493;
     margin-right: 10px;
 }
 .home .checkbox-inline{
-    margin-right: 10px;
+    margin-right: 1px;
+    font-size: 12px;
+    padding-top: 2px;
+}
+.home .checkbox-inline input{
+    margin-top: 2px;
+    
+    margin-left: -15px;
 }
 .home .checkbox-inline + .checkbox-inline{
     margin-left: 0;
