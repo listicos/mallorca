@@ -144,7 +144,7 @@
             <div class="house_side">
                 <div class="row home-main-slider">
                     <div class="col-md-12">
-                        <h1>Simplemente mejor que un hotel</h1>
+                        <h1>ALOJAMIENTOS EN MALLORCA</h1>
                         <p class="slide-order-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
                     </div>
                     <div class="col-md-4 hidden">
