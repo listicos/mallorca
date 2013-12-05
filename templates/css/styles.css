@@ -8,6 +8,14 @@ font-family: 'Ubuntu Condensed', sans-serif;
 font-weight: bold;
 color: #000;
 }
+.nav-tabs > li > a{
+    background: rgba(236, 236, 236, 0.4);
+border: 1px solid rgba(129, 129, 129, 0.11);
+}
+a:hover, a:focus {
+color: #000835;
+text-decoration: underline;
+}
 .wrapper{
     width: 100%;
     max-width: 100%;
@@ -519,8 +527,9 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
 
 
     border-color: #DDD;
-    padding: 5px 5px;
+    padding: 10px 2px;
     border: 0;
+    background-image: url('../img/grey_wall.png'); background-size: 500px;
 }
 .breadcrumb{
     
@@ -538,7 +547,7 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
 .panel-default > .panel-heading h1{
     color: #FFF;
 
-    font-size: 18px;
+    font-size: 24px;
 }
 .carousel-control.left, .carousel-control.right{
     background:none;
