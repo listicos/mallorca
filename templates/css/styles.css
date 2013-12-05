@@ -63,6 +63,7 @@ color: #2f7493;
     border-radius: 0;
     border: 0;
     margin-bottom: 5px;
+    background-image: url('../img/grey_wall.png'); background-size: 500px;
 }
 .navbar-inverse .navbar-nav > li:hover > a{
     background: #2f7493;
@@ -130,7 +131,7 @@ a{color:#2f7493}
 
     margin-top: -10px;
 
-    padding-top: 15px;
+    padding-top: 15px; 
 
 }
 .logo-title{
@@ -152,6 +153,7 @@ background-color: #337492;
 }
 /* ========= FOOTER =========== */
 .footer_container{
+    background-image: url('../img/grey_wall.png'); background-size: 500px;
 
 }
 .btn-newsletter{
@@ -180,15 +182,13 @@ footer .nav .caret:hover {
 
 }
 footer .footer-top{
-    background: url("../img/footer_bg.gif") repeat center;
     padding: 0 15px;
-    padding-bottom: 15px;
-    background: #555657;
+    padding-bottom: 15px; background-size: 500px;
 }
 footer .footer-bottom{
     padding: 0 15px;
 
-    background: #464646;
+    background: rgba(0, 0, 0, 0.38);
     border-top: 1px solid #969696;
 }
 footer .footer-bottom .row{
