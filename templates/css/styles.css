@@ -65,9 +65,8 @@ color: #2f7493;
     margin-bottom: 5px;
     background-image: url('../img/grey_wall.png'); background-size: 500px;
 }
-.navbar-inverse .navbar-nav > li:hover > a{
-    background: #2f7493;
-    color:#FFF; 
+.navbar-inverse .navbar-nav > li:hover > a{ 
+    color: #FFF; background-color: rgba(214, 214, 214, 0.61);
 }
 .header_container .header_enlaces_sociales{
     float: right;
@@ -151,7 +150,7 @@ a{color:#2f7493}
 }
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
 color: #FFF;
-background-color: #337492;
+background-color: rgba(214, 214, 214, 0.61);
 }
 /* ========= FOOTER =========== */
 .footer_container{
