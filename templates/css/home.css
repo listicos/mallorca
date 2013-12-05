@@ -78,7 +78,6 @@ h1{
     margin-right: 0px;
     margin-left: 0px;
     padding-bottom: 4px;
-    border-bottom: 1px solid #dddddd;
     margin-bottom: 6px;
 }
 .home-main-slider{
@@ -97,7 +96,6 @@ p.slide-order-title {
 }
 .search-slider-content{
     margin-bottom: 5px;
-    border-bottom: 1px solid #CCC;
     padding-bottom: 1px;
 }
 legend{
@@ -106,8 +104,10 @@ legend{
     margin: 0;
     border: 0;
     font-size: 13px;
-    padding-bottom: 7px;
+    padding-bottom: 1px;
     font-weight: bold;
+    border-bottom: 1px dotted #C9C9C9;
+    margin-bottom: 10px;
 }
 .search-slider-content .form-group.for_input{
     width: 100px;
