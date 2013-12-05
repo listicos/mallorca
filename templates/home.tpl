@@ -31,7 +31,7 @@
         <div class="row">
             <div class="filtros_main_container">
                 <div class="row form-horizontal filters-content" role="form">
-                <h4 class="filtros-title">Encontrar mi casa perfecta</h4>
+                <h4 class="filtros-title">Encontrar mi alojamiento perfecto</h4>
                 <form id="filtrosFrm">
                    <div class="search-slider-content">
                         <div class="form-inline" role="form">
