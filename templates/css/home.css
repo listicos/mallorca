@@ -269,6 +269,7 @@ legend.title {
     color: #FFF;
     margin-top: 0px;
     text-align: center;
+    background-image: url('../img/grey_wall.png'); background-size: 500px;
 }
 
 .acciones-disponibilidad {

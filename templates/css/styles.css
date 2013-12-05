@@ -131,7 +131,9 @@ a{color:#2f7493}
 
     margin-top: -10px;
 
-    padding-top: 15px; 
+    padding-top: 15px;  
+
+    background-image: url('../img/paper.png'); background-size: 500px 300px;
 
 }
 .logo-title{
