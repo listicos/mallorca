@@ -109,12 +109,17 @@ legend{
     border-bottom: 1px dotted #C9C9C9;
     margin-bottom: 10px;
 }
+.search-slider-content .arrow_in_search {
+    width: 20px!important;
+}
 .search-slider-content .form-group.for_input{
-    width: 100px;
+    width: 130px;
 }
 .search-slider-content .form-group{
     border: none;
     /*padding: 0;*/
+    margin-right: 9px;
+    width: 22%;
 }
 .search-slider-content .form-inline{
     padding: 7px 15px 0;
