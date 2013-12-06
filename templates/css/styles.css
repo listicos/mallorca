@@ -72,6 +72,7 @@ text-decoration: underline;
     border: 0;
     margin-bottom: 5px;
     background-image: url('../img/grey_wall.png'); background-size: 500px;
+    box-shadow: 0px 3px 16px #000;
 }
 .navbar-inverse .navbar-nav > li:hover > a{ 
     color: #FFF; 
@@ -172,6 +173,7 @@ background-color: rgba(158, 158, 158, 0.52);
 .footer_container{
     background-image: url('../img/grey_wall.png'); background-size: 500px;
 
+    box-shadow: 0px -3px 16px #000;
 }
 .btn-newsletter{
     border-color: #585853;
