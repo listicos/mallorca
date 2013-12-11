@@ -85,7 +85,7 @@
          		<dl class="dl-horizontal">
         <dt>{#adultos#}</dt>
         <dd>2</dd>
-        <dt>{#niños#} (0-12 años):</dt>
+        <dt>{#ninios#} (0-12 años):</dt>
         <dd>1</dd>
       </dl>
       </td>

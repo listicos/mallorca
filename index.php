@@ -16,6 +16,14 @@ if(substr_count($_SERVER['REQUEST_URI'], "/admin-") == 0) {
     $smarty->assign("base_url",$base_url);
     $smarty->assign("template_url",$template_url);
     $smarty->assign("template_url_s",$template_url_s);
+    if (isset($_SESSION['lang'])) {
+       $lang_set = $_SESSION['lang'];
+       $lang_set = "es";
+       } else {
+              $lang_set = "es";
+    }
+    $smarty->configLoad($lang_set . '.conf');
+
 }
 
 $controller = new Core_Controller();
@@ -43,7 +51,7 @@ if (is_file($includes)) {
     header('Location:' . $base_url);
 }
 setlocale(LC_MONETARY, 'nl_NL.UTF-8');
-
+/*
 function money_format($format, $number) 
 { 
     $regex  = '/%((?:[\^!\-]|\+|\(|\=.)*)([0-9]+)?'. 
@@ -130,7 +138,7 @@ function money_format($format, $number)
     } 
     return $format; 
 }
-
+*/
 function hasRoles($roles) {
     $role = ActiveRole();
     

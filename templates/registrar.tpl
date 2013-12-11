@@ -40,11 +40,11 @@
   </form>
    <form class="form-inline" role="form">
   <div class="form-group1 col-md-6">
-     <label for="exampleInputPassword1">{#contraseña#}</label>
+     <label for="exampleInputPassword1">{#contrasenia#}</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
   </div>
   <div class="form-group1 col-md-6">
-    <label for="exampleInputPassword1">{#confirmar_contraseña#}</label>
+    <label for="exampleInputPassword1">{#confirmar_contrasenia#}</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repita contraseña">
   </div>
   

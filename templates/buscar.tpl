@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <p><span class="badge">{count($apartamentos)} {#anuncios#}</span>{#mallorca_islas_baleares_españa#}</p>
+                            <p><span class="badge">{count($apartamentos)} {#anuncios#}</span>{#mallorca_islas_baleares_espania#}</p>
                         </div>
                         
                     </div>

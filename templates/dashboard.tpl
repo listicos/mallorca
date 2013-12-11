@@ -43,13 +43,13 @@
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Numero telefónico">
   </div>
   <div class="form-group col-md-6">
-     <label for="exampleInputPassword1">{#contraseña#}</label>
+     <label for="exampleInputPassword1">{#contrasenia#}</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contaseña">
   </div>
   </form>
    <form class="form-inline row" role="form">
   <div class="form-group col-md-6">
-     <label for="exampleInputPassword1">{#confirmar_contraseña#}</label>
+     <label for="exampleInputPassword1">{#confirmar_contrasenia#}</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmar contraseña">
   </div> 
 <button type="button" class="btn btn-primary btn-sm">{#guardar#}</button>

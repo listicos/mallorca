@@ -165,7 +165,7 @@
                         <div class="panel-titulo row-fluid">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h1 class="text-center panel-title">Comentario#}{#c</h1>
+                                    <h1 class="text-center panel-title">{#comentarios#}</h1>
                                 </div>
                                 <div class="panel-body">
                                     {foreach from=$apartamento['opiniones'] item=opinion}
@@ -235,7 +235,7 @@
                                     <div class="row desde-precio-reserva" style="display: none;">
                                         <div class="col-md-12">
                                             <h4>{#desde#} <span>{$menor_precio}</span> - {#hasta#} <span>{$menor_precio}</span></h4>
-                                            <small>{#impuestos_y_tasas_incuidas_sujeto_a_disponibilidad#}</small>
+                                            <small>{#impuestos_y_tasas_incluidas_sujeto_a_disponibilidad#}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -257,14 +257,14 @@
                                         </tr>
                                         <tr>
                                             <td>{#dormitorios#}</td>
-                                            <td class="value">{$apartamento['apartamento']->{#habitaciones#}</td>
+                                            <td class="value">{$apartamento['apartamento']->habitaciones}</td>
                                         </tr>
                                         <tr>
                                             <td>{#camas#}</td>
                                             <td class="value">{$apartamento['apartamento']->camas}</td>
                                         </tr>
                                         <tr>
-                                            <td>{#baños#}</td>
+                                            <td>{#banios#}</td>
                                             <td class="value">{$apartamento['apartamento']->banio}</td>
                                         </tr>
                                     </table>
