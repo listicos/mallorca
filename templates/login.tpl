@@ -10,7 +10,7 @@
 {block name="content" append}
 <div class="container row-fluid">
 <div class="panel panel-default col-md-offset-4 pull-left">
-  <div class="panel-heading">Iniciar secion</div>
+  <div class="panel-heading">{#iniciar_sesion#}</div>
   <div class="panel-body">
     <div class="container">
 

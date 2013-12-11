@@ -14,17 +14,17 @@
   <div class="panel-body">
    <form class="form-inline" role="form">
   <div class="form-group1 col-md-6">
-     <label for="exampleInputEmail1">Nombre</label>
+     <label for="exampleInputEmail1">{#nombre#}</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Nombre">
   </div>
   <div class="form-group1 col-md-6">
-   <label for="exampleInputEmail1">Apellido paterno</label>
+   <label for="exampleInputEmail1">{#apellido_paterno#}</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Apellido paterno">
   </div>
   </form>
  <form class="form-inline" role="form">
   <div class="form-group1 col-md-6">
-     <label for="exampleInputEmail1">Nacionalidad</label>
+     <label for="exampleInputEmail1">{#nacionalidad#}</label>
   <select class="form-control">
   <option>1</option>
   <option>2</option>
@@ -34,24 +34,24 @@
 </select>
   </div>
   <div class="form-group1 col-md-6">
-   <label for="exampleInputEmail1">Correo electrónico</label>
+   <label for="exampleInputEmail1">{#correo_electronico#}</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Correo electrónico">
   </div>
   </form>
    <form class="form-inline" role="form">
   <div class="form-group1 col-md-6">
-     <label for="exampleInputPassword1">Contraseña</label>
+     <label for="exampleInputPassword1">{#contraseña#}</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
   </div>
   <div class="form-group1 col-md-6">
-    <label for="exampleInputPassword1">Repita contraseña</label>
+    <label for="exampleInputPassword1">{#confirmar_contraseña#}</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repita contraseña">
   </div>
   
   </form>
    <form class="form-inline" role="form">
    <div class="form-group1 col-md-12">
-   <button type="button" class="btn btn-primary pull-right">Registrar</button>
+   <button type="button" class="btn btn-primary pull-right">{#registrar#}</button>
    </div>
    </form>
   

@@ -55,17 +55,17 @@
             </div>
             <div class="row filters-row">
                 <dl  class="dl-horizontal">
-                    <dt>PRECIO</dt>
+                    <dt>{#precio#}</dt>
                     <dd>
                         <div class="row">
                             <div id="slider-range"></div>
                             <div class="range-prices-content">
                                 <p class="pull-left">
-                                    <label for="amount">Precio mínimo:</label>
+                                    <label for="amount">{#precio_minimo#}</label>
                                     <span id="amount-min" style="border:0; font-weight:bold;" />
                                 </p>
                                 <p class="pull-right">
-                                    <label for="amount">Precio máximo:</label>
+                                    <label for="amount">{#precio_maximo#}</label>
                                     <span  id="amount-max" style="border:0; font-weight:bold;" />
                                 </p>
                                 <br class="clearfix"/>
@@ -85,18 +85,18 @@
                     <div class="row more-filters">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label>Ordenar por</label>
+                                <label>{#ordenar_por#}</label>
                                 <select class="form-control" id="sorter">
-                                    <option value="['data-name','desc']">Nombre (Ascendente)</option>
-                                    <option value="['data-name','asc']">Nombre (Descendente)</option>
-                                    <option value="['data-price','desc']">Precio (Ascendente)</option>
-                                    <option value="['data-price','asc']">Precio (Descendente)</option>
-                                    <option value="['data-visitas','asc']">Popularidad</option>
+                                    <option value="['data-name','desc']">{#nombre_ascendente#}</option>
+                                    <option value="['data-name','asc']">{#nombre_descendente#}</option>
+                                    <option value="['data-price','desc']">{#precio_ascendente#}</option>
+                                    <option value="['data-price','asc']">{#precio_descendente#}</option>
+                                    <option value="['data-visitas','asc']">{#popularidad#}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <p><span class="badge">{count($apartamentos)} anuncios</span> · Mallorca, Islas Baleares, España</p>
+                            <p><span class="badge">{count($apartamentos)} {#anuncios#}</span>{#mallorca_islas_baleares_españa#}</p>
                         </div>
                         
                     </div>
@@ -141,7 +141,7 @@
                                     </div>
                                     
                                     <div class="col-md-6">
-                                        <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success">Resérvalo</a>
+                                        <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success">{#reservalo#}</a>
                                     </div>
                                 </div>
                             </div>

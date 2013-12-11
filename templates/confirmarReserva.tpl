@@ -13,79 +13,79 @@
        <div class="container row-fluid">
          <div class="row">
   <div class="col-md-12">
-  	<h3>Gracias,su reserva se ha realizado correctamente.</h3>
+  	<h3>{#gracias_su_reserva_se_ha_realizado_correctamente#}</h3>
   </div>
 </div>
 <div class="bs-example">
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th colspan="2">Datos de la reserva realizada el 18/10/2013</th>
+            <th colspan="2">{#datos_de_la_reserva_realizada_el#} 18/10/2013</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="col-md-4">
             <dl class="dl-horizontal">
-        <dt>No. de reserva:</dt>
+        <dt>{no_de_reserva#}</dt>
       </dl></td>
             <td class="col-md-8"><dt> 350</dt></td> 
           </tr>
           <tr>
              <td class="col-md-4">
             <dl class="dl-horizontal">
-        <dt>Nombre:</dt>
+        <dt>{#nombre#}</dt>
       </dl></td>
             <td class="col-md-8"><dt></dt></td> 
           </tr>
           <tr>
             <td class="col-md-4">
             <dl class="dl-horizontal">
-        <dt>Email:</dt>
+        <dt>{#email#}</dt>
       </dl></td>
             <td class="col-md-8"><dt></dt></td> 
            </tr>
           <tr>        
             <td class="col-md-4">
             <dl class="dl-horizontal">
-        <dt>Alojamiento:</dt>
+        <dt>{#alojamiento#}</dt>
       </dl></td>
             <td class="col-md-8"><dt>Las Dunas</dt></td> 
           </tr>
            <tr>        
             <td class="col-md-4">
             <dl class="dl-horizontal">
-        <dt>Dirección:</dt>
+        <dt>{#direccion#}</dt>
       </dl></td>
             <td class="col-md-8"><dd>9981000000 calle,45</dd></td> 
           </tr>
            <tr> 
             <td class="col-md-4">
             	<dl class="dl-horizontal">
-        <dt>Fecha de entrada:</dt>
-        <dd>Miercoles 18 de septiembre 2013<br>Entrada apartir de las 22:00hrs.</dd></dl>
+        <dt>{#fecha_de_entrada#}</dt>
+        <dd>Miercoles 18 de septiembre 2013<br>{#entrada_apartir_de_las#} 22:00hrs.</dd></dl>
       </td>
       <td class="col-md-8">
        <dl class="dl-horizontal">
-        <dt>Fecha de salida:</dt>
-         <dd>Jueves 20 de octubre 2013<br>Salidas hasta las 00:00hrs.</dd></dl>
+        <dt>{#fecha_de_salida#}</dt>
+         <dd>Jueves 20 de octubre 2013<br>{#salidas_hasta_las#} 00:00hrs.</dd></dl>
       </td>
           </tr>
          <tr>
          	<td class="col-md-4">
          		<dl class="dl-horizontal">
-        <dt>Total de noches:</dt>
+        <dt>{#total_de_noches#}</dt>
         <dd>8</dd>
-        <dt>Cantidad:</dt>
+        <dt>{#cantidad#}</dt>
         <dd>1 Apartamento</dd>
-        <dt>Observaciones:</dt>
+        <dt>{#observaciones#}</dt>
         <dd>123123123</dd>
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
-        <dt>Adultos:</dt>
+        <dt>{#adultos#}</dt>
         <dd>2</dd>
-        <dt>Niños (0-12 años):</dt>
+        <dt>{#niños#} (0-12 años):</dt>
         <dd>1</dd>
       </dl>
       </td>
@@ -93,7 +93,7 @@
         <tr>
         	<td class="col-md-4">
          		<dl class="dl-horizontal">
-        <dt>Precio de la estancia:</dt>
+        <dt>{#precio_de_la_estancia#}</dt>
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
@@ -108,23 +108,23 @@
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
-        <dt>IVA incluido.impuestos municipales y/o turisticos no incluidos</dt>
+        <dt>{#iva_incluido_impuestos_municipales_y_o_turisticos_no_incluidos#}</dt>
       </dl>
       </td>
         </tr>
          <tr>
-         	<th colspan="2">Registro de entrada y entrega de llaves</th>
+         	<th colspan="2">{#registro_de_entrada_y_entrega_de_llaves#}</th>
          </tr>
           <tr>
           <td class="col-md-4">
           	<dl class="dl-horizontal">
-        <dt>Direccion:</dt>
+        <dt>{#direccion#}</dt>
         <dd>987654<br>calle lavapies,9 Madrid España  </dd>
-        <dt>Telefono:</dt>
+        <dt>{#telefono#}</dt>
         <dd>1234567</dd>
-        <dt>Fax:</dt>
+        <dt>{#fax#}</dt>
         <dd>1234567</dd>
-        <dt>Email:</dt>
+        <dt>{#email#}</dt>
         <dd>reservas@mallorcarenthaus.com</dd>
       </dl></td>
        <td class="col-md-8">
@@ -136,28 +136,28 @@
             <tr>
             	<td class="col-md-4">
          		<dl class="dl-horizontal">
-        <dt>Tarifa de limpieza:</dt>
+        <dt>{#tarifa_de_limpieza#}</dt>
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
-        <dt>Incluido/no incluida</dt>
+        <dt>{#incluido_no_incluida#}</dt>
       </dl>
       </td>
             </tr>
          <tr>
             	<td class="col-md-4">
          		<dl class="dl-horizontal">
-        <dt>Otros suplementos:</dt>
+        <dt>{#otros_suplementos#}</dt>
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
-        <dt>No incluidos</dt>
+        <dt>{#no_incluidos#}</dt>
       </dl>
       </td></tr>
          <tr>
             	<td class="col-md-4">
          		<dl class="dl-horizontal">
-        <dt>Depósito de seguridad:</dt>
+        <dt>{#deposito_de_seguridad#}</dt>
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
@@ -171,23 +171,23 @@
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
-        <dt>(El importe aplicado en fianza del apartamento,reembolsable al final de la estancia)</dt>
+        <dt>{#el_importe_aplicado_en_fianza_del_apartamento_reembolsable_al_final_de_la_estancia#}</dt>
       </dl>
       </td></tr>
        <tr>
             	<td class="col-md-4">
          		<dl class="dl-horizontal">
-        <dt>Pago por adelantado:</dt>
+        <dt>{#pago_por_adelantado#}</dt>
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
-        <dt>Se realizará un cargo de 35% del importe de esta reserva en la tarjeta con la que ha confirmado esta reserva en el momento en que se ha realizado la misma.El resto de la reserva y suplementos se abonaran a la llegada.</dt>
+        <dt>{#se_realizar_un_cargo#} </dt>
       </dl>
       </td></tr>
       <tr>
             	<td class="col-md-4">
          		<dl class="dl-horizontal">
-        <dt>Tarjetas aceptadas:</dt>
+        <dt>{#tarjetas_aceptadas#}</dt>
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
@@ -197,25 +197,25 @@
       <tr>
             	<td class="col-md-4">
          		<dl class="dl-horizontal">
-        <dt>Politica de cancelaciones:</dt>
+        <dt>{#politica_de_cancelaciones#}</dt>
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
-        <dt>Si cancela su reserva hasta el xx del xxxx (30 dias entes),23.59(hora local)del inicio de la estancia,se retendra un 5% del importe cobrado en conceptos de gastos administrativos.Si cancela su reserva desde el xx de xx de xx (7dias antes)00.00(hora local),o si no se presenta,se cargara en su tarjeta</dt>
+        <dt>{#si_cancela_su_reserva#} </dt>
       </dl>
       </td></tr>
       <tr>
             	<td class="col-md-4">
          		<dl class="dl-horizontal">
-        <dt>Nota importante:</dt>
+        <dt>{#nota_importante#}</dt>
       </dl>
       <td class="col-md-8">
          		<dl class="dl-horizontal">
-        <dt>En el improbable caso de un problema con el alojamiento reservado,nos reservamos el derecho de modificar su reserva y reasignarlo a un alojamiento de similares caracteristicas y lo mas próximo posible al reservado. </dt>
+        <dt>{#en_el_improbable_caso#}  </dt>
       </dl>
       </td></tr>
        <tr>
-         	<th colspan="2">Gracias poe haber reservado con Mallorca Rent Haus.</th>
+         	<th colspan="2">{#gracias_por_haber_reservado_con#} Mallorca Rent Haus.</th>
          </tr>
 
           </tr>

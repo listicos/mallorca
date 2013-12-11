@@ -24,8 +24,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">
-            <li class="active"><a class="to_scroll" href="{$base_url}">Inicio</a></li>
-            <li><a href="{$base_url}/contacto">Contacto & Mapa</a></li>
+            <li class="active"><a class="to_scroll" href="{$base_url}">{#inicio#}</a></li>
+            <li><a href="{$base_url}/contacto">{#contacto#} & {#mapa#}</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">ESP<b class="caret"></b></a>
               <ul class="dropdown-menu">

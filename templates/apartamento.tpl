@@ -26,7 +26,7 @@
             <div class="contenedor-columnas row-fluid">
             <div class="columna-izquierda col-md-12">
                 <ol class="breadcrumb">
-                  <li><a href="{$base_url}">Inicio</a></li>
+                  <li><a href="{$base_url}">{#inicio#}</a></li>
                   <li class="active">{$apartamento['apartamento']->nombre}</li>
                 </ol>
             </div>
@@ -47,13 +47,15 @@
                     </div>
                     <div class="container-fotos" id="tabs1">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#carousel-apto"><font><font class="">Casa</font></font></a></li>
-                            <li><a href="#mapaContainer"><font><font>Mapa</font></font></a></li>
-                            <li><a href="#calendarioContainer"><font><font class="">Calendario</font></font></a></li>
+                            <li class="active"><a href="#carousel-apto"><font><font class="">{#casa#}</font></font></a></li>
+                            <li><a href="#mapaContainer"><font><font>{#mapa#}</font></font></a></li>
+                            <li><a href="#calendarioContainer"><font><font class="">{#calendario#}</font></font></a></li>
                         </ul>
 
                         <div id="carousel-apto" class="corousel_apartamentos">
                             <div class="flexslider">
+
+
                                 <ul class="slides">
                                    {foreach from=$apartamento['adjuntos'] item=adjunto}                                   
                                       <li data-thumb="{$template_url}/{$adjunto->ruta}">
@@ -73,9 +75,9 @@
                                 <div id="calendar" >
                                 </div>
                                 <div id="calendar-legend">
-                                    <div class="leyenda disponible"></div><div>Disponible</div>
-                                    <div class="leyenda no-disponible"></div><div>No Disponible</div>
-                                    <div class="leyenda anterior"></div><div>No especificado</div>
+                                    <div class="leyenda disponible"></div><div>{#disponible#}</div>
+                                    <div class="leyenda no-disponible"></div><div>{#no_disponible#}</div>
+                                    <div class="leyenda anterior"></div><div>{#no_especificado#}</div>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -92,9 +94,9 @@
                             <div class="row-fluid">
                                 <div class="bs-example bs-example-tabs">
                                     <ul id="myTab" class="nav nav-tabs">
-                                        <li class="active"><a href="#descripcion" data-toggle="tab">Descripción</a></li>
-                                        <li class=""><a href="#servicios" data-toggle="tab">Servicios</a></li>
-                                        <li class=""><a href="#normas" data-toggle="tab">Normas de la casa</a></li>
+                                        <li class="active"><a href="#descripcion" data-toggle="tab">{#descripcion#}</a></li>
+                                        <li class=""><a href="#servicios" data-toggle="tab">{#servicios#}</a></li>
+                                        <li class=""><a href="#normas" data-toggle="tab">{#normas_de_la_casa#}</a></li>
                                     </ul>
                                     <div id="myTabContent" class="tab-content col-md-12">
                                         <div class="tab-pane fade active in row" id="descripcion">
@@ -163,7 +165,7 @@
                         <div class="panel-titulo row-fluid">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h1 class="text-center panel-title">Comentarios</h1>
+                                    <h1 class="text-center panel-title">Comentario#}{#c</h1>
                                 </div>
                                 <div class="panel-body">
                                     {foreach from=$apartamento['opiniones'] item=opinion}
@@ -188,21 +190,21 @@
                 <div class="columna-derecha col-md-4 contenedor-calendario-right">
                     <div class="contenedor-calendario panel panel-default">
                         <div class="panel-heading">
-                            <h1 class="text-center panel-title">Tu reserva</h1>
+                            <h1 class="text-center panel-title">{#tu_reserva#}</h1>
                         </div>
                         <div class="panel-body">
                             <form class="form-inline" role="form" id="reservaForm">
                             <div class="contenedor-llegada row-fluid clearfix">
                                     <div class="form-group col-md-4">
-                                        <label class="" for="fechaInicio">Llegada</label>
+                                        <label class="" for="fechaInicio">{#llegada#}</label>
                                         <input type="text" readonly="true" class="form-control validate[required]" id="fechaInicio" value="{if $entrada}{$entrada|date_format:"%e-%m-%Y"}{/if}" placeholder="Llegada" name="fechaInicio">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label class="" for="fechaFinal">Salida</label>
+                                        <label class="" for="fechaFinal">{#salida#}</label>
                                         <input type="text" readonly="true" class="form-control validate[required]" id="fechaFinal" value="{if $salida}{$salida|date_format:"%e-%m-%Y"}{/if}" placeholder="Salida" name="fechaFinal">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label class="" for="huespedes">Personas</label>
+                                        <label class="" for="huespedes">{#personas#}</label>
                                         <select class="form-control col-md-4" name="huespedes">
                                             <option {if $huespedes eq 1}selected{/if}>1</option>
                                             <option {if $huespedes eq 2}selected{/if}>2</option>
@@ -227,42 +229,42 @@
                             <div class="row-fluid">
                                 <div class="precio text-right col-md-12">
                                     <div class="total-precio-reserva" style="display: none;">
-                                        <h4 class="text-right">Total <span>{$menor_precio}</span></h4>
-                                        <small class="text-right">Impuestos y tasas incuidas<br />Sujeto a disponibilidad</small>
+                                        <h4 class="text-right">{#total#} <span>{$menor_precio}</span></h4>
+                                        <small class="text-right">{#impuestos_y_tasas_incuidas#}<br />{#sujeto_a_disponibilidad#}</small>
                                     </div>
                                     <div class="row desde-precio-reserva" style="display: none;">
                                         <div class="col-md-12">
-                                            <h4>Desde <span>{$menor_precio}</span> - hasta <span>{$menor_precio}</span></h4>
-                                            <small>impuestos y tasas incuidas, sujeto a disponibilidad</small>
+                                            <h4>{#desde#} <span>{$menor_precio}</span> - {#hasta#} <span>{$menor_precio}</span></h4>
+                                            <small>{#impuestos_y_tasas_incuidas_sujeto_a_disponibilidad#}</small>
                                         </div>
                                     </div>
                                 </div>
                                             
                                 <div class="contenido-calendario col-md-12">
-                                    <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">Resérvalo</button></div>
+                                    <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">{#reservalo#}</button></div>
                                 </div>
                                             
                                 <div class="reserva-hotel-detalles">
                                     <h4>{$apartamento['apartamento']->nombre}</h4>
                                     <table class="table table-striped table-bordered">
                                         <tr>
-                                            <td>Tipo de alojamiento:</td>
+                                            <td>{#tipo_de_alojamiento#}</td>
                                             <td class="value">{$apartamento['apartamento']->tipo->nombre}</td>
                                         </tr>
                                         <tr>
-                                            <td>Capacidad:</td>
-                                            <td class="value">{$apartamento['apartamento']->capacidadPersonas} personas</td>
+                                            <td>{#capacidad#}</td>
+                                            <td class="value">{$apartamento['apartamento']->capacidadPersonas} {#personas#}</td>
                                         </tr>
                                         <tr>
-                                            <td>Dormitorios:</td>
-                                            <td class="value">{$apartamento['apartamento']->habitaciones}</td>
+                                            <td>{#dormitorios#}</td>
+                                            <td class="value">{$apartamento['apartamento']->{#habitaciones#}</td>
                                         </tr>
                                         <tr>
-                                            <td>Camas:</td>
+                                            <td>{#camas#}</td>
                                             <td class="value">{$apartamento['apartamento']->camas}</td>
                                         </tr>
                                         <tr>
-                                            <td>Baños:</td>
+                                            <td>{#baños#}</td>
                                             <td class="value">{$apartamento['apartamento']->banio}</td>
                                         </tr>
                                     </table>
@@ -275,7 +277,7 @@
                                     
                     <div id="cercanos" class="contenedor-calendario panel panel-default">
                         <div class="panel-heading">
-                            <h1 class="text-center panel-title">Anuncios similares</h1>
+                            <h1 class="text-center panel-title">{#anuncios_similares#}</h1>
                         </div>
                         <div class="panel-body">
                             {foreach from=$apartamento['sugerencias'] item=sugerencia}

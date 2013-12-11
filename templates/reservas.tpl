@@ -23,9 +23,9 @@
         <div class="row">
             <div class="col-md-12 reserva-left-side">
                  <ol class="breadcrumb">
-                  <li><a href="{$base_url}">Inicio</a></li>
+                  <li><a href="{$base_url}">{#inicio#}</a></li>
                   <li><a href="{$base_url}/apartamento/id:{$apartamento['apartamento']->idApartamento}">{$apartamento['apartamento']->nombre}</a></li>
-                  <li class="active">Reservar</li>
+                  <li class="active">{#reservar#}</li>
                 </ol>
                     <div class="row reservas-list-main tab-content">
                         <form id="reservaFrm">
@@ -35,7 +35,7 @@
                                 <div class="table-responsive">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h1 class="text-center panel-title">Datos de tu Reserva</h1>
+                                        <h1 class="text-center panel-title">{#datos_de_tu_reserva#}</h1>
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
@@ -65,38 +65,38 @@
                         <div class="col-md-6">
                              <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h1 class="text-center panel-title">Completa tus datos</h1>
+                                        <h1 class="text-center panel-title">{#completa_tus_datos#}</h1>
                                     </div>
                                     <div class="panel-body">
                                   <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="row">
                                                         <div class="col-sm-6 form-group">
-                                                            <label for="nombre_viajero">Nombre/s</label>
+                                                            <label for="nombre_viajero">{#nombre#}/s</label>
                                                             <input type="text" name="nombre" class="form-control validate[required]" placeholder="Nombre/s"/>
                                                         </div>
                                                         <div class="col-sm-6 form-group">
-                                                            <label for="apellido_viajero">Apellido/s</label>
+                                                            <label for="apellido_viajero">{#apellido#}/s</label>
                                                             <input type="text" name="apellidoPaterno" class="form-control validate[required]" placeholder="Apellido/s"/>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                          <div class="col-sm-6 form-group">
-                                                             <label>Correo electrónico</label>
+                                                             <label>{#correo_electronico#}</label>
                                                              <input type="text" name="email" class="form-control validate[required, custom[email]]" placeholder="Correo electrónico">
                                                          </div>
                                                          <div class="col-sm-6 form-group">
-                                                             <label>Repita el correo electrónico</label>
+                                                             <label>{#repita_el_correo_electronico#}</label>
                                                              <input type="text" name="repeatEmail" class="form-control validate[required, custom[confirmationEmail]]" placeholder="Repita el correo electrónico">
                                                          </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-6 form-group">
-                                                            <label for="apellido_viajero">Teléfono móvil</label>
+                                                            <label for="apellido_viajero">{#telefono_movil#}</label>
                                                             <input type="text" name="telefono" class="form-control" placeholder="Teléfono móvil (para incidencias)"/>
                                                         </div>
                                                         <div class="col-sm-6 form-group">
-                                                            <label>País de residencia</label>
+                                                            <label>{#pais_de_residencia#}</label>
                                                             <select class="form-control" name="pais">
                                                                 <option value="1">España</option>
                                                                 <option value="2">México</option>
@@ -201,19 +201,19 @@
                                     <div class="col-md-12">
                                      <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h1 class="text-center panel-title">Termina tu reserva</h1>
+                                                <h1 class="text-center panel-title">{#termina_tu_reserva#}</h1>
                                             </div>
                                             <div class="panel-body">
-                                                 <p>Te enviaremos tu reserva por mail a:<br />
-                                                    Es imprescindible que lleves contigo el DNI, NIE o Pasaporte para identificarte en la entrada al barco. Tu billete no es transferible a otra persona.</p>
+                                                 <p>{#te_enviaremos_tu_reserva_por_mail_a#}<br />
+                                                    {#es_imprescindible#}</p>
 
                                                <div class="checkbox">
                                                    <input type="checkbox" name="aceptoPoliticas" class="validate[required]">
-                                                   Entiendo y acepto las <a id="privacy_policies" href="javascript:void(0)">Políticas de privacidad</a> y las <a id="book_conditions" href="javascript:void(0)">Condiciones de reserva</a>
+                                                   {#entiendo_y_acepto_las#}<a id="privacy_policies" href="javascript:void(0)">{#politicas_de_privacidad#}</a> {#y_las#}<a id="book_conditions" href="javascript:void(0)">{#condiciones_de_reserva#}</a>
                                                </div>
                                             <div class="col-md-12">
                                             <div class="row total-bottom-content">
-                                                <p><strong>Total a pagar</strong></p>
+                                                <p><strong>{#total_a_pagar#}</strong></p>
                                                 <p class="text-primary font-s24">{$menor_precio}</p>
                                                 <p><small>El importe incluye todos los impuestos</small></p>
                                             </div>
@@ -308,7 +308,7 @@
     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{#cerrar#}</button>
             </div>
         </div>
     </div>
@@ -319,7 +319,7 @@
         <div class="modal-content">
              <div class="modal-header">
                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                 <h4 class="modal-title">Condiciones de reserva</h4>
+                 <h4 class="modal-title">{#condiciones_de_reserva#}</h4>
             </div>
             <div class="modal-body">
         <div style="overflow-y: auto; max-height: 400px">
@@ -443,7 +443,7 @@ La declaración de nulidad de alguna o algunas de las cláusulas establecidas en
     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{#cerrar#}</button>
             </div>
         </div>
     </div>

@@ -31,41 +31,41 @@
         <div class="row">
             <div class="filtros_main_container">
                 <div class="row form-horizontal filters-content" role="form">
-                <h4 class="filtros-title">Encontrar mi alojamiento perfecto</h4>
+                <h4 class="filtros-title">{#encontrar_mi_alojamiento_perfecto#}</h4>
                 <form id="filtrosFrm">
                    <div class="search-slider-content">
                         <div class="form-inline" role="form">
-                                <legend>Disponibilidad</legend>
+                                <legend>{#disponibilidad#}</legend>
                             <div class="form-group for_input">
-                                <label class="sr-only" for="llegada">Llegada</label>
+                                <label class="sr-only" for="llegada">{#llegada#}</label>
                                 <input type="text" class="form-control date-start" id="llegada" name="dateStart" placeholder="Llegada">
                             </div>
                             <div class="form-group arrow_in_search"><img src="{$template_url_s}/img/icon-arrowR.png" alt="Photo 4"></div>
                             <div class="form-group for_input">
-                                <label class="sr-only" for="llegada">Salida</label>
+                                <label class="sr-only" for="llegada">{#salida#}</label>
                                 <input type="text" class="form-control date-end" id="salida" name="dateEnd" placeholder="Salida">
                             </div>
                             <div class="form-group">
-                                <label class="sr-only" for="huesped">Personas</label>
+                                <label class="sr-only" for="huesped">{#personas#}</label>
                                 <select class="form-control" name="huespedes">
-                                    <option value="1">1 persona</option>
-                                    <option value="2">2 personas</option>
-                                    <option value="3">3 personas</option>
-                                    <option value="4">4 personas</option>
-                                    <option value="5">5 personas</option>
-                                    <option value="6">6 personas</option>
-                                    <option value="7">7 personas</option>
-                                    <option value="8">8 personas</option>
-                                    <option value="9">9 personas</option>
-                                    <option value="10">10 personas</option>
-                                    <option value="11">11 personas</option>
+                                    <option value="1">1 {#persona#}</option>
+                                    <option value="2">2 {#personas#}</option>
+                                    <option value="3">3 {#personas#}</option>
+                                    <option value="4">4 {#personas#}</option>
+                                    <option value="5">5 {#personas#}</option>
+                                    <option value="6">6 {#personas#}</option>
+                                    <option value="7">7 {#personas#}</option>
+                                    <option value="8">8 {#personas#}</option>
+                                    <option value="9">9 {#personas#}</option>
+                                    <option value="10">10 {#personas#}</option>
+                                    <option value="11">11 {#personas#}</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     
                     <div class="col-sm-12 form-group">
-                        <legend>Tipo de alojamiento</legend>
+                        <legend>{#tipo_de_alojamiento#}</legend>
                         <div class="">
                             <div class="btn-group separate-group" data-toggle="buttons">
                                 {foreach from=$tiposApartamento item=tipo}
@@ -112,7 +112,7 @@
                         </div>
                     </div>-->
                     <div class="col-sm-12 form-group">
-                        <legend>Servicios</legend>
+                        <legend>{#servicios#}</legend>
                         <div id="filtrosServicios">
                             {foreach from=$categorias item=categoria name=categorias}
                                 {foreach from=$categoria->instalaciones item=instalacion name=instalaciones}
@@ -128,7 +128,7 @@
                             {/foreach} 
                             
                             <div class="checkbox-inline more-checkbox">
-                                <a href="#" id="moreFiltersBtn" class="btn btn-default">MAS</a>
+                                <a href="#" id="moreFiltersBtn" class="btn btn-default">{#mas#}</a>
                             </div>
                             
                         </div>
@@ -144,18 +144,18 @@
             <div class="house_side">
                 <div class="row home-main-slider">
                     <div class="col-md-12">
-                        <h1>ALOJAMIENTOS EN MALLORCA</h1>
+                        <h1>{#alojamientos_en_mallorca#}</h1>
                         <p class="slide-order-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
                     </div>
                     <div class="col-md-4 hidden">
                         <div class="form-group">
                             
                             <select class="form-control" name="order">
-                                <option value="a.nombre ASC">Nombre (Ascendente)</option>
-                                <option value="a.nombre DESC">Nombre (Descendente)</option>
-                                <option value="d.precio ASC">Precio (Ascendente)</option>
-                                <option value="d.precio DESC">Precio (Descendente)</option>
-                                <option value="a.visitas ASC">Popularidad</option>
+                                <option value="a.nombre ASC">{#nombre_ascendente#}</option>
+                                <option value="a.nombre DESC">{#nombre_descendente#}</option>
+                                <option value="d.precio ASC">{#precio_ascendente#}</option>
+                                <option value="d.precio DESC">{#precio_descendente#}</option>
+                                <option value="a.visitas ASC">{#popularidad#}</option>
                             </select>
                         </div>
                     </div>
@@ -217,15 +217,15 @@
 
                                             <div class="price-apto">
                                                 {if $a['apartamento']->precioMinimo || $a['apartamento']->precioMaximo}
-                                                <p class="text-muted">desde <strong>{$a['apartamento']->precioMinimo|number_format:2:",":"."}<small>&euro;</small></strong></p>
-                                                <p class="text-muted">hasta <strong>{$a['apartamento']->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                                                <p class="text-muted">{#desde#} <strong>{$a['apartamento']->precioMinimo|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                                                <p class="text-muted">{#hasta#} <strong>{$a['apartamento']->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>
                                                 {else}
-                                                    <p class="text-muted">No disponible</p>
+                                                    <p class="text-muted">{#no_disponible#}</p>
                                                 {/if}
                                             </div>
                                              <div class="acciones-disponibilidad">
                                     <span><a class="ver-disponibilidad" apartamento-id="{$a['apartamento']->idApartamento}" href="javascript:void(0)" >Disponibilidad</a></span>
-                                    <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reservar</a>
+                                    <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">{#reservar#}</a>
                                 </div>
                                 </div>
                             </div>
@@ -253,18 +253,18 @@
         <div class="modal-content">
              <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Disponibilidad</h4>
+                <h4 class="modal-title">{#disponibilidad#}</h4>
             </div>
             <div class="modal-body">
                 <div id="calendarioDisponibilidad"></div>
                 <div id="calendar-legend">
-                    <div class="leyenda disponible"></div><div>Disponible</div>
-                    <div class="leyenda no-disponible"></div><div>No Disponible</div>
-                    <div class="leyenda anterior"></div><div>No especificado</div>
+                    <div class="leyenda disponible"></div><div>{#disponible#}</div>
+                    <div class="leyenda no-disponible"></div><div>{#no_disponible#}</div>
+                    <div class="leyenda anterior"></div><div>{#no_especificado#}</div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{#cerrar#}</button>
             </div>
         </div>
     </div>
@@ -275,7 +275,7 @@
         <div class="modal-content">
              <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Servicios</h4>
+                <h4 class="modal-title">{#servicios#}</h4>
             </div>
             <div class="modal-body">
                 <div class="listado-servicios">
@@ -295,8 +295,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="filtrarServiciosBtn">Aceptar</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="filtrarServiciosBtn">{#aceptar#}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{#cancelar#}</button>
             </div>
         </div>
     </div>

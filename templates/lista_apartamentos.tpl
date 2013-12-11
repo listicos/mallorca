@@ -54,13 +54,13 @@
                             <p class="text-muted">desde <strong>{$a->precioMinimo|number_format:2:",":"."}<small>&euro;</small></strong></p>
                             <p class="text-muted">hasta <strong>{$a->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>
                             {else}
-                                <p class="text-muted">No disponible</p>
+                                <p class="text-muted">{#no_disponible#}</p>
                             {/if}
                         </div>
 
                         <div class="acciones-disponibilidad">
-                            <span><a class="ver-disponibilidad" apartamento-id="{$a->idApartamento}" href="javascript:void(0)" >Disponibilidad</a></span>
-                            <a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="btn btn-success book-it">Reservar</a>
+                            <span><a class="ver-disponibilidad" apartamento-id="{$a->idApartamento}" href="javascript:void(0)" >{#disponibilidad#}</a></span>
+                            <a href="{$base_url}/apartamento/id:{$a->idApartamento}" class="btn btn-success book-it">{#reservar#}</a>
                         </div>
             </div>
         </div>
@@ -69,10 +69,10 @@
 {/foreach}
 {else}
 <div class="no_apartamentos_container">
-<p>No hemos obtenido ningún resultado que se ajuste a tus criterios de búsqueda. Si los modificas, puede que mejore la búsqueda.</p>
-<p>Prueba con:<p>
-<p>Desactiva algunos filtros.</p>
-<p>Amplía el área de búsqueda.</p>
-<p>Busca una ciudad, una dirección o un punto de referencia.</p>
+<p>{#ningun_resultado#}</p>
+<p>{#prueba_con#}<p>
+<p>{#desactiva_algunos_filtros#}</p>
+<p>{#amplia_el_area_de_busqueda#}</p>
+<p>{#busca_una_ciudad_una_direccion_o_un_punto_de_referencia#}</p>
 </div>
 {/if}

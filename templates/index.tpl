@@ -24,7 +24,7 @@
     </head>
     <body>
         <div id="blocker">
-           <div>Cargando...</div>
+           <div>{#cargando#}</div>
        </div>
         <div class="wrapper">
            {include file="header.tpl"}
