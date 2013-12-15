@@ -7,24 +7,7 @@ include('config.php');
 include 'Core/Include.php';
 require 'Lib/smarty/Smarty.class.php';
 
-if(substr_count($_SERVER['REQUEST_URI'], "/admin-") == 0) {
 
-    $smarty = new Smarty();
-    $smarty->debugging = false;
-    $smarty->caching = false;
-    $smarty->cache_lifetime = 120;
-    $smarty->assign("base_url",$base_url);
-    $smarty->assign("template_url",$template_url);
-    $smarty->assign("template_url_s",$template_url_s);
-    if (isset($_SESSION['lang'])) {
-       $lang_set = $_SESSION['lang'];
-       $lang_set = "es";
-       } else {
-              $lang_set = "es";
-    }
-    $smarty->configLoad($lang_set . '.conf');
-
-}
 
 $controller = new Core_Controller();
 $usuario_core = Core_Usuario::getInstance();
@@ -45,6 +28,44 @@ include 'Logic/complejos.php';
 include 'Logic/configuracion.php';
 
 $includes = $controller->getFileAction();
+
+if(substr_count($_SERVER['REQUEST_URI'], "/admin-") == 0) {
+
+    $smarty = new Smarty();
+    $smarty->debugging = false;
+    $smarty->caching = false;
+    $smarty->cache_lifetime = 120;
+    $smarty->assign("base_url",$base_url);
+    $smarty->assign("template_url",$template_url);
+    $smarty->assign("template_url_s",$template_url_s);
+    
+    if(isset($_REQUEST['lang'])) {
+        $_SESSION['lang'] = $_REQUEST['lang'];
+        $lang_set = $_SESSION['lang'];
+        
+    }
+    else {
+        if (isset($_SESSION['lang'])) {
+            $lang_set = $_SESSION['lang'];
+            
+        } else {
+              $lang_set = "es";
+        }
+    }
+    
+    $smarty->assign('lang', $lang_set);
+    $smarty->configLoad($lang_set . '.conf');
+    
+    $actual_url = getActualUrl();
+    
+    $smarty->assign('actual_url', $actual_url);
+    
+    $languages = getIdiomas();
+
+    $smarty->assign('languages', $languages);
+
+}
+
 if (is_file($includes)) {
     include $includes;
 } else {
@@ -175,6 +196,19 @@ function AllowRoles($roles) {
         return true;
     }
     //header('Location:' . $base_url . '/admin-inicio/');
+}
+
+function getActualUrl() {
+    
+    global $lang_set;
+    
+    $url = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+    $url = str_replace("/lang:" . $lang_set, "", $url); 
+    
+    if(substr_count($_SERVER["REQUEST_URI"], "/") < 2 || (substr_count($_SERVER["REQUEST_URI"], "/") == 2 && $_SERVER["REQUEST_URI"][strlen($_SERVER["REQUEST_URI"]) - 1] == '/') && substr_count($_SERVER["REQUEST_URI"], '-') == 0) {
+        $url .= $_SERVER["REQUEST_URI"][strlen($_SERVER["REQUEST_URI"]) - 1] == '/' ? 'index' : '/index';
+    }
+    return $url;
 }
 
 ?>

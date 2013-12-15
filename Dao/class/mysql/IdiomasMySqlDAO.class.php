@@ -3,7 +3,7 @@
  * Class that operate on table 'idiomas'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2013-10-18 16:11
+ * @date: 2013-12-15 17:52
  */
 class IdiomasMySqlDAO implements IdiomasDAO{
 
@@ -57,10 +57,11 @@ class IdiomasMySqlDAO implements IdiomasDAO{
  	 * @param IdiomasMySql idioma
  	 */
 	public function insert($idioma){
-		$sql = 'INSERT INTO idiomas (nombre) VALUES (?)';
+		$sql = 'INSERT INTO idiomas (nombre, codigo) VALUES (?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($idioma->nombre);
+		$sqlQuery->set($idioma->codigo);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$idioma->idIdioma = $id;
@@ -73,10 +74,11 @@ class IdiomasMySqlDAO implements IdiomasDAO{
  	 * @param IdiomasMySql idioma
  	 */
 	public function update($idioma){
-		$sql = 'UPDATE idiomas SET nombre = ? WHERE id_idioma = ?';
+		$sql = 'UPDATE idiomas SET nombre = ?, codigo = ? WHERE id_idioma = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($idioma->nombre);
+		$sqlQuery->set($idioma->codigo);
 
 		$sqlQuery->setNumber($idioma->idIdioma);
 		return $this->executeUpdate($sqlQuery);
@@ -98,9 +100,23 @@ class IdiomasMySqlDAO implements IdiomasDAO{
 		return $this->getList($sqlQuery);
 	}
 
+	public function queryByCodigo($value){
+		$sql = 'SELECT * FROM idiomas WHERE codigo = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
 
 	public function deleteByNombre($value){
 		$sql = 'DELETE FROM idiomas WHERE nombre = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByCodigo($value){
+		$sql = 'DELETE FROM idiomas WHERE codigo = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
@@ -118,6 +134,7 @@ class IdiomasMySqlDAO implements IdiomasDAO{
 		
 		$idioma->idIdioma = $row['id_idioma'];
 		$idioma->nombre = $row['nombre'];
+		$idioma->codigo = $row['codigo'];
 
 		return $idioma;
 	}

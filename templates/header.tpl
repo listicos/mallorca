@@ -27,9 +27,15 @@
             <li class="active"><a class="to_scroll" href="{$base_url}">{#inicio#}</a></li>
             <li><a href="{$base_url}/contacto">{#contacto#} & {#mapa#}</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">ESP<b class="caret"></b></a>
+              
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{$lang|upper}<b class="caret"></b></a>
+                
               <ul class="dropdown-menu">
-                <li><a href="#">ENG</a></li>
+                {foreach from=$languages item=language}
+                {if $lang ne $language->codigo}
+                    <li><a href="{$actual_url}/lang:{$language->codigo}">{$language->codigo|upper}</a></li>
+                {/if}
+              {/foreach}
               </ul>
             </li>
           </ul>

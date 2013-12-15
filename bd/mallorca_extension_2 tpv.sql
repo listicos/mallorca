@@ -1,0 +1,1 @@
+ALTER TABLE apartamentos ADD tpv TEXT NULL;

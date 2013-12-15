@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2013-10-18 16:11
+ * @date: 2013-12-15 17:52
  */
 interface IdiomasDAO{
 
@@ -53,8 +53,12 @@ interface IdiomasDAO{
 
 	public function queryByNombre($value);
 
+	public function queryByCodigo($value);
+
 
 	public function deleteByNombre($value);
+
+	public function deleteByCodigo($value);
 
 
 }
