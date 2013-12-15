@@ -88,6 +88,10 @@ if (strcmp($action, "insert") == 0) {
         
         if (isset($_POST['idEmpresa']))
             $data_apartamento['idEmpresa'] = $_POST['idEmpresa'];
+        
+        if (isset($_POST['tpv']))
+            $data_apartamento['tpv'] = $_POST['tpv'];
+        else $data_apartamento['tpv'] = NULL;
 
         //if (isset($_POST['baseTarifa']))
         $data_apartamento['horarioEntrada'] = date('H:i:s', strtotime('15:00'));
@@ -253,6 +257,10 @@ if (strcmp($action, "update") == 0) {
         
         if (isset($_POST['idEmpresa']))
             $data_apartamento['idEmpresa'] = $_POST['idEmpresa'];
+        
+        if (isset($_POST['tpv']))
+            $data_apartamento['tpv'] = $_POST['tpv'];
+        else $data_apartamento['tpv'] = NULL;
 
         //$data_apartamento['idContrato'] = '1';
 

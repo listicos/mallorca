@@ -442,6 +442,16 @@ $edit = $this->getAttribute('edit');
                                 </div>
                             </div>-->
                         </div>
+                        <legend class="legend_custom titulos_legend">TPV</legend>
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="control-group detalles_apartamento_descripcion">
+                                    <textarea class="editor span12 validate[required]" name="tpv" rows="11" placeholder="Descripción del tpv"><?php if ($edit) { ?><?php echo $apartamento['apartamento']->tpv; ?><?php } ?></textarea>                                        
+                                   <!-- <p>La descripción debe contener al menos 15 palabras.Las de los
+                                        apartamentos más alquilados contienen más de 150 palabras</p>-->
+                                </div>                                     
+                            </div>   
+                        </div>
                         <br>
                         <div class="row-fluid">
                             <div class=" span12 control-group center">

@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2013-10-23 16:46
+ * @date: 2013-12-15 17:38
  */
 interface ApartamentosDAO{
 
@@ -135,6 +135,8 @@ interface ApartamentosDAO{
 
 	public function queryByVisitas($value);
 
+	public function queryByTpv($value);
+
 
 	public function deleteByIdEmpresaContrato($value);
 
@@ -219,6 +221,8 @@ interface ApartamentosDAO{
 	public function deleteByIdComplejo($value);
 
 	public function deleteByVisitas($value);
+
+	public function deleteByTpv($value);
 
 
 }
