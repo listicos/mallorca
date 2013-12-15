@@ -56,6 +56,10 @@
                                                 <p class="text-muted">Salida: {$salida}</p>
                                                 <p class="text-muted">{$noches} Noche(s)</p>
                                                 <p class="text-muted"><strong>{$apartamento['condicion']}</strong></p>
+                                                <p class="text-muted">- Tipo de alojamiento: {$apartamento['apartamento']->tipo}</p>
+                                                <p class="text-muted">- Max. pax: {$apartamento['apartamento']->capacidadPersonas}</p>
+                                                <p class="text-muted">- Habitaciones: {$apartamento['apartamento']->habitaciones}</p>
+                                                <p class="text-muted">- Ba&ntilde;os: {$apartamento['apartamento']->banio}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -72,11 +76,11 @@
                                                 <div class="col-sm-12">
                                                     <div class="row">
                                                         <div class="col-sm-6 form-group">
-                                                            <label for="nombre_viajero">{#nombre#}/s</label>
+                                                            <label for="nombre_viajero">{#nombre#}</label>
                                                             <input type="text" name="nombre" class="form-control validate[required]" placeholder="Nombre/s"/>
                                                         </div>
                                                         <div class="col-sm-6 form-group">
-                                                            <label for="apellido_viajero">{#apellido#}/s</label>
+                                                            <label for="apellido_viajero">{#apellidos#}</label>
                                                             <input type="text" name="apellidoPaterno" class="form-control validate[required]" placeholder="Apellido/s"/>
                                                         </div>
                                                     </div>
@@ -102,6 +106,10 @@
                                                                 <option value="2">México</option>
                                                             </select>
                                                         </div>
+                                                    </div>
+                                                    <div class="col-sm-12 form-group">
+                                                        <label>Observaciones</label>
+                                                        <textarea name="observaciones" class="form-control" ></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -218,7 +226,7 @@
                                                 <p><small>El importe incluye todos los impuestos</small></p>
                                             </div>
                                             </div>
-                                            <div class="text-right">
+                                            <div class="">
                                                 <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
                                                 <input type="hidden" name="action" value="insert">
                                                 <input type="submit" class="btn btn-primary pay_booking" value="Finalizar reserva">

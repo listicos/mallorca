@@ -17,6 +17,8 @@ if (strcmp($action, "insert") == 0) {
         $data['adultos'] = $_SESSION['huespedes'];
     if(isset($_POST['idApartamento']))
         $data['idApartamento'] = $_POST['idApartamento'];
+    if(isset($_POST['observaciones']))
+        $data['observaciones'] = $_POST['observaciones'];
     
     $canales = getCanales();
     
