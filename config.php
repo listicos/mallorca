@@ -12,6 +12,7 @@ $template_url_s = "http://" . $_SERVER['SERVER_NAME'].$site_prefix.'/templates';
 $storeFolder = '/recursos/apartamentos/';
 $nonFilterParams = array(
     'descripcion',
-    'descripcionLarga'
+    'descripcionLarga',
+    'tpv'
 );
 ?>

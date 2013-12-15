@@ -113,6 +113,9 @@ var Calendar = function () {
                     events: []
                 });
             }
+            
+            if(END_DATE)
+                $('#calendar').fullCalendar('gotoDate', END_DATE);
         }
 
     };

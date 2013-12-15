@@ -11,17 +11,29 @@ if (strcmp($action, "agregar_tarifa") == 0) {
 
         $fechaOriginalI = $_POST['fechaInicio'];
         $fechaOriginalF = $_POST['fechaFinal'];
+        
+        $fechaOriginalI = explode('/', $fechaOriginalI);
+        $fechaOriginalI = $fechaOriginalI[1] . '/' . $fechaOriginalI[0] . '/' .$fechaOriginalI[2];
+        
+        $fechaOriginalF = explode('/', $fechaOriginalF);
+        $fechaOriginalF = $fechaOriginalF[1] . '/' . $fechaOriginalF[0] . '/' .$fechaOriginalF[2];
 
+        
         $fechaCortaI = date('Y-m-d', strtotime($fechaOriginalI));
         $fechaCortaF = date('Y-m-d', strtotime($fechaOriginalF));
-
+        
+        
         $fecha_i = strtotime($fechaOriginalI);
         $fecha_f = strtotime($fechaOriginalF);
 
         //$data_disponibilidad['fechaInicio'] = date('Y-m-d H:i:s', strtotime($_POST['fechaInicio']));
         //$data_disponibilidad['fechaFinal'] = date('Y-m-d H:i:s', strtotime($_POST['fechaFinal']));
         
-        if(isset($_POST['precioContrato'])) {
+        if(isset($_POST['tipo_accion']) && strcmp($_POST['tipo_accion'], 'limpiar_todo') == 0) {
+            deleteDisponibilidadByApartamento($_POST['idApartamento'], $fecha_i, $fecha_f + (24 * 60 * 60));
+        }
+        
+        else if(isset($_POST['precioContrato'])) {
             
             $data_disponibilidad['precioContrato'] = $_POST['precioContrato'];
             
@@ -111,6 +123,7 @@ if (strcmp($action, "agregar_tarifa") == 0) {
 
             for ($newFecha = $fecha_i; $newFecha <= $fecha_f; $newFecha+=86400) {
                 $fecha_to_comp = date("Y-m-d", $newFecha);
+                
                 $time_temp = strtotime($fecha_to_comp);
                 $is_set_date = false;
                 foreach ($disponibilidades as $dkey => $dispo) {
@@ -126,9 +139,10 @@ if (strcmp($action, "agregar_tarifa") == 0) {
                     }
                 }
                 if ($is_set_date == false) {
-                    $data_disponibilidad['fechaInicio'] = date("Y-m-d H:i:s", $newFecha);
-                    $data_disponibilidad['fechaFinal'] = date("Y-m-d H:i:s", $newFecha);
-                    insertDisponibilidad($data_disponibilidad);
+                    $data_d = array_merge($data_disponibilidad, array('fechaInicio'=> date("Y-m-d", $time_temp),
+                        'fechaFinal'=>date("Y-m-d", $time_temp)));
+                    
+                    insertDisponibilidad($data_d);
                 }else{
                     $is_set_date = false;
                 }

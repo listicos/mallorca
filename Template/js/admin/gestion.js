@@ -72,7 +72,9 @@ $(document).ready(function(){
     
 
     $('.date-start').datepicker({
-        autoclose: true
+        autoclose: true,
+        weekStart: 1,
+        format: 'dd/mm/yyyy'
         
     }).on('changeDate', function(ev) {
         $(this).parents('.row-fluid').find('.date-end').datepicker('setStartDate', ev.date);
@@ -84,9 +86,11 @@ $(document).ready(function(){
     $('.date-start').datepicker('setStartDate', date_now);
 
     $('.date-end').datepicker({
-        autoclose: true
+        autoclose: true,
+        weekStart: 1,
+        format: 'dd/mm/yyyy'
     }).on('changeDate', function(ev) {
-
+            END_DATE = ev.date;
         });
 
     $('.date-end').datepicker('setStartDate', date_now);
@@ -102,6 +106,8 @@ $(document).ready(function(){
     handleContratoCalendario();
 
 });
+
+var END_DATE = false;
 
 function handleContratoCalendario(){
     $('.calendario_trigger_tab').click(function(){
@@ -285,7 +291,9 @@ function agregarTarifa(){
                         $('#disponibilidad_overlay').modal('hide');
                         $('#contrato_precios_overlay').modal('hide');
                         $('#calendar').fullCalendar('destroy');
+                        
                         Calendar.createTarifas();
+                        
                         //$('.modal-body-tarifa-gestion').fadeOut();
                     }
                 }

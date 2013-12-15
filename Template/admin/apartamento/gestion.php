@@ -983,13 +983,14 @@ $edit = $this->getAttribute('edit');
                                                         <div class="input-prepend center span12" title="Tipo de acción" data-rel="tooltip">
                                                             <label>Tipo de acción</label>
                                                             <span class="add-on"><i class="icon-check"></i></span>
-                                                            <select class="span8 validate[required]" id="tipo_accion">
+                                                            <select class="span8 validate[required]" id="tipo_accion" name="tipo_accion">
                                                                 <option value="" disabled>Tipo de acción</option>
                                                                     <option value="disponibilidad">Disponibilidad</option>
                                                                     <option value="precio_noche">Precio por noche</option>
                                                                     <option value="descuento">Descuento</option>
                                                                     <option value="minimo_noches">Mínimo de noches</option>
                                                                     <option value="descuento_consumo">Descuento por consumo</option>
+                                                                    <option value="limpiar_todo">Limpiar todo</option>
                                                             </select>
                                                         </div>
                                                     </div>

@@ -56,6 +56,25 @@ class DisponibilidadesMySqlExtDAO extends DisponibilidadesMySqlDAO{
 
 		return $this->getRow($sqlQuery);
 	}
+        
+        public function deleteByIdApartamentoAndFechas($idApartamento,$fechaInicio,$fechaFinal){
+                
+		$sql = 'DELETE FROM disponibilidades WHERE id_apartamento = ? ';
+		
+		if($fechaInicio){
+                        $sql .= ' AND UNIX_TIMESTAMP(fecha_final) >= '.$fechaInicio.' ';
+		}
+                
+                if($fechaFinal){
+			$sql .= ' AND UNIX_TIMESTAMP(fecha_inicio) <= '.$fechaFinal.' ';
+                }
+		
+                
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($idApartamento);
+		
+		return $this->executeUpdate($sqlQuery);
+	}
 
 }
 ?>
