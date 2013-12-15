@@ -139,6 +139,9 @@ function getApartamentosFilters($fechaInicio,$fechaFinal,$huespedes = false, $in
             
             if($apartamento->idDireccion)
                 $apartamento->direccion = DAOFactory::getDireccionesDAO ()->load ($apartamento->idDireccion);
+            
+            if($apartamento->idComplejo)
+                $apartamento->complejo = getComplejoById ($apartamento->idComplejo);
         }
         return $apartamentos;
     } catch (Exception $e) {
@@ -1016,7 +1019,10 @@ function getPropietarioByApartamento($aptoId) {
 function getApartamentosMasVisitados($limit = 3) {
     try {
         $apartamentos = DAOFactory::getApartamentosDAO()->queryByVisitasAsc($limit);
-        
+        foreach ($apartamentos as $apartamento) {
+            if($apartamento->idComplejo)
+                $apartamento->complejo = getComplejoById ($apartamento->idComplejo);
+        }
         return $apartamentos;
     } catch(Exception $e) {
         var_dump($e);

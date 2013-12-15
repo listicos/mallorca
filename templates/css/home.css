@@ -391,6 +391,25 @@ div.leyenda {
     display: none;
 }
 
+.complejo-mark {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 20px;
+    margin-top: -30px;
+}
+
+.complejo_img {
+    height: 120px;
+    padding: 5px 10px;
+    
+}
+
+.complejo_img img {
+    width: 100%;
+    height: 100%;
+}
+
 @media (max-width: 992px){
 
     

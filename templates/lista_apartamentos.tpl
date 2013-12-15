@@ -46,6 +46,11 @@
                             <input type="hidden" name="nombre" value="{$a->nombre}">
                             <input type="hidden" name="lat" value="{$a->direccion->lat}">
                             <input type="hidden" name="lon" value="{$a->direccion->lon}">
+                            {if $a->idComplejo}
+                            <div class="complejo-mark">
+                                <a href="javascript:void(0)" title="Pincha aquí para ver los datos del complejo" id-complejo="{$a->idComplejo}"><img src="{$template_url_s}/img/icon-villas.png" alt="{$a->complejo->nombre}"></a>
+                            </div>
+                            {/if}
                         </div>
 
 

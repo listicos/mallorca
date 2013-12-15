@@ -68,6 +68,8 @@ $(document).ready(function() {
     pagination();
     
     masFiltros();
+    
+    mostrarComplejo();
 
     
 });
@@ -384,6 +386,7 @@ function masFiltros() {
                     interval: 5000
                  });
                  actualizarFiltros(response);
+                 mostrarComplejo();
                  actualizarMapa();
 
                 calendarios();
@@ -439,4 +442,24 @@ function actualizarFiltros(response) {
     } else {
         $('#rural').show().find('strong').html('(' + tipoHabitacion[1].apartamentos + ')')
     }
+}
+
+function mostrarComplejo() {
+    $('.complejo-mark a').off('click').click(function(e) {
+        
+        e.preventDefault();
+        
+        $.ajax({
+            url: BASE_URL + '/ajax-complejo',
+            data: {idComplejo: $(this).attr('id-complejo')},
+            type: 'post',
+            dataType: 'json', 
+            success: function(response) {
+                if(response.msg == 'ok') {
+                    $('#complejo-modal .modal-body').html(response.html);
+                    $('#complejo-modal').modal();
+                }
+            }
+        })
+    })
 }
