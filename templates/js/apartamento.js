@@ -207,7 +207,7 @@ function calcularTotal() {
         type: 'post',
         dataType: 'json',
         success: function(response) {
-            $('#reservaForm .precio h1').html(response.total_text);
+            $('#reservaForm .precio span').html(response.total_text);
         }
     });
 }

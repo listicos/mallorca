@@ -37,7 +37,7 @@ $(document).ready(function(){
 });
 function gestionFotosFunctions(){
     
-    Dropzone.options.apartamentoDropzone = {
+    Dropzone.options.complejoDropzone = {
         init: function() {
             this.on("addedfile", function(file) {
                 //console.log(file)
@@ -47,7 +47,7 @@ function gestionFotosFunctions(){
                     // Make sure the button click doesn't submit the form:
                     e.preventDefault();
                     e.stopPropagation();
-
+                    console.log(e);
                     // Remove the file preview.
                     _this.removeFile(file);
                 // If you want to the delete the file on the server as well,
@@ -58,13 +58,7 @@ function gestionFotosFunctions(){
                 file.previewElement.appendChild(removeButton);
             });
             this.on("success", function(file, responseText) {
-                console.log(responseText)
-                noty({
-                    "text":"El archivo fue agregado correctamente.",
-                    "layout":"top",
-                    "type":"notification"
-                });
-                getApartamentoFotos();
+                
             });
         }
     }

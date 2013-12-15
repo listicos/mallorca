@@ -134,6 +134,13 @@ class DAOFactory{
 	}
 
 	/**
+	 * @return ComplejosAdjuntosDAO
+	 */
+	public static function getComplejosAdjuntosDAO(){
+		return new ComplejosAdjuntosMySqlExtDAO();
+	}
+
+	/**
 	 * @return ComplejosApartamentosDAO
 	 */
 	public static function getComplejosApartamentosDAO(){

@@ -81,6 +81,10 @@
 	require_once('class/dto/Complejo.class.php');
 	require_once('class/mysql/ComplejosMySqlDAO.class.php');
 	require_once('class/mysql/ext/ComplejosMySqlExtDAO.class.php');
+	require_once('class/dao/ComplejosAdjuntosDAO.class.php');
+	require_once('class/dto/ComplejosAdjunto.class.php');
+	require_once('class/mysql/ComplejosAdjuntosMySqlDAO.class.php');
+	require_once('class/mysql/ext/ComplejosAdjuntosMySqlExtDAO.class.php');
 	require_once('class/dao/ComplejosApartamentosDAO.class.php');
 	require_once('class/dto/ComplejosApartamento.class.php');
 	require_once('class/mysql/ComplejosApartamentosMySqlDAO.class.php');

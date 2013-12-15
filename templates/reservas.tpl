@@ -55,11 +55,31 @@
                                                 <p class="text-muted">Llegada: {$entrada}</p>
                                                 <p class="text-muted">Salida: {$salida}</p>
                                                 <p class="text-muted">{$noches} Noche(s)</p>
-                                                <p class="text-muted"><strong>{$apartamento['condicion']}</strong></p>
-                                                <p class="text-muted">- Tipo de alojamiento: {$apartamento['apartamento']->tipo}</p>
-                                                <p class="text-muted">- Max. pax: {$apartamento['apartamento']->capacidadPersonas}</p>
-                                                <p class="text-muted">- Habitaciones: {$apartamento['apartamento']->habitaciones}</p>
-                                                <p class="text-muted">- Ba&ntilde;os: {$apartamento['apartamento']->banio}</p>
+                                                <div class="reserva-hotel-detalles" style="margin-top: 10px;">
+                                                    <h4>Datos del apartamento</h4>
+                                                    <table class="table table-striped table-bordered">
+                                                        <tr>
+                                                            <td>{#tipo_de_alojamiento#}</td>
+                                                            <td class="value">{$apartamento['apartamento']->tipo->nombre}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{#capacidad#}</td>
+                                                            <td class="value">{$apartamento['apartamento']->capacidadPersonas} {#personas#}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{#dormitorios#}</td>
+                                                            <td class="value">{$apartamento['apartamento']->habitaciones}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{#camas#}</td>
+                                                            <td class="value">{$apartamento['apartamento']->camas}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>{#banios#}</td>
+                                                            <td class="value">{$apartamento['apartamento']->banio}</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +127,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-12 form-group">
+                                                    <div class="row-fluid form-group">
                                                         <label>Observaciones</label>
                                                         <textarea name="observaciones" class="form-control" ></textarea>
                                                     </div>
@@ -213,11 +233,11 @@
                                             </div>
                                             <div class="panel-body">
                                                  <p>{#te_enviaremos_tu_reserva_por_mail_a#}<br />
-                                                    {#es_imprescindible#}</p>
+                                                    {$apartamento['apartamento']->tpv}</p>
 
                                                <div class="checkbox">
                                                    <input type="checkbox" name="aceptoPoliticas" class="validate[required]">
-                                                   {#entiendo_y_acepto_las#}<a id="privacy_policies" href="javascript:void(0)">{#politicas_de_privacidad#}</a> {#y_las#}<a id="book_conditions" href="javascript:void(0)">{#condiciones_de_reserva#}</a>
+                                                   {#entiendo_y_acepto_las#} <a id="privacy_policies" href="javascript:void(0)">{#politicas_de_privacidad#}</a> {#y_las#} <a id="book_conditions" href="javascript:void(0)">{#condiciones_de_reserva#}</a>
                                                </div>
                                             <div class="col-md-12">
                                             <div class="row total-bottom-content">

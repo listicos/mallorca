@@ -10,6 +10,7 @@ AllowRoles("Administrador, Comercial, Socio, Mallorca");
 
 $template->setAttribute('is_visible_header', true);
 $template->setAttribute('is_visible_sidebar', true);
+$template->setAttribute('template_url', $template_url);
 
 if(isset($_GET['id'])) {
     $id = $_GET['id'];

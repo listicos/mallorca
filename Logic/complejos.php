@@ -29,6 +29,17 @@ function deleteComplejo($complejoId) {
 function getComplejoById($id) {
     try{
         $complejo = DAOFactory::getComplejosDAO()->load($id);
+        
+        $adjuntos_complejo = DAOFactory::getComplejosAdjuntosDAO()->queryByIdComplejo($id);
+        $adjuntos = array();
+        if($adjuntos_complejo)
+            foreach ($adjuntos_complejo as $ac) {
+                $adjunto = DAOFactory::getAdjuntosDAO()->load($ac->idAdjunto);
+                array_push($adjuntos, $adjunto);
+            }
+            
+        $complejo->adjuntos = $adjuntos;
+        
         return $complejo;
     }catch (Exception $e) {
         return false;
@@ -77,6 +88,19 @@ function allComplejos() {
         return $complejos;
     } catch(Exception $e) {
         var_dump($e);
+        return false;
+    }
+}
+
+function addFotoToComplejo($idComplejo, $idAdjunto) {
+    try {
+        
+        $adjunto_complejo = DAOFactory::getComplejosAdjuntosDAO()->prepare(array('idComplejo' => $idComplejo, 'idAdjunto'=>$idAdjunto));
+        $ac_id = DAOFactory::getComplejosAdjuntosDAO()->insert($adjunto_complejo);
+        return $ac_id;
+        
+    } catch (Exception $e) {
+        print_r($e);
         return false;
     }
 }

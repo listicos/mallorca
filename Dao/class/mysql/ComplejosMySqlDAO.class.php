@@ -3,7 +3,7 @@
  * Class that operate on table 'complejos'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2013-10-18 16:11
+ * @date: 2013-12-15 22:06
  */
 class ComplejosMySqlDAO implements ComplejosDAO{
 
@@ -57,10 +57,11 @@ class ComplejosMySqlDAO implements ComplejosDAO{
  	 * @param ComplejosMySql complejo
  	 */
 	public function insert($complejo){
-		$sql = 'INSERT INTO complejos (nombre) VALUES (?)';
+		$sql = 'INSERT INTO complejos (nombre, descripcion) VALUES (?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($complejo->nombre);
+		$sqlQuery->set($complejo->descripcion);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$complejo->idComplejo = $id;
@@ -73,10 +74,11 @@ class ComplejosMySqlDAO implements ComplejosDAO{
  	 * @param ComplejosMySql complejo
  	 */
 	public function update($complejo){
-		$sql = 'UPDATE complejos SET nombre = ? WHERE id_complejo = ?';
+		$sql = 'UPDATE complejos SET nombre = ?, descripcion = ? WHERE id_complejo = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($complejo->nombre);
+		$sqlQuery->set($complejo->descripcion);
 
 		$sqlQuery->setNumber($complejo->idComplejo);
 		return $this->executeUpdate($sqlQuery);
@@ -98,9 +100,23 @@ class ComplejosMySqlDAO implements ComplejosDAO{
 		return $this->getList($sqlQuery);
 	}
 
+	public function queryByDescripcion($value){
+		$sql = 'SELECT * FROM complejos WHERE descripcion = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
 
 	public function deleteByNombre($value){
 		$sql = 'DELETE FROM complejos WHERE nombre = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByDescripcion($value){
+		$sql = 'DELETE FROM complejos WHERE descripcion = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
@@ -118,6 +134,7 @@ class ComplejosMySqlDAO implements ComplejosDAO{
 		
 		$complejo->idComplejo = $row['id_complejo'];
 		$complejo->nombre = $row['nombre'];
+		$complejo->descripcion = $row['descripcion'];
 
 		return $complejo;
 	}

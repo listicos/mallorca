@@ -8,7 +8,7 @@ $(document).ready(function() {
       });
 
     
-    follow_me_reservation();
+    //follow_me_reservation();
     
     cardValidation();
     
