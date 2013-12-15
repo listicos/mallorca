@@ -203,6 +203,7 @@ function filtrar() {
                         interval: 5000
                      });
                      movingMapa = false;
+                     mostrarComplejo();
                      actualizarMapa();
 
                     calendarios();
@@ -333,6 +334,7 @@ function pagination() {
                             interval: 5000
                          });
                         movingMapa = false;
+                        mostrarComplejo();
                          actualizarMapa();
 
                         calendarios();
