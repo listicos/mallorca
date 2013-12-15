@@ -71,6 +71,21 @@ $edit = $this->getAttribute('edit');
                         <div class="row-fluid">
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_alineacion">
+                                    <div class="input-prepend span12" title="Propietario" data-rel="tooltip" >
+                                        <span class="add-on"><i class="icon-home"></i></span>
+                                        <select class="span10 " name="idEmpresa" >
+                                            <?php foreach ($empresas as $empresa) { ?>
+                                                <option value="<?php echo $empresa->idEmpresa; ?>" <?php if ($edit && ($apartamento['apartamento']->idEmpresa == $empresa->idEmpresa)) { ?> selected="selected" <?php } ?> ><?php echo $empresa->nombre . ' ' . $empresa->apellidoPaterno; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div> 
+                                </div>
+                            </div>
+                          
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span8">
+                                <div class="control-group detalles_apartamento_alineacion">
                                     <div class="input-prepend span12" title="Complejo" data-rel="tooltip" >
                                         <span class="add-on"><i class="icon-home"></i></span>
                                         <select class="span10 " name="idComplejo" >

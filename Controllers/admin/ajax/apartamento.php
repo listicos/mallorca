@@ -32,7 +32,7 @@ if (strcmp($action, "insert") == 0) {
 
     if ($new_direccion_id) {
         $data_apartamento['idDireccion'] = $new_direccion_id;
-        $data_apartamento['idEmpresa'] = '1';
+        
         $data_apartamento['idUsuario'] = '1';
 
         if (isset($_POST['nombre']))
@@ -85,6 +85,9 @@ if (strcmp($action, "insert") == 0) {
             $data_apartamento['manual'] = $_POST['manual'];
 
         $data_apartamento['idContrato'] = '1';
+        
+        if (isset($_POST['idEmpresa']))
+            $data_apartamento['idEmpresa'] = $_POST['idEmpresa'];
 
         //if (isset($_POST['baseTarifa']))
         $data_apartamento['horarioEntrada'] = date('H:i:s', strtotime('15:00'));
@@ -247,6 +250,9 @@ if (strcmp($action, "update") == 0) {
             $data_apartamento['claveWifi'] = $_POST['claveWifi'];
         if (isset($_POST['cantidad']))
             $data_apartamento['cantidad'] = $_POST['cantidad'];
+        
+        if (isset($_POST['idEmpresa']))
+            $data_apartamento['idEmpresa'] = $_POST['idEmpresa'];
 
         //$data_apartamento['idContrato'] = '1';
 

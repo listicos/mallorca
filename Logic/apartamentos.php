@@ -4,6 +4,15 @@
 function insertApartamento($data = array()) {
     try {
         $transaction = new Transaction();
+        
+        if(isset($data['idEmpresa'])) {
+            $contrato = DAOFactory::getContratosDAO()->prepare(array('tiempoCreacion'=> date('Y-m-d')));
+            $contrato_id = DAOFactory::getContratosDAO()->insert($contrato);
+            
+            $empresa_contrato = DAOFactory::getEmpresasContratosDAO()->prepare(array('idEmpresa'=>$data['idEmpresa'], 'idContrato'=>$contrato_id));
+            $id_ec = DAOFactory::getEmpresasContratosDAO()->insert($empresa_contrato);
+            $data['idEmpresaContrato'] = $id_ec;
+        }
 
         $apartamento = DAOFactory::getApartamentosDAO()->prepare($data);
         $apartamento_id = DAOFactory::getApartamentosDAO()->insert($apartamento);
@@ -23,6 +32,28 @@ function insertApartamento($data = array()) {
 function updateApartamento($idApartamento, $data= array()){
     try {
         $transaction = new Transaction();
+        
+        
+        
+        if(isset($data['idEmpresa'])) {
+            
+            $a = DAOFactory::getApartamentosDAO()->load($idApartamento);
+            
+            if($a->idEmpresaContrato) {
+                
+                $empresa_contrato = DAOFactory::getEmpresasContratosDAO()->prepare(array('idEmpresa'=>$data['idEmpresa']), $a->idEmpresaContrato);
+                DAOFactory::getEmpresasContratosDAO()->update($empresa_contrato);
+                
+            } else {
+            
+                $contrato = DAOFactory::getContratosDAO()->prepare(array('tiempoCreacion'=> date('Y-m-d')));
+                $contrato_id = DAOFactory::getContratosDAO()->insert($contrato);
+
+                $empresa_contrato = DAOFactory::getEmpresasContratosDAO()->prepare(array('idEmpresa'=>$data['idEmpresa'], 'idContrato'=>$contrato_id));
+                $id_ec = DAOFactory::getEmpresasContratosDAO()->insert($empresa_contrato);
+                $data['idEmpresaContrato'] = $id_ec;
+            }
+        }
 
         $apartamento = DAOFactory::getApartamentosDAO()->prepare($data, $idApartamento);
         DAOFactory::getApartamentosDAO()->update($apartamento);
@@ -145,6 +176,9 @@ function searchApartamentosByNombre($term) {
 function getApartamento($idApartamento) {
     try {
         $apartamento = DAOFactory::getApartamentosDAO()->load($idApartamento);
+        if($apartamento->idEmpresaContrato) {
+            $apartamento->idEmpresa = DAOFactory::getEmpresasContratosDAO()->load($apartamento->idEmpresaContrato)->idEmpresa;
+        }
         return $apartamento;
     } catch (Exception $e) {
         return false;
