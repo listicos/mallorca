@@ -114,7 +114,8 @@ function actualizarMapa() {
         var marker = new google.maps.Marker({
             title: nombre,
             position: parliament,
-            map: map
+            map: map,
+            icon: BASE_URL + '/templates/img/map_icons/house.png'
         });
 
         marcadores.push(marker);

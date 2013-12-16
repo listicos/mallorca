@@ -413,11 +413,11 @@ div.leyenda {
     left: 0px;
     top: 0px;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.89);
+    background: rgba(255, 255, 255, 0.86);
     text-align: center;
     line-height: 25px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: bold; 
 }
 
 .complejo_img {
