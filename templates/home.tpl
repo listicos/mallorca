@@ -292,7 +292,7 @@
                 <div class="listado-servicios">
                     {foreach from=$categorias item=categoria}
                         <legend>{$categoria->nombre}</legend>
-                        <div class="servicios">
+                        <div class="servicios row">
                             {foreach from=$categoria->instalaciones item=instalacion}
                                 {if $instalacion->apartamentos > 0}
                                 <div class="col-sm-4">
