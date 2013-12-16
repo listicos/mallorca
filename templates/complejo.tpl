@@ -30,4 +30,8 @@
 		<div class="row">
 		    <p>{$complejo->descripcion}</p>
 		</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{#cerrar#}</button>
+    </div>
 </div>

@@ -109,13 +109,20 @@ function actualizarMapa() {
         var nombre = $(this).find('input[name=nombre]').val();
         var lat = $(this).find('input[name=lat]').val();
         var lon = $(this).find('input[name=lon]').val();
+        var type = $(this).find('input[name=type]').val();
+        var icon = '/templates/img/map_icons/townhouse.png';
+        
+        if(type=='complejo'){
+            icon = '/templates/img/map_icons/condominium.png';
+        }
+        
         var parliament = new google.maps.LatLng(lat, lon);
         latlngbounds.extend(parliament);
         var marker = new google.maps.Marker({
             title: nombre,
             position: parliament,
             map: map,
-            icon: BASE_URL + '/templates/img/map_icons/house.png'
+            icon: BASE_URL + icon
         });
 
         marcadores.push(marker);

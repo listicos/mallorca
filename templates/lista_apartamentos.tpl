@@ -53,7 +53,7 @@
                             <input type="hidden" name="nombre" value="{$a->nombre}">
                             <input type="hidden" name="lat" value="{$a->direccion->lat}">
                             <input type="hidden" name="lon" value="{$a->direccion->lon}">
-    
+        <input type="hidden" name="type" value="{if $a->idComplejo}complejo{else}house{/if}">
                         </div>
 
 

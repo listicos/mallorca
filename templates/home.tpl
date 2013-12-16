@@ -221,6 +221,7 @@
                                                 <input type="hidden" name="nombre" value="{$a['apartamento']->tarifaBase}">
                                                 <input type="hidden" name="lat" value="{$a['apartamento']->direccion->lat}">
                                                 <input type="hidden" name="lon" value="{$a['apartamento']->direccion->lon}">
+                                                <input type="hidden" name="type" value="{if $a['apartamento']->idComplejo}complejo{else}house{/if}">
                                                 
                                             </div>
                                         
