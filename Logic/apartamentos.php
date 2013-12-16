@@ -54,8 +54,10 @@ function updateApartamento($idApartamento, $data= array()){
                 $data['idEmpresaContrato'] = $id_ec;
             }
         }
-
+        
         $apartamento = DAOFactory::getApartamentosDAO()->prepare($data, $idApartamento);
+        if(!$data['idComplejo'])
+            $apartamento->idComplejo = NULL;
         DAOFactory::getApartamentosDAO()->update($apartamento);
         
         registrarAccion("update", "apartamentos", $idApartamento);

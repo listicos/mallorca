@@ -39,6 +39,8 @@ if (strcmp($action, "insert") == 0) {
             $data_apartamento['nombre'] = $_POST['nombre'];
         if(isset($_POST['idComplejo']) && strlen($_POST['idComplejo']))
             $data_apartamento['idComplejo'] = $_POST['idComplejo'];
+        if($data_apartamento['idComplejo'] == '0')
+            $data_apartamento['idComplejo'] = NULL;
         if (isset($_POST['idApartamentosTipo']))
             $data_apartamento['idApartamentosTipo'] = $_POST['idApartamentosTipo'];
         if (isset($_POST['capacidadPersonas']))
@@ -186,9 +188,11 @@ if (strcmp($action, "update") == 0) {
 
         if (isset($_POST['nombre']))
             $data_apartamento['nombre'] = $_POST['nombre'];
-        if(isset($_POST['idComplejo']) && strcmp(trim($_POST['idComplejo']), "0") != 0)
-            $data_apartamento['idComplejo'] = $_POST['idComplejo'];
-        else
+        if(isset($_POST['idComplejo']))
+            $data_apartamento['idComplejo'] = trim($_POST['idComplejo']);
+        else $data_apartamento['idComplejo'] = NULL;
+        
+        if(!$data_apartamento['idComplejo'])
             $data_apartamento['idComplejo'] = NULL;
         if (isset($_POST['idApartamentosTipo']))
             $data_apartamento['idApartamentosTipo'] = $_POST['idApartamentosTipo'];

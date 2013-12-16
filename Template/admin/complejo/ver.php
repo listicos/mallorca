@@ -44,7 +44,7 @@ $template_url = $this->getAttribute('template_url');
                 </form>
                 <?php if ($complejo->idComplejo) { ?>
                 <legend class="legend_custom titulos_legend">Fotos</legend>
-                <form action="<?php echo $this->base_url.'/admin-ajax-complejo';?>" class="dropzone" id="complejoDropzone">
+                <form action="<?php echo $this->base_url.'/admin-ajax-complejo';?>" class="dropzone <?php if(count($complejo->adjuntos) > 0){echo 'haveItems';} ?>" id="complejoDropzone">
                     <input type="hidden" name="idComplejo" value="<?php echo $complejo->idComplejo; ?>" />
                     <div class="fallback">
                         <input name="file" type="file" multiple />
@@ -62,7 +62,7 @@ $template_url = $this->getAttribute('template_url');
                             <div class="dz-success-mark"><span></span></div>
                             <div class="dz-error-mark"><span></span></div>
                             <div class="dz-error-message"><span data-dz-errormessage=""></span></div>
-                            <a data-ruta="<?php $adjunto->ruta; ?>" data-deptoadj="1" class="dz-remove delete_foto" href="#">Borrar foto</a>
+                            <a data-ruta="<?php $adjunto->ruta; ?>" file-id="<?php echo $adjunto->idAdjunto ?>" data-deptoadj="1" class="dz-remove delete_foto" href="#">Borrar foto</a>
                         </div>
                     
                     <?php } ?>

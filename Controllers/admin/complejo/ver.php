@@ -20,6 +20,7 @@ if(isset($_GET['id'])) {
 
 $template->setView('admin/complejo/ver.php');
 $template->setJS('admin/ver-complejo.js');
+$template->setCSS('complejo.css');
 $template->setTitle("Gestión de complejos");
 
 

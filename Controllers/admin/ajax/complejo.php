@@ -26,6 +26,15 @@ if(strcmp($action, "updateComplejo") == 0) {
     }
 }
 
+else if (isset ($_POST['idAdjunto'])) {
+    $idAdjunto = $_POST['idAdjunto'];
+    $v = eliminarAdjuntoComplejo($idAdjunto);
+    
+    if($v) {
+        $result['msg'] = 'ok';
+    }
+}
+
 else if (!empty($_FILES)) {
 
     $tempFile = $_FILES['file']['tmp_name'];

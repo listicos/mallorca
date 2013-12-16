@@ -97,7 +97,21 @@ function addFotoToComplejo($idComplejo, $idAdjunto) {
         
         $adjunto_complejo = DAOFactory::getComplejosAdjuntosDAO()->prepare(array('idComplejo' => $idComplejo, 'idAdjunto'=>$idAdjunto));
         $ac_id = DAOFactory::getComplejosAdjuntosDAO()->insert($adjunto_complejo);
-        return $ac_id;
+        return $idAdjunto;
+        
+    } catch (Exception $e) {
+        print_r($e);
+        return false;
+    }
+}
+
+function eliminarAdjuntoComplejo($idAdjunto) {
+    try {
+        
+        DAOFactory::getComplejosAdjuntosDAO()->deleteByIdAdjunto($idAdjunto);
+        DAOFactory::getAdjuntosDAO()->delete($idAdjunto);
+        
+        return true;
         
     } catch (Exception $e) {
         print_r($e);
