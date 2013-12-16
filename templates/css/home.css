@@ -439,6 +439,10 @@ div.leyenda {
     height: 100%;
 }
 
+.btn-group > .btn {
+    margin-right: 10px;
+}
+
 @media (max-width: 992px){
 
     
