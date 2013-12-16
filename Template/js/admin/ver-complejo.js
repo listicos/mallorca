@@ -34,7 +34,7 @@ $(function(){
 $(document).ready(function(){
     App.init();
     gestionFotosFunctions();
-    
+    $( 'textarea.editor' ).ckeditor();
     $('.dropzone .dz-preview a').each(function(){
         eliminarImagen($(this));
     })

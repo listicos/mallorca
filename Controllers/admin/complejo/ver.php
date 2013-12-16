@@ -21,6 +21,9 @@ if(isset($_GET['id'])) {
 $template->setView('admin/complejo/ver.php');
 $template->setJS('admin/ver-complejo.js');
 $template->setCSS('complejo.css');
+$template->setJS('../ckeditor/ckeditor.js');
+$template->setJS('../ckeditor/adapters/jquery.js');
+$template->setCSS('ckeditor.css');
 $template->setTitle("Gestión de complejos");
 
 

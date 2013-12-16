@@ -239,20 +239,28 @@
                                                    <input type="checkbox" name="aceptoPoliticas" class="validate[required]">
                                                    {#entiendo_y_acepto_las#} <a id="privacy_policies" href="javascript:void(0)">{#politicas_de_privacidad#}</a> {#y_las#} <a id="book_conditions" href="javascript:void(0)">{#condiciones_de_reserva#}</a>
                                                </div>
-                                            <div class="col-md-12">
-                                            <div class="row total-bottom-content">
-                                                <p><strong>{#total_a_pagar#}</strong></p>
-                                                <p class="text-primary font-s24">{$menor_precio}</p>
-                                                <p><small>El importe incluye todos los impuestos</small></p>
-                                            </div>
-                                            </div>
-                                            <div class="">
-                                                <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
-                                                <input type="hidden" name="action" value="insert">
-                                                <input type="submit" class="btn btn-primary pay_booking" value="Finalizar reserva">
-                                            </div>
+                                               <div class="checkbox">
+                                                   <input type="checkbox" name="fechasFlexibles" class="">{#mis_fechas_son_flexibles#}<br>
+                                                   {#explicacion_fechas_flexibles#}
+                                               </div>
+                                            
                                         </div>
                                     </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                        <div class="row total-bottom-content">
+                                            <p><strong></strong></p>
+                                            <p class="text-primary font-s24">{#total#}{$menor_precio}</p>
+                                            <p><small>El importe incluye todos los impuestos</small></p>
+                                        </div>
+                                        
+                                        <div class="">
+                                            <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
+                                            <input type="hidden" name="action" value="insert">
+                                            <input type="submit" class="btn btn-primary pay_booking" value="Finalizar reserva">
+                                        </div>
+                                        </div>
                                     </div>
                         </div>
                         <!-- end data_step -->

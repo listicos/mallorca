@@ -26,7 +26,7 @@ $template_url = $this->getAttribute('template_url');
                            <div class="row-fluid">
                                 <div class="span6">
                                     <div class="control-group">
-                                        <textarea placeholder="Descripción del complejo" class="input-large span10 validate[required]" name="descripcion"><?php if ($complejo) echo $complejo->descripcion ?></textarea>                                     
+                                        <textarea placeholder="Descripción del complejo" class="editor input-large span10 validate[required]" name="descripcion"><?php if ($complejo) echo $complejo->descripcion ?></textarea>                                     
                                     </div> 
                                 </div>
                             </div>
