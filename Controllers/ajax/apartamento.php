@@ -64,5 +64,23 @@ if (strcmp($action, "reservar") == 0) {
     }
 }
 
+if(strcmp($action, 'informacionMapa') == 0) {
+    $id = $_POST['id'];
+    $apartamento = getApartamento($id);
+    $adjuntosA = getApartamentosAdjuntos($id);
+    if($adjuntosA && count($adjuntosA)) {
+        $adjuntos = array();
+        foreach ($adjuntosA as $a) {
+            $adjuntos[] = getAdjunto($a->idAdjunto);
+        }
+        $apartamento->adjuntos = $adjuntos;
+    }
+    $apartamento->direccion = getDireccion($apartamento->idDireccion);
+    $smarty->assign('apartamento', $apartamento);
+    $html = $smarty->fetch('informacionMapa.tpl');
+    $result['msg'] = 'ok';
+    $result['html'] = $html;
+}
+
 echo json_encode($result);
 ?>

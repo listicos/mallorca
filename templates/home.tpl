@@ -163,7 +163,7 @@
                 </div>
                 <div id="resultados" class="row result-list-container">
                     {foreach from=$apartamentos item=a name=apartamentos}
-                    <div class="col-lg-12 mix apto apartamento-item-content" data-name="{$a['apartamento']->nombre}" data-price="{$a['apartamento']->tarifaBase}">
+                    <div class="col-lg-12 mix apto apartamento-item-content" data-name="{$a['apartamento']->nombre}" data-price="{$a['apartamento']->tarifaBase}" data-id="{$a['apartamento']->idApartamento}">
                         <div class=" result-item">
                             <div>
                                 <div class="carrusel">

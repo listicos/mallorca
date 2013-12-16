@@ -86,6 +86,9 @@ function ordenar() {
     $('#resultados').mixitup('sort', 'data-price');
     $('#resultados').mixitup('sort',filter);*/
 }
+
+var infowindow;
+
 function actualizarMapa() {
 
     //var myLatlng;
@@ -93,6 +96,9 @@ function actualizarMapa() {
     if (!map) {
         initialize();
         google.maps.event.trigger(map, 'resize');
+        infowindow = new google.maps.InfoWindow({
+                            content: ''
+                    });
         
     } else {
         
@@ -111,7 +117,7 @@ function actualizarMapa() {
         var lon = $(this).find('input[name=lon]').val();
         var type = $(this).find('input[name=type]').val();
         var icon = '/templates/img/map_icons/house.png';
-        
+        var idApto = $(this).parent().attr('data-id');
         if(type=='complejo'){
             icon = '/templates/img/map_icons/condominium.png';
         }
@@ -122,11 +128,27 @@ function actualizarMapa() {
             title: nombre,
             position: parliament,
             map: map,
-            icon: BASE_URL + icon
+            icon: BASE_URL + icon,
+            idApto: idApto 
         });
 
         marcadores.push(marker);
-
+        google.maps.event.addListener(marker, 'click', function() {
+                idApto = marker.idApto;
+                $.ajax({
+                    url: BASE_URL + '/ajax-apartamento',
+                    data: {action:'informacionMapa', id:idApto},
+                    type: 'post',
+                    dataType: 'json',
+                    success: function(resp) {
+                        if(resp.msg == 'ok') {
+                            infowindow.setContent(resp.html);
+                            infowindow.open(map, marker);
+                        }
+                    }
+                });
+                
+        });
 
     });
 

@@ -13,7 +13,7 @@ function insertApartamento($data = array()) {
             $id_ec = DAOFactory::getEmpresasContratosDAO()->insert($empresa_contrato);
             $data['idEmpresaContrato'] = $id_ec;
         }
-
+        $data['idMoneda'] = 1;
         $apartamento = DAOFactory::getApartamentosDAO()->prepare($data);
         $apartamento_id = DAOFactory::getApartamentosDAO()->insert($apartamento);
         
