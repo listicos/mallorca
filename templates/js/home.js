@@ -110,12 +110,12 @@ function actualizarMapa() {
         var lat = $(this).find('input[name=lat]').val();
         var lon = $(this).find('input[name=lon]').val();
         var type = $(this).find('input[name=type]').val();
-        var icon = '/templates/img/map_icons/townhouse.png';
+        var icon = '/templates/img/map_icons/house.png';
         
         if(type=='complejo'){
             icon = '/templates/img/map_icons/condominium.png';
         }
-        
+
         var parliament = new google.maps.LatLng(lat, lon);
         latlngbounds.extend(parliament);
         var marker = new google.maps.Marker({
