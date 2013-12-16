@@ -26,6 +26,15 @@ function deleteComplejo($complejoId) {
     }
 }
 
+function getComplejo($id) {
+    try{
+        $complejo = DAOFactory::getComplejosDAO()->load($id);
+        return $complejo;
+    }catch (Exception $e) {
+        return false;
+    }
+}
+
 function getComplejoById($id) {
     try{
         $complejo = DAOFactory::getComplejosDAO()->load($id);

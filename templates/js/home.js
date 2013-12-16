@@ -109,12 +109,20 @@ function actualizarMapa() {
         var nombre = $(this).find('input[name=nombre]').val();
         var lat = $(this).find('input[name=lat]').val();
         var lon = $(this).find('input[name=lon]').val();
+        var type = $(this).find('input[name=type]').val();
+        var icon = '/templates/img/map_icons/house.png';
+        
+        if(type=='complejo'){
+            icon = '/templates/img/map_icons/condominium.png';
+        }
+
         var parliament = new google.maps.LatLng(lat, lon);
         latlngbounds.extend(parliament);
         var marker = new google.maps.Marker({
             title: nombre,
             position: parliament,
-            map: map
+            map: map,
+            icon: BASE_URL + icon
         });
 
         marcadores.push(marker);
@@ -458,8 +466,13 @@ function mostrarComplejo() {
             dataType: 'json', 
             success: function(response) {
                 if(response.msg == 'ok') {
-                    $('#complejo-modal .modal-body').html(response.html);
+                    $('#complejo-modal .modal-dialog').html(response.html);
+
                     $('#complejo-modal').modal();
+                    $('#complejo-modal .carrusel').carousel({
+                        interval: 5000
+                    }).carousel('pause');
+
                 }
             }
         })

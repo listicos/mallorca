@@ -117,7 +117,7 @@
                         <?php if(hasRoles("Administrador, Reserva, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-reserva-lista"><i class="icon-shopping-cart"></i><span class="hidden-tablet"> Reservas <?php if($this->getAlerts()->reservasPendientes > 0 ) echo '<span class="badge badge-important orange pulse animated infinite" title="Pendientes">'.$this->getAlerts()->reservasPendientes.'</span>'; ?> <?php if($this->getAlerts()->reservasParaHoy > 0 ) echo '<span class="badge badge-important green pulse animated infinite" title="Para hoy">'.$this->getAlerts()->reservasParaHoy.'</span>'; ?></span></a></li>
                         <?php } ?>
-                        <?php if(hasRoles("Administrador, Reserva, Socio, Comercial")) { ?>
+                        <?php if(hasRoles("Administrador, Reserva, Socio, Comercial, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-canales-lista"><i class="icon-book"></i><span class="hidden-tablet"> Canales </span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Socio")) { ?>

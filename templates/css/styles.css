@@ -1,12 +1,24 @@
 @import "../bootstrap-glyphicons.less";
 body{
-    font-family: Arial;
     background: #FFF;
 }
 h1, h2, h3, h4 {
 font-family: 'Ubuntu Condensed', sans-serif;
 font-weight: bold;
 color: #000;
+}
+.modal-title{
+    font-size: 24px;
+    
+    text-align: center;
+}
+.modal-header{
+    padding: 8px;
+    margin: 0px;
+}.modal-header .close{
+    margin-top: 1px;
+    font-size: 27px;
+    margin-right: 3px;
 }
 .nav-tabs > li > a{
     background: rgba(236, 236, 236, 0.4);

@@ -6,6 +6,9 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 ALTER TABLE idiomas ADD codigo VARCHAR(10) NULL;
 
 DELETE FROM idiomas;
+ALTER TABLE `mallorcavikat`.`idiomas` 
+CHANGE COLUMN `id_idioma` `id_idioma` INT(11) NOT NULL ,
+CHANGE COLUMN `nombre` `nombre` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ;
 
 INSERT INTO `idiomas` (`id_idioma`, `nombre`, `codigo`) VALUES 
   (1, 'Español', 'es'),
