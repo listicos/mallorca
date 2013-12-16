@@ -458,8 +458,13 @@ function mostrarComplejo() {
             dataType: 'json', 
             success: function(response) {
                 if(response.msg == 'ok') {
-                    $('#complejo-modal .modal-body').html(response.html);
+                    $('#complejo-modal .modal-dialog').html(response.html);
+
                     $('#complejo-modal').modal();
+                    $('#complejo-modal .carrusel').carousel({
+                        interval: 5000
+                    }).carousel('pause');
+
                 }
             }
         })

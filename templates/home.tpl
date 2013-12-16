@@ -167,12 +167,18 @@
                         <div class=" result-item">
                             <div>
                                 <div class="carrusel">
+                                {if $a['apartamento']->idComplejo}
+                                    <div class="complejo-mark">
+                                        <a href="javascript:void(0)" title="Pincha aquí para ver los datos del complejo" id-complejo="{$a['apartamento']->idComplejo}">
+                                            Esta alojamiento pertenece a {$a['complejo']->nombre}
+                                        </a>
+                                    </div>
+                                {/if}
                                     <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.iteration}">
                                         <div class="carousel-inner">
                                             {foreach from=$a['adjuntos'] item=adjunto name=adjuntos}
                                             <div class="item {if $smarty.foreach.adjuntos.first}active{/if}">
                                                 <img src="{$template_url}{$adjunto->ruta}" alt="">
-                                                <!--<img src="http://mallorca.vikatickets.com/Template/recursos/apartamentos/0bf551bc30d9a412aa471553cb4001d1.jpg">-->
                                             </div>
                                             {/foreach}
                                         </div>
@@ -215,11 +221,7 @@
                                                 <input type="hidden" name="nombre" value="{$a['apartamento']->tarifaBase}">
                                                 <input type="hidden" name="lat" value="{$a['apartamento']->direccion->lat}">
                                                 <input type="hidden" name="lon" value="{$a['apartamento']->direccion->lon}">
-                                                {if $a['apartamento']->idComplejo}
-                                                <div class="complejo-mark">
-                                                    <a href="javascript:void(0)" title="Pincha aquí para ver los datos del complejo" id-complejo="{$a['apartamento']->idComplejo}"><img src="{$template_url_s}/img/icon-villas.png" alt="{$a['apartamento']->complejo->nombre}"></a>
-                                                </div>
-                                                {/if}
+                                                
                                             </div>
                                         
 
@@ -312,18 +314,7 @@
             
 <div class="modal fade" id="complejo-modal">
     <div class="modal-dialog">
-        <div class="modal-content">
-             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Datos del complejo</h4>
-            </div>
-            <div class="modal-body">
-                
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{#cerrar#}</button>
-            </div>
-        </div>
+        
     </div>
 </div>
                     

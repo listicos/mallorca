@@ -51,6 +51,11 @@ if($apartamentos){
         $rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, date('Y-m-d'), 0);
             $apartamento->precioMinimo = $rangoPrecios[0];
             $apartamento->precioMaximo = $rangoPrecios[1];
+
+        if($apartamento->idComplejo){
+            $complejo = getComplejo($apartamento->idComplejo);
+            $apartamentos_array[$akey]['complejo'] = $complejo;
+        }
         /*
         $comments = getOpinionesByApartamento($apartamento->idApartamento);
         $apartamentos_array[$akey]['opiniones'] = $comments;
