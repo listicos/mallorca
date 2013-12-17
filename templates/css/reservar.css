@@ -25,6 +25,10 @@ height: 133px;
 margin: 0 auto;
 width: 100%;
 }
+.flexibles_p{
+    font-size: 11px;
+    color: #9B9B9B;
+}
 .flex-control-nav{
     display: none;
 }
@@ -500,8 +504,12 @@ div.no-padding {
 .table-reserva-info{
     margin-bottom: 0px;
 }
+small{
+    color: #9B9B9B;
+}
 .font-s24{
     font-size: 24px;
+    margin-bottom: 2px;
 }
 .font-w-bold{
     font-weight: bold;
@@ -635,6 +643,9 @@ background-position: 153px 32px;
 }
 .panel.panel-success h3{
     color: #555657;
+}
+p{
+    margin-bottom: 5px;
 }
 @media (max-width: 570px) {
     .nav.nav-tabs.breadcrumb-custom .bread-row{

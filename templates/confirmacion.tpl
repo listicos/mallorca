@@ -22,9 +22,9 @@
                     </ul>
                 </div>
                 <div class="row">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">{#comprueba_los_datos#}</h3>
+                            <h1 class="text-center panel-title">{#comprueba_los_datos#}</h1>
                         </div>
                         <div class="panel-body">
                             <div class="col-md-12">
@@ -68,9 +68,9 @@
                 </div>
                                     
                 <div class="row">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">{#datos_del_apartamento#}</h3>
+                            <h1 class="text-center panel-title">{#datos_del_apartamento#}</h1>
                         </div>
                         <div class="panel-body">
                             <div class="col-md-12">

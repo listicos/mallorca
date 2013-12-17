@@ -241,25 +241,24 @@
                                                </div>
                                                <div class="checkbox">
                                                    <input type="checkbox" name="fechasFlexibles" class="">{#mis_fechas_son_flexibles#}<br>
-                                                   {#explicacion_fechas_flexibles#}
+                                                   <span class="flexibles_p">{#explicacion_fechas_flexibles#}</span>
                                                </div>
-                                            
+                                             <div class="total-bottom-content">
+                                            <p class="text-primary font-s24 text-right">{#total#} {$menor_precio}</p>
+                                            <p class="text-right"><small>El importe incluye todos los impuestos</small></p>
+                                        </div>
+                                        
+                                        <div class="text-right">
+                                            <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
+                                            <input type="hidden" name="action" value="insert">
+                                            <input type="submit" class="btn btn-primary pay_booking" value="Finalizar reserva">
+                                        </div>
                                         </div>
                                     </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="col-md-12">
-                                        <div class="row total-bottom-content">
-                                            <p><strong></strong></p>
-                                            <p class="text-primary font-s24">{#total#} {$menor_precio}</p>
-                                            <p><small>El importe incluye todos los impuestos</small></p>
-                                        </div>
-                                        
-                                        <div class="">
-                                            <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
-                                            <input type="hidden" name="action" value="insert">
-                                            <input type="submit" class="btn btn-primary pay_booking" value="Finalizar reserva">
-                                        </div>
+                                       
                                         </div>
                                     </div>
                         </div>
