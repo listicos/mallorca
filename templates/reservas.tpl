@@ -251,7 +251,7 @@
                                         <div class="col-md-12">
                                         <div class="row total-bottom-content">
                                             <p><strong></strong></p>
-                                            <p class="text-primary font-s24">{#total#}{$menor_precio}</p>
+                                            <p class="text-primary font-s24">{#total#} {$menor_precio}</p>
                                             <p><small>El importe incluye todos los impuestos</small></p>
                                         </div>
                                         

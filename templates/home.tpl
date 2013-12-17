@@ -170,7 +170,7 @@
                                 {if $a['apartamento']->idComplejo}
                                     <div class="complejo-mark">
                                         <a href="javascript:void(0)" title="Pincha aquí para ver los datos del complejo" id-complejo="{$a['apartamento']->idComplejo}">
-                                            Esta alojamiento pertenece a {$a['complejo']->nombre}
+                                            {$a['complejo']->nombre}
                                         </a>
                                     </div>
                                 {/if}
