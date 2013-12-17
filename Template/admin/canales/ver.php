@@ -20,24 +20,24 @@
                                         </div>                                      
                                     </div> 
                                 </div>
-                                <div class="span4">
+                                <div class="span4 hidden">
                                     <div class="control-group">
                                         <div class="input-prepend center span12" title="Comisión" data-rel="tooltip">
                                             <span class="add-on"><i class="icon-user"></i></span><input value="<?php echo $canal->comision ?>" class="input-large span10 validate[required, custom[number]]" name="comision" id="comision" type="text" placeholder="Comisión" data-prompt-position="topLeft:2%"/>
                                         </div>                                      
                                     </div>                                     
                                 </div>
-                                <div class="span4">
+                                <div class="span4 hidden">
                                     <div class="control-group">
                                         <div class="input-prepend center span12" title="Se&ntilde;a" data-rel="tooltip">
                                             <span class="add-on"><i class="icon-user"></i></span><input  value="<?php echo $canal->senia ?>" class="input-large span10 validate[required, custom[number]]" name="senia" id="senia" type="text" placeholder="Se&ntilde;a" data-prompt-position="topLeft:2%"/>
                                         </div>                                      
                                     </div>                                     
-                                </div>  
+                                </div> 
                             </div>
                             
-                            <legend class="legend_custom">Políticas de cancelación</legend>
-                            <div class="row-fluid">
+                            <legend class="legend_custom hidden">Políticas de cancelación</legend>
+                            <div class="row-fluid hidden">
                                 <div class="span4">
                                     <div class="control-group">                                   
                                         <div class="input-prepend center span12" title="Días de Tolerancia" data-rel="tooltip">

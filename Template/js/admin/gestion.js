@@ -66,6 +66,9 @@ $(document).ready(function(){
     $("#geocomplete").on("geocode:dragged", function(event, latLng) {
         $("input[name=lat]").val(latLng.lat());
         $("input[name=lon]").val(latLng.lng());
+    }).on("geocode:result", function(event, latLng) {
+        $("input[name=lat]").val(latLng.geometry.location.lat());
+        $("input[name=lon]").val(latLng.geometry.location.lng());
     });
     
     
