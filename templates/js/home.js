@@ -391,6 +391,36 @@ function masFiltros() {
     })
     
     $('#filtrarServiciosBtn').off('click').on('click', function(){
+        if($('input[name=instalaciones]:checked').length == 0) {
+            $('#servicios_modal').modal('toggle');
+            return false;
+        }
+        
+        masFiltrosMarcados = $('input[name=instalaciones]:checked');
+        filtrosMarcados = $('#filtrosServicios input[name="instalaciones[]"]:checked');
+        
+        esta = true;
+        if(masFiltrosMarcados.length == filtrosMarcados.length) {
+            esta = false;
+            for (i=0;i<masFiltrosMarcados.length; i++) {
+                esta = false;
+                for(j=0;j<filtrosMarcados.length;j++) {
+                    if($(masFiltrosMarcados[i]).val() == $(filtrosMarcados[j]).val()){
+                        esta = true;
+                        break;
+                    } 
+                }
+                if(!esta) {
+                    break;
+                }
+            }
+            
+            if(esta) {
+                $('#servicios_modal').modal('toggle');
+                return false;
+            }
+        }
+        
         btn = $('#filtrosServicios .more-checkbox').clone();
         $('#filtrosServicios').html('');
         $('input[name=instalaciones]:checked').each(function(){
