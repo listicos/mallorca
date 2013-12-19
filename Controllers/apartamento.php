@@ -125,8 +125,8 @@ if($disponibilidades){
     foreach ($disponibilidades as $d) {
         $disponibles[] = date('Y-n-j',strtotime($d->fechaInicio));
     }
-    $smarty->assign('disponibles',json_encode($disponibles));
-}
+    
+}$smarty->assign('disponibles',json_encode($disponibles));
 
 $smarty->assign('entrada', $_SESSION['fechaInicio']);
 $smarty->assign('salida', $_SESSION['fechaFinal']);

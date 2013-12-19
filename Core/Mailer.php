@@ -51,6 +51,7 @@ class Core_Mailer {
             $mail->CharSet = "UTF-8";
             $mail->Mailer = "smtp";
             $mail->SMTPAuth = true;
+            $mail->SMPTAuth = true;
             $mail->SMTPSecure = "ssl";
             
             if(!count($config))

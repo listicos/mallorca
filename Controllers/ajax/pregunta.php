@@ -1,13 +1,14 @@
-<?php
-
-include_once 'Logic/suscripciones.php';
-
+<?php 
 $action = $_POST["action"];
 $result = array("msg" => "error", "data" => "No tienes los permisos suficientes");
 
 
 
-if(isset($_POST['email']) && isset($_POST['nombre']) && isset($_POST['mensaje']) ){
+if(isset($_POST['email']) && isset($_POST['nombre']) && isset($_POST['mensaje'])&& isset($_POST['idApartamento']) ){
+    $apartamento = getApartamento($_POST['idApartamento']);
+    $empresaContrato = getEmpresaContrato($ap->idEmpresaContrato);
+    $empresa = getEmpresa($empresaContrato->idEmpresa);
+
     $data = array();
     $data['email'] = $_POST['email'];
     $data['nombre'] = $_POST['nombre'];
@@ -26,7 +27,9 @@ if(isset($_POST['email']) && isset($_POST['nombre']) && isset($_POST['mensaje'])
                 'puerto' => $config->puerto
             );
             
-            $subject = "Se ha recibido un mensaje desde Mallorca Rent House";
+            $data['nombre'] = isset($_POST['apellidos']) ? $data['nombre'].' '.$_POST['apellidos'] : $data['nombre'];
+
+            $subject = "Pregunta sobre ".$apartamento->nombre;
             $body = " Enviado el " . date("d-m-Y") . "<br/>";
             $body .= "Nombre/s:" . $data['nombre'] . "<br/>";
 
@@ -35,8 +38,10 @@ if(isset($_POST['email']) && isset($_POST['nombre']) && isset($_POST['mensaje'])
             if(isset($_POST['telefono'])) $body .= "Teléfono: " . $_POST['telefono'] . "<br/>";
 
             $body .= "Mensaje: " . $data['mensaje'] . " <br/>";
+            $body .= "URL: " . $base_url.'/apartamento/id:'.$apartamento->idApartamento. " <br/>";
+
             
-            $mailer->send_email($config->email, $subject, $body, $data_config);
+            $mailer->send_email($empresa->email, $subject, $body, $data_config);
             
             $result['msg'] = 'ok';
             $result['data'] = 'Gracias ' . $data['nombre'] . " por contactarnos";

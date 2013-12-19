@@ -394,12 +394,12 @@ div.leyenda {
     display: none;
 }
 #complejo-modal .carrusel{
-    width: 99%;
+    width: 86%;
     box-shadow: 1px 1px 4px #000;
     margin: 0 auto;
 }
 #complejo-modal p{
-    text-align: center;
+    text-align: left;
     clear: both;
     padding-top: 10px;
     font-size: 16px;

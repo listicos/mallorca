@@ -232,16 +232,22 @@
                                         <h4 class="text-right">{#total#} <span>{$menor_precio}</span></h4>
                                         <small class="text-right">{#impuestos_y_tasas_incuidas#}<br />{#sujeto_a_disponibilidad#}</small>
                                     </div>
+
+                                    {if count($disponibles)>0}
                                     <div class="row desde-precio-reserva" style="display: none;">
                                         <div class="col-md-12">
                                             <h4>{#desde#} <span>{$menor_precio}</span> - {#hasta#} <span>{$menor_precio}</span></h4>
                                             <small>{#impuestos_y_tasas_incluidas_sujeto_a_disponibilidad#}</small>
                                         </div>
                                     </div>
+                                    {/if}
+
                                 </div>
                                             
                                 <div class="contenido-calendario col-md-12">
                                     <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">{#reservalo#}</button></div>
+                                    
+                                    <div class="button-pregunta col-md-12"><a href="javascript:void(0)" id="make_a_question" class="btn btn-info btn-xs btn-block">¿Tienes una pregunta?</a></div>
                                 </div>
                                             
                                 <div class="reserva-hotel-detalles">
@@ -297,4 +303,49 @@
                 </div> 
             </div>
         </div>
+    <div class="modal fade" id="make_question_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <form id="make-question-form">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Realiza tu pregunta sobre [<b>{$apartamento['apartamento']->nombre}</b>]</h4>
+            </div>
+            <div class="modal-body">
+                
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label for="nombre_viajero">Nombre/s:</label>
+                            <input type="text" name="nombre" class="form-control validate[required]" placeholder="Nombre/s">
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="apellidos">Apellido/s:</label>
+                            <input type="text" name="apellidos" class="form-control validate[required]" placeholder="Apellido/s">
+                        </div>
+                    </div>
+                    <div class="row">
+                         <div class="col-sm-6 form-group">
+                             <label for="email">Correo eletrónico:</label>
+                             <input type="text" name="email" class="form-control validate[required, custom[email]]" placeholder="Correo electrónico">
+                         </div>
+                         <div class="col-sm-6 form-group">
+                             <label for="telefono">Teléfono de contacto:</label>
+                             <input type="text" name="telefono" class="form-control validate[required, custom[confirmationEmail]]" placeholder="Teléfono de contacto">
+                         </div>
+                    </div>
+                    <div class="row-fluid form-group">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea name="mensaje" class="form-control"></textarea>
+                    </div>
+                    <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-info" id="btn-send-question">Enviar pregunta</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 {/block}

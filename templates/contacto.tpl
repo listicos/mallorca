@@ -32,7 +32,7 @@
             <div class="container-columnas row">
                 <div class="contacto col-md-8">
                     <form class="form-inline col-md-12" role="form" id="contactoForm">
-                    <div class="titulo-contacto col-md-12">
+                    <div class="titulo-contacto">
                         <h3>{#contactanos#}</h3>
                     </div>
                     <div class="datos-contacto row">

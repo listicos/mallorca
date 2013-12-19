@@ -28,7 +28,10 @@
 	        </div>
 		</div>
 		<div class="row">
-		    <p>{$complejo->descripcion}</p>
+			<div class="col-md-12">
+				<p>{$complejo->descripcion}</p>
+			</div>
+		    
 		</div>
     </div>
     <div class="modal-footer">
