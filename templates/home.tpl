@@ -67,16 +67,14 @@
                     <div class="col-sm-12 form-group">
                         <legend>{#tipo_de_alojamiento#}</legend>
                         <div class="">
-                            <div class="btn-group separate-group" data-toggle="buttons">
+                            <div class="row-fluid" >
                                 {foreach from=$tiposApartamento item=tipo}
                                     {if $tipo->apartamentos > 0}
-                                        <label class="btn btn-default">
-                                            <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}" />
-                                            <div class="text-center">
-                                              <span>{$tipo->nombre}<strong>({$tipo->apartamentos})</strong></span>
-                                            </div>
-                                            
-                                        </label>
+                                        <div class="checkbox-inline">
+                                            <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}"/>
+                                            <span>{$tipo->nombre}<strong>({$tipo->apartamentos})</strong></span>
+                                        </div>
+                                        
                                     {/if}
                                 {/foreach}
                             </div>
