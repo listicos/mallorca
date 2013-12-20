@@ -6,7 +6,9 @@ $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "
 $idApartamento = $_GET['id'];
 $apartamento = getApartamento($idApartamento);
 
-
+if($usuarioAuth = $usuario_core->getUsuario()) {
+    $smarty->assign('usuarioAuth', $usuarioAuth);
+}
 
 $apartamentos_array = array();
 $apartamentos_array['apartamento'] = $apartamento;

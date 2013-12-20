@@ -46,7 +46,7 @@ if (strcmp($action, "insert") == 0) {
                 $data_usuario['nombre'] = $_POST['nombre'];
             if(isset($_POST['apellidoPaterno']))
                 $data_usuario['apellidoPaterno'] = $_POST['apellidoPaterno'];
-            if(isset($_POST['email']))
+            if(isset($_POST['email']) && !$usuario)
                 $data_usuario['email'] = $_POST['email'];
             if(isset($_POST['telefono']))
                 $data_usuario['telefono'] = $_POST['telefono'];

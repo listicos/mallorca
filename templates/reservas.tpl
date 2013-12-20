@@ -97,27 +97,29 @@
                                                     <div class="row">
                                                         <div class="col-sm-6 form-group">
                                                             <label for="nombre_viajero">{#nombre#}</label>
-                                                            <input type="text" name="nombre" class="form-control validate[required]" placeholder="Nombre/s"/>
+                                                            <input type="text" name="nombre" class="form-control validate[required]" placeholder="Nombre/s" {if $usuarioAuth}value="{$usuarioAuth->nombre}"{/if}/>
                                                         </div>
                                                         <div class="col-sm-6 form-group">
                                                             <label for="apellido_viajero">{#apellidos#}</label>
-                                                            <input type="text" name="apellidoPaterno" class="form-control validate[required]" placeholder="Apellido/s"/>
+                                                            <input type="text" name="apellidoPaterno" class="form-control validate[required]" placeholder="Apellido/s" {if $usuarioAuth}value="{$usuarioAuth->apellidoPaterno}"{/if}/>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                          <div class="col-sm-6 form-group">
                                                              <label>{#correo_electronico#}</label>
-                                                             <input type="text" name="email" class="form-control validate[required, custom[email]]" placeholder="Correo electrónico">
+                                                             <input type="text" name="email" class="form-control validate[required, custom[email]]" placeholder="Correo electrónico" {if $usuarioAuth}readonly value="{$usuarioAuth->email}"{/if}>
                                                          </div>
+                                                         {if !usuarioAuth}
                                                          <div class="col-sm-6 form-group">
                                                              <label>{#repita_el_correo_electronico#}</label>
                                                              <input type="text" name="repeatEmail" class="form-control validate[required, custom[confirmationEmail]]" placeholder="Repita el correo electrónico">
                                                          </div>
+                                                        {/if}
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-6 form-group">
                                                             <label for="apellido_viajero">Teléfono de contacto</label>
-                                                            <input type="text" name="telefono" class="form-control" placeholder="Teléfono de contacto (para incidencias)"/>
+                                                            <input type="text" name="telefono" class="form-control" placeholder="Teléfono de contacto (para incidencias)" {if $usuarioAuth}value="{$usuarioAuth->telefono}"{/if}/>
                                                         </div>
                                                         <div class="col-sm-6 form-group">
                                                             <label>{#pais_de_residencia#}</label>
