@@ -18,6 +18,8 @@ if (strcmp($action, "checkIn") == 0) {
             $reservas[$key]->noches = ((strtotime($reserva->fechaSalida) - strtotime($reserva->fechaEntrada)) / (60*60*24));
             $reservas[$key]->fechaEntrada = date('d/m/Y', strtotime($reserva->fechaEntrada));
             $reservas[$key]->fechaSalida = date('d/m/Y', strtotime($reserva->fechaSalida));
+            $reservas[$key]->apartamento = getApartamento($reserva->idApartamento);
+            $reservas[$key]->huesped = getUsuario($reserva->idUsuario);
         }
         $template = new Core_template('admin/reserva/filtros.php');
         $template->setAttribute('reservas', $reservas);
@@ -42,6 +44,8 @@ if (strcmp($action, "checkOut") == 0) {
             $reservas[$key]->noches = ((strtotime($reserva->fechaSalida) - strtotime($reserva->fechaEntrada)) / (60*60*24));
             $reservas[$key]->fechaEntrada = date('d/m/Y', strtotime($reserva->fechaEntrada));
             $reservas[$key]->fechaSalida = date('d/m/Y', strtotime($reserva->fechaSalida));
+            $reservas[$key]->apartamento = getApartamento($reserva->idApartamento);
+            $reservas[$key]->huesped = getUsuario($reserva->idUsuario);
         }
         $template = new Core_template('admin/reserva/filtros.php');
         $template->setAttribute('reservas', $reservas);
@@ -66,6 +70,8 @@ if (strcmp($action, "reservasRecientes") == 0) {
             $reservas[$key]->noches = ((strtotime($reserva->fechaSalida) - strtotime($reserva->fechaEntrada)) / (60*60*24));
             $reservas[$key]->fechaEntrada = date('d/m/Y', strtotime($reserva->fechaEntrada));
             $reservas[$key]->fechaSalida = date('d/m/Y', strtotime($reserva->fechaSalida));
+            $reservas[$key]->apartamento = getApartamento($reserva->idApartamento);
+            $reservas[$key]->huesped = getUsuario($reserva->idUsuario);
         }
         $template = new Core_template('admin/reserva/filtros.php');
         $template->setAttribute('reservas', $reservas);

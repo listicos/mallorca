@@ -24,6 +24,7 @@ $apartamentos = $this->getAttribute('apartamentos');
                                 <th>ID</th>
                                 <th>Código</th>
                                 <th>Huésped</th>
+                                <th>Apartamento</th>
                                 <th>Total</th>
                                 <th>Fecha</th>
                                 <th>Noches</th>
@@ -56,6 +57,7 @@ $apartamentos = $this->getAttribute('apartamentos');
                                 <th>ID</th>
                                 <th>Código</th>
                                 <th>Huésped</th>
+                                <th>Apartamento</th>
                                 <th>Total</th>
                                 <th>Fecha</th>
                                 <th>Noches</th>
@@ -88,6 +90,7 @@ $apartamentos = $this->getAttribute('apartamentos');
                                 <th>ID</th>
                                 <th>Código</th>
                                 <th>Huésped</th>
+                                <th>Apartamento</th>
                                 <th>Total</th>
                                 <th>Fecha</th>
                                 <th>Noches</th>
