@@ -234,7 +234,7 @@
                                                 <h1 class="text-center panel-title">Termina tu petición de reserva</h1>
                                             </div>
                                             <div class="panel-body">
-                                                 <p>{#te_enviaremos_tu_reserva_por_mail_a#}<br />
+                                                <p>{#te_enviaremos_tu_reserva_por_mail_a#} <span id="email-enviar">{if $usuarioAuth}{$usuarioAuth->email}{/if}</span><br />
                                                     {if $apartamento['apartamento']->tpvs->$lang}{$apartamento['apartamento']->tpvs->$lang}{else}{$apartamento['apartamento']->tpvs->es}{/if}</p>
 
                                                <div class="checkbox">
