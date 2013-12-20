@@ -126,18 +126,18 @@ if($this->getAttribute('print')) {
                                 <td style="width: 40%; background: transparent;">Estado:</td>
                                 <td style="background: transparent;"><?php echo $reserva['reserva']->estatus; ?></td>
                             </tr>
-                            <tr>
+                            <!--<tr>
                                 <td style="width: 40%; background: transparent;">Estado de facturación:</td>
                                 <td style="background: transparent;">-</td>
-                            </tr>
+                            </tr>-->
                             <tr>
                                 <td style="width: 40%; background: transparent;">Código de reserva:</td>
                                 <td style="background: transparent;">65413</td>
                             </tr>
-                            <tr>
+                            <!--<tr>
                                 <td style="width: 40%; background: transparent;">Condiciones de pago:</td>
                                 <td style="background: transparent;">2</td>
-                            </tr>
+                            </tr>-->
                         </tbody>
                     </table>
                 </td>
@@ -219,7 +219,7 @@ if($this->getAttribute('print')) {
                     </table>
                 </td>
             </tr>
-            <tr>
+            <!--<tr>
                 <td style="border: 0; background: transparent;">
                     <table style="border-bottom: 0;" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered bootstrap-datatable" id="reservas_detalles_importes" >
                         <thead><tr><th style="border-radius: 0;">Fianza</th></tr></thead>
@@ -283,7 +283,7 @@ if($this->getAttribute('print')) {
                         </tbody>
                     </table>
                 </td>
-            </tr>
+            </tr>-->
             <tr>
                 <td style="border: 0; background: transparent;">
                     <table style="border-bottom: 0;" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered bootstrap-datatable" id="reservas_detalles_importes" >
