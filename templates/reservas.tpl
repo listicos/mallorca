@@ -56,7 +56,7 @@
                                                 <p class="text-muted">Salida: {$salida}</p>
                                                 <p class="text-muted">{$noches} Noche(s)</p>
                                                 <div class="reserva-hotel-detalles" style="margin-top: 10px;">
-                                                    <h4>Datos del apartamento</h4>
+                                                    <h4>Datos del alojamiento</h4>
                                                     <table class="table table-striped table-bordered">
                                                         <tr>
                                                             <td>{#tipo_de_alojamiento#}</td>
