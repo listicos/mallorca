@@ -154,6 +154,9 @@ function actualizarMapa() {
 
     map.setCenter(latlngbounds.getCenter());
     map.fitBounds(latlngbounds);
+    if(map.getZoom() > 9) {
+        map.setZoom(9);
+    }
 }
 
  function filtrarPorMapa() {
