@@ -48,8 +48,8 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
             $sql .= " INNER JOIN direcciones as dir ON a.id_direccion = dir.id_direccion ";
         }
         
-        
-        $sql.= " INNER JOIN disponibilidades AS d ON a.id_apartamento  = d.id_apartamento AND d.estatus =  'disponible' WHERE 1";
+        if(($fechaInicio && is_numeric($fechaInicio)) || ($fechaFinal && is_numeric($fechaFinal)))
+            $sql.= " INNER JOIN disponibilidades AS d ON a.id_apartamento  = d.id_apartamento AND d.estatus =  'disponible' WHERE 1";
 
         if ($fechaInicio && $fechaFinal && is_numeric($fechaInicio) && $fechaInicio < $fechaFinal) {
             for ($i = $fechaInicio; $i <= $fechaFinal; $i+=86400) {
