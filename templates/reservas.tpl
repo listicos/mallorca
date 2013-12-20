@@ -233,7 +233,7 @@
                                             </div>
                                             <div class="panel-body">
                                                  <p>{#te_enviaremos_tu_reserva_por_mail_a#}<br />
-                                                    {$apartamento['apartamento']->tpv}</p>
+                                                    {if $apartamento['apartamento']->tpvs->$lang}{$apartamento['apartamento']->tpvs->$lang}{else}{$apartamento['apartamento']->tpvs->es}{/if}</p>
 
                                                <div class="checkbox">
                                                    <input type="checkbox" name="aceptoPoliticas" class="validate[required]">

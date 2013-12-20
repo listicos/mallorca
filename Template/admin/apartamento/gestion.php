@@ -143,9 +143,24 @@ $edit = $this->getAttribute('edit');
                         </div>             
                         <legend class="legend_custom titulos_legend">Descripción</legend>
                         <div class="row-fluid">
+                            <div class="span4">
+                                <div class="control-group">
+                                    <div class="input-prepend span12 center" title="Idioma" data-rel="tooltip">
+                                        <span class="detalles_apartamento_prepend"><i class="icon-globe"></i></span>
+                                        <select id="idiomaDescripcionLarga" class="span10">
+                                            <?php foreach($idiomas as $idioma) { ?>
+                                            <option value="<?php echo $idioma->codigo; ?>"><?php echo $idioma->nombre; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
                             <div class="span12">
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="editor span12 validate[required]" name="descripcionLarga" rows="11" placeholder="Descripción, mínimo 60 palabras"><?php if ($edit) { ?><?php echo $apartamento['apartamento']->descripcionLarga; ?><?php } ?></textarea>                                        
+                                    <textarea class="editor span12 validate[required]" id="descripcionLarga" rows="11" placeholder="Descripción, mínimo 60 palabras"></textarea>                                        
+                                    <input type="hidden" name="descripcionLarga" value='<?php echo $apartamento['apartamento']->descripcionLarga; ?>'>
                                    <!-- <p>La descripción debe contener al menos 15 palabras.Las de los
                                         apartamentos más alquilados contienen más de 150 palabras</p>-->
                                 </div>                                     
@@ -311,9 +326,24 @@ $edit = $this->getAttribute('edit');
                             </div>-->
                         </div>
                         <div class="row-fluid">
+                            <div class="span4">
+                                <div class="control-group">
+                                    <div class="input-prepend span12 center" title="Idioma" data-rel="tooltip">
+                                        <span class="detalles_apartamento_prepend"><i class="icon-globe"></i></span>
+                                        <select id="idiomaNormas" class="span10">
+                                            <?php foreach($idiomas as $idioma) { ?>
+                                            <option value="<?php echo $idioma->codigo; ?>"><?php echo $idioma->nombre; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="span12" name="normas" rows="5" placeholder="Normas de la casa, explica a tus potenciales huéspedes lo que esperas de ellos..."><?php if ($edit) { ?> <?php echo $apartamento['apartamento']->nombre; ?> <?php } ?></textarea>                                        
+                                    <textarea class="span12" id="normas" rows="5" placeholder="Normas de la casa, explica a tus potenciales huéspedes lo que esperas de ellos..."></textarea>                                        
+                                    <input type="hidden" name="normas" <?php echo "value='" . $apartamento['apartamento']->nombre . "'"; ?>>
                                     <p></p>
                                 </div>                                     
                             </div>   
@@ -396,12 +426,28 @@ $edit = $this->getAttribute('edit');
                             </div>
                         </div>
                         <div class="row-fluid">
+                            <div class="span4">
+                                <div class="control-group">
+                                    <div class="input-prepend span12 center" title="Idioma" data-rel="tooltip">
+                                        <span class="detalles_apartamento_prepend"><i class="icon-globe"></i></span>
+                                        <select id="idiomaInformacionPrivada" class="span10">
+                                            <?php foreach($idiomas as $idioma) { ?>
+                                            <option value="<?php echo $idioma->codigo; ?>"><?php echo $idioma->nombre; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="span12" title="Referencias" data-rel="tooltip" name="referencia" rows="5" placeholder="Información adicional para el usuario..."><?php if ($edit) { echo $apartamento['direccion']->referencia; } ?></textarea>                                        
+                                    <textarea class="span12" title="Referencias" data-rel="tooltip" id="referencia" rows="5" placeholder="Información adicional para el usuario..."></textarea>                                        
+                                    <input type="hidden" name="referencia" value="<?php if ($edit) { echo $apartamento['direccion']->referencia; } ?>">
                                 </div>                                     
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="span12" title="Manuales" data-rel="tooltip" name="manual" rows="5" placeholder="Manual de la casa..."><?php if ($edit) { echo $apartamento['apartamento']->manual; } ?></textarea>                                        
+                                    <textarea class="span12" title="Manuales" data-rel="tooltip" id="manual" rows="5" placeholder="Manual de la casa..."></textarea>                                        
+                                    <input type="hidden" name="manual" value="<?php if ($edit) { echo $apartamento['apartamento']->manual; } ?>">
                                 </div>    
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <input class="span12" type="text" title="Contraseña del Wi-Fi" data-rel="tooltip" name="claveWifi" placeholder="Contraseña del Wi-Fi" value="<?php if ($edit) { echo $apartamento['apartamento']->claveWifi; } ?>" />
@@ -444,9 +490,24 @@ $edit = $this->getAttribute('edit');
                         </div>
                         <legend class="legend_custom titulos_legend">TPV</legend>
                         <div class="row-fluid">
+                            <div class="span4">
+                                <div class="control-group">
+                                    <div class="input-prepend span12 center" title="Idioma" data-rel="tooltip">
+                                        <span class="detalles_apartamento_prepend"><i class="icon-globe"></i></span>
+                                        <select id="idiomaTPV" class="span10">
+                                            <?php foreach($idiomas as $idioma) { ?>
+                                            <option value="<?php echo $idioma->codigo; ?>"><?php echo $idioma->nombre; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
                             <div class="span12">
                                 <div class="control-group detalles_apartamento_descripcion">
-                                    <textarea class="editor span12 validate[required]" name="tpv" rows="11" placeholder="Descripción del tpv"><?php if ($edit) { ?><?php echo $apartamento['apartamento']->tpv; ?><?php } ?></textarea>                                        
+                                    <textarea class="editor span12 validate[required]" id="tpv" rows="11" placeholder="Descripción del tpv"></textarea>                                        
+                                    <input type="hidden" name="tpv" value='<?php if ($edit) { ?><?php echo $apartamento['apartamento']->tpv; ?><?php } ?>'>
                                    <!-- <p>La descripción debe contener al menos 15 palabras.Las de los
                                         apartamentos más alquilados contienen más de 150 palabras</p>-->
                                 </div>                                     

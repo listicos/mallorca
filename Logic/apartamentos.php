@@ -184,6 +184,20 @@ function getApartamento($idApartamento) {
         if($apartamento->idEmpresaContrato) {
             $apartamento->idEmpresa = DAOFactory::getEmpresasContratosDAO()->load($apartamento->idEmpresaContrato)->idEmpresa;
         }
+        
+        if($apartamento->descripcionLarga)
+            $apartamento->descripciones = json_decode ($apartamento->descripcionLarga);
+        
+        if($apartamento->normas)
+            $apartamento->norma = json_decode ($apartamento->normas);
+        
+        if($apartamento->manual)
+            $apartamento->manuales = json_decode ($apartamento->manual);
+        
+        if($apartamento->tpv)
+            $apartamento->tpvs = json_decode ($apartamento->tpv);
+        
+        
         return $apartamento;
     } catch (Exception $e) {
         return false;

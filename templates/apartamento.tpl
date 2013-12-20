@@ -100,7 +100,7 @@
                                     </ul>
                                     <div id="myTabContent" class="tab-content col-md-12">
                                         <div class="tab-pane fade active in row" id="descripcion">
-                                            <div class="col-md-12"> {$apartamento['apartamento']->descripcionLarga} </div>
+                                            <div class="col-md-12"> {if $apartamento['apartamento']->descripciones->$lang}{$apartamento['apartamento']->descripciones->$lang}{else}{$apartamento['apartamento']->descripciones->es}{/if} </div>
                                             <!--<div class="col-md-6 tabla-descripcion">
                                                 <table class="table table-bordered table-striped">
                                                     <tbody>
@@ -153,7 +153,7 @@
                                         </div>
 
                                         <div class="col-xs-12 row-fluid  tab-pane fade" id="normas">
-                                            <p> {$apartamento['apartamento']->normas} </p>
+                                            <p> {if $apartamento['apartamento']->norma->$lang}{$apartamento['apartamento']->norma->$lang}{else}{$apartamento['apartamento']->norma->es}{/if} </p>
                                         </div>
 
                                     </div>

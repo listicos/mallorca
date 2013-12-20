@@ -45,7 +45,7 @@ $(document).ready(function(){
             if($(this).attr('data-ref')=='fotos')
                 getApartamentoFotos();
         }
-    });
+    });/*
     $("#geocomplete").geocomplete({
         map: ".map_canvas",
         details: ".formulario_localizacion ",
@@ -71,7 +71,7 @@ $(document).ready(function(){
         $("input[name=lon]").val(latLng.geometry.location.lng());
     });
     
-    
+    */
     
 
     $('.date-start').datepicker({
@@ -98,7 +98,7 @@ $(document).ready(function(){
 
     $('.date-end').datepicker('setStartDate', date_now);
 
-    
+    gestionIdiomas();
     agregarTarifa()
     gestionGeneralFunctions();
     gestionTarifasFunctions();
@@ -345,6 +345,18 @@ function gestionGeneralFunctions(){
         var action = form.find('.actionGestionGeneral');
         var valid_form;
         valid_form = form.validationEngine('validate');
+        $('#idiomaDescripcionLarga').change();
+        $('input[name=descripcionLarga]').val(JSON.stringify(DESCRIPCION_LARGA));
+        
+        $('#idiomaNormas').change();
+        $('input[name=normas]').val(JSON.stringify(NORMAS));
+        
+        $('#idiomaInformacionPrivada').change();
+        $('input[name=referencia]').val(JSON.stringify(REFERENCIA));
+        $('input[name=manual]').val(JSON.stringify(MANUAL));
+        
+        $('#idiomaTPV').change();
+        $('input[name=tpv]').val(JSON.stringify(TPV));
         
         if(valid_form){
             $.ajax({
@@ -493,4 +505,129 @@ function gestionAvanzadosFunctions() {
           }
        });
     });
+}
+
+var DESCRIPCION_LARGA = {};
+var IDIOMA_DESCRIPCION_LARGA = false;
+
+var NORMAS = {};
+var IDIOMA_NORMAS = false;
+
+var IDIOMA_INFO = false;
+var REFERENCIA = {};
+var MANUAL = {};
+
+var IDIOMA_TPV = false;
+var TPV = {};
+function gestionIdiomas() {
+  
+    //descripcion larga
+    descripcionLarga = $('input[name=descripcionLarga]').val();
+    $('#idiomaDescripcionLarga').off().change(function(e){
+        
+        if(IDIOMA_DESCRIPCION_LARGA) {            
+            DESCRIPCION_LARGA[IDIOMA_DESCRIPCION_LARGA] = CKEDITOR.instances.descripcionLarga.getData();            
+            CKEDITOR.instances.descripcionLarga.setData(DESCRIPCION_LARGA[$(this).val()]);            
+        }
+        IDIOMA_DESCRIPCION_LARGA = $(this).val();
+        $('#descripcionLarga').val(DESCRIPCION_LARGA[IDIOMA_DESCRIPCION_LARGA]);
+    });
+    
+    if(descripcionLarga && descripcionLarga.trim().length > 2) {
+        if(descripcionLarga[0] != '{' || descripcionLarga[descripcionLarga.length - 1] != '}')
+            descripcionLarga = "";
+        else
+            DESCRIPCION_LARGA = JSON.parse(descripcionLarga);
+        
+        $('#idiomaDescripcionLarga').val('es');
+        
+        $('#idiomaDescripcionLarga').change();
+    
+    }
+    
+    //normas
+    normas = $('input[name=normas]').val();
+    $('#idiomaNormas').off().change(function(e){
+        if(IDIOMA_NORMAS){
+            if(NORMAS) {            
+                NORMAS[IDIOMA_NORMAS] = $('#normas').val();            
+                $('#normas').val(NORMAS[$(this).val()]);            
+            }
+        }
+        IDIOMA_NORMAS = $(this).val();
+        $('#normas').val(NORMAS[IDIOMA_NORMAS]);
+    });
+    
+    if(normas && normas.trim().length > 2) {
+        if(normas[0] != '{' || normas[normas.length - 1] != '}')
+            normas = "";
+        else
+            NORMAS = JSON.parse(normas);
+        
+        $('#idiomaNormas').val('es');
+        
+        $('#idiomaNormas').change();
+    
+    }
+    
+    //informacion privada
+    referencia = $('input[name=referencia]').val();
+    manual = $('input[name=manual]').val();
+    $('#idiomaInformacionPrivada').off().change(function(e){
+        if(IDIOMA_INFO){
+            if(REFERENCIA) {            
+                REFERENCIA[IDIOMA_INFO] = $('#referencia').val();            
+                $('#referencia').val(REFERENCIA[$(this).val()]);            
+            }
+            if(MANUAL) {            
+                MANUAL[IDIOMA_INFO] = $('#manual').val();            
+                $('#manual').val(MANUAL[$(this).val()]);            
+            }
+        }
+        IDIOMA_INFO = $(this).val();
+        $('#referencia').val(REFERENCIA[IDIOMA_INFO]);
+        $('#manual').val(MANUAL[IDIOMA_INFO]);
+    });
+    
+    if(manual && manual.trim().length > 2) {
+        if(manual[0] != '{' || manual[manual.length - 1] != '}')
+            manual = "";
+        else
+            MANUAL = JSON.parse(manual);
+    }
+    
+    if(referencia && referencia.trim().length > 2) {
+        if(referencia[0] != '{' || referencia[referencia.length - 1] != '}')
+            referencia = "";
+        else
+            REFERENCIA = JSON.parse(referencia);
+    }
+    
+    $('#idiomaInformacionPrivada').val('es');
+        
+    $('#idiomaInformacionPrivada').change();
+    
+    
+    //TPV
+    tpv = $('input[name=tpv]').val();
+    $('#idiomaTPV').off().change(function(e){
+        
+        if(IDIOMA_TPV) {            
+            TPV[IDIOMA_TPV] = CKEDITOR.instances.tpv.getData();            
+            CKEDITOR.instances.tpv.setData(TPV[$(this).val()]);            
+        }
+        IDIOMA_TPV = $(this).val();
+        $('#tpv').val(TPV[IDIOMA_TPV]);
+        CKEDITOR.instances.tpv.setData(TPV[IDIOMA_TPV]);
+    });
+    
+    if(tpv && tpv.trim().length > 2) {
+        if(tpv[0] != '{' || tpv[tpv.length - 1] != '}')
+            tpv = "";
+        else
+            TPV = JSON.parse(tpv);
+    }
+    $('#idiomaTPV').val('es');
+        
+    $('#idiomaTPV').change();
 }
