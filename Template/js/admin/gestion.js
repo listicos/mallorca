@@ -45,7 +45,7 @@ $(document).ready(function(){
             if($(this).attr('data-ref')=='fotos')
                 getApartamentoFotos();
         }
-    });/*
+    });
     $("#geocomplete").geocomplete({
         map: ".map_canvas",
         details: ".formulario_localizacion ",
@@ -71,7 +71,7 @@ $(document).ready(function(){
         $("input[name=lon]").val(latLng.geometry.location.lng());
     });
     
-    */
+    
     
 
     $('.date-start').datepicker({
