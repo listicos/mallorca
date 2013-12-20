@@ -109,7 +109,7 @@
                                                              <label>{#correo_electronico#}</label>
                                                              <input type="text" name="email" class="form-control validate[required, custom[email]]" placeholder="Correo electrónico" {if $usuarioAuth}readonly value="{$usuarioAuth->email}"{/if}>
                                                          </div>
-                                                         {if !usuarioAuth}
+                                                         {if !$usuarioAuth}
                                                          <div class="col-sm-6 form-group">
                                                              <label>{#repita_el_correo_electronico#}</label>
                                                              <input type="text" name="repeatEmail" class="form-control validate[required, custom[confirmationEmail]]" placeholder="Repita el correo electrónico">
