@@ -5,9 +5,7 @@
         <td><?php echo $apar['apartamento']->nombre; ?></td>
         <!--<td><?php echo $apar['empresa']->nombre.' '.$apar['empresa']->apellidoPaterno; ?></td>-->
         <td><?php echo $apar['direccion']->provincia . ' ' . $apar['direccion']->codigoPostal; ?></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        
         <td><?php echo $apar['apartamento']->estatus ?></td>
         <td> 
             <a title="Reservar" class="reservar" data-toggle="modal" href="#reservar_overlay" data-rel="tooltip" apto-id="<?php echo $apar['apartamento']->idApartamento; ?>" ><i class="icon-shopping-cart"></i></a>

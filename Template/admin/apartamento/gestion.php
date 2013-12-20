@@ -47,7 +47,7 @@ $edit = $this->getAttribute('edit');
                                         <span class="add-on"><i class="icon-home"></i></span>
                                         <select class="span10 " name="estatus" >
                                             <option value="activo" <?php if ($edit && ($apartamento['apartamento']->estatus == 'activo')) { ?> selected="selected" <?php } ?> >Activo</option>
-                                            <option value="inactivo" <?php if ($edit && ($apartamento['apartamento']->estatus == 'activo')) { ?> selected="selected" <?php } ?> >Inactivo</option>
+                                            <option value="inactivo" <?php if ($edit && ($apartamento['apartamento']->estatus == 'inactivo')) { ?> selected="selected" <?php } ?> >Inactivo</option>
                                         </select>
                                     </div> 
                                 </div>

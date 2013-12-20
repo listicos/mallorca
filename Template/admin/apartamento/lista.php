@@ -22,7 +22,7 @@ $empresaId = $this->getAttribute('empresaId');
                         </select>
                         <select class="selectpicker span2" id="ordena_apartamentos" name="filter" data-style="btn-warning"  title="Ordenar" data-rel="tooltip">
                             <option value="id_apartamento" selected>ID</option>
-                            <option value="nombre">Titulo</option>
+                            <option value="nombre">Nombre</option>
                             <option value="estatus">Estado</option>
                         </select>
                         <span class="ordenaPor">Ordenar por:</span>
@@ -33,12 +33,8 @@ $empresaId = $this->getAttribute('empresaId');
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Título</th>
-                                <!--<th>Propietario</th>-->
+                                <th>Nombre</th>
                                 <th>Dirección</th>
-                                <th>Teléfono</th>
-                                <th>Contrato</th>
-                                <th>Última disponible</th>
                                 <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>      
