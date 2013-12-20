@@ -10,7 +10,7 @@ $template = new Core_template('admin/template.php');
 $template->setAttribute('is_visible_header', true);
 $template->setAttribute('is_visible_sidebar', true);
 
-$template->setTitle("Detalles del apartamento");
+$template->setTitle("Detalles del alojamiento");
 $template->setView('admin/apartamento/gestion.php');
 $template->setJS('admin/dropzone.js');
 $template->setJS('../ckeditor/ckeditor.js');

@@ -93,7 +93,7 @@
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-calendario"><i class=" icon-calendar"></i><span class="hidden-tablet"> Calendario</span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Comercial, Socio, Mallorca")) { ?>
-                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-apartamento-lista"><i class="icon-home"></i><span class="hidden-tablet"> Apartamentos</span></a></li>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-apartamento-lista"><i class="icon-home"></i><span class="hidden-tablet"> Alojamientos</span></a></li>
                         <?php } ?>
                         <?php if(hasRoles("Administrador, Comercial, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-complejo-lista"><i class="icon-home"></i><span class="hidden-tablet"> Complejos</span></a></li>
