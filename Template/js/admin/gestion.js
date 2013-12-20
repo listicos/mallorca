@@ -538,13 +538,10 @@ function gestionIdiomas() {
             descripcionLarga = "";
         else
             DESCRIPCION_LARGA = JSON.parse(descripcionLarga);
-        
-        $('#idiomaDescripcionLarga').val('es');
-        
-        $('#idiomaDescripcionLarga').change();
-    
     }
-    
+    $('#idiomaDescripcionLarga').val('es');
+        
+    $('#idiomaDescripcionLarga').change();
     //normas
     normas = $('input[name=normas]').val();
     $('#idiomaNormas').off().change(function(e){
@@ -563,12 +560,10 @@ function gestionIdiomas() {
             normas = "";
         else
             NORMAS = JSON.parse(normas);
-        
-        $('#idiomaNormas').val('es');
-        
-        $('#idiomaNormas').change();
-    
     }
+    $('#idiomaNormas').val('es');
+        
+    $('#idiomaNormas').change();
     
     //informacion privada
     referencia = $('input[name=referencia]').val();
