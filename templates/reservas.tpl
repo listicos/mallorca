@@ -109,7 +109,7 @@
                                                              <label>{#correo_electronico#}</label>
                                                              <input type="text" name="email" class="form-control validate[required, custom[email]]" placeholder="Correo electrónico" {if $usuarioAuth}readonly value="{$usuarioAuth->email}"{/if}>
                                                          </div>
-                                                         {if !usuarioAuth}
+                                                         {if !$usuarioAuth}
                                                          <div class="col-sm-6 form-group">
                                                              <label>{#repita_el_correo_electronico#}</label>
                                                              <input type="text" name="repeatEmail" class="form-control validate[required, custom[confirmationEmail]]" placeholder="Repita el correo electrónico">
@@ -234,7 +234,7 @@
                                                 <h1 class="text-center panel-title">Termina tu petición de reserva</h1>
                                             </div>
                                             <div class="panel-body">
-                                                 <p>{#te_enviaremos_tu_reserva_por_mail_a#}<br />
+                                                <p>{#te_enviaremos_tu_reserva_por_mail_a#} <span id="email-enviar">{if $usuarioAuth}{$usuarioAuth->email}{/if}</span><br />
                                                     {if $apartamento['apartamento']->tpvs->$lang}{$apartamento['apartamento']->tpvs->$lang}{else}{$apartamento['apartamento']->tpvs->es}{/if}</p>
 
                                                <div class="checkbox">
