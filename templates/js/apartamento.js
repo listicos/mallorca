@@ -42,13 +42,40 @@ function initApartamento() {
                 }
             })
         }
-    })
+    });
 
     $('.flexslider').flexslider({
         animation: "fade",
         controlNav: "thumbnails",
         start: function(slider) {
 
+        }
+    });
+
+    $('#make_a_question').off('click').on('click', function(e){
+        $('#make_question_modal').modal();
+        e.preventDefault();
+    });
+
+    $('#make-question-form').submit(function(e) {
+        e.preventDefault();
+        valid = $(this).validationEngine('validate');
+        if(valid) {
+            data = $(this).serialize();
+            $.ajax({
+                url: BASE_URL + '/ajax-pregunta',
+                data: data,
+                type: 'post',
+                dataType: 'json',
+                success: function(response) {
+                    if(response.msg == 'ok') {
+                        toastr.success(response.data);
+                        $('#make_question_modal').modal('hide');
+                    } else {
+                        toastr.error(response.data);
+                    }
+                }
+            })
         }
     });
 }

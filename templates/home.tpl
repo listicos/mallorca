@@ -168,7 +168,7 @@
                                 {if $a['apartamento']->idComplejo}
                                     <div class="complejo-mark">
                                         <a href="javascript:void(0)" title="Pincha aquí para ver los datos del complejo" id-complejo="{$a['apartamento']->idComplejo}">
-                                            Esta alojamiento pertenece a {$a['complejo']->nombre}
+                                            {$a['complejo']->nombre}
                                         </a>
                                     </div>
                                 {/if}
@@ -290,7 +290,7 @@
                 <div class="listado-servicios">
                     {foreach from=$categorias item=categoria}
                         <legend>{$categoria->nombre}</legend>
-                        <div class="servicios">
+                        <div class="servicios row">
                             {foreach from=$categoria->instalaciones item=instalacion}
                                 {if $instalacion->apartamentos > 0}
                                 <div class="col-sm-4">

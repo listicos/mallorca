@@ -18,10 +18,10 @@
                         <select class="selectpicker span2" id="ordena_canales" name="filter" data-style="btn-warning"  title="Ordenar" data-rel="tooltip">
                             <option value="id_canal" selected>Id</option>
                             <option value="nombre">Nombre</option>
-                            <option value="comision">Comisi&oacute;n</option>
+                            <!--<option value="comision">Comisi&oacute;n</option>
                             <option value="senia">Se&ntilde;a</option>
                             <option value="dias_tolerancia">D&iacute;s de Tolerancia</option>
-                            <option value="porcentaje_comision">Porcentaje de Comisi&oacute;n</option>
+                            <option value="porcentaje_comision">Porcentaje de Comisi&oacute;n</option>-->
                         </select>
                         <span class="ordenaPor">Ordenar por:</span>
                     </form>
@@ -32,10 +32,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
-                                <th>Comisi&oacute;n</th>
+                                <!--<th>Comisi&oacute;n</th>
                                 <th>Se&ntilde;a</th>
                                 <th>D&iacute;as de Tolerancia</th> 
-                                <th>Porcentaje de Comisi&oacute;n</th>
+                                <th>Porcentaje de Comisi&oacute;n</th>-->
                                 <th>Acciones</th>
                             </tr>      
                         </thead>

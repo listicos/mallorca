@@ -60,7 +60,7 @@
                                                     <table class="table table-striped table-bordered">
                                                         <tr>
                                                             <td>{#tipo_de_alojamiento#}</td>
-                                                            <td class="value">{$apartamento['apartamento']->tipo->nombre}</td>
+                                                            <td class="value">{$apartamento['apartamento_tipo']->nombre}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>{#capacidad#}</td>
@@ -116,8 +116,8 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-sm-6 form-group">
-                                                            <label for="apellido_viajero">{#telefono_movil#}</label>
-                                                            <input type="text" name="telefono" class="form-control" placeholder="Teléfono móvil (para incidencias)"/>
+                                                            <label for="apellido_viajero">Teléfono de contacto</label>
+                                                            <input type="text" name="telefono" class="form-control" placeholder="Teléfono de contacto (para incidencias)"/>
                                                         </div>
                                                         <div class="col-sm-6 form-group">
                                                             <label>{#pais_de_residencia#}</label>
@@ -226,10 +226,10 @@
                                     <br />-->
                                 
                
-                                    <div class="col-md-12">
+                                    <div class="col-md-8 col-md-offset-2">
                                      <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <h1 class="text-center panel-title">{#termina_tu_reserva#}</h1>
+                                                <h1 class="text-center panel-title">Termina tu petición de reserva</h1>
                                             </div>
                                             <div class="panel-body">
                                                  <p>{#te_enviaremos_tu_reserva_por_mail_a#}<br />
@@ -241,25 +241,24 @@
                                                </div>
                                                <div class="checkbox">
                                                    <input type="checkbox" name="fechasFlexibles" class="">{#mis_fechas_son_flexibles#}<br>
-                                                   {#explicacion_fechas_flexibles#}
+                                                   <span class="flexibles_p">{#explicacion_fechas_flexibles#}</span>
                                                </div>
-                                            
+                                             <div class="total-bottom-content">
+                                            <p class="text-primary font-s24 text-right">{#total#} {$menor_precio}</p>
+                                            <p class="text-right"><small>Impuestos y tasas incluidas.</small></p>
+                                        </div>
+                                        
+                                        <div class="text-right">
+                                            <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
+                                            <input type="hidden" name="action" value="insert">
+                                            <input type="submit" class="btn btn-primary pay_booking" value="Finalizar petición de reserva">
+                                        </div>
                                         </div>
                                     </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="col-md-12">
-                                        <div class="row total-bottom-content">
-                                            <p><strong></strong></p>
-                                            <p class="text-primary font-s24">{#total#}{$menor_precio}</p>
-                                            <p><small>El importe incluye todos los impuestos</small></p>
-                                        </div>
-                                        
-                                        <div class="">
-                                            <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
-                                            <input type="hidden" name="action" value="insert">
-                                            <input type="submit" class="btn btn-primary pay_booking" value="Finalizar reserva">
-                                        </div>
+                                       
                                         </div>
                                     </div>
                         </div>

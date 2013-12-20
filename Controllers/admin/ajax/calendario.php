@@ -30,7 +30,7 @@ if (strcmp($action, "agregar_tarifa") == 0) {
         //$data_disponibilidad['fechaFinal'] = date('Y-m-d H:i:s', strtotime($_POST['fechaFinal']));
         
         if(isset($_POST['tipo_accion']) && strcmp($_POST['tipo_accion'], 'limpiar_todo') == 0) {
-            deleteDisponibilidadByApartamento($_POST['idApartamento'], $fecha_i, $fecha_f + (24 * 60 * 60));
+            deleteDisponibilidadByApartamento($_POST['idApartamento'], $fecha_i, $fecha_f);
         }
         
         else if(isset($_POST['precioContrato'])) {

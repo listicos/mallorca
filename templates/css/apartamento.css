@@ -38,7 +38,8 @@
 .contenido-calendario {
     padding: 0;
 }
-.button-reservalo {
+.button-pregunta {
+    margin-top: 10px;
 }
 .descripcion-servicios{
     margin-top: 20px;

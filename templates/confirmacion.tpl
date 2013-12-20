@@ -10,21 +10,24 @@
 {/block}
 
 {block name="content" append}
-<div class="row-fluid clearfix top_content_container">
+<div class="main_content content body-content">
     <div class="col-md-12">
         <div class="main_content book-confirmation">
             <div class="book-confirmation-inner">
                 <div class="row">
+                <div class="col-md-12">
                     <h2 class="text-primary">{#gracias#} {$reserva['cliente']->nombre}{#tu_reserva_esta_confirmada#}</h2>
                     <ul class="checklist">
                         <li><p>{#te_hemos_enviado_un_email_de_confirmacion_a#} {$reserva['cliente']->email}</p></li>
                         <li><p>{#hemos_informado_a#} {if $reserva['apartamento']->empresa}{$reserva['apartamento']->empresa->nombreFiscal}{else}{$reserva['apartamento']->nombre}{/if} {#de_tu_llegada#}</p></li>
                     </ul>
                 </div>
+                </div>
                 <div class="row">
-                    <div class="panel panel-primary">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">{#comprueba_los_datos#}</h3>
+                            <h1 class="text-center panel-title">{#comprueba_los_datos#}</h1>
                         </div>
                         <div class="panel-body">
                             <div class="col-md-12">
@@ -67,10 +70,10 @@
                     </div>
                 </div>
                                     
-                <div class="row">
-                    <div class="panel panel-primary">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">{#datos_del_apartamento#}</h3>
+                            <h1 class="text-center panel-title">{#datos_del_apartamento#}</h1>
                         </div>
                         <div class="panel-body">
                             <div class="col-md-12">
@@ -109,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-                                    
+                </div>               
             </div>
         </div>
     </div>
