@@ -35,31 +35,16 @@
                                         </div>                                      
                                     </div>                                     
                                 </div>
-                                  
-                            </div>
-                            <div class="row-fluid">
                                 <div class="span4">
                                     <div class="control-group">
                                         <div class="input-prepend center span12" title="Email" data-rel="tooltip">
                                             <span class="add-on"><i class="icon-envelope"></i></span><input value="<?php if ($is_edit) echo $usuario->email ?>"  class="input-large span10 validate[required,custom[email]]" name="email" id="email" type="text" placeholder="Email" data-prompt-position="topLeft:2%"/>
                                         </div>                                        
                                     </div>                                     
-                                </div>     
-                                <div class="span4">
-                                    <div class="control-group">
-                                        <div class="input-prepend center span12" title="Contraseña" data-rel="tooltip">
-                                            <span class="add-on"><i class="icon-asterisk"></i></span><input value="<?php if ($is_edit) echo $usuario->password?>"  class="input-large span10 validate[required]" name="password" id="password" type="password" placeholder="Contraseña" data-prompt-position="topLeft:2%"/>
-                                        </div>                                        
-                                    </div>                                     
-                                </div>
-                                <div class="span4">
-                                    <div class="control-group">
-                                        <div class="input-prepend center span12" title="Confirma Contraseña" data-rel="tooltip">
-                                            <span class="add-on"><i class="icon-asterisk"></i></span><input value="<?php if ($is_edit) echo $usuario->password?>"  class="input-large span10 validate[required,equals[password]]" name="conf_password" id="conf_password" type="password" placeholder="Confirma Contraseña" data-prompt-position="topLeft:2%"/>
-                                        </div>                                        
-                                    </div>                                     
-                                </div>
+                                </div> 
+                                  
                             </div>
+                            
                             <legend class="legend_custom">Datos generales</legend>
                             <div class="row-fluid">
                                 <div class="span4">

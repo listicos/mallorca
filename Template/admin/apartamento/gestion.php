@@ -41,13 +41,18 @@ $edit = $this->getAttribute('edit');
                 <div  class="tab-pane active" id="demo1">
                     <form id="gestion_general_form">
                         <div class="row-fluid">
-                            <div class="span4">
+                            <div class="span6">
                                 <div class="control-group detalles_apartamento_alineacion">
-                                     <h4 class="checkbox">
-                                        <input class="validate[required]"  type="checkbox" name="status" value="staus" checked="checked"/>Visibilidad
-                                    </h4>
+                                    <div class="input-prepend span12" title="Estado" data-rel="tooltip" >
+                                        <span class="add-on"><i class="icon-home"></i></span>
+                                        <select class="span10 " name="estatus" >
+                                            <option value="activo" <?php if ($edit && ($apartamento['apartamento']->estatus == 'activo')) { ?> selected="selected" <?php } ?> >Activo</option>
+                                            <option value="inactivo" <?php if ($edit && ($apartamento['apartamento']->estatus == 'activo')) { ?> selected="selected" <?php } ?> >Inactivo</option>
+                                        </select>
+                                    </div> 
                                 </div>
                             </div>
+                          
                         </div>
                         <div class="row-fluid">
                             <div class="span8">
