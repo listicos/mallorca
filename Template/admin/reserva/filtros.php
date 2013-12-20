@@ -5,7 +5,7 @@
     <td><?php echo $reserva->idReservacion; ?></td>
     <td><?php echo($reserva->huesped->nombre." ".$reserva->huesped->apellidoPaterno); ?></td>
     <td><?php echo($reserva->apartamento->nombre); ?></td>
-    <td><?php echo money_format('%(#1n €', $reserva->total); ?></td>
+    <td><?php echo money_format('%(#1n', $reserva->total); ?></td>
     <td><?php echo date_format(new DateTime($reserva->tiempoCreacion), "d/m/Y"); ?></td>
     <td><?php echo $reserva->noches ?></td>
     <td>
