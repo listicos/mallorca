@@ -49,16 +49,16 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
         }
         
         //if(($fechaInicio && is_numeric($fechaInicio)) || ($fechaFinal && is_numeric($fechaFinal)))
-            $sql.= " INNER JOIN disponibilidades AS d ON a.id_apartamento  = d.id_apartamento AND d.estatus =  'disponible' WHERE 1";
+            $sql.= " INNER JOIN disponibilidades AS d ON a.id_apartamento  = d.id_apartamento WHERE a.estatus <> 'inactivo' ";
 
         if ($fechaInicio && $fechaFinal && is_numeric($fechaInicio) && $fechaInicio < $fechaFinal) {
             for ($i = $fechaInicio; $i <= $fechaFinal; $i+=86400) {
-                $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $i) . "' )";
+                $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $i) . "' AND dd.estatus = 'disponible')";
             }
         } else if ($fechaInicio && is_numeric($fechaInicio)) {
-            $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $fechaInicio) . "' )";
+            $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $fechaInicio) . "' AND dd.estatus = 'disponible')";
         } else if ($fechaFinal && is_numeric($fechaFinal)) {
-            $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $fechaFinal) . "' )";
+            $sql .= " AND EXISTS (SELECT fecha_inicio FROM disponibilidades AS dd WHERE a.id_apartamento = dd.id_apartamento AND fecha_inicio = '" . date('Y-m-d H:i:s', $fechaFinal) . "' AND dd.estatus = 'disponible')";
         }
         
         if(count($alojamientos)) {
@@ -163,7 +163,7 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
     }
     
     public function queryByVisitasAsc($limit = 3) {
-        $sql = 'SELECT distinct a.* FROM apartamentos AS a INNER JOIN disponibilidades as d ON a.id_apartamento = d.id_apartamento ORDER BY visitas DESC LIMIT 0, ?';
+        $sql = 'SELECT distinct a.* FROM apartamentos AS a INNER JOIN disponibilidades as d ON a.id_apartamento = d.id_apartamento WHERE a.estatus <> "inactivo" ORDER BY visitas DESC LIMIT 0, ?';
         $sqlQuery = new SqlQuery($sql);
         $sqlQuery->setNumber($limit);
         return $this->getList($sqlQuery);

@@ -25,7 +25,7 @@ class ApartamentosTiposMySqlExtDAO extends ApartamentosTiposMySqlDAO{
         }
         
         
-        $sql.= " INNER JOIN disponibilidades AS d ON a.id_apartamento  = d.id_apartamento AND d.estatus =  'disponible' WHERE 1";
+        $sql.= " INNER JOIN disponibilidades AS d ON a.id_apartamento  = d.id_apartamento AND d.estatus =  'disponible' WHERE a.estatus <> 'inactivo'";
 
         if ($fechaInicio && $fechaFinal && is_numeric($fechaInicio) && $fechaInicio < $fechaFinal) {
             for ($i = $fechaInicio; $i <= $fechaFinal; $i+=86400) {

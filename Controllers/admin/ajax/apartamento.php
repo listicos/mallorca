@@ -112,7 +112,10 @@ if (strcmp($action, "insert") == 0) {
 
         $data_apartamento['tiempoCreacion'] = date('Y-m-d H:i:s');
         $data_apartamento['ultimaModificacion'] = date('Y-m-d H:i:s');
-        $data_apartamento['status'] = 'activo';
+        
+        if (isset($_POST['estatus']))
+            $data_apartamento['estatus'] = $_POST['estatus'];
+        
 
         $new_apartamento_id = insertApartamento($data_apartamento);
         if ($new_apartamento_id) {
@@ -252,8 +255,8 @@ if (strcmp($action, "update") == 0) {
             $data_apartamento['depositoSeguridad'] = $_POST['depositoSeguridad'];
         if (isset($_POST['depositoSeguridad']))
             $data_apartamento['precioFinSemana'] = $_POST['precioFinSemana'];
-        if (isset($_POST['status']))
-            $data_apartamento['status'] = $_POST['status'];
+        if (isset($_POST['estatus']))
+            $data_apartamento['estatus'] = $_POST['estatus'];
         if (isset($_POST['claveWifi']))
             $data_apartamento['claveWifi'] = $_POST['claveWifi'];
         if (isset($_POST['cantidad']))
