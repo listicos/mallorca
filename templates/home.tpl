@@ -143,7 +143,7 @@
                 <div class="row home-main-slider">
                     <div class="col-md-12">
                         <h1>{#alojamientos_en_mallorca#}</h1>
-                        <p class="slide-order-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <p class="slide-order-title">Disfrute de unas exclusivas vacaciones en Mallorca en una de las Fincas o Agroturismos que desde mas de una década gestionamos.</p>
                     </div>
                     <div class="col-md-4 hidden">
                         <div class="form-group">
