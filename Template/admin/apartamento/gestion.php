@@ -343,7 +343,7 @@ $edit = $this->getAttribute('edit');
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <textarea class="span12" id="normas" rows="5" placeholder="Normas de la casa, explica a tus potenciales huéspedes lo que esperas de ellos..."></textarea>                                        
-                                    <input type="hidden" name="normas" <?php echo "value='" . $apartamento['apartamento']->nombre . "'"; ?>>
+                                    <input type="hidden" name="normas" value='<?php echo $apartamento['apartamento']->normas; ?>'>
                                     <p></p>
                                 </div>                                     
                             </div>   
@@ -443,11 +443,11 @@ $edit = $this->getAttribute('edit');
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <textarea class="span12" title="Referencias" data-rel="tooltip" id="referencia" rows="5" placeholder="Información adicional para el usuario..."></textarea>                                        
-                                    <input type="hidden" name="referencia" value="<?php if ($edit) { echo $apartamento['direccion']->referencia; } ?>">
+                                    <input type="hidden" name="referencia" value='<?php if ($edit) { echo $apartamento['direccion']->referencia; } ?>'>
                                 </div>                                     
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <textarea class="span12" title="Manuales" data-rel="tooltip" id="manual" rows="5" placeholder="Manual de la casa..."></textarea>                                        
-                                    <input type="hidden" name="manual" value="<?php if ($edit) { echo $apartamento['apartamento']->manual; } ?>">
+                                    <input type="hidden" name="manual" value='<?php if ($edit) { echo $apartamento['apartamento']->manual; } ?>'>
                                 </div>    
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <input class="span12" type="text" title="Contraseña del Wi-Fi" data-rel="tooltip" name="claveWifi" placeholder="Contraseña del Wi-Fi" value="<?php if ($edit) { echo $apartamento['apartamento']->claveWifi; } ?>" />
