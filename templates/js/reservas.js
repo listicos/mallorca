@@ -99,6 +99,11 @@ function cardValidation() {
 }
 
 function reservar() {
+    
+    $('input[name=email]').change(function(){
+        $('#email-enviar').html($(this).val());
+    })
+    
     $('#reservaFrm').on('submit', function(e){
         e.preventDefault();
         valid = $(this).validationEngine('validate');
