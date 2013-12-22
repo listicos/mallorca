@@ -3,7 +3,7 @@
  * Class that operate on table 'politicas_cancelacion'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2013-10-18 16:11
+ * @date: 2013-12-22 22:14
  */
 class PoliticasCancelacionMySqlDAO implements PoliticasCancelacionDAO{
 
@@ -57,13 +57,14 @@ class PoliticasCancelacionMySqlDAO implements PoliticasCancelacionDAO{
  	 * @param PoliticasCancelacionMySql politicasCancelacion
  	 */
 	public function insert($politicasCancelacion){
-		$sql = 'INSERT INTO politicas_cancelacion (nombre, reembolso_dia, comision, reembolso_porcentaje) VALUES (?, ?, ?, ?)';
+		$sql = 'INSERT INTO politicas_cancelacion (nombre, reembolso_dia, comision, reembolso_porcentaje, descripcion) VALUES (?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($politicasCancelacion->nombre);
 		$sqlQuery->setNumber($politicasCancelacion->reembolsoDia);
 		$sqlQuery->set($politicasCancelacion->comision);
 		$sqlQuery->set($politicasCancelacion->reembolsoPorcentaje);
+		$sqlQuery->set($politicasCancelacion->descripcion);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$politicasCancelacion->idPoliticaCancelacion = $id;
@@ -76,13 +77,14 @@ class PoliticasCancelacionMySqlDAO implements PoliticasCancelacionDAO{
  	 * @param PoliticasCancelacionMySql politicasCancelacion
  	 */
 	public function update($politicasCancelacion){
-		$sql = 'UPDATE politicas_cancelacion SET nombre = ?, reembolso_dia = ?, comision = ?, reembolso_porcentaje = ? WHERE id_politica_cancelacion = ?';
+		$sql = 'UPDATE politicas_cancelacion SET nombre = ?, reembolso_dia = ?, comision = ?, reembolso_porcentaje = ?, descripcion = ? WHERE id_politica_cancelacion = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($politicasCancelacion->nombre);
 		$sqlQuery->setNumber($politicasCancelacion->reembolsoDia);
 		$sqlQuery->set($politicasCancelacion->comision);
 		$sqlQuery->set($politicasCancelacion->reembolsoPorcentaje);
+		$sqlQuery->set($politicasCancelacion->descripcion);
 
 		$sqlQuery->setNumber($politicasCancelacion->idPoliticaCancelacion);
 		return $this->executeUpdate($sqlQuery);
@@ -125,6 +127,13 @@ class PoliticasCancelacionMySqlDAO implements PoliticasCancelacionDAO{
 		return $this->getList($sqlQuery);
 	}
 
+	public function queryByDescripcion($value){
+		$sql = 'SELECT * FROM politicas_cancelacion WHERE descripcion = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
 
 	public function deleteByNombre($value){
 		$sql = 'DELETE FROM politicas_cancelacion WHERE nombre = ?';
@@ -154,6 +163,13 @@ class PoliticasCancelacionMySqlDAO implements PoliticasCancelacionDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByDescripcion($value){
+		$sql = 'DELETE FROM politicas_cancelacion WHERE descripcion = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 
 	
 	/**
@@ -169,6 +185,7 @@ class PoliticasCancelacionMySqlDAO implements PoliticasCancelacionDAO{
 		$politicasCancelacion->reembolsoDia = $row['reembolso_dia'];
 		$politicasCancelacion->comision = $row['comision'];
 		$politicasCancelacion->reembolsoPorcentaje = $row['reembolso_porcentaje'];
+		$politicasCancelacion->descripcion = $row['descripcion'];
 
 		return $politicasCancelacion;
 	}

@@ -18,9 +18,6 @@
                         <select class="selectpicker span2" id="ordena_politicas" name="filter" data-style="btn-warning"  title="Ordenar" data-rel="tooltip">
                             <option value="id_politica_cancelacion" selected>Id</option>
                             <option value="nombre">Nombre</option>
-                            <option value="reembolso_dia">Tolerancia</option>
-                            <option value="comision">Comisión</option>
-                            <option value="reembolso_porcentaje">Porcentaje</option>
                         </select>
                         <span class="ordenaPor">Ordenar por:</span>
                     </form>
@@ -30,10 +27,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Tolerancia</th>
-                                <th>Comisión</th>
-                                <th>Porcentaje</th>                            
+                                <th>Nombre</th>                         
                                 <th>Acciones</th>
                             </tr>      
                         </thead>

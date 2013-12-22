@@ -1,5 +1,6 @@
 <?php 
 $politica = $this->getAttribute('politica');
+$idiomas = $this->getAttribute('idiomas');
 ?>
 <div class="sidebar-nav-content">
        <div class="box box_templete">
@@ -13,41 +14,43 @@ $politica = $this->getAttribute('politica');
                        <?php } ?>
                        <input type="hidden" name="action" value="updatePolitica"
                         <fieldset>
-                             
+                            <div class="row-fluid">
+                                <div class="span8">
+                                    <div class="control-group">
+                                        <div class="input-prepend span12 center" title="Idioma" data-rel="tooltip">
+                                            <span class="detalles_apartamento_prepend"><i class="icon-globe"></i></span>
+                                            <select id="idioma" class="span10">
+                                                <?php foreach($idiomas as $idioma) { ?>
+                                                <option value="<?php echo $idioma->codigo; ?>"><?php echo $idioma->nombre; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                              <div class="row-fluid">
-                                    <div class="span4">
+                                    <div class="span8">
                                     <div class="control-group">
                                       <div class="input-prepend center span12" title="Nombre de la política de la cancelación" data-rel="tooltip">
-                                                <span class="add-on"><i class="icon-font"></i></span><input value="<?php echo $politica->nombre?>"  class="input-large span10 validate[required]" name="nombre" type="text" placeholder="Nombre de la política de la cancelación" data-prompt-position="topLeft:2%"/>
-                                            </div>     
-
+                                            <span class="add-on"><i class="icon-font"></i></span><input class="input-large span10 validate[required]" id="nombre" type="text" placeholder="Nombre de la política de la cancelación" data-prompt-position="topLeft:2%"/>
+                                        </div>     
+                                        <textarea name="nombre" style="display:none;"><?php echo $politica->nombre ?></textarea>
                                     </div>
-                                    <br>
-
+                                    
+                                    </div>
                                         
-                                    </div>
-                                    <div class="span4">
+                                </div>
+                            <div class="row-fluid">
+                                    <div class="span8">
                                         <div class="control-group">
-                                            <div class="input-prepend center span12" title="Dias de la tolerancia" data-rel="tooltip">
-                                                <span class="add-on"><i class="icon-tag"></i></span><input value="<?php echo $politica->reembolsoDia?>"  class="input-large span10 validate[required]" name="reembolsoDia" type="text" placeholder=" Dias de la tolerancia" data-prompt-position="topLeft:2%"/>
-                                            </div>  
-
+                                            <textarea class="editor span12 validate[required]" id="descripcion" rows="11" placeholder="Descripción"></textarea> 
+                                            <textarea name="descripcion" style="display:none;"><?php echo $politica->descripcion ?></textarea>
                                         </div> 
                                     </div>
 
-                                  
-                                  
-                                   
-                                   <div class="span4">
-                                  <div class="control-group">
-                                            <div class="input-prepend center span12" title="Porcentaje de comisión" data-rel="tooltip">
-                                                <span class="add-on"><i class="icon-tag"></i></span><input value="<?php echo $politica->reembolsoPorcentaje?>"  class="input-large span10 validate[required]" name="reembolsoPorcentaje" type="text" placeholder="Porcentaje de comisión" data-prompt-position="topLeft:2%"/>
-                                            </div>                                      
-                                        </div> 
-                                    </div>
                                 
                                 </div>
-                                <div class="control-group center">
+                            <div class="control-group center " style="margin-top: 10px;">
                                     <button class="btn  btn-primary noty save_c" type="submit" data-noty-options='{"text":"Información agregada exitosamente","layout":"top","type":"information"}'> Guardar</button>
                                     <a href="<?php echo $this->base_url?>/admin-politicas-lista" class="btn abort-act" id="cancelar_operacion" >Cancelar</a>                               
                                 </div>    

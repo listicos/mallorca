@@ -4,6 +4,8 @@ function getPolitica($idPolitica) {
     try {
         
         $politica = DAOFactory::getPoliticasCancelacionDAO()->load($idPolitica);
+        $politica->nombres = json_decode($politica->nombre);
+            $politica->descripciones = json_decode($politica->descripcion);
         return $politica;
         
     } catch (Exception $e) {
@@ -15,6 +17,10 @@ function getPoliticas() {
     try {
         
         $politicas = DAOFactory::getPoliticasCancelacionDAO()->queryAll();
+        foreach ($politicas as $politica) {
+            $politica->nombres = json_decode($politica->nombre);
+            $politica->descripciones = json_decode($politica->descripcion);
+        }
         return $politicas;
         
     } catch (Exception $e) {
@@ -25,6 +31,11 @@ function getPoliticas() {
 function searchPoliticas($data = array()){
     try{
         $politicas = DAOFactory::getPoliticasCancelacionDAO()->searchByArguments($data);
+        
+        foreach ($politicas as $politica) {
+            $politica->nombres = json_decode($politica->nombre);
+            $politica->descripciones = json_decode($politica->descripcion);
+        }
         
         return $politicas;
     }catch (Exception $e) {

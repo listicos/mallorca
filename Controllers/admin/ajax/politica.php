@@ -10,9 +10,7 @@ $action = $_POST['action'];
 if(strcmp($action, "updatePolitica") == 0) {
     $data = array(
         'nombre' => NULL,
-        'reembolsoDia' => NULL,
-        'comision' => NULL,
-        'reembolsoPorcentaje' => NULL
+        'descripcion' => NULL
     );
     
     $keys = array_keys($data);

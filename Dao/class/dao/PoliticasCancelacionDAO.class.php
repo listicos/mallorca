@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2013-10-18 16:11
+ * @date: 2013-12-22 22:14
  */
 interface PoliticasCancelacionDAO{
 
@@ -59,6 +59,8 @@ interface PoliticasCancelacionDAO{
 
 	public function queryByReembolsoPorcentaje($value);
 
+	public function queryByDescripcion($value);
+
 
 	public function deleteByNombre($value);
 
@@ -67,6 +69,8 @@ interface PoliticasCancelacionDAO{
 	public function deleteByComision($value);
 
 	public function deleteByReembolsoPorcentaje($value);
+
+	public function deleteByDescripcion($value);
 
 
 }

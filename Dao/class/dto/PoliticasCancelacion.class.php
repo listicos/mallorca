@@ -3,7 +3,7 @@
 	 * Object represents table 'politicas_cancelacion'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2013-10-18 16:11	 
+     	 * @date: 2013-12-22 22:14	 
 	 */
 	class PoliticasCancelacion{
 		
@@ -12,6 +12,7 @@
 		var $reembolsoDia;
 		var $comision;
 		var $reembolsoPorcentaje;
+		var $descripcion;
 		
 	}
 ?>

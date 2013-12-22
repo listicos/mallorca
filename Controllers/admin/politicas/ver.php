@@ -9,6 +9,12 @@ AllowRoles("Administrador, Socio, Mallorca");
 $template = new Core_template('admin/template.php');
 $template->setAttribute('is_visible_header', true);
 $template->setAttribute('is_visible_sidebar', true);
+$template->setCSS('ckeditor.css');
+$template->setJS('../ckeditor/ckeditor.js');
+$template->setJS('../ckeditor/adapters/jquery.js');
+
+$idiomas = getIdiomas();
+$template->setAttribute('idiomas', $idiomas);
 
 if(isset($_GET['id'])) {
     $politica = getPolitica($_GET['id']);

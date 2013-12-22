@@ -1,0 +1,1 @@
+alter table politicas_cancelacion ADD descripcion TEXT NULL;alter table politicas_cancelacion CHANGE nombre nombre TEXT NULL;
