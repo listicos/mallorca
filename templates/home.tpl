@@ -28,6 +28,9 @@
 
 {block name="content" append}
     <div class="container-liquid  content body-content home">
+        <div class="row banner-home">
+        
+        </div>
         <div class="row">
             <div class="filtros_main_container">
                 <div class="row form-horizontal filters-content" role="form">

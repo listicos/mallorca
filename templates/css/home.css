@@ -1,3 +1,12 @@
+.banner-home {
+    height: 164px;
+    background-image: url(../img/banner-home.png);
+}
+
+.body-content.home {
+    margin-top: -18px;
+}
+
 .apto-link {
     font-size: 21px;
     padding-left: 6px;
