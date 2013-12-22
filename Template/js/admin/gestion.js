@@ -346,17 +346,17 @@ function gestionGeneralFunctions(){
         var valid_form;
         valid_form = form.validationEngine('validate');
         $('#idiomaDescripcionLarga').change();
-        $('input[name=descripcionLarga]').val(JSON.stringify(DESCRIPCION_LARGA));
+        $('textarea[name=descripcionLarga]').val(JSON.stringify(DESCRIPCION_LARGA));
         
         $('#idiomaNormas').change();
-        $('input[name=normas]').val(JSON.stringify(NORMAS));
+        $('textarea[name=normas]').val(JSON.stringify(NORMAS));
         
         $('#idiomaInformacionPrivada').change();
-        $('input[name=referencia]').val(JSON.stringify(REFERENCIA));
-        $('input[name=manual]').val(JSON.stringify(MANUAL));
+        $('textarea[name=referencia]').val(JSON.stringify(REFERENCIA));
+        $('textarea[name=manual]').val(JSON.stringify(MANUAL));
         
         $('#idiomaTPV').change();
-        $('input[name=tpv]').val(JSON.stringify(TPV));
+        $('textarea[name=tpv]').val(JSON.stringify(TPV));
         
         if(valid_form){
             $.ajax({
@@ -522,7 +522,7 @@ var TPV = {};
 function gestionIdiomas() {
   
     //descripcion larga
-    descripcionLarga = $('input[name=descripcionLarga]').val();
+    descripcionLarga = $('textarea[name=descripcionLarga]').val();
     $('#idiomaDescripcionLarga').off().change(function(e){
         
         if(IDIOMA_DESCRIPCION_LARGA) {            
@@ -543,7 +543,7 @@ function gestionIdiomas() {
         
     $('#idiomaDescripcionLarga').change();
     //normas
-    normas = $('input[name=normas]').val();
+    normas = $('textarea[name=normas]').val();
     $('#idiomaNormas').off().change(function(e){
         if(IDIOMA_NORMAS){
             if(NORMAS) {            
@@ -566,8 +566,8 @@ function gestionIdiomas() {
     $('#idiomaNormas').change();
     
     //informacion privada
-    referencia = $('input[name=referencia]').val();
-    manual = $('input[name=manual]').val();
+    referencia = $('textarea[name=referencia]').val();
+    manual = $('textarea[name=manual]').val();
     $('#idiomaInformacionPrivada').off().change(function(e){
         if(IDIOMA_INFO){
             if(REFERENCIA) {            
@@ -604,7 +604,7 @@ function gestionIdiomas() {
     
     
     //TPV
-    tpv = $('input[name=tpv]').val();
+    tpv = $('textarea[name=tpv]').val();
     $('#idiomaTPV').off().change(function(e){
         
         if(IDIOMA_TPV) {            

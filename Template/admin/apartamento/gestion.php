@@ -165,7 +165,7 @@ $edit = $this->getAttribute('edit');
                             <div class="span12">
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <textarea class="editor span12 validate[required]" id="descripcionLarga" rows="11" placeholder="Descripción, mínimo 60 palabras"></textarea>                                        
-                                    <input type="hidden" name="descripcionLarga" value='<?php echo $apartamento['apartamento']->descripcionLarga; ?>'>
+                                    <textarea style="display:none" name="descripcionLarga"><?php echo $apartamento['apartamento']->descripcionLarga; ?></textarea>
                                    <!-- <p>La descripción debe contener al menos 15 palabras.Las de los
                                         apartamentos más alquilados contienen más de 150 palabras</p>-->
                                 </div>                                     
@@ -348,7 +348,7 @@ $edit = $this->getAttribute('edit');
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <textarea class="span12" id="normas" rows="5" placeholder="Normas de la casa, explica a tus potenciales huéspedes lo que esperas de ellos..."></textarea>                                        
-                                    <input type="hidden" name="normas" value='<?php echo $apartamento['apartamento']->normas; ?>'>
+                                    <textarea style="display:none" name="normas"><?php echo $apartamento['apartamento']->normas; ?></textarea>
                                     <p></p>
                                 </div>                                     
                             </div>   
@@ -448,11 +448,11 @@ $edit = $this->getAttribute('edit');
                             <div class="span8">
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <textarea class="span12" title="Referencias" data-rel="tooltip" id="referencia" rows="5" placeholder="Información adicional para el usuario..."></textarea>                                        
-                                    <input type="hidden" name="referencia" value='<?php if ($edit) { echo $apartamento['direccion']->referencia; } ?>'>
+                                    <textarea style="display:none" name="referencia"><?php if ($edit) { echo $apartamento['direccion']->referencia; } ?></textarea>
                                 </div>                                     
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <textarea class="span12" title="Manuales" data-rel="tooltip" id="manual" rows="5" placeholder="Manual de la casa..."></textarea>                                        
-                                    <input type="hidden" name="manual" value='<?php if ($edit) { echo $apartamento['apartamento']->manual; } ?>'>
+                                    <textarea style="display:none" name="manual"><?php if ($edit) { echo $apartamento['apartamento']->manual; } ?></textarea>
                                 </div>    
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <input class="span12" type="text" title="Contraseña del Wi-Fi" data-rel="tooltip" name="claveWifi" placeholder="Contraseña del Wi-Fi" value="<?php if ($edit) { echo $apartamento['apartamento']->claveWifi; } ?>" />
@@ -512,7 +512,7 @@ $edit = $this->getAttribute('edit');
                             <div class="span12">
                                 <div class="control-group detalles_apartamento_descripcion">
                                     <textarea class="editor span12 validate[required]" id="tpv" rows="11" placeholder="Descripción del tpv"></textarea>                                        
-                                    <input type="hidden" name="tpv" value='<?php if ($edit) { ?><?php echo $apartamento['apartamento']->tpv; ?><?php } ?>'>
+                                    <textarea style="display:none" name="tpv" ><?php if ($edit) { ?><?php echo $apartamento['apartamento']->tpv; ?><?php } ?></textarea>
                                    <!-- <p>La descripción debe contener al menos 15 palabras.Las de los
                                         apartamentos más alquilados contienen más de 150 palabras</p>-->
                                 </div>                                     
