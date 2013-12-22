@@ -3,6 +3,28 @@ $(initOpinion);
 function initOpinion() {
     AutoCompleteApto();
     AutoCompleteUsuario();
+    
+    $('#contenido-opinion').submit(function(e){
+        e.preventDefault();
+        valid = $(this).validationEngine('validate');
+        if(valid) {
+            $.ajax({
+                url: BASE_URL + '/admin-ajax-opinion',
+                data: $(this).serialize() + '&action=update',
+                type: 'post',
+                dataType: 'json',
+                success: function(response) {
+                    if(response.msg == 'ok') {
+                        noty({
+                            'type': 'success',
+                            "text":response.data,
+                            "layout":"top",
+                         });
+                    }
+                }
+            })
+        }
+    })
 }
 
 function AutoCompleteUsuario() {

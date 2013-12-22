@@ -33,7 +33,7 @@ $is_edit = $this->getAttribute('edit');
                                         <div class="input-prepend center span12" title="Usuario" data-rel="tooltip">
                                             <span class="add-on"><i class="icon-user"></i></span>
                                             <input autocomplete="off" class="input-large span10" name="usuario" id="usuario" type="text" placeholder="Usuario" data-prompt-position="topLeft:2%" data-type="user"/>
-                                            <input type="hidden" name="huespedId" id="huespedId" value="<?php echo $user->idUsuario ?>">
+                                            <input type="hidden" name="idUsuario" id="huespedId" value="<?php echo $user->idUsuario ?>">
                                         </div>                                      
                                     </div>
                                 </div>
