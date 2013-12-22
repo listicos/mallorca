@@ -14,7 +14,7 @@ if(isset($_GET['id'])) {
 
 $template->setJS('admin/lista-apartamento.js');
 $template->setView('admin/apartamento/lista.php');
-$template->setTitle("Apartamentos");
+$template->setTitle("Alojamientos");
 
 echo $template->render();
 ?>
