@@ -129,7 +129,7 @@ if (strcmp($action, "agregar_tarifa") == 0) {
                 foreach ($disponibilidades as $dkey => $dispo) {
                     $fecha_disp = date("Y-m-d", strtotime($dispo->fechaInicio));
                     $time_disp_temp = strtotime($fecha_disp);
-                    if ($time_temp == $time_disp_temp) {
+                    if ($time_temp == $time_disp_temp && $dispo->idDisponibilidad) {
                         //if($data_disponibilidad['estatus'] == 'disponible')
                             updateDisponibilidad($dispo->idDisponibilidad, $data_disponibilidad);
                        // else

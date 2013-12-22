@@ -94,12 +94,15 @@ if (strcmp($action, "insert") == 0) {
         if (isset($_POST['tpv']))
             $data_apartamento['tpv'] = $_POST['tpv'];
         else $data_apartamento['tpv'] = NULL;
+        
+        if(isset($_POST['tarifaBase']))
+            $data_apartamento['tarifaBase'] = $_POST['tarifaBase'];
 
         //if (isset($_POST['baseTarifa']))
         $data_apartamento['horarioEntrada'] = date('H:i:s', strtotime('15:00'));
         $data_apartamento['horarioSalida'] = date('H:i:s', strtotime('12:00'));
         $data_apartamento['descripcionCorta'] = '';
-        $data_apartamento['tarifaBase'] = '0';
+        
         $data_apartamento['tarifaSemana'] = '0';
         $data_apartamento['tarifaMes'] = '0';
         $data_apartamento['estadiaMaxima'] = '7';

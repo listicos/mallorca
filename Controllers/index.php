@@ -49,8 +49,10 @@ if($apartamentos){
         if ($apartamento->idDireccion)
             $apartamento->direccion = getDireccion($apartamento->idDireccion);
         $rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, date('Y-m-d'), 0);
+        if($rangoPrecios) {
             $apartamento->precioMinimo = $rangoPrecios[0];
             $apartamento->precioMaximo = $rangoPrecios[1];
+        }
 
         if($apartamento->idComplejo){
             $complejo = getComplejo($apartamento->idComplejo);

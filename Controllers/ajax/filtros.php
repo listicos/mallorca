@@ -59,9 +59,10 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
         foreach ($apartamentos as $apto) {
             $apto->tipo = getTipoApartamento($apto->idApartamentosTipo)->nombre;
             $rangoPrecios = getRangoPreciosByApartamento($apto->idApartamento, $fechaInicio ? : date('Y-m-d'), $fechaFinal ? : 0);
-            $apto->precioMinimo = $rangoPrecios[0];
-            $apto->precioMaximo = $rangoPrecios[1];
-
+            if($rangoPrecios) {
+                $apto->precioMinimo = $rangoPrecios[0];
+                $apto->precioMaximo = $rangoPrecios[1];
+            }
             if($apto->idComplejo){
                 $complejo = getComplejo($apto->idComplejo);
                 $apto->complejo = $complejo;

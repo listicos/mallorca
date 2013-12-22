@@ -145,7 +145,17 @@ $edit = $this->getAttribute('edit');
                                     </div>
                                 </div>         
                             </div>-->
-                        </div>             
+                        </div>  
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <div class="control-group">
+                                    <div class="input-prepend center span12" title="Precio base (€)" data-rel="tooltip" >
+                                        <span class="add-on"><i class="icon-download-alt"></i></span><input autocomplete="off" class="input span10 validate[required, custom[number]]"  id="tarifaBase" type="text" placeholder="Precio base" <?php if ($edit) { ?> value="<?php echo number_format($apartamento['apartamento']->tarifaBase, 2, ',', ''); ?>" <?php } ?>/>
+                                        <input type="hidden" name="tarifaBase">
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
                         <legend class="legend_custom titulos_legend">Descripción</legend>
                         <div class="row-fluid">
                             <div class="span4">

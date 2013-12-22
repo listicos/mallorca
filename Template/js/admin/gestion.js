@@ -12,7 +12,7 @@ function bind_ver_contrato(idEmpresa){
             },
             success: function(response) {    
                 if(response.msg == 'ok'){
-                    console.log( $('#contrato_modal').find('.myModalLabel'));
+                    //console.log( $('#contrato_modal').find('.myModalLabel'));
                     $('#contrato_modal').find('.myModalLabel').html(response.data.contrato.nombre)
                     $('#contrato_modal').find('.fecha_inicio').html(response.data.contratoEmpresa.fechaInicio)
                     $('#contrato_modal').find('.fecha_fin').html(response.data.contratoEmpresa.fechaFin);
@@ -46,6 +46,54 @@ $(document).ready(function(){
                 getApartamentoFotos();
         }
     });
+    
+    
+    
+    
+
+    $('.date-start').datepicker({
+        autoclose: true,
+        weekStart: 1,
+        format: 'dd/mm/yyyy'
+        
+    }).on('changeDate', function(ev) {
+        $(this).parents('.row-fluid').find('.date-end').datepicker('setStartDate', ev.date);
+        $(this).parents('.row-fluid').find('.date-end').datepicker('show');
+    });
+
+    var date_now = new Date(new Date().setDate(new Date().getDate()-1));
+    var end = new Date(date_now.getTime() + (1000*60*60*24*31*18));
+    console.log(end);
+    $('.date-start').datepicker('setStartDate', date_now);
+    $('.date-start').datepicker('setEndDate', end);
+
+
+    $('.date-end').datepicker({
+        autoclose: true,
+        weekStart: 1,
+        format: 'dd/mm/yyyy',
+        endDate: end
+    }).on('changeDate', function(ev) {
+            END_DATE = ev.date;
+        });
+
+    $('.date-end').datepicker('setStartDate', date_now);
+
+    gestionIdiomas();
+    agregarTarifa()
+    gestionGeneralFunctions();
+    gestionTarifasFunctions();
+    gestionFotosFunctions();
+    gestionContratosFuntions();
+    gestionDocumentosFunctions();
+    gestionAvanzadosFunctions();
+    handleContratoCalendario();
+    
+    initGeocomplete();
+
+});
+
+function initGeocomplete() {
     $("#geocomplete").geocomplete({
         map: ".map_canvas",
         details: ".formulario_localizacion ",
@@ -70,45 +118,7 @@ $(document).ready(function(){
         $("input[name=lat]").val(latLng.geometry.location.lat());
         $("input[name=lon]").val(latLng.geometry.location.lng());
     });
-    
-    
-    
-
-    $('.date-start').datepicker({
-        autoclose: true,
-        weekStart: 1,
-        format: 'dd/mm/yyyy'
-        
-    }).on('changeDate', function(ev) {
-        $(this).parents('.row-fluid').find('.date-end').datepicker('setStartDate', ev.date);
-        $(this).parents('.row-fluid').find('.date-end').datepicker('show');
-    });
-
-    var date_now = new Date(new Date().setDate(new Date().getDate()-2));
-
-    $('.date-start').datepicker('setStartDate', date_now);
-
-    $('.date-end').datepicker({
-        autoclose: true,
-        weekStart: 1,
-        format: 'dd/mm/yyyy'
-    }).on('changeDate', function(ev) {
-            END_DATE = ev.date;
-        });
-
-    $('.date-end').datepicker('setStartDate', date_now);
-
-    gestionIdiomas();
-    agregarTarifa()
-    gestionGeneralFunctions();
-    gestionTarifasFunctions();
-    gestionFotosFunctions();
-    gestionContratosFuntions();
-    gestionDocumentosFunctions();
-    gestionAvanzadosFunctions();
-    handleContratoCalendario();
-
-});
+}
 
 var END_DATE = false;
 
@@ -357,6 +367,8 @@ function gestionGeneralFunctions(){
         
         $('#idiomaTPV').change();
         $('textarea[name=tpv]').val(JSON.stringify(TPV));
+        
+        $('input[name=tarifaBase]').val($('#tarifaBase').val().trim().replace(',', '.'));
         
         if(valid_form){
             $.ajax({

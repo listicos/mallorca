@@ -102,7 +102,9 @@ var Calendar = function () {
                     slotMinutes: 15,
                     editable: false,
                     droppable: false,
-                    events: tarifas
+                    events: tarifas,
+                    start: new Date(),
+                    end: new Date(new Date().getTime() + (1000*60*60*24*31*18))
                 });
             }else{
                 $('#calendar').fullCalendar({
@@ -110,7 +112,9 @@ var Calendar = function () {
                     slotMinutes: 15,
                     editable: false,
                     droppable: false,
-                    events: []
+                    events: [],
+                    start: new Date(),
+                    end: new Date(new Date().getTime() + (1000*60*60*24*31*18))
                 });
             }
             
