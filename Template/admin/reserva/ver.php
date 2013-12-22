@@ -124,7 +124,7 @@ if($this->getAttribute('reserva')) {
                                     </div>                                      
                                 </div>                                     
                             </div>  
-                        
+                            <!--
                             <div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend center span12" title="Contrase&ntilde;a" data-rel="tooltip">
@@ -132,7 +132,7 @@ if($this->getAttribute('reserva')) {
                                         <input autocomplete="off" class="input-large span10" name="password" id="respondable_email" type="password" placeholder="Contrase&ntilde;a" data-prompt-position="topLeft:2%" data-type="user"/>
                                     </div>                                       
                                 </div>                                     
-                            </div>                                       
+                            </div>   -->                                    
                         </div>
 
                             <legend class="legend_custom">Datos de reserva</legend>
@@ -353,14 +353,14 @@ if($this->getAttribute('reserva')) {
                             </div>
                             
                             <?php if(hasRoles("Administrador, Mallorca")) { ?>
-                            <div class="span4">
+                            <!--<div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" <?php if($pago->validada) echo 'checked'; ?>  name="transferencia[<?php echo $pago->idReservacionPago ?>][validada]">
                                         Validado</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <?php } ?>
                             </div>
                              <legend class="list-separator">&nbsp;</legend>
@@ -411,14 +411,14 @@ if($this->getAttribute('reserva')) {
                                 </div> 
                             </div> 
                             <?php if(hasRoles("Administrador, Mallorca")) { ?>
-                            <div class="span4">
+                            <!--<div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" <?php if($pago->validada) echo 'checked'; ?>  name="paypal[<?php echo $pago->idReservacionPago ?>][validada]">
                                         Validado</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <?php } ?>
                             </div>
                             <legend class="list-separator">&nbsp;</legend>
@@ -505,12 +505,12 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div>
                                 <?php if(hasRoles("Administrador, Mallorca")) { ?>
-                                <div class="control-group">
+                                <!--<div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" <?php if($pago->validada) echo 'checked'; ?>  name="tarjeta[<?php echo $pago->idReservacionPago ?>][validada]">
                                         Validado</label>
                                     </div>
-                                </div>
+                                </div>-->
                                 <?php } ?>
                             </div>
                             <div class="span4">
@@ -589,14 +589,14 @@ if($this->getAttribute('reserva')) {
                                 </div> 
                             </div> 
                             <?php if(hasRoles("Administrador, Mallorca")) { ?>
-                            <div class="span4">
+                            <!--<div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" name="transferencia[XX][validada]">
                                         Validado</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <?php } ?>
                             </div>
                             <legend class="list-separator">&nbsp;</legend>
@@ -645,14 +645,14 @@ if($this->getAttribute('reserva')) {
                                 </div> 
                             </div> 
                             <?php if(hasRoles("Administrador, Mallorca")) { ?>
-                            <div class="span4">
+                            <!--<div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" name="paypal[XX][validado]">
                                         Validado</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <?php } ?>
                             </div>
                             <legend class="list-separator">&nbsp;</legend>
@@ -734,12 +734,12 @@ if($this->getAttribute('reserva')) {
                                     </div>
                                 </div>
                                 <?php if(hasRoles("Administrador, Mallorca")) { ?>
-                                <div class="control-group">
+                                <!--<div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" name="tarjeta[XX][validado]">
                                         Validado</label>
                                     </div>
-                                </div>
+                                </div>-->
                                 <?php } ?>
 
                             </div>
@@ -804,19 +804,20 @@ if($this->getAttribute('reserva')) {
                                 </div> 
                             </div>  
                             <?php if(hasRoles("Administrador, Mallorca")) { ?>
-                            <div class="span4">
+                            <!--<div class="span4">
                                 <div class="control-group">
                                     <div class="input-prepend span12 check-container" title="Validado" data-rel="tooltip">
                                         <label><input type="checkbox" value="1" name="efectivo[XX][validado]">
                                         Validado</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <?php } ?>
                             </div>
                             <legend class="list-separator">&nbsp;</legend>
                             </div>
                         </div>
+                        <!--
                         <legend class="legend_custom">Fianza</legend>
                         <div class="row-fluid">
                             <div class="span4">
@@ -1011,7 +1012,7 @@ if($this->getAttribute('reserva')) {
                                 }
                             }
                         ?>
-                        </div>
+                        </div>-->
                         <legend class="legend_custom">Check-in</legend>
                         <div class="row-fluid datos_alojamiento">
                             <div class="span4">
@@ -1204,7 +1205,7 @@ if($this->getAttribute('reserva')) {
             <div class="clearfix"></div>
         </div>
     </div>
- 
+    <!--
     <div id="resumen-cuenta">
         <div class="show-resumen" title="Mostrar Resumen">
             <i class="icon-list"></i>
@@ -1282,5 +1283,5 @@ if($this->getAttribute('reserva')) {
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
    
