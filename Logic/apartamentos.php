@@ -283,6 +283,8 @@ function getDisponibilidadByApartamentoFechas($idApartamento, $fechaInicio = 0, 
             foreach ($disponibilidad as $d) {                
                 if(date('Y-m-d', $time) == date('Y-m-d', strtotime($d->fechaInicio))) {
                     $dispo = $d;
+                    if($d->estatus == 'No disponible')
+                        $dispo->precio = $apartamento->tarifaBase;
                     break;
                 }
                 if($time < strtotime($d->fechaInicio))
@@ -405,13 +407,13 @@ function getTotalPrice($idApartamento,$fechaInicio, $fechaFinal, $articulos = ar
             }
         }
         
-        if($noches > $noches_disponibles){
+        if(!$noches){
             return false;
         }else{
-            
+            /*
             if($last_d && $last_d->precioPorConsumo && $total >= $last_d->precioPorConsumo) {
                 $total = $total - ($total * $last_d->descuentoPorConsumo / 100);
-            }
+            }*/
             
             foreach ($articulos as $art=>$cant) {
                 $articulo = DAOFactory::getArticulosDAO()->load($art);
@@ -1220,6 +1222,21 @@ function getRangoPreciosByApartamento($idApto, $fechaInicial = 0, $fechaFinal = 
         var_dump($e);
         return false;
     }
+}
+
+function noDisponible($idApartamento, $fechaInicio, $fechaFin) {
+    try {
+        
+        $NoDisponibles = DAOFactory::getDisponibilidadesDAO()->queryNoDisponiblesByApartamentoIdAndFechas($idApartamento, $fechaInicio, $fechaFin);
+        
+        if(count($NoDisponibles) > 0)
+            return true;
+        return false;
+        
+    } catch (Exception $e) {
+        
+        return false;
+    }   
 }
 
 ?>

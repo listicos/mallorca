@@ -236,7 +236,7 @@
                                     {if count($disponibles)>0}
                                     <div class="row desde-precio-reserva" style="display: none;">
                                         <div class="col-md-12">
-                                            <h4>{#desde#} <span>{$menor_precio}</span> - {#hasta#} <span>{$menor_precio}</span></h4>
+                                            <h4>{if $menor_precio ne 'No disponible'}{#desde#} <span>{$menor_precio}</span>{/if} <!-- - {#hasta#} <span>{$menor_precio}</span>--></h4>
                                             <small>{#impuestos_y_tasas_incluidas_sujeto_a_disponibilidad#}</small>
                                         </div>
                                     </div>
@@ -245,8 +245,8 @@
                                 </div>
                                             
                                 <div class="contenido-calendario col-md-12">
-                                    <div class="button-reservalo col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block">{#reservalo#}</button></div>
-                                    
+                                    <div class="button-reservalo col-md-12 {if !$disponible}hidden{/if}"><button type="submit" class="btn btn-success btn-lg btn-block">{#reservalo#}</button></div>
+                                    <div class="button-solicitalo col-md-12 {if $disponible}hidden{/if}"><button type="submit" class="btn btn-success btn-lg btn-block">{#solicitar_disponibilidad#}</button></div>
                                     <div class="button-pregunta col-md-12"><a href="javascript:void(0)" id="make_a_question" class="btn btn-info btn-xs btn-block">¿Tienes una pregunta?</a></div>
                                 </div>
                                             

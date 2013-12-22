@@ -117,12 +117,13 @@ if($precio && is_numeric($precio)){
     $menor_precio = 'No disponible';
 }
 
-$disponibilidades = getByIdApartamentoFechas($idApartamento);
+$disponibilidades = getDisponibilidadByApartamento($idApartamento);
 
 $disponibles = array();
 
 if($disponibilidades){
     foreach ($disponibilidades as $d) {
+        if($d->estatus == 'disponible')
         $disponibles[] = date('Y-n-j',strtotime($d->fechaInicio));
     }
     
@@ -133,7 +134,14 @@ $smarty->assign('salida', $_SESSION['fechaFinal']);
 $smarty->assign('huespedes', $_SESSION['huespedes']);
 if(isset($_SESSION['fechaInicio']) && isset($_SESSION['fechaFinal'])) {
     $precio = getTotalPrice($apartamento->idApartamento, strtotime($_SESSION['fechaInicio']), strtotime($_SESSION['fechaFinal']), array(), $_SESSION['huespedes']);
-    $menor_precio = '€'.money_format('%i', $precio) ;
+    if($precio)
+        $menor_precio = money_format('%i', $precio) ;
+    else 
+        $menor_precio = 'No disponible';
+    
+    $NoDisponible = noDisponible($apartamento->idApartamento, $_SESSION['fechaInicio'], $_SESSION['fechaFinal']);
+    
+    $smarty->assign('disponible', !$NoDisponible);
 }
 
 $smarty->assign('menor_precio',$menor_precio);

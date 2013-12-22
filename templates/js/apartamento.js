@@ -235,6 +235,13 @@ function calcularTotal() {
         dataType: 'json',
         success: function(response) {
             $('#reservaForm .precio span').html(response.total_text);
+            if(!response.disponible) {
+                $('.button-reservalo').addClass('hidden');
+                $('.button-solicitalo').removeClass('hidden');
+            } else {
+                $('.button-reservalo').removeClass('hidden');
+                $('.button-solicitalo').addClass('hidden');
+            }
         }
     });
 }

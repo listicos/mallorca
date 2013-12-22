@@ -22,10 +22,11 @@ if (strcmp($action, "getPrecio") == 0) {
         $_SESSION['huespedes'] = $_POST['huespedes'];
 
         $total = getTotalPrice($idApartamento,strtotime($fechaInicio),strtotime($fechaFinal), array(), $_POST['huespedes']);
-
+        
         if($total){
             $result['total'] = $total;
             $result['total_text'] = '€'.money_format('%i', $total);
+            $result['disponible'] = !noDisponible($idApartamento, $fechaInicio, $fechaFinal);
         } else{
             $result['total'] = 0;
             $result['total_text'] = 'No disponible';

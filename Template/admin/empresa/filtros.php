@@ -12,7 +12,7 @@
         <td> 
             <a title="Apartamentos" class="verAptos" data-toggle="modal" href="#apartamentos_overlay" data-rel="tooltip" empresa-id="<?php echo $emp->idEmpresa ?>" ><i class="icon-home"></i></a>
             <a title="Reservas" class="verReservas" data-toggle="modal" href="#reservas_overlay" data-rel="tooltip" empresa-id="<?php echo $emp->idEmpresa ?>" ><i class="icon-shopping-cart"></i></a>
-            <a title="Gastos" data-rel="tooltip" href="#" ><i class="icon-tag"></i></a>
+            <!--<a title="Gastos" data-rel="tooltip" href="#" ><i class="icon-tag"></i></a>-->
             <a title="Editar" data-rel="tooltip"href="<?php echo $this->base_url?>/admin-empresa-ver/id:<?php echo $emp->idEmpresa ?>" ><i class="icon-edit"></i></a>
             <a title="Borrar" data-rel="tooltip" class="borrarEmpresa" href="#borrar_empresa_overlay" data-toggle="modal" empresa-id="<?php echo $emp->idEmpresa?>" ><i class="icon-trash"></i></a>
         </td>
