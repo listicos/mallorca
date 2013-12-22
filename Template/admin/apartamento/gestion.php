@@ -528,6 +528,21 @@ $edit = $this->getAttribute('edit');
                                 </div>                                     
                             </div>   
                         </div>
+                        <legend class="legend_custom titulos_legend">Pol&iacute;tica de cancelaci&oacute;n</legend>
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <div class="control-group">
+                                    <div class="input-prepend span12 center" title="Política de cancelación" data-rel="tooltip">
+                                        <span class="detalles_apartamento_prepend"><i class="icon-globe"></i></span>
+                                        <select name="idPoliticaCancelacion" class="span10">
+                                            <?php foreach($politicas as $pol) { ?>
+                                            <option value="<?php echo $pol->idPoliticaCancelacion; ?>" <?php if($pol->idPoliticaCancelacion == $apartamento['apartamento']->idPoliticaCancelacion) echo 'selected'; ?>><?php echo $pol->nombres->es; ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <br>
                         <div class="row-fluid">
                             <div class=" span12 control-group center">
