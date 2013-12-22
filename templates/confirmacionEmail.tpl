@@ -3,7 +3,7 @@
     <table style="font-family: Arial, Helvetica;">
         <tbody>
             <tr>
-                <td><h2>>{#gracias#} {$reserva['cliente']->nombre}, {#su_reserva_se_ha_realizado_correctamente#}</h2></td>
+                <td><h2>>{#gracias#} {$reserva['cliente']->nombre}, {if $disponible}{#su_reserva_se_ha_realizado_correctamente#}{else}{#su_solicitud_de_reserva_se_ha_realizado_correctamente#}{/if}</h2></td>
             </tr>	 
         </tbody>
     </table>

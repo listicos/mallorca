@@ -185,14 +185,16 @@ function enviarCorreoConfirmacionReserva($reserva) {
         $reserva_array['fechaCancelacion'] = $fechaCancelacion;
         
         $mailer = new Core_Mailer();
-
+        
         global $smarty;
+        $disponible = !noDisponible($reserva->idApartamento, $reserva->fechaEntrada, $reserva->fechaSalida);
+        $smarty->assign('disponible', $disponible);
         $smarty->assign('reserva', $reserva_array);
         $body = $smarty->fetch('confirmacionEmail.tpl');
 
         $email_user = $cliente->email;
 
-        $subject = "Gracias, " . $cliente->nombre . "! Su reserva está siendo procesada";
+        $subject = "Gracias, " . $cliente->nombre . "! Su solicitud de reserva está siendo procesada";
 
         $config = getConfiguracion();
         if($config)

@@ -16,7 +16,7 @@
             <div class="book-confirmation-inner">
                 <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-primary">{#gracias#} {$reserva['cliente']->nombre}{#tu_reserva_esta_confirmada#}</h2>
+                    <h2 class="text-primary">{#gracias#} {$reserva['cliente']->nombre}{if $disponible}{#tu_reserva_esta_confirmada#}{else}{#tu_solicitud_de_reserva_esta_confirmada#}{/if}</h2>
                     <ul class="checklist">
                         <li><p>{#te_hemos_enviado_un_email_de_confirmacion_a#} {$reserva['cliente']->email}</p></li>
                         <li><p>{#hemos_informado_a#} {if $reserva['apartamento']->empresa}{$reserva['apartamento']->empresa->nombreFiscal}{else}{$reserva['apartamento']->nombre}{/if} {#de_tu_llegada#}</p></li>

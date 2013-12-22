@@ -76,6 +76,9 @@
         $reserva_array['politicaCancelacion'] = $politicaCancelacion;
         $reserva_array['fechaCancelacion'] = $fechaCancelacion;
         
+        $disponible = !noDisponible($reserva->idApartamento, $reserva->fechaEntrada, $reserva->fechaSalida);
+        $smarty->assign('disponible', $disponible);
+        
         $smarty->assign('reserva', $reserva_array);
         
     }

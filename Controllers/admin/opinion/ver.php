@@ -12,7 +12,7 @@ $template->setView('admin/opinion/ver.php');
 
 $template->setCSS('chosen.css');
 $template->setJS('admin/jquery.chosen.min.js');
-$template->setJS('admin/opinion.js');
+$template->setJS('admin/ver-opinion.js');
 
 $apartamentos = getApartamentos();
 $usuarios = getUsuarios();
