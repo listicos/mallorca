@@ -60,7 +60,7 @@
                         <div class="price-apto">
                             {if $a->precioMinimo || $a->precioMaximo}
                             <p class="text-muted">desde <strong>{$a->precioMinimo|number_format:2:",":"."}<small>&euro;</small></strong></p>
-                            <p class="text-muted">hasta <strong>{$a->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>
+                            {if $a->precioMaximo && $a->precioMaximo ne $a->precioMinimo}<p class="text-muted">hasta <strong>{$a->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>{/if}
                             {else}
                                 <p class="text-muted">{#no_disponible#}</p>
                             {/if}
