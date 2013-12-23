@@ -120,7 +120,7 @@ if($precio && is_numeric($precio)){
 }
 
 $disponibilidades = getDisponibilidadByApartamento($idApartamento);
-
+/*
 $disponibles = array();
 
 if($disponibilidades){
@@ -129,8 +129,8 @@ if($disponibilidades){
         $disponibles[] = date('Y-n-j',strtotime($d->fechaInicio));
     }
     
-}
-$smarty->assign('disponibles',json_encode($disponibles));
+}*/
+$smarty->assign('disponibles',json_encode($disponibilidades));
 
 $smarty->assign('entrada', $_SESSION['fechaInicio']);
 $smarty->assign('salida', $_SESSION['fechaFinal']);

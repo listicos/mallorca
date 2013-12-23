@@ -117,11 +117,11 @@ function initCalendar() {
                     for (var i = 0; i < _tarifas.length; i++) {
                         var tarifa_temp;
                         var price = _tarifas[i].precio ? _tarifas[i].precio + "€" : " 0,00€";
-
-                        if (_tarifas[i].estatus == 'disponible')
-                            tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('green')};
-                        else
-                            tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('red')};
+                        bckcolor = App.getLayoutColorCode('green');
+                        if (_tarifas[i].estatus == 'no disponible')
+                            bckcolor = App.getLayoutColorCode('red');
+                        tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': bckcolor};
+                        
 
                         tarifas_array.push(tarifa_temp)
                     }
@@ -177,7 +177,18 @@ function FechasReserva() {
         format: "dd-mm-yyyy",
         autoclose: true
     }).on('changeDate', function(ev) {
-        $('#fechaFinal').datepicker('setStartDate', new Date(new Date().setDate(new Date(ev.date).getDate() + 1)));
+        f = $('#fechaInicio').val().split('-');
+        f = f[2] + '-' + f[1] + '-' + f[0];
+        minDays = 1;
+        for(i=0;i<FECHAS_DISPONIBLES.length;i++) {
+            if(FECHAS_DISPONIBLES[i].fechaInicio.replace(' 00:00:00', '') == f) {
+                if(FECHAS_DISPONIBLES[i].minimoNoches) minDays = parseInt(FECHAS_DISPONIBLES[i].minimoNoches);
+                break;
+            }
+        }
+        d = new Date(new Date(ev.date).setDate(new Date(ev.date).getDate() + minDays));
+        console.log(minDays, d);
+        $('#fechaFinal').datepicker('setStartDate', d);
         $('#fechaFinal').datepicker('show');
     });
 
@@ -188,7 +199,7 @@ function FechasReserva() {
         format: "dd-mm-yyyy",
         autoclose: true
     }).on('changeDate', function(ev) {
-        $('#fechaInicio').datepicker('setEndDate', new Date(new Date().setDate(new Date(ev.date).getDate())));
+        //$('#fechaInicio').datepicker('setEndDate', new Date(new Date().setDate(new Date(ev.date).getDate())));
 
     });
     $('#fechaFinal').datepicker('setStartDate', new Date(new Date().setDate(new Date().getDate())));
@@ -207,7 +218,7 @@ function FechasReserva() {
         date.setFullYear(fecha[2]);
         date.setMonth(fecha[1]);
         date.setDate(fecha[0]);
-        $('#fechaInicio').datepicker('setEndDate', new Date(new Date().setDate(new Date(date).getDate() - 1)));
+        //$('#fechaInicio').datepicker('setEndDate', new Date(new Date().setDate(new Date(date).getDate() - 1)));
     }
 
     $('#fechaInicio, #fechaFinal, select[name=huespedes]').on('change', function() {
