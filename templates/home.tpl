@@ -230,7 +230,7 @@
                                             <div class="price-apto">
                                                 {if $a['apartamento']->precioMinimo || $a['apartamento']->precioMaximo}
                                                 <p class="text-muted">{#desde#} <strong>{$a['apartamento']->precioMinimo|number_format:2:",":"."}<small>&euro;</small></strong></p>
-                                                {if $a['apartamento']->precioMaximo && $a['apartamento']->precioMaximo ne $a['apartamento']->precioMinimo}<p class="text-muted">{#hasta#} <strong>{$a['apartamento']->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>{/if}
+                                                <p class="text-muted">{#hasta#} <strong>{$a['apartamento']->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>
                                                 {else}
                                                     <p class="text-muted">{#no_disponible#}</p>
                                                 {/if}

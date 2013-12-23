@@ -168,18 +168,14 @@ function setTarifasToCalendar(tarifas) {
 }
 
 function FechasReserva() {
-
+    /*
     for (i = 0; i < FECHAS_DISPONIBLES.length; i++)
         FECHAS_DISPONIBLES[i] = new Date(FECHAS_DISPONIBLES[i]).getTime();
-
+    */
     var date_now = new Date(new Date().setDate(new Date().getDate() - 1));
     $('#fechaInicio').datepicker({
         format: "dd-mm-yyyy",
-        autoclose: true,
-        beforeShowDay: function(date) {
-            return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1;
-        },
-        enableDates: FECHAS_DISPONIBLES
+        autoclose: true
     }).on('changeDate', function(ev) {
         $('#fechaFinal').datepicker('setStartDate', new Date(new Date().setDate(new Date(ev.date).getDate() + 1)));
         $('#fechaFinal').datepicker('show');
@@ -190,11 +186,7 @@ function FechasReserva() {
 
     $('#fechaFinal').datepicker({
         format: "dd-mm-yyyy",
-        autoclose: true,
-        beforeShowDay: function(date) {
-            return FECHAS_DISPONIBLES.indexOf(date.getTime()) !== -1;
-        },
-        enableDates: FECHAS_DISPONIBLES
+        autoclose: true
     }).on('changeDate', function(ev) {
         $('#fechaInicio').datepicker('setEndDate', new Date(new Date().setDate(new Date(ev.date).getDate())));
 

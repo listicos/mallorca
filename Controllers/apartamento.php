@@ -45,12 +45,14 @@ if (count($opiniones) > 0) {
     $apartamentos_array['last_opinion']['opinion'] = $last_opinion->opinion;
     $apartamentos_array['last_opinion']['usuario'] = $user_last_opinion->nombre;
 
-    $apartamentoTipo = getApartamentosTipos($apartamento->idApartamentosTipo);
+    
+}
+
+$apartamentoTipo = getApartamentosTipos($apartamento->idApartamentosTipo);
     $apartamentos_array['tipo'] = $apartamentoTipo;
 
     $apartamentoAlojamiento = getApartamentoAlojamientoByAparatamento($idApartamento);
     $apartamentos_array['alojamiento'] = getAlojamiento($apartamentoAlojamiento[0]->idAlojamiento);
-}
 
 $instalaciones_array = array();
 $instalaciones_list = getApartamentoInstalacionesByAparatamento($idApartamento);
@@ -127,7 +129,8 @@ if($disponibilidades){
         $disponibles[] = date('Y-n-j',strtotime($d->fechaInicio));
     }
     
-}$smarty->assign('disponibles',json_encode($disponibles));
+}
+$smarty->assign('disponibles',json_encode($disponibles));
 
 $smarty->assign('entrada', $_SESSION['fechaInicio']);
 $smarty->assign('salida', $_SESSION['fechaFinal']);

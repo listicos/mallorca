@@ -60,9 +60,11 @@ var Calendar = function () {
                             for(var i=0;i < _tarifas.length;i++){
                                 var tarifa_temp;
                                 var price = _tarifas[i].precio ? _tarifas[i].precio+"€" : " 0,00€";
-
-                                if(_tarifas[i].estatus == 'disponible') {
-                                    tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('green')};
+                                backcolor = App.getLayoutColorCode('green');
+                                if(_tarifas[i].estatus == 'no disponible') {
+                                    backcolor = App.getLayoutColorCode('red')
+                                }
+                                    tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': backcolor};
                                     tarifas_array.push(tarifa_temp);
                                     if(_tarifas[i].descuento && _tarifas[i].descuento > 0) {
                                         tarifa_temp = {'title': '  -' + _tarifas[i].descuento + '%', 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': '#EC5C00'};
@@ -76,11 +78,11 @@ var Calendar = function () {
                                         tarifa_temp = {'title': _tarifas[i].precioPorConsumo + '€ =' + _tarifas[i].descuentoPorConsumo + '%', 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('blue')};
                                         tarifas_array.push(tarifa_temp);
                                     }
-                                } else {
+                                 /*else {
                                     tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('red')};
                                 
                                     tarifas_array.push(tarifa_temp)
-                                }
+                                }*/
                             }
                             Calendar.setTarifasToCalendar(tarifas_array);
                         }else{

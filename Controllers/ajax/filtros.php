@@ -56,36 +56,7 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
             $bounds = array();
 
         $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, $alojamientos, $start, 10, $order, $bounds);
-        foreach ($apartamentos as $apto) {
-            $apto->tipo = getTipoApartamento($apto->idApartamentosTipo)->nombre;
-            $rangoPrecios = getRangoPreciosByApartamento($apto->idApartamento, $fechaInicio ? : date('Y-m-d'), $fechaFinal ? : 0);
-            if($rangoPrecios) {
-                $apto->precioMinimo = $rangoPrecios[0];
-                $apto->precioMaximo = $rangoPrecios[1];
-            }
-            if($apto->idComplejo){
-                $complejo = getComplejo($apto->idComplejo);
-                $apto->complejo = $complejo;
-            }
-            /*
-            $opiniones = getOpinionesByApartamento($apartamento->idApartamento);
-            $apto->opiniones = count($opiniones);
-            
-            $apto_disponibilidades = getDisponibilidadByApartamento($apto->idApartamento);
-            $ds = array();
-            foreach ($apto_disponibilidades as $dis) {
-                array_push($ds, date('Y-n-j', strtotime($dis->fechaInicio)));
-            }
-
-            $apto->disponibilidades = json_encode($ds);*/
-            /*
-            $instalaciones_array = array();
-            $instalaciones_list = getApartamentoInstalacionesByAparatamento($apto->idApartamento);
-            foreach ($instalaciones_list as $ckey => $instalacio) {
-                $instalaciones_array[$ckey] = getInstalacion($instalacio->idInstalacion);
-            }
-            $apto->instalaciones = $instalaciones_array;*/
-        }
+        
         
         $smarty->assign('apartamentos', $apartamentos);
         $html = $smarty->fetch('lista_apartamentos.tpl');
@@ -101,7 +72,7 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
         
         $habitaciones = getTipoHabitaciones();
         foreach ($habitaciones as $habitacion) {
-            $habitacion->apartamentos = count(getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, array($habitacion->idAlojamiento), 0, 0, false, $bounds));
+            $habitacion->apartamentos = count(getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, array($habitacion->idAlojamiento), 0, 0, false, $bounds, false));
         }
 
         $result['html'] = $html;
