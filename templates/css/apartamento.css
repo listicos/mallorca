@@ -90,6 +90,7 @@
     border: 1px solid #dddddd;
     border-top: none;
     background: #FFF;
+    overflow: hidden;
 }
 
 #mapa {
