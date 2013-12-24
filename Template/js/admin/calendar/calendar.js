@@ -44,6 +44,7 @@ var Calendar = function () {
         },
 
         createTarifas: function (){
+            $('#blocker').fadeIn().find('div').html('Actualizando el calendario...');
             $.ajax({
                 dataType: "json",
                 url: BASE_URL + "/admin-ajax-calendario",
@@ -91,6 +92,9 @@ var Calendar = function () {
                     }else{
                         Calendar.setTarifasToCalendar();
                     }
+                    
+                    if($('#blocker').length > 0)
+                        $('#blocker').fadeOut();
                 }
             }); 
         },

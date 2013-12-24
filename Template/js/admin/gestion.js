@@ -294,6 +294,7 @@ function agregarTarifa(){
         var valid_form;
         valid_form = form.validationEngine('validate');
         if(valid_form){
+            $('#blocker').fadeIn().find('div').html('Guardando...');
             $.ajax({
                 dataType: "json",
                 url: BASE_URL + "/admin-ajax-calendario",
@@ -304,7 +305,7 @@ function agregarTarifa(){
                         $('#disponibilidad_overlay').modal('hide');
                         $('#contrato_precios_overlay').modal('hide');
                         $('#calendar').fullCalendar('destroy');
-                        
+                        $('#blocker div').html('Actualizando el calendario ...');
                         Calendar.createTarifas();
                         
                         //$('.modal-body-tarifa-gestion').fadeOut();
