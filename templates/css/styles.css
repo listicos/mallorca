@@ -412,8 +412,9 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
     text-align: right;
 }
 .phone_contact{
-    font-size: 26px;
+    font-size: 23px;
     color: #FFF;
+    margin-bottom: 0px;
 }
 
 #slider-range.ui-slider-horizontal .ui-slider-handle {

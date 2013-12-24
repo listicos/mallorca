@@ -143,11 +143,22 @@ function getApartamentosFilters($fechaInicio,$fechaFinal,$huespedes = false, $in
             
             $apartamento->tipo = getTipoApartamento($apartamento->idApartamentosTipo)->nombre;
             
+            /*Solucion temporal*/
+            $disponibilidad = getDisponibilidadByApartamentoMinMaxPrecio($apartamento->idApartamento, date('Y-m-d'), 0);
+        
+            if($disponibilidad){
+                $apartamento->precioMinimo = $disponibilidad['precioMinimo'];
+                $apartamento->precioMaximo = $disponibilidad['precioMaximo'];
+            }
+
+            /*
+            Hay que optimizar esta consulta esta muy fea
             $rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, $fechaInicio ? : date('Y-m-d'), $fechaFinal ? : 0);
+            
             if($rangoPrecios) {
                 $apartamento->precioMinimo = $rangoPrecios[0];
                 $apartamento->precioMaximo = $rangoPrecios[1];
-            }
+            }*/
         }
         return $apartamentos;
     } catch (Exception $e) {
@@ -373,6 +384,25 @@ function getDisponibilidadByApartamentoMenorPrecio($idApartamento,$limit = 1) {
         }
         
         return $disponibilidad;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+/*Temporal*/
+function getDisponibilidadByApartamentoMinMaxPrecio($idApto, $fechaInicial = 0, $fechaFinal = 0){
+    try {
+        $fechaInicial = ($fechaInicial && strlen(trim($fechaInicial))) ? strtotime($fechaInicial) : strtotime();
+        $fechaFinal = ($fechaFinal && strlen(trim($fechaFinal))) ? strtotime($fechaFinal) : 0;
+
+        $disponibilidad = DAOFactory::getDisponibilidadesDAO()->queryByIdApartamentoMinMaxPrecio($idApto, $fechaInicial = 0, $fechaFinal = 0);
+        if($disponibilidad){
+            $dispo = array_pop($disponibilidad);
+            return $dispo;
+        }else{
+            return false;
+        }
+        
     } catch (Exception $e) {
         return false;
     }
@@ -802,6 +832,15 @@ function getTiposApartamentos() {
     }
 }
 
+function countTiposApartamentos(){
+    try {
+        $tipoApartamentos = DAOFactory::getApartamentosTiposDAO()->queryAll();
+        return $tipoApartamentos;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 function getTipoApartamento($idTipo) {
     try {
         $tipoApartamentos = DAOFactory::getApartamentosTiposDAO()->load($idTipo);
@@ -1116,10 +1155,12 @@ function getPropietarioByApartamento($aptoId) {
 function getApartamentosMasVisitados($limit = 3) {
     try {
         $apartamentos = DAOFactory::getApartamentosDAO()->queryByVisitasAsc($limit);
-        foreach ($apartamentos as $apartamento) {
+       
+        /*Esto se podia evitar
+            foreach ($apartamentos as $apartamento) {
             if($apartamento->idComplejo)
                 $apartamento->complejo = getComplejoById ($apartamento->idComplejo);
-        }
+        }*/
         return $apartamentos;
     } catch(Exception $e) {
         var_dump($e);
@@ -1206,6 +1247,7 @@ function getRangoPreciosByApartamento($idApto, $fechaInicial = 0, $fechaFinal = 
         $fechaInicial = ($fechaInicial && strlen(trim($fechaInicial))) ? strtotime($fechaInicial) : strtotime();
         $fechaFinal = ($fechaFinal && strlen(trim($fechaFinal))) ? strtotime($fechaFinal) : 0;
         $disponibilidades = getDisponibilidadByApartamentoFechas($idApto, $fechaInicial, $fechaFinal);
+
         $apartamento = DAOFactory::getApartamentosDAO()->load($idApto);
         if(!$disponibilidades || !count($disponibilidades))
             return false;

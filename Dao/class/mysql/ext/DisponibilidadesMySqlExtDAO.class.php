@@ -56,6 +56,23 @@ class DisponibilidadesMySqlExtDAO extends DisponibilidadesMySqlDAO{
 
 		return $this->getRow($sqlQuery);
 	}
+
+	public function queryByIdApartamentoMinMaxPrecio($idApartamento,$fechaInicio,$fechaFinal){
+		$sql = 'SELECT disponibilidades.*, MIN(precio) AS precioMinimo, MAX(precio) AS precioMaximo
+		 		FROM disponibilidades WHERE id_apartamento = ? AND precio > 0 AND estatus = "disponible" ';
+		
+		if($fechaInicio){
+            $sql .= ' AND UNIX_TIMESTAMP(fecha_final) >= '.$fechaInicio.' ';
+		}
+        
+        if($fechaFinal){
+			$sql .= ' AND UNIX_TIMESTAMP(fecha_inicio) <= '.$fechaFinal.' ';
+        }
+
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($idApartamento);
+		return $this->execute($sqlQuery);
+	}
         
         public function deleteByIdApartamentoAndFechas($idApartamento,$fechaInicio,$fechaFinal){
                 

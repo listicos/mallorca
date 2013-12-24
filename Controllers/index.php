@@ -1,6 +1,5 @@
 <?php
-
-$apartamentos = getApartamentosMasVisitados(15);
+$apartamentos = getApartamentosMasVisitados(100);
 $apartamentos_array = array();
 
 $user_vars = Core_Util_Click::getUsersVars();
@@ -9,8 +8,8 @@ foreach ($user_vars as $u_k => $u_v) {
 }
 $minPrice = 999999999;
 $maxPrice = -999999999;
-
 $categorias = getAllInstalacionesCategoria();
+
 $instalacionesFiltrosActualizados = getApartamentosInstalacionesFilters(0,0);
 foreach ($categorias as $categoria) {
     $categoria->instalaciones = array();
@@ -23,14 +22,18 @@ foreach ($categorias as $categoria) {
 
 $smarty->assign('categorias', $categorias);
 
+/*Esto ya tiene tiempo que no se usa...
 $habitaciones = getTipoHabitaciones();
+
 foreach ($habitaciones as $habitacion) {
     $habitacion->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array(), array($habitacion->idAlojamiento), 0, 0));
-}
+}*/
+
 $tipos_apartamento = getTiposApartamentos();
 
 foreach ($tipos_apartamento as $tipoApto) {
-    $tipoApto->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array($tipoApto->idApartamentosTipo)));
+    //Esta consulta le carga los adjuntos, direcciones, disponibilidades, etc. creo que se deberia de crear una consulta especial para esto
+    $tipoApto->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array($tipoApto->idApartamentosTipo),array(), 0, 100, false, array(), false));
 }
 
 $smarty->assign('habitaciones', $habitaciones);
@@ -38,9 +41,14 @@ $smarty->assign('tiposApartamento', $tipos_apartamento);
 
 if($apartamentos){
     foreach ($apartamentos as $akey => $apartamento) {
-        $apartamento->tipo = getTipoApartamento($apartamento->idApartamentosTipo)->nombre;
+        /*Esto tambien se podia evitar 
+            $apartamento->tipo = getTipoApartamento($apartamento->idApartamentosTipo)->nombre;
+        */
+
+        //Igual esto de los adjuntos se puede evitar mas consultas a la bd
         $apartamentos_array[$akey]['apartamento'] = $apartamento;
         $apartamentosAdjuntos = getApartamentosAdjuntos($apartamento->idApartamento);
+
         foreach ($apartamentosAdjuntos as $adkey => $apartamentoAdjunto) {
             $adjunto = getAdjunto($apartamentoAdjunto->idAdjunto);
             $apartamentos_array[$akey]['adjuntos'][$adkey] = $adjunto;
@@ -48,16 +56,27 @@ if($apartamentos){
 
         if ($apartamento->idDireccion)
             $apartamento->direccion = getDireccion($apartamento->idDireccion);
-        $rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, date('Y-m-d'), 0);
+        /*Esto es temporal, lo puse por que creo que es la forma correcta de proceder sin embargo falta pulirlo con otros calculos como lo del descuento, etc.*/
+        $disponibilidad = getDisponibilidadByApartamentoMinMaxPrecio($apartamento->idApartamento, date('Y-m-d'), 0);
+        
+        if($disponibilidad){
+            $apartamento->precioMinimo = $disponibilidad['precioMinimo'];
+            $apartamento->precioMaximo = $disponibilidad['precioMaximo'];
+        }
+
+        /*$rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, date('Y-m-d'), 0);
+
         if($rangoPrecios) {
             $apartamento->precioMinimo = $rangoPrecios[0];
             $apartamento->precioMaximo = $rangoPrecios[1];
-        }
+        }*/
 
+        /*
+        Esto se hacía 2 veces
         if($apartamento->idComplejo){
             $complejo = getComplejo($apartamento->idComplejo);
             $apartamentos_array[$akey]['complejo'] = $complejo;
-        }
+        }*/
         /*
         $comments = getOpinionesByApartamento($apartamento->idApartamento);
         $apartamentos_array[$akey]['opiniones'] = $comments;

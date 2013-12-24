@@ -71,19 +71,13 @@
                         </div>
                                     
                         <div id="calendarioContainer" class="calendarioContainer ">
-                            <div class="col-md-8">
+                            <div class="col-md-10 col-md-offset-1">
                                 <div id="calendar" >
                                 </div>
                                 <div id="calendar-legend">
                                     <div class="leyenda disponible"></div><div>{#disponible#}</div>
                                     <div class="leyenda no-disponible"></div><div>{#no_disponible#}</div>
-                                    <div class="leyenda anterior"></div><div>{#no_especificado#}</div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <p>El calendario se actualiza cada 5 minutos y la disponibilidad no siempre es exacta.</p>
-                                <p>Algunos anfitriones establecen precios personalizados para dias especificos de su calendario. Las tarifas son por día y no incluyen gastos de limpieza ni el precio por persona adicional que el anfitrion puede establecer para su alojamiento. Si quieres obtener mas informacion lee la descripcion del anuncio.</p>
-                                <p>Te recomendamos que te pongas en contacto con el anfitrion para confirmar la disponibilidad y las tarifas antes de enviar una solicitud de reserva.</p>
                             </div>
                         </div>
                     </div>

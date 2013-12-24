@@ -54,7 +54,7 @@ foreach ($fechas_reservacion as $f) {
     $f->fechaInicio = date('d', $f_i) . ' de ' . $meses[date('n', $f_i) - 1] . ' ' . date('Y', $f_i);
 }
 if($precio && is_numeric($precio)){
-    $menor_precio = money_format('%i', $precio) ;
+    $menor_precio = money_format('€ %i', $precio) ;
 }else{
     $menor_precio = 'No disponible';
 }

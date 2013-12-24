@@ -163,10 +163,49 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
     }
     
     public function queryByVisitasAsc($limit = 3) {
-        $sql = 'SELECT distinct a.* FROM apartamentos AS a WHERE a.estatus <> "inactivo" ORDER BY visitas DESC LIMIT 0, ?';
+        $sql = 'SELECT distinct a.*, c.nombre AS complejo, at.nombre AS tipo FROM apartamentos AS a 
+                LEFT JOIN complejos AS c ON c.id_complejo = a.id_complejo
+                LEFT JOIN apartamentos_tipos AS at ON at.id_apartamentos_tipo = a.id_apartamentos_tipo
+        WHERE a.estatus <> "inactivo" ORDER BY visitas DESC LIMIT 0, ?';
         $sqlQuery = new SqlQuery($sql);
         $sqlQuery->setNumber($limit);
-        return $this->getList($sqlQuery);
+        $apartamentos = $this->execute($sqlQuery);
+        $aps = array();
+
+        if($apartamentos){
+            foreach ($apartamentos as $k => $a) {
+                $apartamento = $this->readRow($a);
+                foreach ($a as $key => $value){
+                    $apartamento->$key = $value;
+                }
+                $aps[] =  $apartamento;
+            }
+        }
+
+        return $aps;
+    }
+
+    public function countApartamentosTipos($limit = 3) {
+        $sql = 'SELECT distinct a.* FROM apartamentos AS a 
+                LEFT JOIN complejos AS c ON c.id_complejo = a.id_complejo
+                LEFT JOIN apartamentos_tipos AS at ON at.id_apartamentos_tipo = a.id_apartamentos_tipo
+        WHERE a.estatus <> "inactivo" ORDER BY visitas DESC LIMIT 0, ?';
+        $sqlQuery = new SqlQuery($sql);
+        $sqlQuery->setNumber($limit);
+        $apartamentos = $this->execute($sqlQuery);
+        $aps = array();
+
+        if($apartamentos){
+            foreach ($apartamentos as $k => $a) {
+                $apartamento = $this->readRow($a);
+                foreach ($a as $key => $value){
+                    $apartamento->$key = $value;
+                }
+                $aps[] =  $apartamento;
+            }
+        }
+
+        return $aps;
     }
 
 }
