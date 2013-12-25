@@ -390,14 +390,19 @@ div.leyenda {
     font-weight: bold;
     font-family: 'Open Sans', sans-serif;
 }
-.filtros_main_container{
+
+.filtros_main_container > div {
     box-shadow: 0px 0px 4px #CFCFCF;
+    background: #FFF;
     
+}
+
+.filtros_main_container{
     width: 39%;
     margin-left: 1%;
     float: left;
     margin-top: 10px;
-    background: #FFF;
+    
 }
 #loading-filters {
     display: none;

@@ -71,7 +71,7 @@ $(document).ready(function() {
     
     mostrarComplejo();
 
-    
+    followme();
 });
 function ordenar() {
     /*$('#resultados').mixitup();
@@ -532,4 +532,38 @@ function mostrarComplejo() {
             }
         })
     })
+}
+
+function followme() {
+    $(window).scroll(function(e){
+        windowTop = $(window).scrollTop();
+        
+        filtrosHeight = $('.filtros_main_container > div').height();
+        
+        filtrosContainerTop = $('.filtros_main_container').offset().top;
+        
+        filtros = $('.filtros_main_container > div');
+        
+        filtrosTop = filtros.offset().top;
+        
+        
+        
+        limite = $('#resultados').offset().top + $('#resultados').height();
+        
+        marginActual = parseInt($('.filtros_main_container > div').css('margin-top'));
+        
+        if($('#resultados').height() > filtrosHeight) {
+            
+            if(windowTop > filtrosContainerTop) {
+                margin = windowTop - filtrosContainerTop;
+                if(margin + filtrosHeight <= limite)
+                    filtros.css('margin-top', margin + 'px');
+            } else {
+                filtros.css('margin-top', 0);
+            }
+            
+        } else {
+            filtros.css('margin-top', 0);
+        }
+    });
 }

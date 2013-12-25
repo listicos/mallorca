@@ -33,6 +33,7 @@
         </div>
         <div class="row">
             <div class="filtros_main_container">
+                <div>
                 <div class="row form-horizontal filters-content" role="form">
                 <h4 class="filtros-title">{#encontrar_mi_alojamiento_perfecto#}</h4>
                 <form id="filtrosFrm">
@@ -140,6 +141,7 @@
                     <div class="col-md-12">
                         <div id="details-map-location"></div>
                     </div>
+                </div>
                 </div>
             </div>
             <div class="house_side">
