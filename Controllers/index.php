@@ -29,47 +29,38 @@ foreach ($habitaciones as $habitacion) {
     $habitacion->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array(), array($habitacion->idAlojamiento), 0, 0));
 }*/
 
-$tipos_apartamento = getTiposApartamentos();
+$tipos_apartamento = getApartamentosTiposFilters(0, 0, 1, array(), array(), array(), array());
 
-foreach ($tipos_apartamento as $tipoApto) {
-    //Esta consulta le carga los adjuntos, direcciones, disponibilidades, etc. creo que se deberia de crear una consulta especial para esto
-    $tipoApto->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array($tipoApto->idApartamentosTipo),array(), 0, 100, false, array(), false));
-}
 
-$smarty->assign('habitaciones', $habitaciones);
 $smarty->assign('tiposApartamento', $tipos_apartamento);
 
 if($apartamentos){
     foreach ($apartamentos as $akey => $apartamento) {
-        /*Esto tambien se podia evitar 
-            $apartamento->tipo = getTipoApartamento($apartamento->idApartamentosTipo)->nombre;
-        */
+        
 
         //Igual esto de los adjuntos se puede evitar mas consultas a la bd
         $apartamentos_array[$akey]['apartamento'] = $apartamento;
-        $apartamentosAdjuntos = getApartamentosAdjuntos($apartamento->idApartamento);
+        $apartamentosAdjuntos = getAdjuntosByApartamentoId($apartamento->idApartamento);
 
-        foreach ($apartamentosAdjuntos as $adkey => $apartamentoAdjunto) {
-            $adjunto = getAdjunto($apartamentoAdjunto->idAdjunto);
-            $apartamentos_array[$akey]['adjuntos'][$adkey] = $adjunto;
-        }
+        $apartamentos_array[$akey]['adjuntos'] = $apartamentosAdjuntos;
+        
 
         if ($apartamento->idDireccion)
             $apartamento->direccion = getDireccion($apartamento->idDireccion);
         /*Esto es temporal, lo puse por que creo que es la forma correcta de proceder sin embargo falta pulirlo con otros calculos como lo del descuento, etc.*/
-        $disponibilidad = getDisponibilidadByApartamentoMinMaxPrecio($apartamento->idApartamento, date('Y-m-d'), 0);
+        /*$disponibilidad = getDisponibilidadByApartamentoMinMaxPrecio($apartamento->idApartamento, date('Y-m-d'), 0);
         
         if($disponibilidad){
             $apartamento->precioMinimo = $disponibilidad['precioMinimo'];
             $apartamento->precioMaximo = $disponibilidad['precioMaximo'];
-        }
+        }*/
 
-        /*$rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, date('Y-m-d'), 0);
+        $rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, date('Y-m-d'), 0);
 
         if($rangoPrecios) {
             $apartamento->precioMinimo = $rangoPrecios[0];
             $apartamento->precioMaximo = $rangoPrecios[1];
-        }*/
+        }
 
         /*
         Esto se hacía 2 veces

@@ -22,6 +22,15 @@ class AdjuntosMySqlExtDAO extends AdjuntosMySqlDAO {
             $adjunto = new Adjunto ();
         return $this->mysql->prepare($adjunto, $data);
     }
+    
+    public function queryByApartamentoId($value){
+		$sql = 'SELECT * FROM adjuntos AS a inner join apartamentos_adjuntos AS aa ';
+                $sql .= ' ON a.id_adjunto = aa.id_adjunto ';
+                $sql .= ' WHERE aa.id_apartamento = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
 
 }
 

@@ -111,6 +111,24 @@ class DisponibilidadesMySqlExtDAO extends DisponibilidadesMySqlDAO{
 		$sqlQuery->set('No disponible');
 		return $this->getList($sqlQuery);
         }
+        
+        public function getByApartamentoFechasPrecioAsc($idApartamento, $fechaInicio, $fechaFinal) {
+                $sql = 'SELECT * FROM disponibilidades WHERE id_apartamento = ? AND precio > 0';
+		
+		if($fechaFinal){
+			$sql .= ' AND UNIX_TIMESTAMP(fecha_inicio) <= UNIX_TIMESTAMP("'.$fechaFinal.'") ';
+                }
+                
+                if($fechaInicio){
+                        $sql .= ' AND UNIX_TIMESTAMP(fecha_final) >= UNIX_TIMESTAMP("'.$fechaInicio.'") ';
+		}
+		
+		$sql .= ' ORDER BY precio ASC';
+                
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($idApartamento);
+		return $this->getList($sqlQuery);
+        }
 
 }
 ?>

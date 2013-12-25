@@ -493,7 +493,7 @@ function actualizarFiltros(response) {
             $(this).parent().hide();
         }
     })
-    
+    /*
     tipoHabitacion = response.filtrosApartamentosTiposHabitacion;
     
     if(tipoHabitacion[0].apartamentos == 0) {
@@ -506,7 +506,7 @@ function actualizarFiltros(response) {
         $('#rural').hide();
     } else {
         $('#rural').show().find('strong').html('(' + tipoHabitacion[1].apartamentos + ')')
-    }
+    }*/
 }
 
 function mostrarComplejo() {
