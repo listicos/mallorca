@@ -552,7 +552,7 @@ function followme() {
         
         marginActual = parseInt($('.filtros_main_container > div').css('margin-top'));
         
-        if($('#resultados').height() > filtrosHeight) {
+        if($('#resultados').height() > filtrosHeight && $(window).width() > 768) {
             
             if(windowTop > filtrosContainerTop) {
                 margin = windowTop - filtrosContainerTop;
