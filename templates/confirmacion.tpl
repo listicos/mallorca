@@ -101,6 +101,31 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <h4 class="text-primary">{#apartamento_de#} {$reserva['apartamento']->habitaciones} habitaciones ({$reserva['apartamento']->capacidadPersonas} personas)</h4>
+                                        <div class="reserva-hotel-detalles">
+                                    
+                                    <table class="table table-striped table-bordered">
+                                        <tr>
+                                            <td>{#tipo_de_alojamiento#}</td>
+                                            <td class="value">{$reserva['apartamento']->tipo->nombre}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{#capacidad#}</td>
+                                            <td class="value">{$reserva['apartamento']->capacidadPersonas} {#personas#}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{#dormitorios#}</td>
+                                            <td class="value">{$reserva['apartamento']->habitaciones}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{#camas#}</td>
+                                            <td class="value">{$reserva['apartamento']->camas}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{#banios#}</td>
+                                            <td class="value">{$reserva['apartamento']->banio}</td>
+                                        </tr>
+                                    </table>
+                                </div>
                                         <p>este apartamento dispone de {foreach from=$reserva['apartamento']->servicios item=servicio name=servicios}{if !$smarty.foreach.servicios.first && !$smarty.foreach.servicios.last}, {/if}{if !$smarty.foreach.servicios.first && $smarty.foreach.servicios.last} y {/if}{$servicio->nombre}{/foreach}.</p>
                                     </div>
                                 </div>
