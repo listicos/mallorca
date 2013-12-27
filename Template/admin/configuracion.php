@@ -14,7 +14,84 @@
                     <fieldset>
                         <div class="searched-info">
                             
-                        <legend class="legend_custom titulos_legend">Configuración de email</legend>
+                        <legend class="legend_custom titulos_legend">Datos de Contacto</legend>
+                        <div class="row-fluid email_container">
+                            <div class="row-fluid">
+                                <div class="span4">
+                                    <div class="control-group">
+                                        <div class="input-prepend center span12" title="Nombre de la empresa" data-rel="tooltip">
+                                            <span class="add-on"><i class="icon-envelope"></i></span><input class="input-large span10" name="nombreEmpresa" type="text" placeholder="Empresa" value="<?php echo $configuracion->nombreEmpresa; ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <div class="control-group">
+                                        <div class="input-prepend center span12" title="CIF" data-rel="tooltip">
+                                            <span class="add-on"><i class="icon-envelope"></i></span><input class="input-large span10" name="empresaCif" type="text" placeholder="CIF" value="<?php echo $configuracion->empresaCif; ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="span4">
+                                    <div class="control-group">
+                                        <div class="input-prepend center span12" title="Email de contacto" data-rel="tooltip">
+                                            <span class="add-on"><i class="icon-pencil"></i></span><input class="input-large span10" name="emailContacto" type="text" placeholder="Email"  value="<?php echo $configuracion->emailContacto; ?>" />
+                                        </div>
+                                    </div>                                     
+                                </div> 
+                                <div class="span12">
+                                    <div class="control-group">
+                                        <div  class="input-prepend  center span12" title="Tel&eacute;fonos" data-rel="tooltip">
+                                            <span class="add-on"><i class="icon-user"></i></span><input class="input-large span10" name="telefonosContacto" type="text" placeholder="Telefonos" data-prompt-position="topLeft:2%"  value="<?php echo $configuracion->telefonosContacto; ?>" />
+                                        </div>
+                                    </div>                                        
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <legend class="legend_custom titulos_legend">Redes sociales</legend>
+                        <div class="row-fluid email_container">
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="control-group">
+                                        <div class="input-prepend center span12" title="Facebook" data-rel="tooltip">
+                                            <span class="add-on"><i class="icon-envelope"></i></span><input class="input-large span10" name="facebook" type="text" placeholder="Facebook" value="<?php echo $configuracion->facebook; ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="control-group">
+                                        <div  class="input-prepend  center span12" title="Twitter" data-rel="tooltip">
+                                            <span class="add-on"><i class="icon-user"></i></span><input class="input-large span10" name="twitter" type="text" placeholder="Twitter" data-prompt-position="topLeft:2%"  value="<?php echo $configuracion->twitter; ?>" />
+                                        </div>
+                                    </div>                                        
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="control-group">
+                                        <div class="input-prepend center span12" title="Vimeo" data-rel="tooltip">
+                                            <span class="add-on"><i class="icon-pencil"></i></span><input class="input-large span10" name="vimeo" type="text" placeholder="Vimeo"  value="<?php echo $configuracion->vimeo; ?>" />
+                                        </div>
+                                    </div>                                     
+                                </div>  
+                            </div>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="control-group">
+                                        <div class="input-prepend center span12" title="RSS" data-rel="tooltip">
+                                            <span class="add-on"><i class="icon-pencil"></i></span><input class="input-large span10" name="rss" type="text" placeholder="RSS"  value="<?php echo $configuracion->rss; ?>" />
+                                        </div>
+                                    </div>                                     
+                                </div>
+                            </div>
+                            
+                        </div>
+                            
+                        <legend class="legend_custom titulos_legend">Configuración smtp</legend>
                         <div class="row-fluid email_container">
                             <div class="row-fluid">
                                 <div class="span4">

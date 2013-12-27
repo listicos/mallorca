@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2013-11-12 21:05
+ * @date: 2013-12-27 22:08
  */
 interface ConfiguracionDAO{
 
@@ -63,6 +63,22 @@ interface ConfiguracionDAO{
 
 	public function queryByIdDireccion($value);
 
+	public function queryByNombreEmpresa($value);
+
+	public function queryByEmpresaCif($value);
+
+	public function queryByTelefonosContacto($value);
+
+	public function queryByEmailContacto($value);
+
+	public function queryByFacebook($value);
+
+	public function queryByTwitter($value);
+
+	public function queryByVimeo($value);
+
+	public function queryByRss($value);
+
 
 	public function deleteByEmail($value);
 
@@ -75,6 +91,22 @@ interface ConfiguracionDAO{
 	public function deleteByPuerto($value);
 
 	public function deleteByIdDireccion($value);
+
+	public function deleteByNombreEmpresa($value);
+
+	public function deleteByEmpresaCif($value);
+
+	public function deleteByTelefonosContacto($value);
+
+	public function deleteByEmailContacto($value);
+
+	public function deleteByFacebook($value);
+
+	public function deleteByTwitter($value);
+
+	public function deleteByVimeo($value);
+
+	public function deleteByRss($value);
 
 
 }

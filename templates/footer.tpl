@@ -6,21 +6,28 @@
                 <p class="text-center">Booking Now 902 000 999</p> -->
                 <div class="col-md-4">
                     <h3>{#contactanos#}</h3>
-                    <p class="phone_contact">(0034) 971 569785</p>
-                    <p class="phone_contact">(0034) 657 478526</p>
+                    <p class="phone_contact">{$config->telefonosContacto|replace:', ':'</p><p class="phone_contact">'}</p>
                     <ul class="contact">
-                        <li class="address">Mallorca Rent Haus</li>
-                        <li class="email"><a href="mailto:contact@companyname.com">info@mallorcarenthaus.com</a></li>
+                        <li class="address">{$config->nombreEmpresa}</li>
+                        <li class="email"><a href="mailto:{$config->emailContacto}">{$config->emailContacto}</a></li>
                     </ul>
                     <div class="clearfix"></div>    
                 </div>
                 <div class="col-md-4">
                     <h3>{#siguenos#}</h3>
                     <div class="footer_social">
-                        <a href="#" class="icon-facebook">Facebook</a> 
-                        <a href="#" class="icon-twitter">Twitter</a>
-                        <a href="#" class="icon-vimeo">Vimeo</a>
-                        <a href="#" class="icon-rss">RSS</a>
+                        {if $config->facebook && strlen($config->facebook)}
+                        <a href="{$config->facebook}" class="icon-facebook">Facebook</a> 
+                        {/if}
+                        {if $config->twitter && strlen($config->twitter)}
+                        <a href="{$config->twitter}" class="icon-twitter">Twitter</a>
+                        {/if}
+                        {if $config->vimeo && strlen($config->vimeo)}
+                        <a href="{$config->vimeo}" class="icon-vimeo">Vimeo</a>
+                        {/if}
+                        {if $config->rss && strlen($config->rss)}
+                        <a href="{$config->rss}" class="icon-rss">RSS</a>
+                        {/if}
                         <div class="clearfix"></div>
                     </div>
                 </div>

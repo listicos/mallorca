@@ -13,7 +13,15 @@ if(strcmp($action, "updateConfiguracion") == 0) {
         'password' => NULL,
         'username' => NULL,
         'servidor' => NULL,
-        'puerto' => 0
+        'puerto' => 0,
+        'nombreEmpresa' => NULL,
+        'empresaCif' => NULL,
+        'telefonosContacto' => NULL,
+        'emailContacto' => NULL,
+        'facebook' => NULL,
+        'twitter' => NULL,
+        'vimeo' => NULL,
+        'rss' => NULL
     );
     
     foreach (array_keys($data) as $key)

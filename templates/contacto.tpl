@@ -78,9 +78,9 @@
                         </div>
                         <div class="contenido-detalles  row-fluid col-md-12">
 
-                            <p><strong>{#empresa#}</strong> Fuertetour </p>
-                            <p><strong>CIF:</strong> 34678637485 </p>
-                            <p><strong>{#direccion#}</strong>{#mi_calle_mi_numero#} </p>
+                            <p><strong>{#empresa#}</strong> {if $config->nombreEmpresa}{$config->nombreEmpresa}{else}Mallorca Rent Haus{/if}</p>
+                            <p><strong>CIF:</strong> {$config->empresaCif} </p>
+                            <p><strong>{#direccion#}</strong>{$config->direccion->provincia} </p>
 
                         </div>
                     </form>
