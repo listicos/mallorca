@@ -107,7 +107,9 @@ function reservar() {
     $('#reservaFrm').on('submit', function(e){
         e.preventDefault();
         valid = $(this).validationEngine('validate');
+        
         if(valid) {
+            $('#blocker').fadeIn();
             data = $(this).serialize();
             $.ajax({
                 url: BASE_URL + '/ajax-reserva',
@@ -115,6 +117,7 @@ function reservar() {
                 type: 'post',
                 dataType: 'json',
                 success: function(response) {
+                    $('#blocker').fadeOut()
                     if(response.msg == 'ok') {
                         toastr.success(response.data);
                         setTimeout(function(){
