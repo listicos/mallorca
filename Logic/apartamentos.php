@@ -347,7 +347,7 @@ function getDisponibilidadByApartamento($idApartamento) {
         $disponibilidad = DAOFactory::getDisponibilidadesDAO()->queryByIdApartamentoFechas($idApartamento, date('Y-m-d'), false);
         $apartamento = getApartamento($idApartamento);
         $disponibilidades = array();
-        $days = (31*18);
+        $days = (31*12);
         
         for($i=0;$i<$days;$i++) {
             $time = strtotime('+' . $i . ' days');

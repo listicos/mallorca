@@ -63,6 +63,8 @@ if(substr_count($_SERVER['REQUEST_URI'], "/admin-") == 0) {
     $languages = getIdiomas();
 
     $smarty->assign('languages', $languages);
+    $config = getConfiguracion();
+$smarty->assign('config', $config);
 
 }
 

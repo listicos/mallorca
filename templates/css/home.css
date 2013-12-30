@@ -394,7 +394,7 @@ div.leyenda {
 .filtros_main_container > div {
     box-shadow: 0px 0px 4px #CFCFCF;
     background: #FFF;
-    
+    top: 0px;
 }
 
 .filtros_main_container{

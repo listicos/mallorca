@@ -2,7 +2,7 @@ var map;
 
 //var myLatlng = new google.maps.LatLng("40.4216737855101","-3.7001175433777");
 var marcadores = [];
-var movingMap = false;
+var MOVING_MAP = false;
 function initialize() {
     var mapOptions = {
         zoom: 15,
@@ -16,11 +16,14 @@ function initialize() {
         filtrarPorMapa();
 
     });
+    google.maps.event.addListenerOnce(map, 'idle', function(){
+        MOVING_MAP = true;
+    });
     
     google.maps.event.addListener(map, 'zoom_changed', function() {
-        if(movingMap) {
+        if(MOVING_MAP) {
             filtrarPorMapa();
-            movingMap = false;
+            MOVING_MAP = false;
         }
 
     });
@@ -72,6 +75,9 @@ $(document).ready(function() {
     mostrarComplejo();
 
     followme();
+
+
+    
 });
 function ordenar() {
     /*$('#resultados').mixitup();
@@ -157,6 +163,7 @@ function actualizarMapa() {
     if(map.getZoom() > 9) {
         map.setZoom(9);
     }
+    
 }
 
  function filtrarPorMapa() {
@@ -186,6 +193,7 @@ function actualizarMapa() {
              }).carousel('pause');
              actualizarFiltros(response);
              calendarios();
+             MOVING_MAP = true;
              
              if($('#resultados .result-item').length == 0) {
                  $('select[name=order]').addClass('hidden');
@@ -235,12 +243,12 @@ function filtrar() {
                      $('#resultados').find('.carousel').carousel({
                         interval: 5000
                      });
-                     movingMapa = false;
+                     MOVING_MAP = false;
                      mostrarComplejo();
                      actualizarMapa();
 
                     calendarios();
-                    movingMapa = true;
+                    MOVING_MAP = true;
                     
                     if($('#resultados .result-item').length == 0) {
                         $('select[name=order]').addClass('hidden');
@@ -266,6 +274,8 @@ function calendarios() {
     $('a.ver-disponibilidad').off('click').on('click', function(e){
         $('#calendario_modal').modal();
         e.preventDefault();
+        $('#calendarioDisponibilidad').fullCalendar( 'destroy' );
+        $('#blocker').show();
         $.ajax({
             dataType: "json",
              url: BASE_URL + "/ajax-calendario",
@@ -275,6 +285,7 @@ function calendarios() {
                  action: 'getTarifas'
              },
              success: function(response) {
+                $('#blocker').fadeOut('slow');
                  if(response.msg == 'ok'){
                      
                      var _tarifas = response.tarifas
@@ -366,12 +377,12 @@ function pagination() {
                          $('#resultados').find('.carousel').carousel({
                             interval: 5000
                          });
-                        movingMapa = false;
+                        MOVING_MAP = false;
                         mostrarComplejo();
                          actualizarMapa();
 
                         calendarios();
-                        movingMapa = true;
+                        MOVING_MAP = true;
                         IS_GETTING_EMP = false;
 
                     }
@@ -533,8 +544,40 @@ function mostrarComplejo() {
         })
     })
 }
-
+function fixWidth(){
+    $('.filtros_main_container > div').width($('.filtros_main_container').width());
+}
 function followme() {
+    $(window).resize(function() {
+        fixWidth();
+    });
+    fixWidth();
+    var filtrosContainerTop = $('.filtros_main_container').offset().top;
+    var filtrosHeight = $('.filtros_main_container > div').height();
+    var filtros = $('.filtros_main_container > div');
+
+    $(window).scroll(function(e){
+        var windowTop = $(window).scrollTop();
+        var limite = $('.footer_container').offset().top - filtrosHeight - 35;
+
+        if(windowTop >= filtrosContainerTop && windowTop<limite){
+            filtros.css({
+                position:'fixed',
+                top: 0
+            });
+        }else{
+            if(windowTop<limite){
+                filtros.css('position','static');
+            }else{
+                margin = $('.footer_container').offset().top - filtrosHeight-35;
+                filtros.css({
+                    position: 'absolute',
+                    top: margin
+                }); 
+            }
+        }
+    });
+/*
     $(window).scroll(function(e){
         windowTop = $(window).scrollTop();
         
@@ -565,5 +608,5 @@ function followme() {
         } else {
             filtros.css('margin-top', 0);
         }
-    });
+    });*/
 }

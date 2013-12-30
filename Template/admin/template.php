@@ -66,7 +66,10 @@
                                     <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->base_url; ?>/admin-perfil" media="all">Perfil</a></li>
-                                        <li><a href="#">Configuración</a></li>
+                                        <?php if(hasRoles("Administrador, Mallorca")) { ?>
+                        <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-configuracion"><span class="hidden-tablet"> Configuraci&oacute;n</span></a></li>                                             
+                        <?php } ?>
+
                                         <li><a href="#"></a></li>
                                         <li class="divider"></li>
                                         <li><a href="<?php echo $this->base_url ?>/admin-logout">Cerrar sesión</a>
@@ -129,7 +132,7 @@
                         <?php if(hasRoles("Administrador, Socio, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-politicas-lista"><i class="icon-warning-sign"></i><span class="hidden-tablet"> Condiciones de reserva</span></a></li>                                             
                         <?php } ?>
-                        <?php if(hasRoles("Administrador")) { ?>
+                        <?php if(hasRoles("Administrador, Mallorca")) { ?>
                         <li><a class="ajax-link" href="<?php echo $this->base_url?>/admin-configuracion"><i class="icon-adjust"></i><span class="hidden-tablet"> Configuraci&oacute;n</span></a></li>                                             
                         <?php } ?>
                     </ul>
