@@ -3,20 +3,15 @@
 {block name="script" append}
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="{$template_url_s}/js/home.js"></script>
-    <script src="{$template_url_s}/js/jquery.mixitup.min.js"></script>
-    <script src="{$template_url}/js/admin/calendar/app.js"></script>
+    <!--<script src="{$template_url_s}/js/jquery.mixitup.min.js"></script>-->
+    <!--<script src="{$template_url}/js/admin/calendar/app.js"></script>
     <script src="{$template_url}/js/admin/calendar/breakpoints.js"></script>
-    <script src="{$template_url}/js/admin/calendar/calendar.js"></script>
+    <script src="{$template_url}/js/admin/calendar/calendar.js"></script>-->
     <script src="{$template_url}/js/admin/fullcalendar.min.js"></script>
     <script>
         var minPrice = {$minPrice};
         var maxPrice = {$maxPrice};
-        /*var disponibles = {$disponibles};*/
     </script>
-    <!--<script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
-    <script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-    <script type="text/javascript" src="{$template_url_s}/js/fancybox/jquery.easing.1.2.js"></script>
-    <script type="text/javascript" src="{$template_url_s}/js/fancybox/slider.js"></script> -->
 {/block}
 
 {block name="style" append}
@@ -84,35 +79,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--
-                    <div class="col-sm-12 form-group">
-                        <label class="control-label col-sm-4">Tipo de alojamiento</label>
-                        <div class="col-sm-8">
-                            <div class="btn-group separate-group" data-toggle="buttons">
-                                {if $habitaciones[0]->apartamentos > 0}
-                                <label class="btn btn-default" id="villas">
-                                    <input type="checkbox" name="alojamientos[]" id="option1" value="1">
-                                  <div class="text-center">
-                                      <img src="{$template_url_s}/img/icon-villas.png" alt="">
-                                      <span>Villas<strong>({$habitaciones[0]->apartamentos})</strong></span>
-                                  </div>
-                                </label>
-                                {/if}
-                                {if $habitaciones[1]->apartamentos > 0}
-                                  <label class="btn btn-default" id="rural">
-                                        <input type="checkbox" name="alojamientos[]" id="option2" value="2">
-                                        <div class="text-center">
-                                          <img src="{$template_url_s}/img/icon-rural.png" alt="">
-                                          <span>Turismo rural<strong>({$habitaciones[1]->apartamentos})</strong></span>
-                                        </div>
-                                  </label>
-                                {/if}
-                            </div>
-                            <div class="btn-group" data-toggle="buttons">
-                              
-                            </div>
-                        </div>
-                    </div>-->
                     <div class="col-sm-12 form-group">
                         <legend>{#servicios#}</legend>
                         <div id="filtrosServicios">

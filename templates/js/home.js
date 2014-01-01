@@ -39,9 +39,9 @@ function initCarousel(){
         var idx = active.index();
         var url = active.data('urls');
         var _this = this;
-        $(this).find('.item').html("wait...");
+        $(this).find('.item').html("<div class='loading_ajax'><img src='"+BASE_URL+'/templates/img/loader.gif'+"' /></div>");
         
-        $('<img src="'+ url +'">').load(function() {
+       $('<img src="'+ url +'">').load(function() {
           $(_this).find('.item').html($(this));
           $(_this).carousel(idx);
         });
