@@ -40,9 +40,26 @@ function initCarousel(){
         var url = active.data('url');
         var _this = this;
         $(this).find('.item').html("wait...");
+        console.log(url,idx);
+        $.ajax({
+            type: "GET",
+            url: url,
+            dataType: "image/gif",
+            success: function(img) {
+              i = new Image();
+              i.src = img;
+              $(_this).find('.item').html(i);
+              $(_this).carousel(idx);
+            },
+            error: function(error, txtStatus) {
+              console.log(txtStatus);
+              console.log('error');
+            }
+        });
+        /*
         $(this).find('.item').load(url,function(result){
             $(_this).carousel(idx);
-        });
+        });*/
     });
     $('[data-slide-number=0]').load($('[data-slide-number=0]').data('url'),function(result){    
     $('.carousel').carousel(0);
