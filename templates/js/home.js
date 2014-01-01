@@ -39,8 +39,8 @@ function initCarousel(){
         var idx = active.index();
         var url = active.data('url');
         var _this = this;
-        //$('.item').html("wait...");
-        $(this).find('.item:not([data-slide-number=0])').load(url,function(result){
+        $(this).find('.item').html("wait...");
+        $(this).find('.item').load(url,function(result){
             $(_this).carousel(idx);
         });
     });
