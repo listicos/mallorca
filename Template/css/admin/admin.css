@@ -498,7 +498,7 @@ body{
     text-align: left;
 }
 
-#blocker {
+#blocker, .blocker {
     background-color: #000000;
     height: 100%;
     left: 0;
@@ -508,8 +508,13 @@ body{
     width: 100%;
     z-index: 1000;
 }
+.blocker {
+    position: absolute;
+    background-color: #FFF;
+    opacity: 0.8;
+}
 
-#blocker > div {
+#blocker > div, .blocker > div {
     color: #FFFFFF;
     font-size: 33px;
     font-weight: bold;
@@ -523,7 +528,9 @@ body{
     top: 50%;
     width: 5em;
 }
-
+.blocker > div {
+    color: #000;
+}
 @media (min-width: 768px) and (max-width: 979px) {
     .contenedor_custom_templete{
         width: 5%;
@@ -765,6 +772,9 @@ body{
 }
 .add_contrato_button_container a#add_contrato{
     float: none;
+}
+#calendar_wrapper{
+    position: relative;;
 }
 h1.title_no_contrato{
     text-align: center;

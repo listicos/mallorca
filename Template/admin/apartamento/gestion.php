@@ -1207,7 +1207,10 @@ $edit = $this->getAttribute('edit');
                                             <div style="margin-left:0px;" class="span2 responsive contrato_element" data-tablet="span12 fix-margin" data-desktop="span8">
                                                  <a href="#contrato_precios_overlay" id="event_contrato" class="btn btn-primary" data-toggle="modal">Precios</a>
                                             </div>-->
-                                            <div class="span12">
+                                            <div class="span12" id="calendar_wrapper">
+                                                <div class="blocker" style="display: none;">
+                                                    <div>Actualizando...</div>
+                                                </div>
                                                 <div id="calendar" class="has-toolbar"></div>
                                             </div>
                                         </div>
