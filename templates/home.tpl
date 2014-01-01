@@ -180,7 +180,8 @@
                                     <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.iteration}">
                                         <div class="carousel-inner">
                                             {foreach from=$a['adjuntos'] item=adjunto name=adjuntos}
-                                            <div class="item {if $smarty.foreach.adjuntos.first}active{/if}" data-url="{$template_url}{$adjunto->ruta}" {if $smarty.foreach.adjuntos.first}data-slide-number="0"{/if}>
+                                            <div class="item {if $smarty.foreach.adjuntos.first}active{/if}" data-urls="{$template_url}{$adjunto->ruta}" {if $smarty.foreach.adjuntos.first}data-slide-number="0"{/if}>
+                                                {if $smarty.foreach.adjuntos.first}<img src="{$template_url}{$adjunto->ruta}" />{/if}
                                             </div>
                                             {/foreach}
                                         </div>

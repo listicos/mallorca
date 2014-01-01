@@ -34,36 +34,21 @@ function initCarousel(){
         interval: false
     });
 
-    $('.carousel').on('slid', function (e) {
+    $('.carousel').one('slid', function (e) {
         var active = $(this).find('.item.active');
         var idx = active.index();
-        var url = active.data('url');
+        var url = active.data('urls');
         var _this = this;
         $(this).find('.item').html("wait...");
-        console.log(url,idx);
-        $.ajax({
-            type: "GET",
-            url: url,
-            dataType: "image/gif",
-            success: function(img) {
-              i = new Image();
-              i.src = img;
-              $(_this).find('.item').html(i);
-              $(_this).carousel(idx);
-            },
-            error: function(error, txtStatus) {
-              console.log(txtStatus);
-              console.log('error');
-            }
+        
+        $('<img src="'+ url +'">').load(function() {
+          $(_this).find('.item').html($(this));
+          $(_this).carousel(idx);
         });
-        /*
-        $(this).find('.item').load(url,function(result){
-            $(_this).carousel(idx);
-        });*/
     });
     $('[data-slide-number=0]').load($('[data-slide-number=0]').data('url'),function(result){    
-    $('.carousel').carousel(0);
-});
+        $('.carousel').carousel(0);
+    });
 }
 $(document).ready(function() {
 
