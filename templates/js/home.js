@@ -40,8 +40,7 @@ function initCarousel(){
         var _this = this;
         
         $(this).find('.item').each(function(){
-            var that = this;
-            $(this).html("<div class='loading_ajax'><img src='"+BASE_URL+'/templates/img/loader.gif'+"' /></div>");
+            var that = this;    
             var url = $(this).data('urls');
             $('<img src="'+ url +'">').load(function() {
               $(that).html($(this));

@@ -372,7 +372,6 @@ function getDisponibilidadByApartamento($idApartamento) {
             foreach ($disponibilidad as $d) {                
                 if(date('Y-m-d', $time) == date('Y-m-d', strtotime($d->fechaInicio))) {
                     $dispo = $d;
-                    
                     break;
                 }
                 if($time < strtotime($d->fechaInicio))

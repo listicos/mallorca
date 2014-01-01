@@ -304,9 +304,10 @@ function agregarTarifa(){
                     if(response.msg == 'ok'){
                         $('#disponibilidad_overlay').modal('hide');
                         $('#contrato_precios_overlay').modal('hide');
-                        $('#calendar').fullCalendar('destroy');
-                        $('#blocker div').html('Actualizando el calendario ...');
-                        Calendar.createTarifas();
+                        $('#calendar').fullCalendar('refetchEvents'); 
+                        $('#blocker').hide();
+//                        $('#blocker div').html('Actualizando el calendario ...');
+                        //Calendar.createTarifas();
                         
                         //$('.modal-body-tarifa-gestion').fadeOut();
                     }

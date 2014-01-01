@@ -44,14 +44,47 @@ var Calendar = function () {
         },
 
         createTarifas: function (){
-            $('#blocker').fadeIn().find('div').html('Actualizando el calendario...');
+            $('#calendar').fullCalendar( 'destroy');
+            
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'title',
+                    right: 'prev,next,month'
+                },
+                firstDay: 1,
+                slotMinutes: 15,
+                editable: false,
+                droppable: false,
+                events: {
+                    dataType: "json",
+                     url: BASE_URL + "/admin-ajax-calendario",
+                     type: "POST",
+                     cache: true,
+                     data: {
+                         idApartamento: $('.calendar_tarifas_main').find('.apartamentoId').val(),
+                         action: 'getTarifasPro'
+                     },
+                     beforeSend: function(){
+                        
+                    },
+                    complete: function(){
+                      
+                    }
+                }
+            });
+
+            setTimeout(function(){
+                $('#calendar').fullCalendar('render');    
+            },800);
+
+            /*$('#blocker').fadeIn().find('div').html('Actualizando el calendario...');
             $.ajax({
                 dataType: "json",
                 url: BASE_URL + "/admin-ajax-calendario",
                 type: "POST",
                 data: {
                     idApartamento: $('.calendar_tarifas_main').find('.apartamentoId').val(),
-                    action: 'getTarifas'
+                    action: 'getTarifasPro'
                 },
                 success: function(response) {    
                     if(response.msg == 'ok'){
@@ -79,11 +112,6 @@ var Calendar = function () {
                                         tarifa_temp = {'title': _tarifas[i].precioPorConsumo + '€ =' + _tarifas[i].descuentoPorConsumo + '%', 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('blue')};
                                         tarifas_array.push(tarifa_temp);
                                     }
-                                 /*else {
-                                    tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('red')};
-                                
-                                    tarifas_array.push(tarifa_temp)
-                                }*/
                             }
                             Calendar.setTarifasToCalendar(tarifas_array);
                         }else{
@@ -96,7 +124,7 @@ var Calendar = function () {
                     if($('#blocker').length > 0)
                         $('#blocker').fadeOut();
                 }
-            }); 
+            }); */
         },
 
         setTarifasToCalendar: function (tarifas){

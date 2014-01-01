@@ -101,8 +101,6 @@ function initialize() {
 
 function initCalendar() {
     $('#calendar').fullCalendar( 'destroy');
-//Load calendar pro
-
     $('#calendar').fullCalendar({
         header: {
             left: 'title',

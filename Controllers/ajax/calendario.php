@@ -44,22 +44,6 @@ if (strcmp($action, "getTarifas") == 0) {
 
 	            $disponibilidades[$i]['title'] = $precio;
 	        }
-
-	        /*foreach ($tarifas as $key => $tarifa) {
-	        	$disponibilidades[$key]['start'] = $tarifa->fechaInicio;
-	        	$disponibilidades[$key]['end'] = $tarifa->fechaFinal;
-	        	$precio = $tarifa->precio ? ('€ '.$tarifa->precio) : " € 0,00";
-	        	
-	        	$disponibilidades[$key]['title'] = $precio;
-
-	        	if($tarifa->estatus == 'disponible'){
-	        		$disponibilidades[$key]['backgroundColor'] = '#35AA47';
-	        	}else{
-	        		$disponibilidades[$key]['backgroundColor'] = '#E02222';
-	        	}
-	        	$disponibilidades[$key]['textColor'] = '#FFF';
-	        	$disponibilidades[$key]['borderColor'] = '#FFF';
-	        }*/
 	        $result = $disponibilidades;
 	    
         

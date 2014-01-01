@@ -147,7 +147,9 @@
                                         <div class="carousel-inner">
                                             {foreach from=$a['adjuntos'] item=adjunto name=adjuntos}
                                             <div class="item {if $smarty.foreach.adjuntos.first}active{/if}" data-urls="{$template_url}{$adjunto->ruta}" {if $smarty.foreach.adjuntos.first}data-slide-number="0"{/if}>
-                                                {if $smarty.foreach.adjuntos.first}<img src="{$template_url}{$adjunto->ruta}" />{/if}
+                                                {if $smarty.foreach.adjuntos.first}<img src="{$template_url}{$adjunto->ruta}" />{else}
+                                                <div class='loading_ajax'><img src='{$template_url_s}/img/loader.gif' /></div>
+                                                {/if}
                                             </div>
                                             {/foreach}
                                         </div>
