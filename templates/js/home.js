@@ -29,14 +29,33 @@ function initialize() {
     });
     
 }
+function initCarousel(){
+    $('.carousel').carousel({
+        interval: false
+    });
 
+    $('.carousel').on('slid', function (e) {
+        var active = $(this).find('.item.active');
+        var idx = active.index();
+        var url = active.data('url');
+        var _this = this;
+        //$('.item').html("wait...");
+        $(this).find('.item:not([data-slide-number=0])').load(url,function(result){
+            $(_this).carousel(idx);
+        });
+    });
+    $('[data-slide-number=0]').load($('[data-slide-number=0]').data('url'),function(result){    
+    $('.carousel').carousel(0);
+});
+}
 $(document).ready(function() {
 
     $('.selectpicker').selectpicker();
 
-    $('.carousel').carousel({
-        interval: 5000
-    }).carousel('pause');
+    /*$('.carousel').carousel({
+        interval: false
+    }).carousel('pause');*/
+    initCarousel();
     
     ordenar();
 
@@ -192,7 +211,7 @@ function toTop(){
             $('#resultados').fadeIn();
             
              $('#resultados').find('.carousel').carousel({
-                interval: 5000
+                interval: false
              }).carousel('pause');
              actualizarFiltros(response);
              calendarios();
@@ -245,7 +264,7 @@ function filtrar() {
                     $('#resultados').fadeIn();
                     
                      $('#resultados').find('.carousel').carousel({
-                        interval: 5000
+                        interval: false
                      }).carousel('pause');
                      MOVING_MAP = false;
                      mostrarComplejo();
@@ -415,7 +434,7 @@ function pagination() {
                         $('#loading-filters').fadeOut();
                         
                          $('#resultados').find('.carousel').carousel({
-                            interval: 5000
+                            interval: false
                          }).carousel('pause');
                         MOVING_MAP = false;
                         mostrarComplejo();
@@ -499,7 +518,7 @@ function masFiltros() {
             success: function(response) {
                 $('#resultados').html(response.html);
                  $('#resultados').find('.carousel').carousel({
-                    interval: 5000
+                    interval: false
                  }).carousel('pause');
                  actualizarFiltros(response);
                  mostrarComplejo();
@@ -576,7 +595,7 @@ function mostrarComplejo() {
 
                     $('#complejo-modal').modal();
                     $('#complejo-modal .carrusel').carousel({
-                        interval: 5000
+                        interval: false
                     }).carousel('pause');
 
                 }
