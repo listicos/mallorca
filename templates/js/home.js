@@ -37,14 +37,17 @@ function initCarousel(){
     $('.carousel').one('slid', function (e) {
         var active = $(this).find('.item.active');
         var idx = active.index();
-        var url = active.data('urls');
         var _this = this;
-        $(this).find('.item').html("<div class='loading_ajax'><img src='"+BASE_URL+'/templates/img/loader.gif'+"' /></div>");
         
-       $('<img src="'+ url +'">').load(function() {
-          $(_this).find('.item').html($(this));
-          $(_this).carousel(idx);
+        $(this).find('.item').each(function(){
+            var that = this;
+            $(this).html("<div class='loading_ajax'><img src='"+BASE_URL+'/templates/img/loader.gif'+"' /></div>");
+            var url = $(this).data('urls');
+            $('<img src="'+ url +'">').load(function() {
+              $(that).html($(this));
+            });
         });
+        $(_this).carousel(idx);
     });
 }
 $(document).ready(function() {
