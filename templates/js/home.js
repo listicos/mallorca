@@ -46,17 +46,10 @@ function initCarousel(){
           $(_this).carousel(idx);
         });
     });
-    $('[data-slide-number=0]').load($('[data-slide-number=0]').data('url'),function(result){    
-        $('.carousel').carousel(0);
-    });
 }
 $(document).ready(function() {
 
     $('.selectpicker').selectpicker();
-
-    /*$('.carousel').carousel({
-        interval: false
-    }).carousel('pause');*/
     initCarousel();
     
     ordenar();
@@ -212,9 +205,8 @@ function toTop(){
             $('#loading-filters').fadeOut();
             $('#resultados').fadeIn();
             
-             $('#resultados').find('.carousel').carousel({
-                interval: false
-             }).carousel('pause');
+             initCarousel();
+
              actualizarFiltros(response);
              calendarios();
              MOVING_MAP = true;
@@ -265,9 +257,7 @@ function filtrar() {
                     $('#loading-filters').fadeOut();
                     $('#resultados').fadeIn();
                     
-                     $('#resultados').find('.carousel').carousel({
-                        interval: false
-                     }).carousel('pause');
+                     initCarousel();
                      MOVING_MAP = false;
                      mostrarComplejo();
                      actualizarMapa();
@@ -435,9 +425,7 @@ function pagination() {
                         
                         $('#loading-filters').fadeOut();
                         
-                         $('#resultados').find('.carousel').carousel({
-                            interval: false
-                         }).carousel('pause');
+                        initCarousel();
                         MOVING_MAP = false;
                         mostrarComplejo();
                          actualizarMapa();
@@ -519,9 +507,7 @@ function masFiltros() {
             dataType: 'json',
             success: function(response) {
                 $('#resultados').html(response.html);
-                 $('#resultados').find('.carousel').carousel({
-                    interval: false
-                 }).carousel('pause');
+                initCarousel();
                  actualizarFiltros(response);
                  mostrarComplejo();
                  actualizarMapa();
