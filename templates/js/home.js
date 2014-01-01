@@ -163,14 +163,17 @@ function actualizarMapa() {
     if(map.getZoom() > 9) {
         map.setZoom(9);
     }
-    
+}
+
+function toTop(){
+     $('html, body').animate({
+        scrollTop: $(".house_side").offset().top-2
+    }, 400);
 }
 
  function filtrarPorMapa() {
- 
+    toTop();
     bounds = map.getBounds();
-    
-    
     var form = $('#filtrosFrm').serialize();
     form += ("&order=" + $('select[name=order]').val());
     form += ("&bounds[]=" + bounds.getNorthEast().lat() + "&bounds[]=" + bounds.getNorthEast().lng());
@@ -215,6 +218,7 @@ function filtrar() {
     })
     
     $('#filtrosFrm input, #filtrosFrm select, select[name=order]').off('change').on('change', function(e) {
+        toTop();
         e.preventDefault();
         
         var valid = $(this).attr('name') != 'dateStart' && $(this).attr('name') != 'dateEnd';
@@ -242,7 +246,7 @@ function filtrar() {
                     
                      $('#resultados').find('.carousel').carousel({
                         interval: 5000
-                     });
+                     }).carousel('pause');
                      MOVING_MAP = false;
                      mostrarComplejo();
                      actualizarMapa();
@@ -274,8 +278,42 @@ function calendarios() {
     $('a.ver-disponibilidad').off('click').on('click', function(e){
         $('#calendario_modal').modal();
         e.preventDefault();
-        $('#calendarioDisponibilidad').fullCalendar( 'destroy' );
-        $('#blocker').show();
+        $('#calendarioDisponibilidad').fullCalendar( 'destroy');
+        //Load calendar pro
+        
+            $('#calendarioDisponibilidad').fullCalendar({
+            header: {
+                left: 'title',
+                right: 'prev,next,month'
+            },
+            firstDay: 1,
+            slotMinutes: 15,
+            editable: false,
+            droppable: false,
+
+            events: {
+                dataType: "json",
+                 url: BASE_URL + "/ajax-calendario",
+                 type: "POST",
+                 cache: true,
+                 data: {
+                     idApartamento: $(this).attr('apartamento-id'),
+                     action: 'getTarifas'
+                 },
+                 beforeSend: function(){
+                    
+                },
+                complete: function(){
+                  
+                }
+            }
+        });
+
+        setTimeout(function(){
+            $('#calendarioDisponibilidad').fullCalendar('render');    
+        },800);
+        
+        /*$('#blocker').show();
         $.ajax({
             dataType: "json",
              url: BASE_URL + "/ajax-calendario",
@@ -310,7 +348,9 @@ function calendarios() {
                      setTarifasToCalendar();
                  }
              }
-         })
+         });
+*/
+
     });   
     
 }
@@ -376,7 +416,7 @@ function pagination() {
                         
                          $('#resultados').find('.carousel').carousel({
                             interval: 5000
-                         });
+                         }).carousel('pause');
                         MOVING_MAP = false;
                         mostrarComplejo();
                          actualizarMapa();
@@ -460,7 +500,7 @@ function masFiltros() {
                 $('#resultados').html(response.html);
                  $('#resultados').find('.carousel').carousel({
                     interval: 5000
-                 });
+                 }).carousel('pause');
                  actualizarFiltros(response);
                  mostrarComplejo();
                  actualizarMapa();
@@ -483,7 +523,7 @@ function actualizarFiltros(response) {
     var array_instalaciones = [];
     for(var i in instalaciones) {
         var instalacion = instalaciones[i];
-        $('input[name^="instalaciones"][value=' + instalacion.idInstalacion + ']').parent().show().find('strong').html('(' + instalacion.apartamentos + ')');
+        $('input[name^="instalaciones"][value=' + instalacion.idInstalacion + ']').parent().show().find('strong').html(' (' + instalacion.apartamentos + ')');
         array_instalaciones.push(instalacion.idInstalacion);
     }
     $('input[name^="instalaciones"]').each(function(){
@@ -496,7 +536,7 @@ function actualizarFiltros(response) {
     var array_tipos = [];
     for(var t in tipos) {
         var tipo = tipos[t];
-        $('input[name="tiposApartamento[]"][value=' + tipo.idApartamentosTipo + ']').parent().show().find('strong').html('(' + tipo.apartamentos + ')');
+        $('input[name="tiposApartamento[]"][value=' + tipo.idApartamentosTipo + ']').parent().show().find('strong').html(' (' + tipo.apartamentos + ')');
         array_tipos.push(tipo.idApartamentosTipo);
     }
     $('input[name="tiposApartamento[]"]').each(function(){
@@ -548,33 +588,42 @@ function fixWidth(){
     $('.filtros_main_container > div').width($('.filtros_main_container').width());
 }
 function followme() {
-    $(window).resize(function() {
-        fixWidth();
-    });
-    fixWidth();
+    var windowWidth = $(window).width();
     var filtrosContainerTop = $('.filtros_main_container').offset().top;
     var filtrosHeight = $('.filtros_main_container > div').height();
     var filtros = $('.filtros_main_container > div');
+
+    $(window).resize(function() {
+        fixWidth();
+        windowWidth = $(window).width();
+        filtrosContainerTop = $('.filtros_main_container').offset().top;
+        filtrosHeight = $('.filtros_main_container > div').height();
+    });
+    fixWidth();
 
     $(window).scroll(function(e){
         var windowTop = $(window).scrollTop();
         var limite = $('.footer_container').offset().top - filtrosHeight - 35;
 
-        if(windowTop >= filtrosContainerTop && windowTop<limite){
-            filtros.css({
-                position:'fixed',
-                top: 0
-            });
-        }else{
-            if(windowTop<limite){
-                filtros.css('position','static');
-            }else{
-                margin = $('.footer_container').offset().top - filtrosHeight-35;
+        if(limite > (filtrosHeight - 35) && windowWidth > 800){
+            if(windowTop >= filtrosContainerTop && windowTop<limite){
                 filtros.css({
-                    position: 'absolute',
-                    top: margin
-                }); 
+                    position:'fixed',
+                    top: 0
+                });
+            }else{
+                if(windowTop<limite){
+                    filtros.css('position','static');
+                }else{
+                    margin = $('.footer_container').offset().top - filtrosHeight-35;
+                    filtros.css({
+                        position: 'absolute',
+                        top: margin
+                    }); 
+                }
             }
+        }else{
+            filtros.css('position','static');
         }
     });
 /*

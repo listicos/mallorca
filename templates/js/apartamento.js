@@ -7,7 +7,6 @@ function initApartamento() {
         e.preventDefault();
         if (!$(this).parent().hasClass('active')) {
             ant = $('ul.nav.nav-tabs li.active a').attr('href');
-            console.log(ant);
             $('ul.nav.nav-tabs li.active').removeClass('active');
             $(ant).hide();
             $(this).parent().addClass('active');
@@ -101,7 +100,41 @@ function initialize() {
 }
 
 function initCalendar() {
-    $.ajax({
+    $('#calendar').fullCalendar( 'destroy');
+//Load calendar pro
+
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'title',
+            right: 'prev,next,month'
+        },
+        firstDay: 1,
+        slotMinutes: 15,
+        editable: false,
+        droppable: false,
+
+        events: {
+            dataType: "json",
+             url: BASE_URL + "/ajax-calendario",
+             type: "POST",
+             cache: true,
+             data: {
+                 idApartamento: $('input[name=idApartamento]').val(),
+                 action: 'getTarifas'
+             },
+             beforeSend: function(){
+                
+            },
+            complete: function(){
+              
+            }
+        }
+    });
+
+    setTimeout(function(){
+        $('#calendar').fullCalendar('render');    
+    },800);
+    /*$.ajax({
         dataType: "json",
         url: BASE_URL + "/ajax-calendario",
         type: "POST",
@@ -133,7 +166,7 @@ function initCalendar() {
                 setTarifasToCalendar();
             }
         }
-    })
+    });*/
 }
 
 

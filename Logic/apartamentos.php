@@ -342,6 +342,18 @@ function getDisponibilidadByApartamentoFechas($idApartamento, $fechaInicio = 0, 
     }
 }
 
+function getDisponibilidadByApartamentoFechasPro($idApartamento, $fechaInicio = 0, $fechaFin = 0) {
+    try {
+        $fi = ($fechaInicio) ? date('Y-m-d', $fechaInicio) : date('Y-m-d');
+        $ff = ($fechaFin) ? date('Y-m-d', $fechaFin) : 0;
+        $disponibilidad = DAOFactory::getDisponibilidadesDAO()->queryByIdApartamentoFechas($idApartamento, $fi, $ff);
+
+        return $disponibilidad;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 function getDisponibilidadByApartamento($idApartamento) {
     try {
         $disponibilidad = DAOFactory::getDisponibilidadesDAO()->queryByIdApartamentoFechas($idApartamento, date('Y-m-d'), false);
