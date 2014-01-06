@@ -1,5 +1,5 @@
 <?php
-$apartamentos = getApartamentosMasVisitados(100);
+
 $apartamentos_array = array();
 
 $user_vars = Core_Util_Click::getUsersVars();
@@ -29,7 +29,13 @@ foreach ($habitaciones as $habitacion) {
     $habitacion->apartamentos = count(getApartamentosFilters(0, 0, 1, array(), array(), array($habitacion->idAlojamiento), 0, 0));
 }*/
 
-$tipos_apartamento = getApartamentosTiposFilters(0, 0, 1, array(), array(), array(), array());
+$huespedes = isset($_SESSION['huespedes'])?$_SESSION['huespedes']:1;
+$fechaInicio = isset($_SESSION['fechaInicio'])?$_SESSION['fechaInicio']:0;
+$fechaFinal = isset($_SESSION['fechaFinal'])?$_SESSION['fechaFinal']:0;
+
+$apartamentos = $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes);
+
+$tipos_apartamento = getApartamentosTiposFilters($fechaInicio, $fechaFinal, $huespedes, array(), array(), array(), array());
 
 
 $smarty->assign('tiposApartamento', $tipos_apartamento);
@@ -60,6 +66,10 @@ if($apartamentos){
         if($rangoPrecios) {
             $apartamento->precioMinimo = $rangoPrecios[0];
             $apartamento->precioMaximo = $rangoPrecios[1];
+        }
+
+        if(strtotime($fechaInicio) && strtotime($fechaFinal)){
+            $apartamento->total = getTotalPrice($apartamento->idApartamento,  strtotime($fechaInicio), strtotime($fechaFinal), array(), $huespedes);
         }
 
         /*
@@ -103,6 +113,11 @@ $smarty->assign('trash_text', $trash_text);
 //$smarty->assign('disponibles',json_encode($disponibles));
 $smarty->assign('apartamentos', $apartamentos_array);
 $smarty->assign('dia_comienzo', $dia_comienzo);
+
+$smarty->assign('fechaInicio',strtotime($fechaInicio));
+$smarty->assign('fechaFinal', strtotime($fechaFinal));
+$smarty->assign('huespedes',$huespedes);
+
 $smarty->assign('minPrice', $minPrice);
 $smarty->assign('maxPrice', $maxPrice);
 $smarty->display('home.tpl');

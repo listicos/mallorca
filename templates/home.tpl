@@ -37,27 +37,31 @@
                                 <legend>{#disponibilidad#}</legend>
                             <div class="form-group for_input">
                                 <label class="sr-only" for="llegada">{#llegada#}</label>
-                                <input type="text" class="form-control date-start" id="llegada" name="dateStart" placeholder="Llegada">
+                                <input type="text"  class="form-control date-start" id="llegada" name="dateStart" placeholder="Llegada" value="{if $fechaInicio}{$fechaInicio|date_format:"%d-%m-%Y"}{/if}" >
                             </div>
                             <div class="form-group arrow_in_search"><img src="{$template_url_s}/img/icon-arrowR.png" alt="Photo 4"></div>
                             <div class="form-group for_input">
                                 <label class="sr-only" for="llegada">{#salida#}</label>
-                                <input type="text" class="form-control date-end" id="salida" name="dateEnd" placeholder="Salida">
+                                <input type="text" class="form-control date-end" id="salida" name="dateEnd" placeholder="Salida" value="{if $fechaFinal}{$fechaFinal|date_format:"%d-%m-%Y"}{/if}">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="huesped">{#personas#}</label>
                                 <select class="form-control" name="huespedes">
-                                    <option value="1">1 {#persona#}</option>
-                                    <option value="2">2 {#personas#}</option>
-                                    <option value="3">3 {#personas#}</option>
-                                    <option value="4">4 {#personas#}</option>
-                                    <option value="5">5 {#personas#}</option>
-                                    <option value="6">6 {#personas#}</option>
-                                    <option value="7">7 {#personas#}</option>
-                                    <option value="8">8 {#personas#}</option>
-                                    <option value="9">9 {#personas#}</option>
-                                    <option value="10">10 {#personas#}</option>
-                                    <option value="11">11 {#personas#}</option>
+                                    <option value="1" {if $huespedes eq 1}selected{/if}>1 {#persona#}</option>
+                                    <option value="2" {if $huespedes eq 2}selected{/if}>2 {#personas#}</option>
+                                    <option value="3" {if $huespedes eq 3}selected{/if}>3 {#personas#}</option>
+                                    <option value="4" {if $huespedes eq 4}selected{/if}>4 {#personas#}</option>
+                                    <option value="5" {if $huespedes eq 5}selected{/if}>5 {#personas#}</option>
+                                    <option value="6" {if $huespedes eq 6}selected{/if}>6 {#personas#}</option>
+                                    <option value="7" {if $huespedes eq 7}selected{/if}>7 {#personas#}</option>
+                                    <option value="8" {if $huespedes eq 8}selected{/if}>8 {#personas#}</option>
+                                    <option value="9" {if $huespedes eq 9}selected{/if}>9 {#personas#}</option>
+                                    <option value="10" {if $huespedes eq 10}selected{/if}>10 {#personas#}</option>
+                                    <option value="11" {if $huespedes eq 11}selected{/if}>11 {#personas#}</option>
+                                    <option value="12" {if $huespedes eq 12}selected{/if}>12 {#personas#}</option>
+                                    <option value="13" {if $huespedes eq 13}selected{/if}>13 {#personas#}</option>
+                                    <option value="14" {if $huespedes eq 14}selected{/if}>14 {#personas#}</option>
+                                    <option value="15" {if $huespedes eq 15}selected{/if}>15 {#personas#}</option>
                                 </select>
                             </div>
                         </div>
@@ -199,8 +203,15 @@
 
                                             <div class="price-apto">
                                                 {if $a['apartamento']->precioMinimo || $a['apartamento']->precioMaximo}
-                                                <p class="text-muted">{#desde#} <strong>{$a['apartamento']->precioMinimo|number_format:2:",":"."}<small>&euro;</small></strong></p>
-                                                {if $a['apartamento']->precioMaximo && $a['apartamento']->precioMinimo ne $a['apartamento']->precioMaximo}<p class="text-muted">{#hasta#} <strong>{$a['apartamento']->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>{/if}
+                                                    {if !$a['apartamento']->total}
+                                                        <p class="text-muted">desde <strong>&euro; {$a['apartamento']->precioMinimo|number_format:2:",":"."}</strong></p>
+                                                        {if $a['apartamento']->precioMaximo && $a['apartamento']->precioMaximo ne $a['apartamento']->precioMinimo}
+                                                            <p class="text-muted">hasta <strong>&euro; {$a['apartamento']->precioMaximo|number_format:2:",":"."}</strong></p>
+                                                        {/if}
+                                                    {else}
+                                                         <p class="text-muted total">Total de la reserva: <strong>&euro; {$a['apartamento']->total|number_format:2:",":"."}</strong></p>
+                                                    {/if}
+                                                    
                                                 {else}
                                                     <p class="text-muted">{#no_disponible#}</p>
                                                 {/if}

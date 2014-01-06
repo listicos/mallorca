@@ -223,7 +223,7 @@
                             <div class="row-fluid">
                                 <div class="precio text-right col-md-12">
                                     <div class="total-precio-reserva" style="display: none;">
-                                        <h4 class="text-right">{#total#} <span>{$menor_precio}</span></h4>
+                                        <h4 class="text-right">{#total#} <span>&euro;{$menor_precio|number_format:2:",":"."}</span></h4>
                                         <small class="text-right">{#impuestos_y_tasas_incuidas#}<br />{#sujeto_a_disponibilidad#}</small>
                                     </div>
 
@@ -324,7 +324,7 @@
                          </div>
                          <div class="col-sm-6 form-group">
                              <label for="telefono">Teléfono de contacto:</label>
-                             <input type="text" name="telefono" class="form-control validate[required, custom[confirmationEmail]]" placeholder="Teléfono de contacto">
+                             <input type="text" name="telefono" class="form-control validate[required]" placeholder="Teléfono de contacto">
                          </div>
                     </div>
                     <div class="row-fluid form-group">

@@ -55,14 +55,21 @@
                             <input type="hidden" name="nombre" value="{$a->nombre}">
                             <input type="hidden" name="lat" value="{$a->direccion->lat}">
                             <input type="hidden" name="lon" value="{$a->direccion->lon}">
-        <input type="hidden" name="type" value="{if $a->idComplejo}complejo{else}house{/if}">
+                            <input type="hidden" name="type" value="{if $a->idComplejo}complejo{else}house{/if}">
                         </div>
 
 
                         <div class="price-apto">
                             {if $a->precioMinimo || $a->precioMaximo}
-                            <p class="text-muted">desde <strong>{$a->precioMinimo|number_format:2:",":"."}<small>&euro;</small></strong></p>
-                            {if $a->precioMaximo && $a->precioMaximo ne $a->precioMinimo}<p class="text-muted">hasta <strong>{$a->precioMaximo|number_format:2:",":"."}<small>&euro;</small></strong></p>{/if}
+                                {if !$a->total}
+                                    <p class="text-muted">desde <strong>&euro; {$a->precioMinimo|number_format:2:",":"."}</strong></p>
+                                    {if $a->precioMaximo && $a->precioMaximo ne $a->precioMinimo}
+                                        <p class="text-muted">hasta <strong>&euro; {$a->precioMaximo|number_format:2:",":"."}</strong></p>
+                                    {/if}
+                                {else}
+                                     <p class="text-muted total">Total de la reserva: <strong>&euro; {$a->total|number_format:2:",":"."}</strong></p>
+                                {/if}
+                                
                             {else}
                                 <p class="text-muted">{#no_disponible#}</p>
                             {/if}
