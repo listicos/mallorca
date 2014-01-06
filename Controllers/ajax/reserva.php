@@ -72,10 +72,9 @@ if (strcmp($action, "insert") == 0) {
                 $reserva = getReserva($reservaId);
                 $usuario_core->setUsuario(getUsuario($reserva->idUsuario));
                 
-                
                 enviarCorreoConfirmacionReserva($reserva);
                 
-                $result = array('msg' => 'ok', 'data' => 'Reserva creada correctamente.', 'idReservacion' => $reservaId);
+                $result = array('msg' => 'ok', 'data' => 'Petición de reserva creada correctamente.', 'idReservacion' => $reservaId);
             } else {
                 $result['data'] = 'No se pudo registrar la reserva';
             }
@@ -206,14 +205,17 @@ function enviarCorreoConfirmacionReserva($reserva) {
                 'puerto' => $config->puerto
             );
         else $data_config = null;
+        $mailer = new Core_Mailer();
         $mailer->send_email($email_user, $subject, $body, $data_config);
 
         
         $propietario = getPropietarioByApartamento($reserva->idApartamento);
 
-        $subject = "Se ha registrado una nueva reserva";
+        $subject = "Se ha registrado una nueva solicitud de reserva.";
+        $mailer = new Core_Mailer();
+        $mailer->send_email($propietario->email, $subject, $body, $data_config);
 
-        $mailer->send_email($propietario->email, $subject, $body);
+        if($config) $mailer->send_email($config->email, $subject, $body, $data_config);
 
     } catch(Exception $exc) {
         print_r($exc);

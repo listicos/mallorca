@@ -32,37 +32,28 @@
                         <div class="panel-body">
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-sm-10">
-                                        <h3 class="text-info">{$reserva['apartamento']->nombre}</h3>
-                                    </div>
+                                    <div class="col-sm-4"><p><strong>{#numero_de_reserva#}</strong></p></div>
+                                    <div class="col-sm-8"><p>{$reserva['reserva']->idReservacion}</p></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-3"><p><strong>{#numero_de_reserva#}</strong></p></div>
-                                    <div class="col-sm-9"><p>{$reserva['reserva']->idReserva}</p></div>
+                                    <div class="col-sm-4"><p><strong>{#datos_de_la_reserva#}</strong></p></div>
+                                    <div class="col-sm-8"><p>{$reserva['reserva']->noches} noche{if $reserva['reserva']->noches > 1}s{/if}, {$reserva['reserva']->adultos} huesped{if $reserva['reserva']->adultos > 1}es{/if}</p></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-3"><p><strong>{#datos_de_la_reserva#}</strong></p></div>
-                                    <div class="col-sm-9"><p>{$reserva['reserva']->noches} noche{if $reserva['reserva']->noches > 1}s{/if}, {$reserva['reserva']->adultos} huesped{if $reserva['reserva']->adultos > 1}es{/if}</p></div>
+                                    <div class="col-sm-4"><p><strong>{#entrada#}</strong></p></div>
+                                    <div class="col-sm-8"><p>{$reserva['reserva']->fechaEntradaFormat}</p></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-3"><p><strong>{#entrada#}</strong></p></div>
-                                    <div class="col-sm-9"><p>{$reserva['reserva']->fechaEntradaFormat}</p></div>
+                                    <div class="col-sm-4"><p><strong>{#salida#}</strong></p></div>
+                                    <div class="col-sm-8"><p>{$reserva['reserva']->fechaSalidaFormat}</p></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-3"><p><strong>{#salida#}</strong></p></div>
-                                    <div class="col-sm-9"><p>{$reserva['reserva']->fechaSalidaFormat}</p></div>
+                                    <div class="col-sm-4"><p><strong>{#apartamento#}</strong></p></div>
+                                    <div class="col-sm-8"><p>{$reserva['reserva']->total} {#impuestos_incluidos#}</p></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-3"><p class="check"><strong>{#apartamento#}</strong></p></div>
-                                    <div class="col-sm-9"><p>{$reserva['reserva']->total} {#impuestos_incluidos#}</p></div>
-                                </div>
-                                <div class="row text-success">
-                                    <div class="col-sm-3"><p class="check"><strong>{#pagas_hoy#}</strong></p></div>
-                                    <div class="col-sm-9"><p>{$reserva['reserva']->total}</p></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-3"><h4 class="text-primary"><strong>{#precio_total#}</strong></h4></div>
-                                    <div class="col-sm-9"><p><strong>{$reserva['reserva']->total}</strong></p>
+                                    <div class="col-sm-4"><h4 class="text-primary"><strong>{#precio_total#}</strong></h4></div>
+                                    <div class="col-sm-8"><p><strong>{$reserva['reserva']->total}</strong></p>
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +97,7 @@
                                     <table class="table table-striped table-bordered">
                                         <tr>
                                             <td>{#tipo_de_alojamiento#}</td>
-                                            <td class="value">{$reserva['apartamento']->tipo->nombre}</td>
+                                            <td class="value">{$reserva['apartamento']->tipo}</td>
                                         </tr>
                                         <tr>
                                             <td>{#capacidad#}</td>
@@ -126,7 +117,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                        <p>este apartamento dispone de {foreach from=$reserva['apartamento']->servicios item=servicio name=servicios}{if !$smarty.foreach.servicios.first && !$smarty.foreach.servicios.last}, {/if}{if !$smarty.foreach.servicios.first && $smarty.foreach.servicios.last} y {/if}{$servicio->nombre}{/foreach}.</p>
+                                        <p>Este apartamento dispone de {foreach from=$reserva['apartamento']->servicios item=servicio name=servicios}{if !$smarty.foreach.servicios.first && !$smarty.foreach.servicios.last}, {/if}{if !$smarty.foreach.servicios.first && $smarty.foreach.servicios.last} y {/if}{$servicio->nombre}{/foreach}.</p>
                                     </div>
                                 </div>
                                 <div class="row">

@@ -6,7 +6,6 @@
         $reservaId = $_GET['id'];
         unset($_SESSION['reserva_id']);
         
-        $reservaId = 21;
         $reserva_array = array();
         $reserva = getReserva($reservaId);
 
@@ -33,6 +32,7 @@
         $apartamento = getApartamento($reserva->idApartamento);
         $apartamentoTipo = getApartamentosTipos($apartamento->idApartamentosTipo);
         $apartamento->apartamentoTipo = $apartamentoTipo->nombre;
+
         $tipoApartamento = getApartamentosTipos($apartamento->idApartamentosTipo);
         $apartamento->tipo = $tipoApartamento->nombre;
         

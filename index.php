@@ -66,6 +66,9 @@ if(substr_count($_SERVER['REQUEST_URI'], "/admin-") == 0) {
     $config = getConfiguracion();
 $smarty->assign('config', $config);
 
+}else{
+    $grupo = ActiveRole();
+    if($grupo=='Cliente')   header('Location:' . $base_url);
 }
 
 if (is_file($includes)) {

@@ -43,6 +43,8 @@ if(isset($_POST['email']) && isset($_POST['nombre']) && isset($_POST['mensaje'])
             
             $mailer->send_email($empresa->email, $subject, $body, $data_config);
             
+            $mailer = new Core_Mailer(); $mailer->send_email($config->email, $subject, $body, $data_config);
+            
             $result['msg'] = 'ok';
             $result['data'] = 'Gracias ' . $data['nombre'] . " por contactarnos";
             

@@ -191,11 +191,11 @@
                             <div class="contenedor-llegada row-fluid clearfix">
                                     <div class="form-group col-md-4">
                                         <label class="" for="fechaInicio">{#llegada#}</label>
-                                        <input type="text" readonly="true" class="form-control validate[required]" id="fechaInicio" value="{if $entrada}{$entrada|date_format:"%e-%m-%Y"}{/if}" placeholder="Llegada" name="fechaInicio">
+                                        <input type="text" readonly="true" class="form-control validate[required]" id="fechaInicio" value="{if $entrada}{$entrada|date_format:"%d-%m-%Y"}{/if}" placeholder="Llegada" name="fechaInicio">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="" for="fechaFinal">{#salida#}</label>
-                                        <input type="text" readonly="true" class="form-control validate[required]" id="fechaFinal" value="{if $salida}{$salida|date_format:"%e-%m-%Y"}{/if}" placeholder="Salida" name="fechaFinal">
+                                        <input type="text" readonly="true" class="form-control validate[required]" id="fechaFinal" value="{if $salida}{$salida|date_format:"%d-%m-%Y"}{/if}" placeholder="Salida" name="fechaFinal">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="" for="huespedes">{#personas#}</label>
