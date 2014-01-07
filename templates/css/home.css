@@ -6,7 +6,52 @@
 .body-content.home {
     margin-top: -18px;
 }
-
+#infomapa {}
+#infomapa .acciones-disponibilidad{
+    padding: 0px;
+    width: 80%;
+    margin: 0 auto;
+}
+#infomapa .price-apto p strong{
+    font-size: 11px;
+    
+}
+#infomapa .result-item{
+    margin: 0px
+}
+#infomapa .descripcion-apto ul{
+    padding: 0;
+    
+    margin-bottom: 1px;
+}
+#infomapa .carrusel {
+width: 55%;
+position: relative;
+float: left;
+}
+#infomapa .acciones-apto .price-apto{
+}
+#infomapa .acciones-apto p{
+    font-size: 10px;
+    line-height: 17px;
+}
+#infomapa .acciones-apto {
+    margin: 0;
+    width: 45%;
+    float: left;
+}
+#infomapa .descripcion-apto ul li{
+font-size: 10px;
+padding-top: 1px;
+padding-bottom: 1px;
+}
+#infomapa .apto-link{
+    font-size: 12px;
+    
+    font-weight: bold;
+    padding-top: 0px;
+    padding-bottom: 2px;
+}
 .apto-link {
     font-size: 21px;
     padding-left: 6px;

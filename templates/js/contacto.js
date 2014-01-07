@@ -15,6 +15,7 @@ function initContacto() {
                 success: function(response) {
                     if(response.msg == 'ok') {
                         toastr.success(response.data);
+                        $('#contactoForm')[0].reset();
                     } else {
                         toastr.error(response.data);
                     }
@@ -36,6 +37,7 @@ function initContacto() {
                 success: function(response) {
                     if(response.msg == 'ok') {
                         toastr.success(response.data);
+                        $('#suscripcionForm')[0].reset();
                     } else {
                         toastr.error(response.data);
                     }

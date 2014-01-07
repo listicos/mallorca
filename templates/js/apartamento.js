@@ -70,6 +70,7 @@ function initApartamento() {
                     if(response.msg == 'ok') {
                         toastr.success(response.data);
                         $('#make_question_modal').modal('hide');
+                        $('#make-question-form')[0].reset();
                     } else {
                         toastr.error(response.data);
                     }

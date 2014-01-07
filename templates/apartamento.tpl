@@ -288,7 +288,7 @@
                                 <div class="col-md-7">
                                     <span><a href="{$base_url}/apartamento/id:{$sugerencia->idApartamento}"><strong>{$sugerencia->nombre}</strong></a></span><br/>
                                     <span class="distancia">a {$sugerencia->distancia} km de distancia</span><br/>
-                                    <span>{$sugerencia->precio_base}</span><br/>                                    
+                                    <span>Desde <strong>{$sugerencia->precio_base}</strong> la noche</span><br/>                                    
                                 </div>
                             </div>
                             {/foreach}

@@ -69,6 +69,8 @@ if(strcmp($action, 'informacionMapa') == 0) {
     $id = $_POST['id'];
     $apartamento = getApartamento($id);
     $adjuntosA = getApartamentosAdjuntos($id);
+    $apartamento->tipo = getTipoApartamento($apartamento->idApartamentosTipo)->nombre;
+
     if($adjuntosA && count($adjuntosA)) {
         $adjuntos = array();
         foreach ($adjuntosA as $a) {
@@ -77,6 +79,22 @@ if(strcmp($action, 'informacionMapa') == 0) {
         $apartamento->adjuntos = $adjuntos;
     }
     $apartamento->direccion = getDireccion($apartamento->idDireccion);
+
+    $rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, date('Y-m-d'), 0);
+
+    if($rangoPrecios) {
+        $apartamento->precioMinimo = $rangoPrecios[0];
+        $apartamento->precioMaximo = $rangoPrecios[1];
+    }
+
+    $fechaInicio = isset($_SESSION['fechaInicio'])?$_SESSION['fechaInicio']:0;
+    $fechaFinal = isset($_SESSION['fechaFinal'])?$_SESSION['fechaFinal']:0;
+    $huespedes = isset($_SESSION['huespedes'])?$_SESSION['huespedes']:1;
+
+    if(strtotime($fechaInicio) && strtotime($fechaFinal)){
+        $apartamento->total = getTotalPrice($apartamento->idApartamento,  strtotime($fechaInicio), strtotime($fechaFinal), array(), $huespedes);
+    }
+
     $smarty->assign('apartamento', $apartamento);
     $html = $smarty->fetch('informacionMapa.tpl');
     $result['msg'] = 'ok';

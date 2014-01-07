@@ -253,7 +253,6 @@
                 <div id="calendar-legend">
                     <div class="leyenda disponible"></div><div>{#disponible#}</div>
                     <div class="leyenda no-disponible"></div><div>{#no_disponible#}</div>
-                    <div class="leyenda anterior"></div><div>{#no_especificado#}</div>
                 </div>
             </div>
             <div class="modal-footer">
