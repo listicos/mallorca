@@ -44,10 +44,7 @@
                             <td>{#fecha_de_entrada#}</td>
                             <td><b>{$reserva['reserva']->fechaEntradaFormat}</b></td>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td>{#entrada_apartir_de#} {$reserva['apartamento']->horaEntrada|date_format:"%H:%M"} hrs.</td>
-                        </tr>
+                        
                     </table>
                 </td>
                 <td>
@@ -56,10 +53,7 @@
                             <td>{#fecha_de_salida#}</td>
                             <td><b>{$reserva['reserva']->fechaSalidaFormat}</b></td>
                         </tr>	
-                        <tr>
-                            <td></td>
-                            <td>{#salidas_hasta_las#} {$reserva['apartamento']->horaSalida|date_format:"%H:%M"} hrs.</td>
-                        </tr>
+                        
                     </table>
                 </td>
             </tr>
@@ -69,10 +63,7 @@
                         <tr><td>{#total_de_noches#}</td>
                             <td>{$reserva['reserva']->noches}</td></tr>
                         <tr><td>Cantidad</td>
-                            <td>1 {$reserva['apartamento']->tipo}</td></tr>
-                        <tr>
-                            <td>{#observaciones#}</td>
-                            <td>{$reserva['reserva']->observaciones}</td></tr>
+                            <td>1 {$reserva['apartamento']->tipo}</td></tr>                        
                     </table>
                 </td>
                 <td>
@@ -86,6 +77,10 @@
                 </td>
             </tr>
             <tr>
+                <h3>{#observaciones#}</h3>
+                <p>{$reserva['reserva']->observaciones}</p>
+            </tr>
+            <tr>
                 <td><b>{#precio_de_la_estancia#}</b></td>
                 <td><b>{$reserva['reserva']->total}</b></td>
             </tr>
@@ -93,9 +88,9 @@
                 <td></td>
                 <td>{#iva_incluido_Impuestos_municipales_y_o_turisticos_no_incluidos#}</td>
             </tr>	
-            <tr>
+            <!--<tr>
                 <td colspan="2"><h3>{#registro_de_entrada_y_entrega_de_llaves#}</h3></td>
-            </tr>
+            </tr>-->
             <tr>
                 <td>
                     <table>	
@@ -131,7 +126,7 @@
                     </div>
                 </td>	
             </tr>
-
+            <!--
             <tr>
                 <td><b>{#tarifa_de_limpieza#}</b></td>
                 <td>{if $reserva['apartamento']->costoLimpieza} &euro; {$reserva['apartamento']->costoLimpieza|number_format:2:',':'.'} {else} Incluida{/if}</td>
@@ -160,7 +155,7 @@
                 <td></td>
                 <td>{#el_importe_aplicado_en_fianza_del_apartamento_reembolsable_al_final_de_la_estancia#}</td>
             </tr>	
-            <!--<tr>
+            <tr>
                 <td><b>Pago por adelantado</b></td>
                 <td>Se realizará un cargo del 35% del importe de esta reserva en la tarjeta con la que ha confirmado esta reserva en el momento en que se ha realizado la misma.El resto de la reserva y suplementos se abonarán a la llegada.</td>
             </tr>-->	
@@ -176,11 +171,11 @@
             </tr>
             <tr>
                 <td><b>{#politica_de_cancelaciones#}</b></td>
-                <td>{#si_cancela_su_reserva_hasta_el#} {$reserva['fechaCancelacion']} [{$reserva['politicaCancelacion']->reembolsoDia} días antes],23:59(horalocal){#del_inicio_de_la_estancia_se_retendra_un#} {$reserva['politicaCancelacion']->reembolsoPorcentaje}% {#del_importe_cobrado_en_concepto_de_gastos_administivos#}</td>
+                <td><a href="{$base_url}/politica/id:{$reserva['apartamento']->idPoliticaCancelacion}">{$politica->nombres->es}</a></td>
             </tr>
             <tr>
                 <td><b>{#nota_importante#}</b></td>
-                <td>{#en_el_improbable_caso#}</td>
+                <td><!--{#en_el_improbable_caso#}--></td>
             </tr>
             <tr></tr>
             <tr>

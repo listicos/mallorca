@@ -223,7 +223,7 @@
                             <div class="row-fluid">
                                 <div class="precio text-right col-md-12">
                                     <div class="total-precio-reserva" style="display: none;">
-                                        <h4 class="text-right">{#total#} <span>&euro;{$menor_precio|number_format:2:",":"."}</span></h4>
+                                        <h4 class="text-right">{#total#} <span>{if $menor_precio && is_numeric($menor_precio)}&euro;{$menor_precio|number_format:2:",":"."}{else}No disponible{/if}</span></h4>
                                         <small class="text-right">{#impuestos_y_tasas_incuidas#}<br />{#sujeto_a_disponibilidad#}</small>
                                     </div>
 

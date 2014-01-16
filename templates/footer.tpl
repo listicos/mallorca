@@ -1,4 +1,4 @@
-<div class="footer_container">
+<div class="footer_container hidden-print">
     <footer class="bs-footer">
         <div class="footer-top">
             <div class="row navbar-wrapper">

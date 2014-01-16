@@ -8,7 +8,7 @@ $result = array("msg" => "error", "data" => "No tienes los permisos suficientes"
 
 if (strcmp($action, "insert") == 0) {
     $data = array();
-    
+    set_time_limit(0);
     if(isset($_SESSION['fechaInicio']))
         $data['fechaEntrada'] = $_SESSION['fechaInicio'];
     if(isset($_SESSION['fechaFinal']))
@@ -154,7 +154,7 @@ function enviarCorreoConfirmacionReserva($reserva) {
         $tipoApartamento = getApartamentosTipos($apartamento->idApartamentosTipo);
         $apartamento->tipo = $tipoApartamento->nombre;
         $reserva_array['apartamento'] = $apartamento;
-
+        
         $reserva_array['direccion'] = getDireccion($apartamento->idDireccion);
 
         $articulos = getArticulosByReserva($reserva->idReservacion);
@@ -189,6 +189,7 @@ function enviarCorreoConfirmacionReserva($reserva) {
         $disponible = !noDisponible($reserva->idApartamento, $reserva->fechaEntrada, $reserva->fechaSalida);
         $smarty->assign('disponible', $disponible);
         $smarty->assign('reserva', $reserva_array);
+        $smarty->assign('politica', $politicaCancelacion);
         $body = $smarty->fetch('confirmacionEmail.tpl');
 
         $email_user = $cliente->email;

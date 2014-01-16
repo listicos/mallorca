@@ -78,7 +78,7 @@
         
         $disponible = !noDisponible($reserva->idApartamento, $reserva->fechaEntrada, $reserva->fechaSalida);
         $smarty->assign('disponible', $disponible);
-        
+        $smarty->assign('politica', $politicaCancelacion);
         $smarty->assign('reserva', $reserva_array);
         
     }

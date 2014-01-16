@@ -59,6 +59,30 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="panel panel-default" style="margin-top: 15px;">
+                        <div class="panel-heading">
+                            <h1 class="text-center panel-title">{#tus_datos#}</h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div class="row" style="margin-bottom: 0; border-bottom: 1px solid #f7f7f7;">
+                                    <div class="col-sm-4"><p><strong>{#nombre#}</strong></p></div>
+                                    <div class="col-sm-8"><p>{$reserva['cliente']->fullName}</p></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4"><p><strong>{#email#}</strong></p></div>
+                                    <div class="col-sm-8"><p>{$reserva['cliente']->email}</p></div>
+                                </div>
+                                {if $reserva['reserva']->observaciones}
+                                <div class="row">
+                                    <div class="col-sm-4"><p><strong>{#peticiones_especiales#}</strong></p></div>
+                                    <div class="col-sm-8"><p>{$reserva['reserva']->observaciones}</p></div>
+                                </div>
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
                 </div>
                                     
                 <div class="col-md-6">
@@ -120,15 +144,25 @@
                                         <p>Este apartamento dispone de {foreach from=$reserva['apartamento']->servicios item=servicio name=servicios}{if !$smarty.foreach.servicios.first && !$smarty.foreach.servicios.last}, {/if}{if !$smarty.foreach.servicios.first && $smarty.foreach.servicios.last} y {/if}{$servicio->nombre}{/foreach}.</p>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-3"><p><strong>{#nombre_del_cliente#}</strong></p></div>
-                                    <div class="col-sm-9"><p>{$reserva['cliente']->fullName}</p></div>
-                                </div>
+                                    <div class="row">
+                                        <h4 class="text-info">Política de Cancelación</h4>
+                                        <p>
+                                            <a href="{$base_url}/politica/id:{$reserva['apartamento']->idPoliticaCancelacion}" target="_blank">{$politica->nombres->es}</a>
+                                        </p>
+                                    </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>               
+                </div>
+                <div class="row hidden-print">
+                    <div class="col-md-12">
+                        <div class="form-actions centered">
+                            <a class="btn btn-default finalizar" href="{$base_url}">Finalizar</a>
+                            <a class="btn btn-success imprimir" onclick="window.print(); return false;">Imprimir</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
