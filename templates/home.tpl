@@ -168,10 +168,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                    
                                 <div class="acciones-apto">
-                                    
-                                    
                                             <div class="text-left descripcion-apto">
                                                  <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="apto-link">{$a['apartamento']->nombre}</a>
                                                 <ul class="home_attr_list">

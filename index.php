@@ -179,10 +179,8 @@ function hasRoles($roles) {
 function ActiveRole() {
     $usuario_core = Core_Usuario::getInstance();
 
-    if(!$usuario_core->validateUser())
-        return false;
-    
     $usuario = $usuario_core->getUsuario();
+    if(!$usuario) return false;
     
     $grupoUsuario = getUsuarioGrupo($usuario->idUsuarioGrupo);
     

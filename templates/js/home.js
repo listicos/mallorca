@@ -84,7 +84,7 @@ $(document).ready(function() {
 
     filtrar();
     
-    pagination();
+    //pagination();
     
     masFiltros();
     
@@ -183,7 +183,7 @@ function actualizarMapa() {
 
 function toTop(){
      $('html, body').animate({
-        scrollTop: $(".house_side").offset().top-2
+        scrollTop: 250
     }, 400);
 }
 

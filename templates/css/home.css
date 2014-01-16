@@ -4,12 +4,15 @@
 }
 
 .body-content.home {
-    margin-top: -18px;
+    margin-top: -20px;
 }
-#infomapa {}
+#infomapa {
+    border-right: 1px solid #F7F7F7;
+    overflow: hidden;
+}
 #infomapa .acciones-disponibilidad{
     padding: 0px;
-    width: 80%;
+    width: 69%;
     margin: 0 auto;
 }
 #infomapa .price-apto p strong{
@@ -19,13 +22,21 @@
 #infomapa .result-item{
     margin: 0px
 }
+#infomapa .acciones-disponibilidad a{
+    padding: 0px;
+    
+    line-height: 15px;
+}
 #infomapa .descripcion-apto ul{
     padding: 0;
     
     margin-bottom: 1px;
 }
+#infomapa .carrusel img{
+    width: 100%;
+}
 #infomapa .carrusel {
-width: 55%;
+width: 52%;
 position: relative;
 float: left;
 }
@@ -37,7 +48,7 @@ float: left;
 }
 #infomapa .acciones-apto {
     margin: 0;
-    width: 45%;
+    width: 48%;
     float: left;
 }
 #infomapa .descripcion-apto ul li{
@@ -90,6 +101,7 @@ h1{
     padding: 1px 0;
     background-image: url('../img/grey_wall.png'); background-size: 500px;
     overflow: hidden;
+    background: #396796;
 }
 .price-apto p{
     float: left;
@@ -355,6 +367,7 @@ legend.title {
     background-image: url('../img/grey_wall.png'); background-size: 500px;
     font-size: 20px;
     margin-bottom: 0;
+    background: #396796;
 }
 
 .acciones-disponibilidad {

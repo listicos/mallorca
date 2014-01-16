@@ -21,23 +21,12 @@
                 </div>
             {/if}
                 <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.iteration}">
-                    <div class="carousel-inner">
-                        {foreach from=$apartamento->adjuntos item=adjunto name=adjuntos}
-                        <div class="item {if $smarty.foreach.adjuntos.first}active{/if}" {if $smarty.foreach.adjuntos.first}data-slide-number="0"{/if}>
+                    {foreach from=$apartamento->adjuntos item=adjunto name=adjuntos}
+                        {if $smarty.foreach.adjuntos.first}
                                                 <img src="{$template_url}{$adjunto->ruta}" />
                                                
-                                            </div>
+                                      {/if}
                         {/foreach}
-                    </div>
-                    <div class="back-images layer-1"></div>
-                    <div class="back-images layer-2"></div>
-
-                    <a class="left carousel-control" href="#result-slider-{$smarty.foreach.apartamentos.iteration}" data-slide="prev">
-                        <span class="icon-prev"></span>
-                    </a>
-                    <a class="right carousel-control" href="#result-slider-{$smarty.foreach.apartamentos.iteration}" data-slide="next">
-                        <span class="icon-next"></span>
-                    </a>
                 </div>
             </div>
 
