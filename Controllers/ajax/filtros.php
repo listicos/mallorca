@@ -56,7 +56,7 @@ if(isset($_POST['dateStart']) && isset($_POST['dateEnd'])){
         else
             $bounds = array();
 
-        $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, $alojamientos, $start, 10, $order, $bounds);
+        $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, $instalaciones, $tipos, $alojamientos, $start, 100, $order, $bounds);
         
         if(!is_null($fechaFinal) && !is_null($fechaInicio)){
             foreach ($apartamentos as $key => $a) {

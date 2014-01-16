@@ -33,7 +33,7 @@ $huespedes = isset($_SESSION['huespedes'])?$_SESSION['huespedes']:1;
 $fechaInicio = isset($_SESSION['fechaInicio'])?$_SESSION['fechaInicio']:0;
 $fechaFinal = isset($_SESSION['fechaFinal'])?$_SESSION['fechaFinal']:0;
 
-$apartamentos = $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes);
+$apartamentos = $apartamentos = getApartamentosFilters($fechaInicio, $fechaFinal, $huespedes, array(), array(), array(), 0, $limit = 100);
 
 $tipos_apartamento = getApartamentosTiposFilters($fechaInicio, $fechaFinal, $huespedes, array(), array(), array(), array());
 
