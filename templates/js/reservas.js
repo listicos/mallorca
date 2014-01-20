@@ -119,10 +119,10 @@ function reservar() {
                 success: function(response) {
                     $('#blocker').fadeOut()
                     if(response.msg == 'ok') {
-                        toastr.success(response.data);
-                        setTimeout(function(){
+                        //toastr.success(response.data);
+                        //setTimeout(function(){
                             window.location = BASE_URL + '/confirmacion/id:' + response.idReservacion;
-                        }, 3500)
+                        //}, 3500)
                     } else {
                         toastr.error(response.data);
                     }
