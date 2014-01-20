@@ -1,4 +1,13 @@
 <?php
+function allFullComplejos() {
+    try {
+        $complejos = DAOFactory::getComplejosDAO()->queryFullComplejos();
+        return $complejos;
+    } catch(Exception $e) {
+        var_dump($e);
+        return false;
+    }
+}
 
 function searchComplejos($data = array()){
     try{

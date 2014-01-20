@@ -2,8 +2,6 @@
     <footer class="bs-footer">
         <div class="footer-top">
             <div class="row navbar-wrapper">
-                <!-- <h3 class="text-center">Outlet Rooms S.L.</h3>
-                <p class="text-center">Booking Now 902 000 999</p> -->
                 <div class="col-md-4">
                     <h3>{#contactanos#}</h3>
                     <p class="phone_contact">{$config->telefonosContacto|replace:', ':'</p><p class="phone_contact">'}</p>

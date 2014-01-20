@@ -10,15 +10,13 @@
             <link href="{$template_url_s}/css/bootstrap.css" rel="stylesheet">
             <link href="{$template_url_s}/css/bootstrap-glyphicons.css" rel="stylesheet">
             <link href="{$template_url_s}/css/bootstrap-select.css" rel="stylesheet">
-            <link href="{$template_url_s}/css/jquery-ui.css" rel="stylesheet">
-            <link href="{$template_url_s}/css/jquery.ui.slider.css" rel="stylesheet">
+            <!--<link href="{$template_url_s}/css/jquery-ui.css" rel="stylesheet">
+            <link href="{$template_url_s}/css/jquery.ui.slider.css" rel="stylesheet">-->
             
             <link href="{$template_url}/css/admin/validationEngine.jquery.css" rel="stylesheet">
             <link href="{$template_url_s}/css/toastr.css" rel="stylesheet">
-            
             <link href="{$template_url_s}/css/flexslider.css" rel="stylesheet">
-            <!--<link href='http://fonts.googleapis.com/css?family=Qwigley' rel='stylesheet' type='text/css'>-->
-            <link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed|Cinzel+Decorative|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
             <link href="{$template_url_s}/css/styles.css" rel="stylesheet">
         {/block} 
     </head>
@@ -44,10 +42,10 @@
             <script src="{$template_url_s}/js/bootstrap-select.js"></script>
             <script src="{$template_url_s}/js/bootstrap-datepicker.js"></script>
 
-            <script src="{$template_url_s}/js/jquery.ui.core.js"></script>
+           <!-- <script src="{$template_url_s}/js/jquery.ui.core.js"></script>
             <script src="{$template_url_s}/js/jquery.ui.widget.js"></script>
             <script src="{$template_url_s}/js/jquery.ui.mouse.js"></script>
-            <script src="{$template_url_s}/js/jquery.ui.slider.js"></script>
+            <script src="{$template_url_s}/js/jquery.ui.slider.js"></script>-->
             
             <script src="{$template_url}/js/admin/jquery.validationEngine.js"></script>
             <script src="{$template_url}/js/admin/jquery.validationEngine-es.js"></script>
