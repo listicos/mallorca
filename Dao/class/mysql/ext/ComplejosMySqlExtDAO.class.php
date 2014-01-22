@@ -42,11 +42,12 @@ class ComplejosMySqlExtDAO extends ComplejosMySqlDAO{
     }
 
     public function queryFullComplejos() {
-        $sql = 'SELECT distinct a.nombre AS a_nombre, aa.id_adjunto, d.lat, d.lon, a.id_apartamento AS id_apartamento, a.id_complejo, a.descripcion_larga AS a_descripcion, aa.ruta AS ruta, 
+        $sql = 'SELECT distinct a.nombre AS a_nombre, aa.id_adjunto id_adjunto, d.lat, d.lon, a.id_apartamento AS id_apartamento, a.id_complejo, a.descripcion_larga AS a_descripcion, aa.ruta AS ruta, 
                 c.nombre AS complejo, c.descripcion AS descripcion, at.nombre AS tipo FROM apartamentos AS a 
                 INNER JOIN complejos AS c ON c.id_complejo = a.id_complejo
                 LEFT JOIN complejos_adjuntos AS ca ON ca.id_complejo = c.id_complejo
-                LEFT JOIN adjuntos AS aa ON aa.id_adjunto = ca.id_adjunto
+                LEFT JOIN apartamentos_adjuntos AS aaa ON aaa.id_apartamento = a.id_apartamento
+                LEFT JOIN adjuntos AS aa ON aa.id_adjunto = ca.id_adjunto OR aaa.id_adjunto = aa.id_adjunto
                 LEFT JOIN apartamentos_tipos AS at ON at.id_apartamentos_tipo = a.id_apartamentos_tipo
                 LEFT JOIN direcciones AS d ON a.id_direccion = d.id_direccion
         WHERE a.estatus <> "inactivo"';

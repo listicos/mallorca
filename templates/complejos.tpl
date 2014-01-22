@@ -6,20 +6,21 @@
 {/block}
 
 {block name="style" append}
+<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
 <link href="{$template_url_s}/css/complejos.css" rel="stylesheet">
 {/block}
 
 {block name="content" append}
-<h1 class="text-center">Agroturismo en Mallorca</h1>
+<div class="container-liquid  content body-content home">
+    
+
+<div class="row banner-home">
+        
+</div>
 <div class="row-fluid complejo_container">
     <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h5 class="text-center panel-title">Ubicación</h5>
-            </div>   
-            <div class="panel-body">
-                 <div id="details-map-location"></div>
-            </div> 
+        <div class="filtros_main_container">
+            
         </div>
        
     </div>
@@ -36,7 +37,7 @@
                         <div class="flexslider">
                             <ul class="slides">
                         {foreach from=$complejo['adjuntos'] item=adjunto}
-                                <li data-thumb="{$template_url}/{$adjunto}"><img src="{$template_url}/{$adjunto}"></li>
+                                <li data-thumb="{$template_url}{$adjunto}"><img src="{$template_url}/{$adjunto}"></li>
                         {/foreach}
                             </ul>
                         </div>
@@ -54,5 +55,6 @@
         {/foreach}
         </ul>  
     </div>
+</div>
 </div>
 {/block}

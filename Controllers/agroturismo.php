@@ -14,7 +14,7 @@ if($complejos){
 		$complejos_data[$a['id_complejo']]['apartamentos'][$a['id_apartamento']]['descripcion'] = json_decode($a['a_descripcion']);
 	}
 }
-
+$smarty->assign('page','agroturismo');
 $smarty->assign('complejos',$complejos_data);
 $smarty->display('complejos.tpl');
 ?>
