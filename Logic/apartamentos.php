@@ -56,7 +56,7 @@ function updateApartamento($idApartamento, $data= array()){
         }
         
         $apartamento = DAOFactory::getApartamentosDAO()->prepare($data, $idApartamento);
-        if(!$data['idComplejo'])
+        if(!$data['idComplejo'] && count($data) > 1)
             $apartamento->idComplejo = NULL;
         DAOFactory::getApartamentosDAO()->update($apartamento);
         
