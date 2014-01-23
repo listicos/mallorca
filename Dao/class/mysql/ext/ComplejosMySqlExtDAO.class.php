@@ -76,7 +76,7 @@ class ComplejosMySqlExtDAO extends ComplejosMySqlDAO{
     }
     
     public function rangoPreciosByComplejo($idComplejo) {
-        $sql = 'select min(d.precio), max(d.precio)
+        $sql = 'select min(d.precio - (d.precio * d.descuento / 100)), max(d.precio - (d.precio * d.descuento / 100))
                 from disponibilidades as d
                 inner join apartamentos as a
                 on a.id_apartamento = d.id_apartamento

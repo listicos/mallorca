@@ -207,6 +207,29 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
 
         return $aps;
     }
+    
+    public function rangoPreciosByApartamentoANDFechas($idApartamento, $fechaInicio = 0, $fechaFinal = 0) {
+        $sql = 'select min(d.precio - (d.precio * d.descuento / 100)), max(d.precio - (d.precio * d.descuento / 100))
+                from disponibilidades as d
+                inner join apartamentos as a
+                on a.id_apartamento = d.id_apartamento
+                where a.id_apartamento = ?
+                and d.estatus = "disponible" ';
+        if($fechaInicio) {
+            $sql .= ' and UNIX_TIMESTAMP(d.fecha_inicio) >= UNIX_TIMESTAMP("' . date('Y-m-d', $fechaInicio) . '")';
+            if($fechaFinal) {
+                $sql .= ' and UNIX_TIMESTAMP(d.fecha_inicio) <= UNIX_TIMESTAMP("' . date('Y-m-d', $fechaFinal) . '")';
+            }
+        } else {
+            $sql .= ' and UNIX_TIMESTAMP(d.fecha_inicio) >= UNIX_TIMESTAMP("' . date('Y-m-d') . '")';
+        }
+        
+        
+        $sqlQuery = new SqlQuery($sql);
+        $sqlQuery->setNumber($idApartamento);
+        $apartamentos = $this->execute($sqlQuery);
+        return $apartamentos;
+    }
 
 }
 

@@ -1272,6 +1272,7 @@ function getRangoPreciosByApartamento($idApto, $fechaInicial = 0, $fechaFinal = 
     try {
         $fechaInicial = ($fechaInicial && strlen(trim($fechaInicial))) ? strtotime($fechaInicial) : strtotime();
         $fechaFinal = ($fechaFinal && strlen(trim($fechaFinal))) ? strtotime($fechaFinal) : 0;
+        /*
         $disponibilidades = DAOFactory::getDisponibilidadesDAO()->getByApartamentoFechasPrecioAsc($idApto, $fechaInicial, $fechaFinal);
 
         $apartamento = DAOFactory::getApartamentosDAO()->load($idApto);
@@ -1288,9 +1289,11 @@ function getRangoPreciosByApartamento($idApto, $fechaInicial = 0, $fechaFinal = 
             if($max < $apartamento->tarifaBase) $max = $apartamento->tarifaBase;
         }
                 
-        return array($min, $max);
+        return array($min, $max);*/
+        $precios = DAOFactory::getApartamentosDAO()->rangoPreciosByApartamentoANDFechas($idApto, $fechaInicial, $fechaFinal);
+        return $precios[0];
     } catch (Exception $e) {
-        var_dump($e);
+        print_r($e);
         return false;
     }
 }
