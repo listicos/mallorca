@@ -9,6 +9,16 @@ function allFullComplejos() {
     }
 }
 
+function fullComplejoById($idComplejo) {
+    try {
+        $complejo = DAOFactory::getComplejosDAO()->queryFullComplejoById($idComplejo);
+        return $complejo;
+    } catch(Exception $e) {
+        var_dump($e);
+        return false;
+    }
+}
+
 function searchComplejos($data = array()){
     try{
         $complejos = DAOFactory::getComplejosDAO()->searchByArguments($data);
