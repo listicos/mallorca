@@ -129,6 +129,25 @@ class DisponibilidadesMySqlExtDAO extends DisponibilidadesMySqlDAO{
 		$sqlQuery->setNumber($idApartamento);
 		return $this->getList($sqlQuery);
         }
+        
+        public function queryByComplejoId($idComplejo, $mes = 0) {
+            $sql = 'select d.id_disponibilidad as idDisponibilidad, d.id_apartamento as idApartamento, d.precio as precio, d.descuento as descuento, d.estatus as estatus, a.nombre as nombre, d.fecha_inicio as fechaInicio from disponibilidades as d ';
+            $sql .= ' inner join apartamentos as a on d.id_apartamento = a.id_apartamento ';
+            $sql .= ' where a.id_complejo = ? ';
+            if($mes) {
+                $year = date('Y');
+                $ini = date('Y-m-d', strtotime($year . '-'. $mes . '-01'));
+                
+                $end = date('Y-m-d', strtotime($year . '-'. $mes . '-' . cal_days_in_month(CAL_GREGORIAN, $mes, $year)));
+                
+                $sql .= ' and UNIX_TIMESTAMP(d.fecha_inicio) BETWEEN UNIX_TIMESTAMP("'.$ini.'") AND UNIX_TIMESTAMP("'.$end.'")';
+            }
+            $sql .= ' ORDER BY d.fecha_inicio ASC';
+                            
+            $sqlQuery = new SqlQuery($sql);
+            $sqlQuery->setNumber($idComplejo);
+            return $this->execute($sqlQuery);
+        }
 
 }
 ?>

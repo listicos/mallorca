@@ -52,5 +52,29 @@ if (strcmp($action, "getTarifas") == 0) {
     }
 }
 
+if (strcmp($action, 'tarifasByComplejo') == 0) {
+    $meses = array(
+        'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+        'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    );
+    $dias_semana = array(
+        'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'
+    );
+    $idComplejo = $_POST['idComplejo'];
+    $mes = $_POST['mes'];
+    $tarifas = getTarifasByComplejoId($idComplejo, $mes);
+    
+    $smarty->assign('apartamentos', $tarifas);
+    $smarty->assign('mes', $meses[$mes-1]);
+    $smarty->assign('diasSemana', $dias_semana);
+    $ultimoDia = cal_days_in_month(CAL_GREGORIAN, $mes, date('Y'));
+    $smarty->assign('lastDay', $ultimoDia);
+    $html = $smarty->fetch('complejo_tarifas.tpl');
+    $result = array(
+        'msg' => 'ok',
+        'data' => $html
+    );
+}
+
 echo json_encode($result);
 ?>

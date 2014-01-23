@@ -30,7 +30,7 @@ function initComplejo() {
     });
 }
 
-var mapa, calendar;
+var mapa, calendar = false;
 
 function initialize() {
     var myLatlng = new google.maps.LatLng($('input[name=lat]').val(), $('input[name=lon]').val());
@@ -48,5 +48,22 @@ function initialize() {
 
     google.maps.event.trigger(map, 'resize');
     map.setCenter(myLatlng);
+}
+
+mes = new Date().getMonth() + 1;
+function initCalendar() {
+    
+    if(!calendar) {
+        calendar = true;
+        $.ajax({
+            url: BASE_URL + '/ajax-calendario',
+            data: {action:'tarifasByComplejo', idComplejo:$('input[name=idComplejo]').val(), mes:mes},
+            type:'post',
+            dataType:'json',
+            success:function(response){
+                $('#calendar').html(response.data);
+            }
+        })
+    }
 }
 

@@ -16,6 +16,7 @@
 
 {block name="style" append}
 <link href="{$template_url_s}/css/apartamento.css" rel="stylesheet">
+<link href="{$template_url_s}/css/complejo.css" rel="stylesheet">
 <link href="{$template_url}/css/admin/fullcalendar.css" rel="stylesheet">
 <link href="{$template_url}/css/admin/validationEngine.jquery.css" rel="stylesheet">
 {/block}
@@ -36,7 +37,7 @@
                     </div>
                     <div class="sub-titulo row-fluid"> 
                         <h5>
-                            
+                            <input type="hidden" name="idComplejo" value="{$complejo['id_complejo']}">
                             <input type="hidden" name="lat" value="{$complejo['lat']}">
                             <input type="hidden" name="lon" value="{$complejo['lon']}">
                             <span class="middot">·</span>

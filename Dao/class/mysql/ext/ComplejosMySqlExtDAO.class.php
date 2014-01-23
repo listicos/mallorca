@@ -74,5 +74,20 @@ class ComplejosMySqlExtDAO extends ComplejosMySqlDAO{
         $apartamentos = $this->execute($sqlQuery);
         return $apartamentos;
     }
+    
+    public function rangoPreciosByComplejo($idComplejo) {
+        $sql = 'select min(d.precio), max(d.precio)
+                from disponibilidades as d
+                inner join apartamentos as a
+                on a.id_apartamento = d.id_apartamento
+                where a.id_complejo = ?
+                and d.estatus = "disponible"
+                and UNIX_TIMESTAMP(d.fecha_inicio) >= UNIX_TIMESTAMP("' . date('Y-m-d') . '")';
+        
+        $sqlQuery = new SqlQuery($sql);
+        $sqlQuery->setNumber($idComplejo);
+        $apartamentos = $this->execute($sqlQuery);
+        return $apartamentos;
+    }
 }
 ?>

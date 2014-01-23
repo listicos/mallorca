@@ -147,4 +147,49 @@ function eliminarAdjuntoComplejo($idAdjunto) {
     }
 }
 
+function getTarifasByComplejoId($idComplejo, $mes = 0) {
+    try {
+        
+        $disponibilidades = DAOFactory::getDisponibilidadesDAO()->queryByComplejoId($idComplejo, $mes);
+        
+        $apartamentos = array();
+        $idApartamento = false;
+        
+        foreach ($disponibilidades as $d) {
+            if($idApartamento != $d['idApartamento']) {
+                
+                if($apartamento) {
+                    $apartamentos[] = $apartamento;                    
+                }
+                $idApartamento = $d['idApartamento'];
+                
+                $apartamento = DAOFactory::getApartamentosDAO()->prepare($d);
+                $apartamento->disponibilidades = array();
+                
+                
+            }
+            $apartamento->disponibilidades[date('j', strtotime($d['fechaInicio']))] = DAOFactory::getDisponibilidadesDAO()->prepare($d);
+        }
+        if($apartamento)
+            $apartamentos[] = $apartamento; 
+        
+        return $apartamentos;
+        
+    } catch (Exception $e) {
+        error_log($e);
+        return false;
+    }
+}
+function getRangoPreciosByComplejo($idComplejo) {
+    try {
+        
+        $precios = DAOFactory::getComplejosDAO()->rangoPreciosByComplejo($idComplejo);
+        //print_r($precios);
+        return $precios[0];
+        
+    } catch (Exception $e) {
+        print_r($e);
+        return false;
+    }
+}
 ?>

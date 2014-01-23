@@ -30,6 +30,7 @@ if(isset($_GET['id'])) {
     }
     
     
+    
     $smarty->assign('complejo', $complejo_data);
     
 }

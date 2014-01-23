@@ -100,7 +100,7 @@
                         <div class="col-xs-4 ">
                             <div class="form-group centered complejo-disponibilidad-precios">
                                 <div>
-                                <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="precios-complejo">{#desde#} 80,00&euro; {#hasta#} 120,00&euro;</a>
+                                <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="precios-complejo">{#desde#} {$complejo.min|number_format:2:',':''}&euro; {#hasta#} {$complejo.max|number_format:2:',':''}&euro;</a>
                                 </div>
                                 <div>
                                     <a href="" class="ver-disponibilidad">{#disponibilidad#}</a>
