@@ -4,7 +4,6 @@ h2{
     color: #444444; text-align: center; display: block;  
     padding-bottom: 5px; 
     padding-top: 5px;
-    border-bottom: 1px solid #E7E7E7;
     
 }
 .body-content.home {
@@ -35,8 +34,8 @@ margin: 0 auto;
 display: block;}
 ul{list-style: none;margin:0;padding: 0}
 .complejo_details{overflow: hidden;}
-.flexslider{padding: 0px;border:0;}
-.flexslider img {max-height: 300px;}
+.flexslider{padding: 0px;border:0;background: transparent;}
+.flexslider img {max-height: 325px;margin: 0 auto;width: auto!important;}
 .flexslider ol {
     display: none;
 }
@@ -72,16 +71,12 @@ a.precios-complejo {
     color: #337492;
     text-decoration: none;
 }
-
 .centered {
     text-align: center;
 }
-
 .centered > * {
     vertical-align: middle;
 }
-
 .complejo-disponibilidad-precios {
     margin-top: 15px;
 }
-

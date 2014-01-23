@@ -81,7 +81,7 @@
                 <input type="hidden" name="lon" value="{$complejo['lon']}">
                 <input type="hidden" name="nombre" value="{$complejo['nombre']}">
                 <div class="row-fluid complejo_details">
-                    <h2>{$complejo['nombre']}</h2>
+                    <h2><a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="precios-complejo">{$complejo['nombre']}</a></h2>
                     <div class="row-fluid">
                         <div class="flexslider">
                             <ul class="slides">
