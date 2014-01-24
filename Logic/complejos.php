@@ -155,10 +155,10 @@ function eliminarAdjuntoComplejo($idAdjunto) {
     }
 }
 
-function getTarifasByComplejoId($idComplejo, $mes = 0) {
+function getTarifasByComplejoId($idComplejo, $mes = 0, $anio = 0) {
     try {
         
-        $disponibilidades = DAOFactory::getDisponibilidadesDAO()->queryByComplejoId($idComplejo, $mes);
+        $disponibilidades = DAOFactory::getDisponibilidadesDAO()->queryByComplejoId($idComplejo, $mes, $anio);
         
         $apartamentos = array();
         $idApartamento = false;

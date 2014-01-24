@@ -62,13 +62,19 @@ if (strcmp($action, 'tarifasByComplejo') == 0) {
     );
     $idComplejo = $_POST['idComplejo'];
     $mes = $_POST['mes'];
-    $tarifas = getTarifasByComplejoId($idComplejo, $mes);
+    $anio = date('Y');
+    if(isset($_POST['anio']))
+        $anio = $_POST['anio'];
+    $tarifas = getTarifasByComplejoId($idComplejo, $mes, $anio);
     
     $smarty->assign('apartamentos', $tarifas);
     $smarty->assign('mes', $meses[$mes-1]);
     $smarty->assign('diasSemana', $dias_semana);
     $ultimoDia = cal_days_in_month(CAL_GREGORIAN, $mes, date('Y'));
     $smarty->assign('lastDay', $ultimoDia);
+    $smarty->assign('meses', $meses);
+    $smarty->assign('anio', $anio);
+    $smarty->assign('idComplejo', $idComplejo);
     $html = $smarty->fetch('complejo_tarifas.tpl');
     $result = array(
         'msg' => 'ok',

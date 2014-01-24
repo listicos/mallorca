@@ -39,7 +39,7 @@ if(isset($_POST['bounds']) && is_array($_POST['bounds']) && count($_POST['bounds
 else
     $bounds = array();
 
-$complejos = getComplejosFilters($fechaInicio, $fechaFinal, $huespedes, $start, 10, $order, $bounds);
+$complejos = getComplejosFilters($fechaInicio, $fechaFinal, $huespedes, $start, 100, $order, $bounds);
 
 $complejos_data = array();
 $idComplejo = false;

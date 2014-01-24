@@ -62,8 +62,30 @@ function initCalendar() {
             dataType:'json',
             success:function(response){
                 $('#calendar').html(response.data);
+                verTarifas();
             }
         })
     }
+}
+
+function verTarifas() {
+    $('#tarifaMes, #tarifaAnio').off().on('change', function(){
+        idComplejo = $('#tarifaComplejoId').val();
+        mes = $('#tarifaMes').val();
+        anio = $('#tarifaAnio').val();
+        
+        $('#blocker').fadeIn();
+        $.ajax({
+            url: BASE_URL + '/ajax-calendario',
+            data: {action:'tarifasByComplejo', idComplejo:idComplejo, mes:mes, anio: anio},
+            type:'post',
+            dataType:'json',
+            success:function(response){
+                $('#blocker').fadeOut();
+                $('#calendar').html(response.data);
+                verTarifas();
+            }
+        });
+    });
 }
 

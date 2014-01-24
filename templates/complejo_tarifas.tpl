@@ -1,6 +1,31 @@
 <div class="row">
+    <div class="row-fluid">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>{#mes#}</label>
+                <select id="tarifaMes" class="form-control">
+                    {for $i=0 to 11}
+                        {assign var=mesI value=$meses.$i}
+                        <option value="{$i + 1}" {if $mesI eq $mes}selected{/if}>{$smarty.config.$mesI}</option>
+                    {/for}
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>{#anio#}</label>
+                <select id="tarifaAnio" class="form-control">
+                    {for $i=0 to 10}
+                        <option value="{$i + date('Y')}" {if $anio eq $i + date('Y')}selected{/if}>{$i + date('Y')}</option>
+                    {/for}
+                </select>
+            </div>
+        </div>
+                    <input id="tarifaComplejoId" value="{$idComplejo}" type="hidden">
+                <div class="clearfix"></div>
+    </div>
     <div class="row-fluid center">
-        <h4 class="calendar-title">{$smarty.config.$mes}</h4>
+        <h4 class="calendar-title">{$smarty.config.$mes} {$anio}</h4>
     </div>
     <div class="row-fluid">
         <table class="tarifas-calendar">

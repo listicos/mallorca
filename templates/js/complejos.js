@@ -289,57 +289,49 @@ function calendarios() {
         e.preventDefault();
         idComplejo = $(this).attr('id-complejo');
         mes = new Date().getMonth() + 1;
+        anio = new Date().getFullYear();
         if($('#llegada').val().trim().length > 0) {
             mes =  $('#llegada').val().split('-')[1];
         }
         $('#blocker').fadeIn();
         $.ajax({
             url: BASE_URL + '/ajax-calendario',
-            data: {action:'tarifasByComplejo', idComplejo:idComplejo, mes:mes},
+            data: {action:'tarifasByComplejo', idComplejo:idComplejo, mes:mes, anio: anio},
             type:'post',
             dataType:'json',
             success:function(response){
                 $('#blocker').fadeOut();
                 $('#calendario').html(response.data);
                 $('#calendario_modal').modal();
+                verTarifas();
             }
         });  
     });
     
 }
 
-function setTarifasToCalendar(tarifas){
-    
-    h = {
-        left: 'title',
-        center: '',
-        right: 'prev,next,month'
-    }
-    $('#calendarioDisponibilidad').removeClass("mobile");
-    $('#calendarioDisponibilidad').fullCalendar('destroy');
-    if(tarifas){
+function verTarifas() {
+    $('#tarifaMes, #tarifaAnio').off().on('change', function(){
+        idComplejo = $('#tarifaComplejoId').val();
+        mes = $('#tarifaMes').val();
+        anio = $('#tarifaAnio').val();
         
-        $('#calendarioDisponibilidad').fullCalendar({
-            header: h,
-            firstDay: 1,
-            slotMinutes: 15,
-            editable: false,
-            droppable: false,
-            events: tarifas
+        $('#blocker').fadeIn();
+        $.ajax({
+            url: BASE_URL + '/ajax-calendario',
+            data: {action:'tarifasByComplejo', idComplejo:idComplejo, mes:mes, anio: anio},
+            type:'post',
+            dataType:'json',
+            success:function(response){
+                $('#blocker').fadeOut();
+                $('#calendario').html(response.data);
+                verTarifas();
+            }
         });
-    }else{
-        
-        $('#calendarioDisponibilidad').fullCalendar({
-            header: h,
-            slotMinutes: 15,
-            editable: false,
-            droppable: false,
-            events: []
-        });
-    }
-    
-    
+    });
 }
+
+
 
 var IS_GETTING_EMP = false;
 function pagination() {
