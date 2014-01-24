@@ -5,7 +5,7 @@
         <input type="hidden" name="lon" value="{$complejo['lon']}">
         <input type="hidden" name="nombre" value="{$complejo['nombre']}">
         <div class="row-fluid complejo_details">
-            <h2><a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="precios-complejo">{$complejo['nombre']}</a></h2>
+            <h2><a href="{$base_url}/complejo/id:{$complejo['id_complejo']}">{$complejo['nombre']}</a></h2>
             <div class="row-fluid">
                 <div class="flexslider">
                     <ul class="slides">
@@ -16,28 +16,18 @@
                 </div>
             </div>
             <div class="row-fluid">
-                <div class="col-xs-8 complejo-descripcion">
+                <div class="col-xs-9 complejo-descripcion">
                     <div class="form-group ">
                         {$complejo['descripcion']}
                     </div>
                 </div>
-                <div class="col-xs-4 ">
+                <div class="col-xs-3">
                     <div class="form-group centered complejo-disponibilidad-precios">
-                        <div>
-                        <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="precios-complejo">{#desde#} {$complejo.min|number_format:2:',':''}&euro; {#hasta#} {$complejo.max|number_format:2:',':''}&euro;</a>
-                        </div>
-                        <div>
-                            <a href="" class="ver-disponibilidad" id-complejo="{$complejo.id_complejo}">{#disponibilidad#}</a>
-                        </div>
+                        <a class="precios-complejo">{#desde#} &euro;{$complejo.min|number_format:2:',':''} <br />{#Hasta#} &euro;{$complejo.max|number_format:2:',':''}</a>
+                        <a href="" class="ver-disponibilidad" id-complejo="{$complejo.id_complejo}">{#disponibilidad#}</a>
+                        <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="btn btn-success ver_detalle_complejos">Ver detalle</a>
                     </div>
                 </div>
-                <!--
-                {foreach from=$complejo['apartamentos'] item=apartamento}
-                    <ul>
-                        <li>{$apartamento['nombre']}</li>
-                    </ul>
-                {/foreach}
-                -->
                 <div class="clear"></div>
             </div>
         </div>

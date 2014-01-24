@@ -66,6 +66,10 @@ ul{list-style: none;margin:0;padding: 0}
 	color: #337492;
 	font-weight: bold;
 }
+.filtros_main_container{
+    margin-top: 4px!important;
+	
+}
 .ver_detalle_complejos{
     width: 100%;
 	
