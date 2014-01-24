@@ -106,6 +106,11 @@ class ComplejosMySqlExtDAO extends ComplejosMySqlDAO{
             $days = ($end - $ini)/(60*60*24);
             $sql .= ' AND ' .$days .' <= (SELECT COUNT(di.fecha_inicio) FROM disponibilidades AS di WHERE UNIX_TIMESTAMP(di.fecha_inicio) >= UNIX_TIMESTAMP("'.$fechaInicio.'") AND UNIX_TIMESTAMP(di.fecha_inicio) <= UNIX_TIMESTAMP("'.$fechaFinal.'") AND di.id_apartamento = a.id_apartamento AND di.estatus = "disponible")';
         }
+        //print_r($bounds);
+        if(count($bounds) == 4) {
+            $sql .= " AND d.lat <= " . $bounds[0] . " AND d.lat >=" .$bounds[2];
+            $sql .= " AND d.lon <= " . $bounds[1] . " AND d.lon >=" .$bounds[3];
+        }
         
         
         

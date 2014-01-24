@@ -33,6 +33,14 @@ function deleteComplejo($complejoId) {
         
         $transaction = new Transaction();
         
+        $apartamentos = DAOFactory::getApartamentosDAO()->queryByIdComplejo($complejoId);
+        
+        if($apartamentos) {
+            foreach ($apartamentos as $a) {
+                deleteApartamento($a->idApartamento, FALSE);
+            }
+        }
+        
         DAOFactory::getComplejosDAO()->delete($complejoId);
         
         $transaction->commit();
