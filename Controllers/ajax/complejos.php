@@ -63,6 +63,8 @@ if($complejos){
 	}
 }
 
+
+
 $smarty->assign('complejos', $complejos_data);
 $html = $smarty->fetch('lista_complejos.tpl');
 

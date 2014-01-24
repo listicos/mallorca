@@ -98,7 +98,7 @@ class ComplejosMySqlExtDAO extends ComplejosMySqlDAO{
                 LEFT JOIN apartamentos_adjuntos AS aaa ON aaa.id_apartamento = a.id_apartamento
                 LEFT JOIN adjuntos AS aa ON aa.id_adjunto = ca.id_adjunto OR aaa.id_adjunto = aa.id_adjunto
                 LEFT JOIN apartamentos_tipos AS at ON at.id_apartamentos_tipo = a.id_apartamentos_tipo
-                LEFT JOIN direcciones AS d ON a.id_direccion = d.id_direccion
+                INNER JOIN direcciones AS d ON a.id_direccion = d.id_direccion
         WHERE a.estatus <> "inactivo" AND a.capacidad_personas >= ? ';
         if($fechaInicio && $fechaFinal) {
             $ini = strtotime($fechaInicio);
@@ -111,6 +111,8 @@ class ComplejosMySqlExtDAO extends ComplejosMySqlDAO{
             $sql .= " AND d.lat <= " . $bounds[0] . " AND d.lat >=" .$bounds[2];
             $sql .= " AND d.lon <= " . $bounds[1] . " AND d.lon >=" .$bounds[3];
         }
+        
+        //echo $sql;
         
         
         

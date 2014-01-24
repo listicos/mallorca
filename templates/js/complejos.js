@@ -198,7 +198,7 @@ function toTop(){
         type: 'post',
         dataType: 'json',
         success: function(response) {
-            $('ul.complejos_list').html(response.html);
+            $('ul.complejos_list').html(response.data);
             
             $('#loading-filters').fadeOut();
             $('ul.complejos_list').fadeIn();
@@ -262,12 +262,12 @@ function filtrar() {
 
                     calendarios();
                     MOVING_MAP = true;
-                    
+                    /*
                     if($('#resultados .result-item').length == 0) {
                         $('select[name=order]').addClass('hidden');
                     } else {
                         $('select[name=order]').removeClass('hidden');
-                    }
+                    }*/
                 }
             });
         }
