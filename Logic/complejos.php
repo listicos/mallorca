@@ -167,7 +167,7 @@ function getTarifasByComplejoId($idComplejo, $mes = 0, $anio = 0) {
             if($idApartamento != $d['idApartamento']) {
                 
                 if($apartamento) {
-                    $apartamentos[] = $apartamento;                    
+                    $apartamentos[$apartamento->idApartamento] = $apartamento;                    
                 }
                 $idApartamento = $d['idApartamento'];
                 
@@ -179,7 +179,13 @@ function getTarifasByComplejoId($idComplejo, $mes = 0, $anio = 0) {
             $apartamento->disponibilidades[date('j', strtotime($d['fechaInicio']))] = DAOFactory::getDisponibilidadesDAO()->prepare($d);
         }
         if($apartamento)
-            $apartamentos[] = $apartamento; 
+            $apartamentos[$apartamento->idApartamento] = $apartamento; 
+        
+        $aptosComplejo = DAOFactory::getApartamentosDAO()->queryByIdComplejo($idComplejo);
+        
+        foreach ($aptosComplejo as $a) {
+            if(!$apartamentos[$a->idApartamento])$apartamentos[$a->idApartamento] = $a;
+        }
         
         return $apartamentos;
         

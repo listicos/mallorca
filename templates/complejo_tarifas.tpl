@@ -56,7 +56,7 @@
                             {$apartamento->nombre}
                         </td>
                         {for $d=1 to $lastDay}
-                            <td class="{if $apartamento->disponibilidades[$d]->estatus eq 'disponible'}green{else}red{/if}"></td>
+                            <td class="{if $apartamento->disponibilidades[$d]->estatus eq 'no disponible'}red{else}green{/if}"></td>
                         {/for}
                     </tr>
                 {/foreach}
