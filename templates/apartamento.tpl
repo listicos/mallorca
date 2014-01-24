@@ -40,7 +40,7 @@
                             <input type="hidden" name="lat" value="{$apartamento['direccion']->lat}">
                             <input type="hidden" name="lon" value="{$apartamento['direccion']->lon}">
                             <span class="middot">·</span>
-                            <span id="display-address" data-location="Riviera Maya, Cancun, Quintana Roo, México">
+                            <span id="display-address" data-location="">
                                 {$apartamento['direccion']->provincia}, {$apartamento['direccion']->paisNombre}
                             </span>
                         </h5>
