@@ -1,6 +1,6 @@
 <div class="row">
     <div class="row-fluid">
-        <div class="col-md-3">
+        <div class="col-md-offset-6 col-md-3">
             <div class="form-group">
                 <label>{#mes#}</label>
                 <select id="tarifaMes" class="form-control">

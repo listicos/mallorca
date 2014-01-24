@@ -25,6 +25,9 @@ color: #000;
     background: rgba(236, 236, 236, 0.4);
 border: 1px solid rgba(129, 129, 129, 0.11);
 }
+.modal-body-slim{
+    padding-top: 0px;
+}
 a:hover, a:focus {
 color: #000835;
 text-decoration: underline;

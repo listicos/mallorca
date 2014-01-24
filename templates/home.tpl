@@ -117,7 +117,31 @@
             <div class="house_side">
                 <div class="row home-main-slider">
                     <div class="col-md-12">
-                        <h1>{#alojamientos_en_mallorca#}</h1>
+                        <div class="row thumbs_home">
+                            <div class="col-md-6">
+                                <a href="{$base_url}">
+                                <div class="selector_container active">
+                                     <img class="img-thumbnail" src="{$template_url_s}/img/finca_mallorca.jpg">
+                                    <div class="thumb_description">
+                                        <h5>Finca Mallorca</h5>
+                                        <p>Villas en Mallorca para 1 o 2 familias.</p>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                           <div class="col-md-6">
+                                <a href="{$base_url}/agroturismo">
+                                <div class="selector_container">
+                                     <img class="img-thumbnail" src="{$template_url_s}/img/agroturimos_promo.jpg">
+                                    <div class="thumb_description">
+                                        <h5>Agroturismo</h5>
+                                        <p>Vacaciones en la granja! Ideal para familias con niños.</p>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                    </div>
+                        <!--<h1>{#alojamientos_en_mallorca#}</h1>-->
                         <p class="slide-order-title">Disfrute de unas exclusivas vacaciones en Mallorca en una de las Fincas o Agroturismos que desde mas de una década gestionamos.</p>
                     </div>
                     <div class="col-md-4 hidden">
