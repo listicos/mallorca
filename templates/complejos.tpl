@@ -82,7 +82,7 @@
                 <input type="hidden" name="lon" value="{$complejo['lon']}">
                 <input type="hidden" name="nombre" value="{$complejo['nombre']}">
                 <div class="row-fluid complejo_details">
-                    <h2><a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="precios-complejo">{$complejo['nombre']}</a></h2>
+                    <h2><a href="{$base_url}/complejo/id:{$complejo['id_complejo']}">{$complejo['nombre']}</a></h2>
                     <div class="row-fluid">
                         <div class="flexslider">
                             <ul class="slides">
@@ -107,12 +107,11 @@
                             </div>-->
 
                             <div class="form-group centered complejo-disponibilidad-precios">
-                                <div>
-                                <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="precios-complejo">{#desde#} &euro; {$complejo.min|number_format:2:',':''} <br />{#hasta#} &euro; {$complejo.max|number_format:2:',':''}</a>
-                                </div>
-                                <div>
-                                    <a href="" class="ver-disponibilidad" id-complejo="{$complejo.id_complejo}">{#disponibilidad#}</a>
-                                </div>
+                                
+                                <a class="precios-complejo">{#desde#} &euro;{$complejo.min|number_format:2:',':''} <br />{#Hasta#} &euro;{$complejo.max|number_format:2:',':''}</a>
+                                <a href="" class="ver-disponibilidad" id-complejo="{$complejo.id_complejo}">{#disponibilidad#}</a>
+                                <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="btn btn-success ver_detalle_complejos">Ver detalle</a>
+                                
                             </div>
                         </div>
                         <!--
@@ -149,7 +148,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">{#disponibilidad#}</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body modal-body-slim">
                 <div id="calendario"></div>
                 <div id="calendar-legend">
                     <div class="leyenda disponible"></div><div>{#disponible#}</div>

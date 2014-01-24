@@ -35,14 +35,13 @@ display: block;}
 ul{list-style: none;margin:0;padding: 0}
 .complejo_details{overflow: hidden;}
 .flexslider{padding: 0px;border:0;background: transparent;}
-.flexslider img {max-height: 325px;margin: 0 auto;width: auto!important;}
+.flexslider img {max-height: 325px;margin: 0 auto;}
 .flexslider ol {
     display: none;
 }
 .complejos_list .complejo_item{
-	margin-top: 5px;  position: relative; 
-	background-color: #FFF; 
-	border-radius: .3em; box-shadow: 0 0 5px #888;  
+	margin-top: 10px;  position: relative; 
+	background-color: #FFF;  box-shadow: 0 0 5px #888;  
 	margin-bottom: 1em;
 }
 .flex-control-thumbs li {
@@ -57,7 +56,21 @@ ul{list-style: none;margin:0;padding: 0}
 .panel-body{
 	padding: 0
 }
-
+#calendario .form-group{
+    margin: 0px;
+    line-height: 9px;
+}#calendario .form-group label{
+    margin: 0;
+	}
+.ver-disponibilidad{
+	color: #337492;
+	font-weight: bold;
+}
+.ver_detalle_complejos{
+    width: 100%;
+	
+    margin-top: 7px;
+}
 .complejo-descripcion {
     text-align: justify;
     min-height: 100px;
@@ -66,9 +79,8 @@ ul{list-style: none;margin:0;padding: 0}
 }
 
 a.precios-complejo {
-    font-size: 1.2em;
+    font-size: 16px;
     font-weight: normal;
-    color: #337492;
     text-decoration: none;
 }
 .centered {
@@ -78,5 +90,5 @@ a.precios-complejo {
     vertical-align: middle;
 }
 .complejo-disponibilidad-precios {
-    margin-top: 15px;
+    margin-top: 5px;
 }
