@@ -89,5 +89,32 @@ class ComplejosMySqlExtDAO extends ComplejosMySqlDAO{
         $apartamentos = $this->execute($sqlQuery);
         return $apartamentos;
     }
+    
+    public function getComplejosFilters($fechaInicio = 0, $fechaFinal = 0, $huespedes = 1, $start = 0, $count = 10, $order = 0, $bounds = array()) {
+        $sql = 'SELECT distinct a.nombre AS a_nombre, aa.id_adjunto, d.lat, d.lon, a.id_apartamento AS id_apartamento, a.id_complejo, a.descripcion_larga AS a_descripcion, aa.ruta AS ruta, 
+                c.nombre AS complejo, c.descripcion AS descripcion, at.nombre AS tipo FROM apartamentos AS a 
+                INNER JOIN complejos AS c ON c.id_complejo = a.id_complejo
+                LEFT JOIN complejos_adjuntos AS ca ON ca.id_complejo = c.id_complejo
+                LEFT JOIN apartamentos_adjuntos AS aaa ON aaa.id_apartamento = a.id_apartamento
+                LEFT JOIN adjuntos AS aa ON aa.id_adjunto = ca.id_adjunto OR aaa.id_adjunto = aa.id_adjunto
+                LEFT JOIN apartamentos_tipos AS at ON at.id_apartamentos_tipo = a.id_apartamentos_tipo
+                LEFT JOIN direcciones AS d ON a.id_direccion = d.id_direccion
+        WHERE a.estatus <> "inactivo" AND a.capacidad_personas >= ? ';
+        if($fechaInicio && $fechaFinal) {
+            $ini = strtotime($fechaInicio);
+            $end = strtotime($fechaFinal);
+            $days = ($end - $ini)/(60*60*24);
+            $sql .= ' AND ' .$days .' <= (SELECT COUNT(di.fecha_inicio) FROM disponibilidades AS di WHERE UNIX_TIMESTAMP(di.fecha_inicio) >= UNIX_TIMESTAMP("'.$fechaInicio.'") AND UNIX_TIMESTAMP(di.fecha_inicio) <= UNIX_TIMESTAMP("'.$fechaFinal.'") AND di.id_apartamento = a.id_apartamento AND di.estatus = "disponible")';
+        }
+        
+        
+        
+        //echo $sql;
+        
+        $sqlQuery = new SqlQuery($sql);
+        $sqlQuery->setNumber($huespedes);
+        $rows = $this->execute($sqlQuery);
+        return $rows;
+    }
 }
 ?>
