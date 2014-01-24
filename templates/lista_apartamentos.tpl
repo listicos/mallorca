@@ -5,11 +5,11 @@
         <div>
             <div class="carrusel">
             {if $a->idComplejo}
-                <div class="complejo-mark">
+                <!--<div class="complejo-mark">
                     <a href="javascript:void(0)" title="Pincha aquí para ver los datos del complejo" id-complejo="{$a->idComplejo}">
                         {$a->complejo->nombre}
                     </a>
-                </div>
+                </div>-->
             {/if}
                 <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.iteration}">
                     <div class="carousel-inner">
