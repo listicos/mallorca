@@ -40,8 +40,8 @@ ul{list-style: none;margin:0;padding: 0}
     display: none;
 }
 .complejos_list .complejo_item{
-	margin-top: 5px;
-	/*padding-bottom: 10px;*/  position: relative; background-color: #FCFBF7; 
+	margin-top: 5px;  position: relative; 
+	background-color: #FFF; 
 	border-radius: .3em; box-shadow: 0 0 5px #888;  
 	margin-bottom: 1em;
 }
