@@ -93,15 +93,22 @@
                         </div>
                     </div>
                     <div class="row-fluid">
-                        <div class="col-xs-8 complejo-descripcion">
+                        <div class="col-xs-9 complejo-descripcion">
                             <div class="form-group ">
                                 {$complejo['descripcion']}
                             </div>
                         </div>
-                        <div class="col-xs-4 ">
+                        <div class="col-xs-3">
+                            <!--<div class="acciones-apto">
+                                <div class="price-apto">
+                                    <p class="text-muted">{#desde#} <strong>&euro; {$complejo.min|number_format:2:',':''}</strong></p>
+                                    <p class="text-muted">{#hasta#} <strong>&euro; {$complejo.max|number_format:2:',':''}</strong></p>
+                                </div>
+                            </div>-->
+
                             <div class="form-group centered complejo-disponibilidad-precios">
                                 <div>
-                                <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="precios-complejo">{#desde#} {$complejo.min|number_format:2:',':''}&euro; {#hasta#} {$complejo.max|number_format:2:',':''}&euro;</a>
+                                <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="precios-complejo">{#desde#} &euro; {$complejo.min|number_format:2:',':''} <br />{#hasta#} &euro; {$complejo.max|number_format:2:',':''}</a>
                                 </div>
                                 <div>
                                     <a href="" class="ver-disponibilidad" id-complejo="{$complejo.id_complejo}">{#disponibilidad#}</a>

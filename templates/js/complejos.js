@@ -193,7 +193,7 @@ function toTop(){
     $('ul.complejos_list').fadeOut();
     $('#loading-filters').fadeIn();
     $.ajax({
-        url: BASE_URL + '/ajax-filtros',
+        url: BASE_URL + '/ajax-complejos',
         data: form,
         type: 'post',
         dataType: 'json',
