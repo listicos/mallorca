@@ -192,4 +192,16 @@ function getRangoPreciosByComplejo($idComplejo) {
         return false;
     }
 }
+
+function getComplejosFilters($fechaInicio = 0, $fechaFinal = 0, $huespedes = 1, $start = 0, $count = 10, $order = 0, $bounds = array()) {
+    try {
+        $complejos = DAOFactory::getComplejosDAO()->getComplejosFilters($fechaInicio, $fechaFinal, $huespedes, $start, $count, $order, $bounds);
+        
+        return $complejos;
+    } catch(Exception $e) {
+        var_dump($e);
+        return false;
+    }
+}
+
 ?>

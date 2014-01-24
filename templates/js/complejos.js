@@ -187,10 +187,10 @@ function toTop(){
     toTop();
     bounds = map.getBounds();
     var form = $('#filtrosFrm').serialize();
-    form += ("&order=" + $('select[name=order]').val());
+    
     form += ("&bounds[]=" + bounds.getNorthEast().lat() + "&bounds[]=" + bounds.getNorthEast().lng());
     form += ("&bounds[]=" + bounds.getSouthWest().lat() + "&bounds[]=" + bounds.getSouthWest().lng());
-    $('#resultados').fadeOut();
+    $('ul.complejos_list').fadeOut();
     $('#loading-filters').fadeIn();
     $.ajax({
         url: BASE_URL + '/ajax-filtros',
@@ -198,22 +198,22 @@ function toTop(){
         type: 'post',
         dataType: 'json',
         success: function(response) {
-            $('#resultados').html(response.html);
+            $('ul.complejos_list').html(response.html);
             
             $('#loading-filters').fadeOut();
-            $('#resultados').fadeIn();
+            $('ul.complejos_list').fadeIn();
             
              initCarousel();
 
-             actualizarFiltros(response);
+             //actualizarFiltros(response);
              calendarios();
              MOVING_MAP = true;
-             
-             if($('#resultados .result-item').length == 0) {
+             /*
+             if($('ul.complejos_list .result-item').length == 0) {
                  $('select[name=order]').addClass('hidden');
              } else {
                  $('select[name=order]').removeClass('hidden');
-             }
+             }*/
 
         }
     });
@@ -222,11 +222,11 @@ function toTop(){
  }
 
 function filtrar() {
-    
+    /*
     $('.checkbox-inline span').click(function(e){
         e.preventDefault();
         $(this).parent().find('input').click();
-    })
+    })*/
     
     $('#filtrosFrm input, #filtrosFrm select, select[name=order]').off('change').on('change', function(e) {
         toTop();
@@ -238,26 +238,26 @@ function filtrar() {
         }
         if (valid) {
             var form = $('#filtrosFrm').serialize();
-            form += ("&order=" + $('select[name=order]').val());
-            $('#resultados').fadeOut();
+            //form += ("&order=" + $('select[name=order]').val());
+            $('ul.complejos_list').fadeOut();
             $('#loading-filters').fadeIn();
             $.ajax({
-                url: BASE_URL + '/ajax-filtros',
+                url: BASE_URL + '/ajax-complejos',
                 data: form,
                 type: 'post',
                 dataType: 'json',
                 success: function(response) {
                     
-                    $('#resultados').html(response.html);
+                    $('ul.complejos_list').html(response.data);
                     
-                    actualizarFiltros(response);
+                    //actualizarFiltros(response);
                     
                     $('#loading-filters').fadeOut();
-                    $('#resultados').fadeIn();
+                    $('ul.complejos_list').fadeIn();
                     
                      initCarousel();
                      MOVING_MAP = false;
-                     mostrarComplejo();
+                     //mostrarComplejo();
                      actualizarMapa();
 
                     calendarios();
@@ -287,80 +287,24 @@ function calendarios() {
     $('a.ver-disponibilidad').off('click').on('click', function(e){
         $('#calendario_modal').modal();
         e.preventDefault();
-        $('#calendarioDisponibilidad').fullCalendar( 'destroy');
-        //Load calendar pro
-        
-            $('#calendarioDisponibilidad').fullCalendar({
-            header: {
-                left: 'title',
-                right: 'prev,next,month'
-            },
-            firstDay: 1,
-            slotMinutes: 15,
-            editable: false,
-            droppable: false,
-
-            events: {
-                dataType: "json",
-                 url: BASE_URL + "/ajax-calendario",
-                 type: "POST",
-                 cache: true,
-                 data: {
-                     idApartamento: $(this).attr('apartamento-id'),
-                     action: 'getTarifas'
-                 },
-                 beforeSend: function(){
-                    
-                },
-                complete: function(){
-                  
-                }
-            }
-        });
-
-        setTimeout(function(){
-            $('#calendarioDisponibilidad').fullCalendar('render');    
-        },800);
-        
-        /*$('#blocker').show();
+        idComplejo = $(this).attr('id-complejo');
+        mes = new Date().getMonth() + 1;
+        if($('#llegada').val().trim().length > 0) {
+            mes =  $('#llegada').val().split('-')[1];
+        }
+        $('#blocker').fadeIn();
         $.ajax({
-            dataType: "json",
-             url: BASE_URL + "/ajax-calendario",
-             type: "POST",
-             data: {
-                 idApartamento: $(this).attr('apartamento-id'),
-                 action: 'getTarifas'
-             },
-             success: function(response) {
-                $('#blocker').fadeOut('slow');
-                 if(response.msg == 'ok'){
-                     
-                     var _tarifas = response.tarifas
-                     if(_tarifas.length > 0){
-                         var tarifas_array = [];
-                         for(var i=0;i < _tarifas.length;i++){
-                             var tarifa_temp;
-                             var price = _tarifas[i].precio ? _tarifas[i].precio+"€" : " 0,00€";
-
-                             if(_tarifas[i].estatus == 'disponible')
-                                 tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('green')};
-                             else
-                                 tarifa_temp = {'title': price, 'start': _tarifas[i].fechaInicio, 'end': _tarifas[i].fechaFinal, 'backgroundColor': App.getLayoutColorCode('red')};
-
-                             tarifas_array.push(tarifa_temp)
-                         }
-                         setTarifasToCalendar(tarifas_array);
-                     }else{
-                         setTarifasToCalendar();
-                     }
-                 }else{
-                     setTarifasToCalendar();
-                 }
-             }
-         });
-*/
-
-    });   
+            url: BASE_URL + '/ajax-calendario',
+            data: {action:'tarifasByComplejo', idComplejo:idComplejo, mes:mes},
+            type:'post',
+            dataType:'json',
+            success:function(response){
+                $('#blocker').fadeOut();
+                $('#calendario').html(response.data);
+                $('#calendario_modal').modal();
+            }
+        });  
+    });
     
 }
 

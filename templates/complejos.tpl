@@ -8,6 +8,7 @@
 {block name="style" append}
 <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
 <link href="{$template_url_s}/css/complejos.css" rel="stylesheet">
+<link href="{$template_url_s}/css/complejo.css" rel="stylesheet">
 <link href="{$template_url_s}/css/home.css" rel="stylesheet">
 {/block}
 
@@ -103,7 +104,7 @@
                                 <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="precios-complejo">{#desde#} {$complejo.min|number_format:2:',':''}&euro; {#hasta#} {$complejo.max|number_format:2:',':''}&euro;</a>
                                 </div>
                                 <div>
-                                    <a href="" class="ver-disponibilidad">{#disponibilidad#}</a>
+                                    <a href="" class="ver-disponibilidad" id-complejo="{$complejo.id_complejo}">{#disponibilidad#}</a>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +121,38 @@
             </li>
         {/foreach}
         </ul>  
+        <div id="loading-filters" class="row">
+                <div class="bubblingG">
+                    <span id="bubblingG_1">
+                    </span>
+                    <span id="bubblingG_2">
+                    </span>
+                    <span id="bubblingG_3">
+                    </span>
+                </div>
+            </div>
     </div>
 </div>
+</div>
+        
+<div class="modal" id="calendario_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+             <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{#disponibilidad#}</h4>
+            </div>
+            <div class="modal-body">
+                <div id="calendario"></div>
+                <div id="calendar-legend">
+                    <div class="leyenda disponible"></div><div>{#disponible#}</div>
+                    <div class="leyenda no-disponible"></div><div>{#no_disponible#}</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{#cerrar#}</button>
+            </div>
+        </div>
+    </div>
 </div>
 {/block}
