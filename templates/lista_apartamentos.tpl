@@ -1,16 +1,17 @@
 {if $apartamentos|@count gt 0}
 {foreach from=$apartamentos item=a name=apartamentos}
+{if !$a->idComplejo}
 <div class="col-lg-12 mix apto apartamento-item-content" data-name="{$a->nombre}" data-price="{$a->precioPorNoche}" data-id="{$a->idApartamento}">
     <div class=" result-item">
         <div>
             <div class="carrusel">
-            {if $a->idComplejo}
+            
                 <!--<div class="complejo-mark">
                     <a href="javascript:void(0)" title="Pincha aquí para ver los datos del complejo" id-complejo="{$a->idComplejo}">
                         {$a->complejo->nombre}
                     </a>
                 </div>-->
-            {/if}
+            
                 <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.iteration}">
                     <div class="carousel-inner">
                         {foreach from=$a->adjuntos item=adjunto name=adjuntos}
@@ -83,6 +84,7 @@
         </div>
     </div>
 </div>
+{/if}
 {/foreach}
 {else}
 <div class="no_apartamentos_container">

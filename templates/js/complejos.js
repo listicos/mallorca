@@ -30,7 +30,7 @@ function initialize() {
     
 }
 function initCarousel(){
-    $('.flexslider').flexslider();
+    $('.flexslider').flexslider({slideshow:false});
     /*
     $('.carousel').one('slid', function (e) {
         var active = $(this).find('.item.active');

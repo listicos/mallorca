@@ -14,7 +14,8 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">
             <li {if !$page}class="active"{/if}><a class="to_scroll" href="{$base_url}">{#inicio#}</a></li>
-            <!--<li {if $page == 'agroturismo'}class="active"{/if}><a href="{$base_url}/agroturismo">{#agroturismo#}</a></li>-->
+            <li><a class="to_scroll" href="{$base_url}">Fincas</a></li>
+            <li {if $page == 'agroturismo'}class="active"{/if}><a href="{$base_url}/agroturismo">{#agroturismo#}</a></li>
             <li {if $page == 'contacto'}class="active"{/if}><a href="{$base_url}/contacto">{#contacto#} & {#mapa#}</a></li>
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{$lang|upper}<b class="caret"></b></a>

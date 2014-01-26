@@ -67,6 +67,14 @@
                 </div>
                 <div class="row" id="mapa">
                     <div class="col-md-12">
+                        <div class="row-fluid">
+                            <div class="col-md-12">
+                                <legend>Ubicación</legend>    
+                            </div>
+                            
+                        </div>
+                        
+                        
                         <div id="details-map-location"></div>
                     </div>
                 </div>
@@ -81,8 +89,8 @@
                                 <div class="selector_container">
                                      <img class="img-thumbnail" src="{$template_url_s}/img/finca_mallorca.jpg">
                                     <div class="thumb_description">
-                                        <h5>Finca Mallorca</h5>
-                                        <p>Villas en Mallorca para 1 o 2 familias.</p>
+                                        <h5>Fincas</h5>
+                                        <p>Fincas en Mallorca para 1 o 2 familias.</p>
                                     </div>
                                 </div>
                                 </a>
@@ -99,7 +107,7 @@
                                 </a>
                             </div>
                     </div>
-                     <!--<p class="slide-order-title">Disfrute de unas exclusivas vacaciones en Mallorca.</p>-->
+                     <p class="slide-order-title">Disfrute de unas exclusivas vacaciones en Mallorca en una de las Fincas o Agroturismos que desde mas de una década gestionamos.</p>
         <ul class="complejos_list">
         {foreach from=$complejos item=complejo}
             <li class="complejo_item" data-id="{$complejo['id_complejo']}">

@@ -1,4 +1,4 @@
-
+{if $complejos|@count gt 0}
 {foreach from=$complejos item=complejo}
     <li class="complejo_item" data-id="{$complejo['id_complejo']}">
         <input type="hidden" name="lat" value="{$complejo['lat']}">
@@ -33,3 +33,12 @@
         </div>
     </li>
 {/foreach}
+{else}
+<div class="no_apartamentos_container">
+<p>{#ningun_resultado#}</p>
+<p>{#prueba_con#}<p>
+<p>{#desactiva_algunos_filtros#}</p>
+<p>{#amplia_el_area_de_busqueda#}</p>
+<p>{#busca_una_ciudad_una_direccion_o_un_punto_de_referencia#}</p>
+</div>
+{/if}

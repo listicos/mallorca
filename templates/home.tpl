@@ -72,7 +72,7 @@
                         <div class="">
                             <div class="row-fluid" >
                                 {foreach from=$tiposApartamento item=tipo}
-                                    {if $tipo->apartamentos > 0}
+                                    {if $tipo->apartamentos > 0 && $tipo->nombre != 'Agroturismo'}
                                         <div class="checkbox-inline">
                                             <input type="checkbox" class="" name="tiposApartamento[]" value="{$tipo->idApartamentosTipo}"/>
                                             <span>{$tipo->nombre}<strong> ({$tipo->apartamentos})</strong></span>
@@ -109,6 +109,12 @@
                 </div>
                 <div class="row" id="mapa">
                     <div class="col-md-12">
+                    <div class="row-fluid">
+                            <div class="col-md-12">
+                                <legend>Ubicación</legend>    
+                            </div>
+                            
+                        </div>
                         <div id="details-map-location"></div>
                     </div>
                 </div>
@@ -123,8 +129,8 @@
                                 <div class="selector_container active">
                                      <img class="img-thumbnail" src="{$template_url_s}/img/finca_mallorca.jpg">
                                     <div class="thumb_description">
-                                        <h5>Finca Mallorca</h5>
-                                        <p>Villas en Mallorca para 1 o 2 familias.</p>
+                                        <h5>Fincas</h5>
+                                        <p>Fincas en Mallorca para 1 o 2 familias.</p>
                                     </div>
                                 </div>
                                 </a>
@@ -160,17 +166,18 @@
                 </div>
                 <div id="resultados" class="row result-list-container">
                     {foreach from=$apartamentos item=a name=apartamentos}
+                     {if !$a['apartamento']->idComplejo}
                     <div class="col-lg-12 mix apto apartamento-item-content" data-name="{$a['apartamento']->nombre}" data-price="{$a['apartamento']->tarifaBase}" data-id="{$a['apartamento']->idApartamento}">
                         <div class=" result-item">
                             <div>
                                 <div class="carrusel">
-                                {if $a['apartamento']->idComplejo}
+                               
                                     <!--<div class="complejo-mark">
                                         <a href="javascript:void(0)" title="Pincha aquí para ver los datos del complejo" id-complejo="{$a['apartamento']->idComplejo}">
                                             {$a['complejo']->nombre}
                                         </a>
                                     </div>-->
-                                {/if}
+                               
                                     <div class="carousel slide"  id="result-slider-{$smarty.foreach.apartamentos.iteration}">
                                         <div class="carousel-inner">
                                             {foreach from=$a['adjuntos'] item=adjunto name=adjuntos}
@@ -245,6 +252,7 @@
                             </div>
                         </div>
                     </div>      
+                     {/if}
                     {/foreach} 
                      
                 </div>
