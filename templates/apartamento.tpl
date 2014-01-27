@@ -25,10 +25,18 @@
             
             <div class="contenedor-columnas row-fluid">
             <div class="columna-izquierda col-md-12">
+            {if !$apartamento['apartamento']->idComplejo}
                 <ol class="breadcrumb">
-                  <li><a href="{$base_url}">{#inicio#}</a></li>
+                  <li><a href="{$base_url}">{#fincas#}</a></li>
                   <li class="active">{$apartamento['apartamento']->nombre}</li>
                 </ol>
+            {else}
+                <ol class="breadcrumb">
+                  <li><a href="{$base_url}/agroturismo">{#complejos#}</a></li>
+                  <li><a href="{$base_url}/complejo/id:{$complejo->idComplejo}">{$complejo->nombre}</a></li>
+                  <li class="active">{$apartamento['apartamento']->nombre}</li>
+                </ol>
+            {/if}
             </div>
                 <div class="columna-izquierda col-md-8">
                     <div class="titulo row-fluid">

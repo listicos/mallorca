@@ -69,7 +69,7 @@
                     <div class="col-md-12">
                         <div class="row-fluid">
                             <div class="col-md-12">
-                                <legend>Ubicación</legend>    
+                                <legend>{#ubicacion#}</legend>    
                             </div>
                             
                         </div>
@@ -84,30 +84,30 @@
     
     <div class="house_side">
      <div class="row thumbs_home">
-                            <div class="col-md-6">
-                                <a href="{$base_url}">
-                                <div class="selector_container">
-                                     <img class="img-thumbnail" src="{$template_url_s}/img/finca_mallorca.jpg">
-                                    <div class="thumb_description">
-                                        <h5>Fincas</h5>
-                                        <p>Fincas en Mallorca para 1 o 2 familias.</p>
-                                    </div>
-                                </div>
-                                </a>
-                            </div>
-                           <div class="col-md-6">
-                                <a href="{$base_url}/agroturismo">
-                                <div class="selector_container active">
-                                     <img class="img-thumbnail" src="{$template_url_s}/img/agroturimos_promo.jpg">
-                                    <div class="thumb_description">
-                                        <h5>Agroturismo</h5>
-                                        <p>Vacaciones en la granja! Ideal para familias con niños.</p>
-                                    </div>
-                                </div>
-                                </a>
-                            </div>
+            <div class="col-md-6">
+                <a href="{$base_url}">
+                <div class="selector_container">
+                     <img class="img-thumbnail" src="{$template_url_s}/img/finca_mallorca.jpg">
+                    <div class="thumb_description">
+                        <h5>{#fincas#}</h5>
+                        <p>{#texto_fincas#}</p>
                     </div>
-                     <p class="slide-order-title">Disfrute de unas exclusivas vacaciones en Mallorca en una de las Fincas o Agroturismos que desde mas de una década gestionamos.</p>
+                </div>
+                </a>
+            </div>
+           <div class="col-md-6">
+                <a href="{$base_url}/agroturismo">
+                <div class="selector_container active">
+                     <img class="img-thumbnail" src="{$template_url_s}/img/agroturimos_promo.jpg">
+                    <div class="thumb_description">
+                        <h5>{#agroturismo#}</h5>
+                        <p>{#texto_agroturismo#}</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+    </div>
+                     <p class="slide-order-title">{#texto_descriptivo#}</p>
         <ul class="complejos_list">
         {foreach from=$complejos item=complejo}
             <li class="complejo_item" data-id="{$complejo['id_complejo']}">
@@ -135,7 +135,7 @@
                             <div class="form-group centered complejo-disponibilidad-precios">
                                 <a class="precios-complejo">{#desde#} &euro;{$complejo.min|number_format:2:',':''} <br />{#Hasta#} &euro;{$complejo.max|number_format:2:',':''}</a>
                                 <a href="" class="ver-disponibilidad" id-complejo="{$complejo.id_complejo}">{#disponibilidad#}</a>
-                                <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="btn btn-success ver_detalle_complejos">Ver detalle</a>
+                                <a href="{$base_url}/complejo/id:{$complejo['id_complejo']}" class="btn btn-success ver_detalle_complejos">{#ver_detalle#}</a>
                             </div>
                         </div>
                         <div class="clear"></div>

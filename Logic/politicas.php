@@ -3,8 +3,10 @@
 function getPolitica($idPolitica) {
     try {
         
-        $politica = DAOFactory::getPoliticasCancelacionDAO()->load($idPolitica);
+        $politica = DAOFactory::getPoliticasCancelacionDAO()->load($idPoliticas);
+        if($politica->nombre)
         $politica->nombres = json_decode($politica->nombre);
+        if($politica->descripcion)
             $politica->descripciones = json_decode($politica->descripcion);
         return $politica;
         

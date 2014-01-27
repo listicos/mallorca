@@ -1,6 +1,6 @@
 <div class="row">
     <div class="row-fluid">
-        <div class="col-md-offset-6 col-md-3">
+        <div class="col-md-offset-3 col-md-3">
             <div class="form-group">
                 <label>{#mes#}</label>
                 <select id="tarifaMes" class="form-control">
@@ -24,9 +24,6 @@
                     <input id="tarifaComplejoId" value="{$idComplejo}" type="hidden">
                 <div class="clearfix"></div>
     </div>
-    <div class="row-fluid center">
-        <h4 class="calendar-title">{$smarty.config.$mes} {$anio}</h4>
-    </div>
     <div class="row-fluid">
         <table class="tarifas-calendar">
             <thead>
@@ -34,7 +31,7 @@
                     <th class="first">
                     </th>
                     {for $d=1 to $lastDay}
-                        <th>{$d}</th>
+                        <th>{$d|string_format:"%02s"}</th>
                     {/for}
                 </tr>
                 <!--<tr>

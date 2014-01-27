@@ -111,7 +111,7 @@
                     <div class="col-md-12">
                     <div class="row-fluid">
                             <div class="col-md-12">
-                                <legend>Ubicación</legend>    
+                                <legend>{#ubicacion#}</legend>    
                             </div>
                             
                         </div>
@@ -124,13 +124,13 @@
                 <div class="row home-main-slider">
                     <div class="col-md-12">
                         <div class="row thumbs_home">
-                            <div class="col-md-6">
+                           <div class="col-md-6">
                                 <a href="{$base_url}">
                                 <div class="selector_container active">
                                      <img class="img-thumbnail" src="{$template_url_s}/img/finca_mallorca.jpg">
                                     <div class="thumb_description">
-                                        <h5>Fincas</h5>
-                                        <p>Fincas en Mallorca para 1 o 2 familias.</p>
+                                        <h5>{#fincas#}</h5>
+                                        <p>{#texto_fincas#}</p>
                                     </div>
                                 </div>
                                 </a>
@@ -140,15 +140,15 @@
                                 <div class="selector_container">
                                      <img class="img-thumbnail" src="{$template_url_s}/img/agroturimos_promo.jpg">
                                     <div class="thumb_description">
-                                        <h5>Agroturismo</h5>
-                                        <p>Vacaciones en la granja! Ideal para familias con niños.</p>
+                                        <h5>{#agroturismo#}</h5>
+                                        <p>{#texto_agroturismo#}</p>
                                     </div>
                                 </div>
                                 </a>
                             </div>
                     </div>
                         <!--<h1>{#alojamientos_en_mallorca#}</h1>-->
-                        <p class="slide-order-title">Disfrute de unas exclusivas vacaciones en Mallorca en una de las Fincas o Agroturismos que desde mas de una década gestionamos.</p>
+                        <p class="slide-order-title">{#texto_descriptivo#}</p>
                     </div>
                     <div class="col-md-4 hidden">
                         <div class="form-group">
@@ -204,19 +204,16 @@
                                                  <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="apto-link">{$a['apartamento']->nombre}</a>
                                                 <ul class="home_attr_list">
                                                     <li>
-                                                        Tipo de alojamiento {$a['apartamento']->tipo}
-                                                    </li>
-                                                    {if $a['apartamento']->idComplejo}
-                                                    
-                                                    {/if}
-                                                    <li>
-                                                        Capacidad {$a['apartamento']->capacidadPersonas}
+                                                        {#tipo_de_alojamiento#} {$a['apartamento']->tipo}
                                                     </li>
                                                     <li>
-                                                        Habitaciones {$a['apartamento']->habitaciones}
+                                                        {#capacidad#} {$a['apartamento']->capacidadPersonas}
                                                     </li>
                                                     <li>
-                                                        Ba&ntilde;os {$a['apartamento']->banio}
+                                                        {#habitaciones#} {$a['apartamento']->habitaciones}
+                                                    </li>
+                                                    <li>
+                                                        {#banios#} {$a['apartamento']->banio}
                                                     </li>
                                                 </ul>
                                                 <!--<a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">Reserva inmediata</a>-->
@@ -245,7 +242,7 @@
                                                 {/if}
                                             </div>
                                              <div class="acciones-disponibilidad">
-                                    <span><a class="ver-disponibilidad" apartamento-id="{$a['apartamento']->idApartamento}" href="javascript:void(0)" >Disponibilidad</a></span>
+                                    <span><a class="ver-disponibilidad" apartamento-id="{$a['apartamento']->idApartamento}" href="javascript:void(0)" >{#disponibilidad#}</a></span>
                                     <a href="{$base_url}/apartamento/id:{$a['apartamento']->idApartamento}" class="btn btn-success book-it">{if $a['apartamento']->precioMinimo || $a['apartamento']->precioMaximo}{#reservar#}{else}{#ver#}{/if}</a>
                                 </div>
                                 </div>

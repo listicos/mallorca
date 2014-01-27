@@ -59,6 +59,7 @@ ul{list-style: none;margin:0;padding: 0}
 #calendario .form-group{
     margin: 0px;
     line-height: 9px;
+    margin-bottom: 10px;
 }#calendario .form-group label{
     margin: 0;
 	}

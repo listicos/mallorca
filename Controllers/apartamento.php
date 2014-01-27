@@ -10,6 +10,10 @@ updateApartamento($idApartamento, array('visitas'=> ($apartamento->visitas ? : 0
 
 $apartamentos_array = array();
 $apartamentos_array['apartamento'] = $apartamento;
+if($apartamento->idComplejo){
+    $complejo = getComplejo($apartamento->idComplejo);
+    $smarty->assign('complejo', $complejo);
+}
 
 $apartamentosAdjuntos = getApartamentosAdjuntos($idApartamento);
 foreach ($apartamentosAdjuntos as $adkey => $apartamentoAdjunto) {
@@ -130,6 +134,7 @@ if($disponibilidades){
     }
     
 }*/
+
 $smarty->assign('disponibles',json_encode($disponibilidades));
 
 $smarty->assign('entrada', $_SESSION['fechaInicio']);
@@ -148,6 +153,7 @@ if(isset($_SESSION['fechaInicio']) && isset($_SESSION['fechaFinal'])) {
 }
 
 $smarty->assign('menor_precio',$menor_precio);
+
 
 $smarty->assign('apartamento', $apartamentos_array);
 $smarty->assign('lat', $direccion->lat);

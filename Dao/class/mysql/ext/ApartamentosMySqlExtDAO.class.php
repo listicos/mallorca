@@ -27,7 +27,7 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
         $sql = 'SELECT DISTINCT apartamentos.id_apartamento,apartamentos.nombre,apartamentos.tarifa_base,direcciones.id_direccion,direcciones.calle,direcciones.provincia,direcciones.codigo_postal,direcciones.lat,direcciones.lon';
         $sql.= ' FROM apartamentos';
         $sql.= ' INNER JOIN direcciones ON ABS(direcciones.lat - ' . $lat . ') < 0.5 AND ABS(direcciones.lon - ' . $lon . ') < 0.5 AND direcciones.id_direccion = apartamentos.id_direccion';
-        $sql.= ' INNER JOIN disponibilidades ON apartamentos.id_apartamento  = disponibilidades.id_apartamento WHERE precio > 0 LIMIT 5';
+        $sql.= ' INNER JOIN disponibilidades ON apartamentos.id_apartamento  = disponibilidades.id_apartamento WHERE precio > 0 && id_complejo IS NOT NULL LIMIT 5';
         $sqlQuery = new SqlQuery($sql);
 
         return $this->getList($sqlQuery);

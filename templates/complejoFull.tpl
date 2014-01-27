@@ -27,13 +27,13 @@
             <div class="contenedor-columnas row-fluid">
             <div class="columna-izquierda col-md-12">
                 <ol class="breadcrumb">
-                  <li><a href="{$base_url}">{#inicio#}</a></li>
-                  <li class="active">Agroturismo - {$complejo['nombre']}</li>
+                  <li><a href="{$base_url}/agroturismo">{#complejos#}</a></li>
+                  <li class="active">{$complejo['nombre']}</li>
                 </ol>
             </div>
                 <div class="columna-izquierda col-md-8">
                     <div class="titulo row-fluid">
-                        <h2>Agroturismo - {$complejo['nombre']}</h2>
+                        <h2>{$complejo['nombre']}</h2>
                     </div>
                     <div class="sub-titulo row-fluid"> 
                         <h5>
@@ -113,10 +113,10 @@
                         <div class="panel-body">
                             {foreach from=$complejo['apartamentos'] item=apartamento}
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <a href="{$base_url}/apartamento/id:{$apartamento.id_apartamento}"><img src="{$template_url}{$apartamento.adjunto}" class="sugerencia-picture"></a>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <span><a href="{$base_url}/apartamento/id:{$apartamento.id_apartamento}"><strong>{$apartamento.nombre}</strong></a></span><br/>
                                     <span class="distancia">{#hasta#} {$apartamento.capacidad} {#personas#}</span><br/>
                                     <span>{#de#} <strong>&euro;{$apartamento.precio_minimo|number_format:2:',':' '}</strong> {#a#} <strong>&euro;{$apartamento.precio_maximo|number_format:2:',':' '}</strong></span><br/>                                    
@@ -134,40 +134,40 @@
         <form id="make-question-form">
              <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Realiza tu pregunta sobre [<b>{$apartamento['apartamento']->nombre}</b>]</h4>
+                <h4 class="modal-title">{#realiza_tu_pregunta#} [<b>{$apartamento['apartamento']->nombre}</b>]</h4>
             </div>
             <div class="modal-body">
                 
                     <div class="row">
                         <div class="col-sm-6 form-group">
-                            <label for="nombre_viajero">Nombre/s:</label>
-                            <input type="text" name="nombre" class="form-control validate[required]" placeholder="Nombre/s">
+                            <label for="nombre_viajero">{#nombre#}</label>
+                            <input type="text" name="nombre" class="form-control validate[required]" placeholder="{#nombre#}">
                         </div>
                         <div class="col-sm-6 form-group">
-                            <label for="apellidos">Apellido/s:</label>
-                            <input type="text" name="apellidos" class="form-control validate[required]" placeholder="Apellido/s">
+                            <label for="apellidos">{#apellidos#}:</label>
+                            <input type="text" name="apellidos" class="form-control validate[required]" placeholder="{#apellidos#}">
                         </div>
                     </div>
                     <div class="row">
                          <div class="col-sm-6 form-group">
-                             <label for="email">Correo eletrónico:</label>
-                             <input type="text" name="email" class="form-control validate[required, custom[email]]" placeholder="Correo electrónico">
+                             <label for="email">{#correo_electronico#}:</label>
+                             <input type="text" name="email" class="form-control validate[required, custom[email]]" placeholder="{#correo_electronico#}">
                          </div>
                          <div class="col-sm-6 form-group">
-                             <label for="telefono">Teléfono de contacto:</label>
-                             <input type="text" name="telefono" class="form-control validate[required]" placeholder="Teléfono de contacto">
+                             <label for="telefono">{#telefono#}:</label>
+                             <input type="text" name="telefono" class="form-control validate[required]" placeholder="{#telefono#}">
                          </div>
                     </div>
                     <div class="row-fluid form-group">
-                        <label for="mensaje">Mensaje:</label>
+                        <label for="mensaje">{#mensaje#}:</label>
                         <textarea name="mensaje" class="form-control"></textarea>
                     </div>
                     <input type="hidden" name="idApartamento" value="{$apartamento['apartamento']->idApartamento}">
                 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-info" id="btn-send-question">Enviar pregunta</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">{#cerrar#}</button>
+                <button type="submit" class="btn btn-info" id="btn-send-question">{#enviar_pregunta#}</button>
             </div>
             </form>
         </div>

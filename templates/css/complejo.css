@@ -5,7 +5,11 @@ table.tarifas-calendar {
     background-color: #DEDFDE;
     font-size: 9px;
 }
-
+#calendar-legend{
+    padding-top: 10px;
+    
+    padding-left: 53px;
+}
 table.tarifas-calendar td, table.tarifas-calendar th {
     
     border: 1px solid #DEDFDE;
@@ -14,6 +18,8 @@ table.tarifas-calendar td, table.tarifas-calendar th {
 table.tarifas-calendar .first {
     
     font-size: 11px;
+    color: #000;
+    font-weight: bold;
 }
 
 td.first {
