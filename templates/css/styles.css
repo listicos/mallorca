@@ -464,7 +464,7 @@ footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus{
 }
 .result-list-container .carousel .item img{
     max-height: 300px;
-    width: 100%;
+    width: auto !important;
 }
 .result-list-container .carousel .item .carousel-caption{
     background-color: transparent;

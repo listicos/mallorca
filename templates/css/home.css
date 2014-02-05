@@ -292,6 +292,7 @@ legend.title {
 
 .result-list-container .result-item .carousel-inner > .item img {
     height: 284px;
+    margin: auto;
 }
 
 .carousel-caption.visitados-caption {
