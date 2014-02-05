@@ -120,7 +120,7 @@
                         <div class="flexslider">
                             <ul class="slides">
                         {foreach from=$complejo['adjuntos'] item=adjunto}
-                                <li data-thumb="{$template_url}{$adjunto}"><img src="{$template_url}{$adjunto}"></li>
+                            <li data-thumb="{$template_url}{$adjunto}"><a href="{$base_url}/complejo/id:{$complejo.id_complejo}"><img src="{$template_url}{$adjunto}"></a></li>
                         {/foreach}
                             </ul>
                         </div>
