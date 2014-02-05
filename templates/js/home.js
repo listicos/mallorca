@@ -43,7 +43,7 @@ function initCarousel(){
             var that = this;    
             var url = $(this).data('urls');
             $('<img src="'+ url +'">').load(function() {
-              $(that).html($(this));
+              $(that).find('a').html($(this));
             });
         });
         $(_this).carousel(idx);
