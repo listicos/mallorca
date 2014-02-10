@@ -134,7 +134,7 @@ function countApartamentosByFilters($fechaInicio,$fechaFinal,$huespedes = false,
 
 function getApartamentosFilters($fechaInicio,$fechaFinal,$huespedes = false, $instalaciones = array(), $tipos = array(), $alojamientos = array(), $start = 0, $limit = 10, $order = false, $bounds = array(), $loadAll = true) {
     try {
-        $timeFechaInicio = $fechaInicio ? strtotime($fechaInicio) : 0;
+        $timeFechaInicio = $fechaInicio ? strtotime($fechaInicio) : time();
         $timeFechaFinal = $fechaFinal ? strtotime($fechaFinal) : 0;
         $apartamentos = DAOFactory::getApartamentosDAO()->queryApartamentosFilters($timeFechaInicio, $timeFechaFinal,$huespedes, $instalaciones, $tipos, $alojamientos, $start, $limit, $order, $bounds);
         if($loadAll)
@@ -1270,7 +1270,7 @@ function getApartamentosTiposFilters($fechaInicio,$fechaFinal,$huespedes = false
 
 function getRangoPreciosByApartamento($idApto, $fechaInicial = 0, $fechaFinal = 0) {
     try {
-        $fechaInicial = ($fechaInicial && strlen(trim($fechaInicial))) ? strtotime($fechaInicial) : strtotime();
+        $fechaInicial = ($fechaInicial && strlen(trim($fechaInicial))) ? strtotime($fechaInicial) : time();
         $fechaFinal = ($fechaFinal && strlen(trim($fechaFinal))) ? strtotime($fechaFinal) : 0;
         /*
         $disponibilidades = DAOFactory::getDisponibilidadesDAO()->getByApartamentoFechasPrecioAsc($idApto, $fechaInicial, $fechaFinal);
@@ -1291,7 +1291,14 @@ function getRangoPreciosByApartamento($idApto, $fechaInicial = 0, $fechaFinal = 
                 
         return array($min, $max);*/
         $precios = DAOFactory::getApartamentosDAO()->rangoPreciosByApartamentoANDFechas($idApto, $fechaInicial, $fechaFinal);
-        return $precios[0];
+        if($precios && count($precios)) {
+            $precios = $precios[0];
+            $apartamento = DAOFactory::getApartamentosDAO()->load($idApto);
+            if($precios[0] == 0) $precios[0] = $apartamento->tarifaBase;
+            if($precios[1] == 0) $precios[1] = $apartamento->tarifaBase;
+            return $precios;
+        }
+        return array(0, 0);
     } catch (Exception $e) {
         print_r($e);
         return false;
