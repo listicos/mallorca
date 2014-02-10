@@ -119,7 +119,7 @@ function initCalendar() {
              cache: true,
              data: {
                  idApartamento: $('input[name=idApartamento]').val(),
-                 action: 'getTarifas'
+                 action: 'getTarifasPro'
              },
              beforeSend: function(){
                 

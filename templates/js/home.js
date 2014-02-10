@@ -311,7 +311,7 @@ function calendarios() {
                  cache: true,
                  data: {
                      idApartamento: $(this).attr('apartamento-id'),
-                     action: 'getTarifas'
+                     action: 'getTarifasPro'
                  },
                  beforeSend: function(){
                     
