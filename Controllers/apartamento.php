@@ -115,7 +115,12 @@ $apartamentos_array['instalaciones'] = $instalaciones_array;
 
 $apartamentos_array['all_instalaciones'] = $servicios;
 
-$precio = getDisponibilidadByApartamentoMenorPrecio($idApartamento)->precio;
+$d = getDisponibilidadByApartamentoMenorPrecio($idApartamento, 1, true);
+$huespedes = $_SESSION['huespedes'] ? : 1;
+$precio = $d->precio - (($d->descuento) ? (($d->precio * $d->descuento)/100) : 0);
+$tasas = (0.45 * $huespedes);
+$iva += $tasas / 10;
+$precio += ($iva + $tasas);
 
 if($precio && is_numeric($precio)){
     $menor_precio = '€'.money_format('%i', $precio) ;
@@ -135,13 +140,17 @@ if($disponibilidades){
     
 }*/
 
+$no_dispo = getFechasNoDisponiblesByIdApartamento($idApartamento);
+$smarty->assign('no_disponibles', json_encode($no_dispo));
+
 $smarty->assign('disponibles',json_encode($disponibilidades));
 
 $smarty->assign('entrada', $_SESSION['fechaInicio']);
 $smarty->assign('salida', $_SESSION['fechaFinal']);
 $smarty->assign('huespedes', $_SESSION['huespedes']);
 if(isset($_SESSION['fechaInicio']) && isset($_SESSION['fechaFinal'])) {
-    $precio = getTotalPrice($apartamento->idApartamento, strtotime($_SESSION['fechaInicio']), strtotime($_SESSION['fechaFinal']), array(), $_SESSION['huespedes']);
+    $precio = getTotalPrice($apartamento->idApartamento, strtotime($_SESSION['fechaInicio']), strtotime($_SESSION['fechaFinal']), array(), ($_SESSION['huespedes'] ? : 1));
+    
     if($precio)
         $menor_precio = money_format('%i', $precio) ;
     else 

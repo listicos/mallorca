@@ -451,7 +451,7 @@ function getByIdApartamentoFechas($idApartamento,$fechaInicio = false, $fechaFin
 }
 
 function getTotalPrice($idApartamento,$fechaInicio, $fechaFinal, $articulos = array(), $adultos = 0) {
-    $disponibilidades = getDisponibilidadByApartamentoFechas($idApartamento,$fechaInicio, $fechaFinal);
+    $disponibilidades = getByIdApartamentoFechas($idApartamento,$fechaInicio, $fechaFinal);
     
     $total = 0;
     
@@ -469,13 +469,13 @@ function getTotalPrice($idApartamento,$fechaInicio, $fechaFinal, $articulos = ar
             }
         }
         
-        if(!$noches){
+        if($noches != $noches_disponibles){
             return false;
         }else{
-            /*
+            
             if($last_d && $last_d->precioPorConsumo && $total >= $last_d->precioPorConsumo) {
                 $total = $total - ($total * $last_d->descuentoPorConsumo / 100);
-            }*/
+            }
             
             foreach ($articulos as $art=>$cant) {
                 $articulo = DAOFactory::getArticulosDAO()->load($art);
@@ -501,7 +501,7 @@ function getTotalPrice($idApartamento,$fechaInicio, $fechaFinal, $articulos = ar
 }
 
 function getTotalPriceComplete($idApartamento,$fechaInicio, $fechaFinal, $articulos = array(), $adultos = 0) {
-    $disponibilidades = getDisponibilidadByApartamentoFechas($idApartamento,$fechaInicio, $fechaFinal);
+    $disponibilidades = getByIdApartamentoFechas($idApartamento,$fechaInicio, $fechaFinal);
     $total = 0;
     
     $price = array(
@@ -1268,37 +1268,20 @@ function getApartamentosTiposFilters($fechaInicio,$fechaFinal,$huespedes = false
     }
 }
 
-function getRangoPreciosByApartamento($idApto, $fechaInicial = 0, $fechaFinal = 0) {
+function getRangoPreciosByApartamento($idApto, $fechaInicial = 0, $fechaFinal = 0, $huespedes = 1) {
     try {
         $fechaInicial = ($fechaInicial && strlen(trim($fechaInicial))) ? strtotime($fechaInicial) : time();
         $fechaFinal = ($fechaFinal && strlen(trim($fechaFinal))) ? strtotime($fechaFinal) : 0;
-        /*
-        $disponibilidades = DAOFactory::getDisponibilidadesDAO()->getByApartamentoFechasPrecioAsc($idApto, $fechaInicial, $fechaFinal);
-
-        $apartamento = DAOFactory::getApartamentosDAO()->load($idApto);
-        if(!$disponibilidades || !count($disponibilidades))
-            return array($apartamento->tarifaBase, $apartamento->tarifaBase);
         
-        
-        $min = $disponibilidades[0]->precio - ($disponibilidades[0]->precio * $disponibilidades[0]->descuento / 100);
-        $cant = count($disponibilidades);
-        $max = $disponibilidades[$cant - 1]->precio - ($disponibilidades[$cant - 1]->precio * $disponibilidades[$cant - 1]->descuento / 100);
-        
-        if(!$fechaFinal || ($fechaFinal - $fechaInicial)/(3600*24) > $cant && $apartamento->tarifaBase) {
-            if($min > $apartamento->tarifaBase) $min = $apartamento->tarifaBase;
-            if($max < $apartamento->tarifaBase) $max = $apartamento->tarifaBase;
-        }
-                
-        return array($min, $max);*/
         $precios = DAOFactory::getApartamentosDAO()->rangoPreciosByApartamentoANDFechas($idApto, $fechaInicial, $fechaFinal);
-        if($precios && count($precios)) {
-            $precios = $precios[0];
-            $apartamento = DAOFactory::getApartamentosDAO()->load($idApto);
-            if($precios[0] == 0) $precios[0] = $apartamento->tarifaBase;
-            if($precios[1] == 0) $precios[1] = $apartamento->tarifaBase;
-            return $precios;
-        }
-        return array(0, 0);
+        
+        $precios = $precios[0];
+        $noches = ($fechaFinal && $fechaInicial) ? (($fechaFinal - $fechaInicial)/(24*60*60)) : 1;
+        $tasas = (0.45 * $huespedes * $noches);
+        $iva = $tasas / 10;
+        $precios[0] += ($iva + $tasas);
+        $precios[1] += ($iva + $tasas);
+        return $precios;
     } catch (Exception $e) {
         print_r($e);
         return false;

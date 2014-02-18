@@ -28,23 +28,23 @@ class DisponibilidadesMySqlExtDAO extends DisponibilidadesMySqlDAO{
 		return $this->getList($sqlQuery);
     }
 
-	public function queryByIdApartamentoFechas($idApartamento,$fechaInicio,$fechaFinal){
-                
+	public function queryByIdApartamentoFechas($idApartamento,$fechaInicio,$fechaFinal, $all = false){
 		$sql = 'SELECT DISTINCT * FROM disponibilidades WHERE id_apartamento = ? ';
+                if(!$all) $sql .= 'AND estatus = "disponible" AND precio >0';
 		
-		if($fechaFinal){
-			$sql .= ' AND UNIX_TIMESTAMP(fecha_inicio) < UNIX_TIMESTAMP("'.$fechaFinal.'") ';
-                }
-                
-                if($fechaInicio){
-                        $sql .= ' AND UNIX_TIMESTAMP(fecha_final) >= UNIX_TIMESTAMP("'.$fechaInicio.'") ';
+		if($fechaInicio && $fechaFinal){
+			$sql .= ' AND (fecha_inicio >= ? AND fecha_inicio < ?)';
 		}
 		
 		$sql .= ' ORDER BY fecha_inicio';
-                
+
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($idApartamento);
 		
+		if($fechaInicio && $fechaFinal){
+			$sqlQuery->set($fechaInicio);
+			$sqlQuery->set($fechaFinal);
+		}
 		return $this->getList($sqlQuery);
 	}
 
@@ -147,6 +147,20 @@ class DisponibilidadesMySqlExtDAO extends DisponibilidadesMySqlDAO{
                             
             $sqlQuery = new SqlQuery($sql);
             $sqlQuery->setNumber($idComplejo);
+            return $this->execute($sqlQuery);
+        }
+        
+        public function queryFechasNoDisponiblesByIdApartamento($idApartamento) {
+            $sql = 'select d.fecha_inicio, d.estatus, count(r.id_apartamento) as reservas, a.cantidad
+                    from disponibilidades as d
+                    left join apartamentos as a 
+                    on a.id_apartamento = d.id_apartamento
+                    left join reservaciones as r
+                    on r.id_apartamento = a.id_apartamento and UNIX_TIMESTAMP(d.fecha_inicio) BETWEEN UNIX_TIMESTAMP(r.fecha_entrada) AND UNIX_TIMESTAMP(r.fecha_salida)
+                    where d.id_apartamento = ?
+                    group by d.fecha_inicio;';
+            $sqlQuery = new SqlQuery($sql);
+            $sqlQuery->setNumber($idApartamento);
             return $this->execute($sqlQuery);
         }
 

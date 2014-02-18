@@ -55,5 +55,25 @@ function deleteDisponibilidadByApartamento($idApartamento, $fechaInicio, $fechaF
     }
 }
 
+function getFechasNoDisponiblesByIdApartamento($idApartamento) {
+    try {
+        
+        $rows = DAOFactory::getDisponibilidadesDAO()->queryFechasNoDisponiblesByIdApartamento($idApartamento);
+        
+        $fechas = array();
+        
+        foreach ($rows as $row) {
+            if($row['estatus'] == 'no disponible' || $row['reservas'] >= $row['cantidad'])
+                $fechas[] = $row['fecha_inicio'];
+        }
+        
+        return $fechas;
+        
+    } catch (Exception $e) {
+        
+        return false;
+    }
+}
+
 
 ?>

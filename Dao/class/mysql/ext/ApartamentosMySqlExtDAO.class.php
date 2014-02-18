@@ -209,7 +209,7 @@ class ApartamentosMySqlExtDAO extends ApartamentosMySqlDAO {
     }
     
     public function rangoPreciosByApartamentoANDFechas($idApartamento, $fechaInicio = 0, $fechaFinal = 0) {
-        $sql = 'select min(d.precio - (d.precio * IF(d.descuento > 0, d.descuento, 1) / 100)), max(d.precio - (d.precio * IF(d.descuento > 0, d.descuento, 1) / 100))
+        $sql = 'select min(d.precio - (d.precio * IF(d.descuento > 0, d.descuento, 0) / 100)), max(d.precio - (d.precio * IF(d.descuento > 0, d.descuento, 0) / 100))
                 from disponibilidades as d
                 inner join apartamentos as a
                 on a.id_apartamento = d.id_apartamento

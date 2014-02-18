@@ -61,7 +61,7 @@ if($apartamentos){
             $apartamento->precioMaximo = $disponibilidad['precioMaximo'];
         }*/
 
-        $rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, date('Y-m-d'), 0);
+        $rangoPrecios = getRangoPreciosByApartamento($apartamento->idApartamento, date('Y-m-d'), 0, $huespedes);
 
         if($rangoPrecios) {
             $apartamento->precioMinimo = $rangoPrecios[0]?$rangoPrecios[0]:$apartamento->tarifaBase;
