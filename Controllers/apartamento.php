@@ -116,11 +116,11 @@ $apartamentos_array['instalaciones'] = $instalaciones_array;
 $apartamentos_array['all_instalaciones'] = $servicios;
 
 $d = getDisponibilidadByApartamentoMenorPrecio($idApartamento, 1, true);
-$huespedes = $_SESSION['huespedes'] ? : 1;
+//$huespedes = $_SESSION['huespedes'] ? : 1;
 $precio = $d->precio - (($d->descuento) ? (($d->precio * $d->descuento)/100) : 0);
-$tasas = (0.45 * $huespedes);
-$iva += $tasas / 10;
-$precio += ($iva + $tasas);
+//$tasas = (0.45 * $huespedes);
+//$iva += $tasas / 10;
+//$precio += ($iva + $tasas);
 
 if($precio && is_numeric($precio)){
     $menor_precio = '€'.money_format('%i', $precio) ;

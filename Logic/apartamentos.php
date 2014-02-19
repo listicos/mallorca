@@ -484,13 +484,12 @@ function getTotalPrice($idApartamento,$fechaInicio, $fechaFinal, $articulos = ar
             
             if($adultos > 0) {
                 $apto = DAOFactory::getApartamentosDAO()->load($idApartamento);
-                $tasas = 0.45 * $adultos * (($noches <= 7) ? $noches : 7);
-                $total += $tasas;
+                //$tasas = 0.45 * $adultos * (($noches <= 7) ? $noches : 7);
+                //$total += $tasas;
             }
             
-            $IVA = $tasas / 10;
-            
-            $total += $IVA;
+            //$IVA = $tasas / 10;
+            //$total += $IVA;
             
            return $total;
         }
@@ -1270,17 +1269,26 @@ function getApartamentosTiposFilters($fechaInicio,$fechaFinal,$huespedes = false
 
 function getRangoPreciosByApartamento($idApto, $fechaInicial = 0, $fechaFinal = 0, $huespedes = 1) {
     try {
+        $apt = getApartamento($idApto);
         $fechaInicial = ($fechaInicial && strlen(trim($fechaInicial))) ? strtotime($fechaInicial) : time();
         $fechaFinal = ($fechaFinal && strlen(trim($fechaFinal))) ? strtotime($fechaFinal) : 0;
         
         $precios = DAOFactory::getApartamentosDAO()->rangoPreciosByApartamentoANDFechas($idApto, $fechaInicial, $fechaFinal);
         
         $precios = $precios[0];
-        $noches = ($fechaFinal && $fechaInicial) ? (($fechaFinal - $fechaInicial)/(24*60*60)) : 1;
-        $tasas = (0.45 * $huespedes * $noches);
-        $iva = $tasas / 10;
-        $precios[0] += ($iva + $tasas);
-        $precios[1] += ($iva + $tasas);
+
+        if($apt->tarifaBase>$precios[1]){
+            $precios[1] = $apt->tarifaBase;
+        }
+         if($apt->tarifaBase<$precios[0]){
+            $precios[0] = $apt->tarifaBase;
+        }
+        //$noches = ($fechaFinal && $fechaInicial) ? (($fechaFinal - $fechaInicial)/(24*60*60)) : 1;
+        //$tasas = (0.45 * $huespedes * $noches);
+        //$iva = $tasas / 10;
+        //$precios[0] += ($iva + $tasas);
+        //$precios[1] += ($iva + $tasas);
+
         return $precios;
     } catch (Exception $e) {
         print_r($e);

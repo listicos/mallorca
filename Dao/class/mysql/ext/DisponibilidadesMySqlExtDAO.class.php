@@ -49,7 +49,8 @@ class DisponibilidadesMySqlExtDAO extends DisponibilidadesMySqlDAO{
 	}
 
 	public function queryByIdApartamentoMenorPrecio($idApartamento, $limit = 1){
-		$sql = 'SELECT * FROM disponibilidades WHERE id_apartamento = ? AND precio > 0 AND estatus = "disponible" ORDER BY precio ASC LIMIT 0, ?';
+		$fechaInicio = strtotime(date('Y-m-d'));
+		$sql = 'SELECT * FROM disponibilidades WHERE id_apartamento = ? AND precio > 0 AND estatus = "disponible" AND UNIX_TIMESTAMP(fecha_final) >= '.$fechaInicio.'  ORDER BY precio ASC LIMIT 0, ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($idApartamento);
 		$sqlQuery->setNumber($limit);
