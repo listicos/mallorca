@@ -79,30 +79,33 @@ if ($sugerencias) {
             continue;
         }
 
-        $suge_counter++;
-        $apartamentos_adjuntos = getApartamentosAdjuntos($suge->idApartamento);
-        $dir_temp = getDireccion($suge->idDireccion);
-        $distancia = Core_Util_General::distancia($direccion->lat.','.$direccion->lon, $dir_temp->lat.','.$dir_temp->lon);
-
+        
         $base_disponibilidad = getDisponibilidadByApartamentoMenorPrecio($suge->idApartamento);
 
         if($base_disponibilidad && is_numeric($base_disponibilidad->precio)){
-            $precio_base = '€'.money_format('%i', $base_disponibilidad->precio) ;
+            $precio_base = '€'.money_format('%i', $base_disponibilidad->precio);
+            $sugerencias[$key]->precio_base = $precio_base;
+            
+            $suge_counter++;
+            $apartamentos_adjuntos = getApartamentosAdjuntos($suge->idApartamento);
+            $dir_temp = getDireccion($suge->idDireccion);
+            $distancia = Core_Util_General::distancia($direccion->lat.','.$direccion->lon, $dir_temp->lat.','.$dir_temp->lon);
+            
+            $adjunto = getAdjunto($apartamentos_adjuntos[0]->idAdjunto);
+
+            $sugerencias[$key]->distancia = $distancia;
+
+            if($adjunto && count($adjunto)>0){
+                $sugerencias[$key]->adjuntoImg = $template_url . $adjunto->ruta;
+            }else{
+                $sugerencias[$key]->adjuntoImg = $template_url . '/imagen/apartamento.png';
+            }
+            
         }else{
-            $precio_base = 'No disponible';
+            unset($sugerencias[$key]);
         }
 
-        $sugerencias[$key]->precio_base = $precio_base;
-
-        $adjunto = getAdjunto($apartamentos_adjuntos[0]->idAdjunto);
-
-        $sugerencias[$key]->distancia = $distancia;
         
-        if($adjunto && count($adjunto)>0){
-            $sugerencias[$key]->adjuntoImg = $template_url . $adjunto->ruta;
-        }else{
-            $sugerencias[$key]->adjuntoImg = $template_url . '/imagen/apartamento.png';
-        }
     }
 }
 
