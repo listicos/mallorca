@@ -56,6 +56,14 @@ function deleteComplejo($complejoId) {
 function getComplejo($id) {
     try{
         $complejo = DAOFactory::getComplejosDAO()->load($id);
+        $complejo->descripcion = trim($complejo->descripcion);
+        if($complejo->descripcion && strlen($complejo->descripcion) > 2
+                && $complejo->descripcion[0] == '{'
+                && $complejo->descripcion[strlen($complejo->descripcion) - 1] == '}') {
+            $complejo->descripciones = json_decode($complejo->descripcion);
+        } else {
+            $complejo->descripciones = array('es' => $complejo->descripcion);
+        }
         return $complejo;
     }catch (Exception $e) {
         return false;
