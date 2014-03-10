@@ -76,6 +76,14 @@ function getComplejoById($id) {
             
         $complejo->adjuntos = $adjuntos;
         
+        if($complejo->descripcion && strlen(trim($complejo->descripcion) > 2)
+                && $complejo->descripcion[0] == '{'
+                && $complejo->descripcion[strlen($complejo->descripcion) - 1] == '}') {
+            $complejo->descripciones = json_decode($complejo->descripcion);
+        } else {
+            $complejo->descripciones = array('es' => $complejo->descripcion);
+        }
+        
         return $complejo;
     }catch (Exception $e) {
         return false;

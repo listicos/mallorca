@@ -128,7 +128,7 @@
                     <div class="row-fluid">
                         <div class="col-xs-9 complejo-descripcion">
                             <div class="form-group ">
-                                {$complejo['descripcion']}
+                                {if $complejo.descripciones.$lang}{$complejo.descripciones.$lang}{else}{$complejo.descripciones.es}{/if}
                             </div>
                         </div>
                         <div class="col-xs-3">

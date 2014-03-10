@@ -3,6 +3,8 @@ $(function(){
         e.preventDefault();
         var valid = $(this).validationEngine('validate');
         if(valid) {
+            DESCRIPCION[$('#idioma').val()] = CKEDITOR.instances.descripcion.getData();
+            $('textarea[name=descripcion]').val(JSON.stringify(DESCRIPCION));
             var data = $(this).serialize();
             $.ajax({
                 url: BASE_URL + '/admin-ajax-complejo',
@@ -30,6 +32,8 @@ $(function(){
             });
         }
     });
+    
+    descripciones();
 });
 $(document).ready(function(){
     App.init();
@@ -95,6 +99,30 @@ function eliminarImagen(a) {
             }
         })
     });
+}
+
+var DESCRIPCION = {};
+function descripciones() {
+    
+    descripcion = $('textarea[name=descripcion]').val();
+    if(descripcion.trim().length >= 2 && descripcion.trim()[0] == '{' && descripcion.trim()[descripcion.trim().length - 1] == '}') {
+        DESCRIPCION = JSON.parse(descripcion);
+    } else {
+        DESCRIPCION['es'] = descripcion;
+    }
+    setTimeout(function(){
+        idioma = $('#idioma').val();
+        CKEDITOR.instances.descripcion.setData(DESCRIPCION[idioma] ? DESCRIPCION[idioma] : '');
+    
+    }, 1000)
+    
+    
+    $('#idioma').change(function(e){
+        DESCRIPCION[idioma] = CKEDITOR.instances.descripcion.getData();
+        idioma = $('#idioma').val();
+        CKEDITOR.instances.descripcion.setData(DESCRIPCION[idioma] ? DESCRIPCION[idioma] : '')
+    })
+    
 }
 
 

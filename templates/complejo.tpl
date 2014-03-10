@@ -29,7 +29,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<p>{$complejo->descripcion}</p>
+				<p>{if $complejo->descripciones->$lang}{$complejo->descripciones->$lang}{else}{$complejo->descripciones->es}{/if}</p>
 			</div>
 		    
 		</div>

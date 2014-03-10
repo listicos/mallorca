@@ -93,7 +93,7 @@
                                     </ul>
                                     <div id="myTabContent" class="tab-content col-md-12">
                                         <div class="tab-pane fade active in row" id="descripcion">
-                                            <div class="col-md-12"> {$complejo['descripcion']} </div>
+                                            <div class="col-md-12"> {if $complejo.descripciones.$lang}{$complejo.descripciones.$lang}{else}{$complejo.descripciones.es}{/if} </div>
                                             
                                         </div>
                                         

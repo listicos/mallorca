@@ -2,6 +2,7 @@
 <?php 
 $complejo = $this->getAttribute('complejo'); 
 $template_url = $this->getAttribute('template_url');
+$idiomas = $this->getAttribute('idiomas');
 ?>
 
 <div class="sidebar-nav-content">
@@ -24,11 +25,25 @@ $template_url = $this->getAttribute('template_url');
                             </div>
                            <legend class="legend_custom titulos_legend">Descripción</legend>
                            <div class="row-fluid">
+                               <div class="span6">
+                                   <div class="control-group">
+                                       <select class="form-control" id="idioma">
+                                           <?php foreach ($idiomas as $idioma) { ?>
+                                           <option value="<?php echo $idioma->codigo; ?>"><?php echo $idioma->nombre; ?></option>
+                                           <?php } ?>
+                                       </select>
+                                   </div>
+                               </div>
+                               <div class="clearfix"></div>
+                           </div>
+                           <div class="row-fluid">
                                 <div class="span6">
                                     <div class="control-group">
-                                        <textarea placeholder="Descripción del complejo" class="editor input-large span10 validate[required]" name="descripcion"><?php if ($complejo) echo $complejo->descripcion ?></textarea>                                     
+                                        <textarea placeholder="Descripción del complejo" class="editor input-large span10 validate[required]" id="descripcion"></textarea>   
+                                        <textarea name="descripcion" class="hidden"><?php if ($complejo) echo $complejo->descripcion ?></textarea>
                                     </div> 
                                 </div>
+                               <div class="clearfix"></div>
                             </div>
                            
                             <div class="control-group center">

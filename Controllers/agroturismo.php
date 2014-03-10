@@ -74,7 +74,17 @@ if($complejos){
                     $idComplejo = $a['id_complejo'];
                     $complejos_data[$a['id_complejo']]['id_complejo'] = $a['id_complejo'];
                     $complejos_data[$a['id_complejo']]['nombre'] = $a['complejo'];
-                    $complejos_data[$a['id_complejo']]['descripcion'] = truncateHTML($a['descripcion'],305);
+                    $complejos_data[$a['id_complejo']]['descripcion'] = $a['descripcion'];
+                    
+                    if($a['descripcion'] && strlen($a['descripcion']) > 2
+                            && $a['descripcion'][0] == '{'
+                            && $a['descripcion'][strlen($a['descripcion']) - 1] == '}') {
+                        $descripcion = json_decode($a['descripcion']);
+                        $complejos_data[$a['id_complejo']]['descripciones'] = get_object_vars($descripcion);
+                    } else {
+                        $complejos_data[$a['id_complejo']]['descripciones'] = array('es' => $a['descripcion']);
+                    }
+                    
                     $complejos_data[$a['id_complejo']]['lat'] = $a['lat'];
                     $complejos_data[$a['id_complejo']]['lon'] = $a['lon'];
                     $precios = getRangoPreciosByComplejo($idComplejo);

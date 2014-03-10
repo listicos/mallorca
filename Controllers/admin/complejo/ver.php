@@ -18,6 +18,9 @@ if(isset($_GET['id'])) {
     $template->setAttribute('complejo', $complejo);
 }
 
+$idiomas = getIdiomas();
+$template->setAttribute('idiomas', $idiomas);
+
 $template->setView('admin/complejo/ver.php');
 $template->setJS('admin/ver-complejo.js');
 $template->setCSS('complejo.css');
